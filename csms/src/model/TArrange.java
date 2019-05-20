@@ -1,6 +1,5 @@
 package model;
 
-import java.sql.Timestamp;
 
 /**
  * TArrange entity. @author MyEclipse Persistence Tools
@@ -13,8 +12,8 @@ public class TArrange implements java.io.Serializable {
 	private Integer arrid;
 	private String arrname;
 	private Integer proid;
-	private Timestamp starttime;
-	private Timestamp endtime;
+	private String starttime;
+	private String endtime;
 	private String addr;
 	private Integer leveltype;
 	private Integer state;
@@ -26,8 +25,8 @@ public class TArrange implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TArrange(String arrname, Integer proid, Timestamp starttime,
-			Timestamp endtime, String addr, Integer leveltype, Integer state) {
+	public TArrange(String arrname, Integer proid, String starttime,
+			String endtime, String addr, Integer leveltype, Integer state) {
 		this.arrname = arrname;
 		this.proid = proid;
 		this.starttime = starttime;
@@ -63,19 +62,19 @@ public class TArrange implements java.io.Serializable {
 		this.proid = proid;
 	}
 
-	public Timestamp getStarttime() {
+	public String getStarttime() {
 		return this.starttime;
 	}
 
-	public void setStarttime(Timestamp starttime) {
+	public void setStarttime(String starttime) {
 		this.starttime = starttime;
 	}
 
-	public Timestamp getEndtime() {
+	public String getEndtime() {
 		return this.endtime;
 	}
 
-	public void setEndtime(Timestamp endtime) {
+	public void setEndtime(String endtime) {
 		this.endtime = endtime;
 	}
 

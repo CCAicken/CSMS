@@ -1,6 +1,5 @@
 package model;
 
-import java.sql.Timestamp;
 
 /**
  * TConfig entity. @author MyEclipse Persistence Tools
@@ -11,10 +10,10 @@ public class TConfig implements java.io.Serializable {
 	// Fields
 
 	private Integer configid;
-	private Timestamp starttime;
-	private Timestamp endtime;
-	private Timestamp reportstart;
-	private Timestamp reportend;
+	private String starttime;
+	private String endtime;
+	private String reportstart;
+	private String reportend;
 
 	// Constructors
 
@@ -23,8 +22,8 @@ public class TConfig implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TConfig(Timestamp starttime, Timestamp endtime,
-			Timestamp reportstart, Timestamp reportend) {
+	public TConfig(String starttime, String endtime,
+			String reportstart, String reportend) {
 		this.starttime = starttime;
 		this.endtime = endtime;
 		this.reportstart = reportstart;
@@ -41,35 +40,35 @@ public class TConfig implements java.io.Serializable {
 		this.configid = configid;
 	}
 
-	public Timestamp getStarttime() {
+	public String getStarttime() {
 		return this.starttime;
 	}
 
-	public void setStarttime(Timestamp starttime) {
+	public void setStarttime(String starttime) {
 		this.starttime = starttime;
 	}
 
-	public Timestamp getEndtime() {
+	public String getEndtime() {
 		return this.endtime;
 	}
 
-	public void setEndtime(Timestamp endtime) {
+	public void setEndtime(String endtime) {
 		this.endtime = endtime;
 	}
 
-	public Timestamp getReportstart() {
+	public String getReportstart() {
 		return this.reportstart;
 	}
 
-	public void setReportstart(Timestamp reportstart) {
+	public void setReportstart(String reportstart) {
 		this.reportstart = reportstart;
 	}
 
-	public Timestamp getReportend() {
+	public String getReportend() {
 		return this.reportend;
 	}
 
-	public void setReportend(Timestamp reportend) {
+	public void setReportend(String reportend) {
 		this.reportend = reportend;
 	}
 

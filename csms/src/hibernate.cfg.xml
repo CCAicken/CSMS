@@ -19,7 +19,6 @@
 		</property>
 		<mapping resource="model/TStudent.hbm.xml" />
 		<mapping resource="model/TScore.hbm.xml" />
-		<mapping resource="model/TTeacher.hbm.xml" />
 		<mapping resource="model/TScene.hbm.xml" />
 		<mapping resource="model/TRole.hbm.xml" />
 		<mapping resource="model/TProject.hbm.xml" />
@@ -40,6 +39,7 @@
 		<mapping resource="model/VStudentScore.hbm.xml" />
 		<mapping resource="model/VTeacher.hbm.xml" />
 		<mapping resource="model/VTeacherScore.hbm.xml" />
+		<mapping resource="model/TTeacher.hbm.xml" />
 
 	</session-factory>
 
