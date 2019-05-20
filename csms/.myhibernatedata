@@ -1,17 +1,20 @@
 #MyEclipse Hibernate Properties
-#Mon May 20 14:26:17 CST 2019
-genVersionTag=false
-sessionFactoryName=basic.HibernateSessionFactory
-genAnnotations=false
-configFile=/csms/src/hibernate.cfg.xml
-reStrategyClass=
-sessionFactoryId=
-profile=
-detectM2M=false
+#Mon May 20 15:26:44 CST 2019
 genBasicCompId=false
-keyGenerator=
-createConfigFile=true
-basePersistenceClass=
+sessionFactoryName=basic.HibernateSessionFactory
+profile=
+daoSFId=
+jndiPath=
+detectM2M=false
+reStrategyClass=
 detectO2O=false
+springDaoFile=
 useJavaTypes=true
-reSettingsFile=
+keyGenerator=
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=/csms/hibernate.reveng.xml
+configFile=/csms/src/hibernate.cfg.xml
+createConfigFile=true
