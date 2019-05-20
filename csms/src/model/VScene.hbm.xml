@@ -6,7 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="model.VScene" table="V_Scene" schema="dbo" catalog="CSMS">
-        <composite-id name="id" class="model.VSceneId">
+        <composite-id name="id" class="model.VScene">
             <key-property name="sceneid" type="java.lang.Integer">
                 <column name="sceneid" />
             </key-property>

@@ -6,7 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="model.VMajor" table="V_Major" schema="dbo" catalog="CSMS">
-        <composite-id name="id" class="model.VMajorId">
+        <composite-id name="id" class="model.VMajor">
             <key-property name="majorid" type="java.lang.Integer">
                 <column name="majorid" />
             </key-property>

@@ -6,7 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="model.VArrange" table="V_Arrange" schema="dbo" catalog="CSMS">
-        <composite-id name="id" class="model.VArrangeId">
+        <composite-id name="id" class="model.VArrange">
             <key-property name="arrid" type="java.lang.Integer">
                 <column name="arrid" />
             </key-property>
