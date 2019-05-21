@@ -6,16 +6,14 @@
 -->
 <hibernate-mapping>
     <class name="model.VCollegeScore" table="V_CollegeScore" schema="dbo" catalog="CSMS">
-        <composite-id name="id" class="model.VCollegeScore">
-            <key-property name="collegeid" type="java.lang.Integer">
+            <id name="collegeid" type="java.lang.Integer">
                 <column name="collegeid" />
-            </key-property>
-            <key-property name="collegename" type="java.lang.String">
+            </id>
+            <property name="collegename" type="java.lang.String">
                 <column name="collegename" length="20" />
-            </key-property>
-            <key-property name="scorenumber" type="java.lang.Double">
+            </property>
+            <property name="scorenumber" type="java.lang.Double">
                 <column name="scorenumber" precision="53" scale="0" />
-            </key-property>
-        </composite-id>
+            </property>
     </class>
 </hibernate-mapping>

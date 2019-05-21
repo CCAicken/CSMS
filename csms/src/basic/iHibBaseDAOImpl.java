@@ -697,9 +697,4 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 		}
 		return false;
 	}
-	public static void main(String[] args){
-		iHibBaseDAO dao = new iHibBaseDAOImpl();
-		TStudent stu = (TStudent)dao.findById(TStudent.class, "1001");
-		System.out.print(stu.getAgend());
-	}
 }

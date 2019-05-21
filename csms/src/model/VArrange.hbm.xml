@@ -6,46 +6,44 @@
 -->
 <hibernate-mapping>
     <class name="model.VArrange" table="V_Arrange" schema="dbo" catalog="CSMS">
-        <composite-id name="id" class="model.VArrange">
-            <key-property name="arrid" type="java.lang.Integer">
+            <id name="arrid" type="java.lang.Integer">
                 <column name="arrid" />
-            </key-property>
-            <key-property name="arrname" type="java.lang.String">
+            </id>
+            <property name="arrname" type="java.lang.String">
                 <column name="arrname" length="100" />
-            </key-property>
-            <key-property name="proid" type="java.lang.Integer">
+            </property>
+            <property name="proid" type="java.lang.Integer">
                 <column name="proid" />
-            </key-property>
-            <key-property name="proname" type="java.lang.String">
+            </property>
+            <property name="proname" type="java.lang.String">
                 <column name="proname" length="100" />
-            </key-property>
-            <key-property name="starttime" type="java.sql.Timestamp">
+            </property>
+            <property name="starttime" type="java.sql.Timestamp">
                 <column name="starttime" length="23" />
-            </key-property>
-            <key-property name="endtime" type="java.sql.Timestamp">
+            </property>
+            <property name="endtime" type="java.sql.Timestamp">
                 <column name="endtime" length="23" />
-            </key-property>
-            <key-property name="addr" type="java.lang.String">
+            </property>
+            <property name="addr" type="java.lang.String">
                 <column name="addr" length="100" />
-            </key-property>
-            <key-property name="leveltype" type="java.lang.Integer">
+            </property>
+            <property name="leveltype" type="java.lang.Integer">
                 <column name="leveltype" />
-            </key-property>
-            <key-property name="state" type="java.lang.Integer">
+            </property>
+            <property name="state" type="java.lang.Integer">
                 <column name="state" />
-            </key-property>
-            <key-property name="scenelimit" type="java.lang.Integer">
+            </property>
+            <property name="scenelimit" type="java.lang.Integer">
                 <column name="scenelimit" />
-            </key-property>
-            <key-property name="collegelimit" type="java.lang.Integer">
+            </property>
+            <property name="collegelimit" type="java.lang.Integer">
                 <column name="collegelimit" />
-            </key-property>
-            <key-property name="totallimit" type="java.lang.Integer">
+            </property>
+            <property name="totallimit" type="java.lang.Integer">
                 <column name="totallimit" />
-            </key-property>
-            <key-property name="protype" type="java.lang.Integer">
+            </property>
+            <property name="protype" type="java.lang.Integer">
                 <column name="protype" />
-            </key-property>
-        </composite-id>
+            </property>
     </class>
 </hibernate-mapping>

@@ -6,6 +6,7 @@ package model;
 
 public class VMatch implements java.io.Serializable {
 
+	private String id;
 	private String proname;
 	private Integer scenelimit;
 	private Integer collegelimit;
@@ -53,14 +54,16 @@ public class VMatch implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public VMatch(String proname, Integer scenelimit, Integer collegelimit,
-			Integer totallimit, Integer protype, String userid, Integer proid,
-			String username, String mobile, Integer classid, Integer roleid,
-			String rolename, String classname, Integer majorid,
-			String majorname, Integer collegeid, String collegename,
-			String teausername, String teamobile, Integer teacollegeid,
-			Integer tearoleid, String tearolename, String teacollegename,
-			String pwd, String agend, String teapwd, String teaagend) {
+	public VMatch(String id, String proname, Integer scenelimit,
+			Integer collegelimit, Integer totallimit, Integer protype,
+			String userid, Integer proid, String username, String mobile,
+			Integer classid, Integer roleid, String rolename, String classname,
+			Integer majorid, String majorname, Integer collegeid,
+			String collegename, String teausername, String teamobile,
+			Integer teacollegeid, Integer tearoleid, String tearolename,
+			String teacollegename, String pwd, String agend, String teapwd,
+			String teaagend) {
+		this.id = id;
 		this.proname = proname;
 		this.scenelimit = scenelimit;
 		this.collegelimit = collegelimit;
@@ -91,6 +94,14 @@ public class VMatch implements java.io.Serializable {
 	}
 
 	// Property accessors
+
+	public String getId() {
+		return this.id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getProname() {
 		return this.proname;
@@ -317,9 +328,12 @@ public class VMatch implements java.io.Serializable {
 			return false;
 		VMatch castOther = (VMatch) other;
 
-		return ((this.getProname() == castOther.getProname()) || (this
-				.getProname() != null && castOther.getProname() != null && this
-				.getProname().equals(castOther.getProname())))
+		return ((this.getId() == castOther.getId()) || (this.getId() != null
+				&& castOther.getId() != null && this.getId().equals(
+				castOther.getId())))
+				&& ((this.getProname() == castOther.getProname()) || (this
+						.getProname() != null && castOther.getProname() != null && this
+						.getProname().equals(castOther.getProname())))
 				&& ((this.getScenelimit() == castOther.getScenelimit()) || (this
 						.getScenelimit() != null
 						&& castOther.getScenelimit() != null && this
@@ -420,6 +434,7 @@ public class VMatch implements java.io.Serializable {
 	public int hashCode() {
 		int result = 17;
 
+		result = 37 * result + (getId() == null ? 0 : this.getId().hashCode());
 		result = 37 * result
 				+ (getProname() == null ? 0 : this.getProname().hashCode());
 		result = 37
@@ -492,4 +507,5 @@ public class VMatch implements java.io.Serializable {
 				+ (getTeaagend() == null ? 0 : this.getTeaagend().hashCode());
 		return result;
 	}
+
 }

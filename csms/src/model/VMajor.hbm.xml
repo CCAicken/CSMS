@@ -6,19 +6,17 @@
 -->
 <hibernate-mapping>
     <class name="model.VMajor" table="V_Major" schema="dbo" catalog="CSMS">
-        <composite-id name="id" class="model.VMajor">
-            <key-property name="majorid" type="java.lang.Integer">
+            <id name="majorid" type="java.lang.Integer">
                 <column name="majorid" />
-            </key-property>
-            <key-property name="majorname" type="java.lang.String">
+            </id>
+            <property name="majorname" type="java.lang.String">
                 <column name="majorname" length="100" />
-            </key-property>
-            <key-property name="collegeid" type="java.lang.Integer">
+            </property>
+            <property name="collegeid" type="java.lang.Integer">
                 <column name="collegeid" />
-            </key-property>
-            <key-property name="collegename" type="java.lang.String">
+            </property>
+            <property name="collegename" type="java.lang.String">
                 <column name="collegename" length="20" />
-            </key-property>
-        </composite-id>
+            </property>
     </class>
 </hibernate-mapping>

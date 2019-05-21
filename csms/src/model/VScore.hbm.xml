@@ -6,97 +6,95 @@
 -->
 <hibernate-mapping>
     <class name="model.VScore" table="V_Score" schema="dbo" catalog="CSMS">
-        <composite-id name="id" class="model.VScore">
-            <key-property name="scoreid" type="java.lang.Integer">
+            <id name="scoreid" type="java.lang.Integer">
                 <column name="scoreid" />
-            </key-property>
-            <key-property name="matchid" type="java.lang.Integer">
+            </id>
+            <property name="matchid" type="java.lang.Integer">
                 <column name="matchid" />
-            </key-property>
-            <key-property name="scorenumber" type="java.lang.Double">
+            </property>
+            <property name="scorenumber" type="java.lang.Double">
                 <column name="scorenumber" precision="53" scale="0" />
-            </key-property>
-            <key-property name="proid" type="java.lang.Integer">
+            </property>
+            <property name="proid" type="java.lang.Integer">
                 <column name="proid" />
-            </key-property>
-            <key-property name="userid" type="java.lang.String">
+            </property>
+            <property name="userid" type="java.lang.String">
                 <column name="userid" length="20" />
-            </key-property>
-            <key-property name="proname" type="java.lang.String">
+            </property>
+            <property name="proname" type="java.lang.String">
                 <column name="proname" length="100" />
-            </key-property>
-            <key-property name="scenelimit" type="java.lang.Integer">
+            </property>
+            <property name="scenelimit" type="java.lang.Integer">
                 <column name="scenelimit" />
-            </key-property>
-            <key-property name="collegelimit" type="java.lang.Integer">
+            </property>
+            <property name="collegelimit" type="java.lang.Integer">
                 <column name="collegelimit" />
-            </key-property>
-            <key-property name="totallimit" type="java.lang.Integer">
+            </property>
+            <property name="totallimit" type="java.lang.Integer">
                 <column name="totallimit" />
-            </key-property>
-            <key-property name="protype" type="java.lang.Integer">
+            </property>
+            <property name="protype" type="java.lang.Integer">
                 <column name="protype" />
-            </key-property>
-            <key-property name="username" type="java.lang.String">
+            </property>
+            <property name="username" type="java.lang.String">
                 <column name="username" length="50" />
-            </key-property>
-            <key-property name="mobile" type="java.lang.String">
+            </property>
+            <property name="mobile" type="java.lang.String">
                 <column name="mobile" length="20" />
-            </key-property>
-            <key-property name="classid" type="java.lang.Integer">
+            </property>
+            <property name="classid" type="java.lang.Integer">
                 <column name="classid" />
-            </key-property>
-            <key-property name="roleid" type="java.lang.Integer">
+            </property>
+            <property name="roleid" type="java.lang.Integer">
                 <column name="roleid" />
-            </key-property>
-            <key-property name="rolename" type="java.lang.String">
+            </property>
+            <property name="rolename" type="java.lang.String">
                 <column name="rolename" length="20" />
-            </key-property>
-            <key-property name="classname" type="java.lang.String">
+            </property>
+            <property name="classname" type="java.lang.String">
                 <column name="classname" length="50" />
-            </key-property>
-            <key-property name="majorid" type="java.lang.Integer">
+            </property>
+            <property name="majorid" type="java.lang.Integer">
                 <column name="majorid" />
-            </key-property>
-            <key-property name="majorname" type="java.lang.String">
+            </property>
+            <property name="majorname" type="java.lang.String">
                 <column name="majorname" length="100" />
-            </key-property>
-            <key-property name="collegeid" type="java.lang.Integer">
+            </property>
+            <property name="collegeid" type="java.lang.Integer">
                 <column name="collegeid" />
-            </key-property>
-            <key-property name="collegename" type="java.lang.String">
+            </property>
+            <property name="collegename" type="java.lang.String">
                 <column name="collegename" length="20" />
-            </key-property>
-            <key-property name="teausername" type="java.lang.String">
+            </property>
+            <property name="teausername" type="java.lang.String">
                 <column name="teausername" length="50" />
-            </key-property>
-            <key-property name="teamobile" type="java.lang.String">
+            </property>
+            <property name="teamobile" type="java.lang.String">
                 <column name="teamobile" length="20" />
-            </key-property>
-            <key-property name="teacollegeid" type="java.lang.Integer">
+            </property>
+            <property name="teacollegeid" type="java.lang.Integer">
                 <column name="teacollegeid" />
-            </key-property>
-            <key-property name="tearoleid" type="java.lang.Integer">
+            </property>
+            <property name="tearoleid" type="java.lang.Integer">
                 <column name="tearoleid" />
-            </key-property>
-            <key-property name="tearolename" type="java.lang.String">
+            </property>
+            <property name="tearolename" type="java.lang.String">
                 <column name="tearolename" length="20" />
-            </key-property>
-            <key-property name="teacollegename" type="java.lang.String">
+            </property>
+            <property name="teacollegename" type="java.lang.String">
                 <column name="teacollegename" length="20" />
-            </key-property>
-            <key-property name="pwd" type="java.lang.String">
+            </property>
+            <property name="pwd" type="java.lang.String">
                 <column name="pwd" length="20" />
-            </key-property>
-            <key-property name="agend" type="java.lang.String">
+            </property>
+            <property name="agend" type="java.lang.String">
                 <column name="agend" length="2" />
-            </key-property>
-            <key-property name="teapwd" type="java.lang.String">
+            </property>
+            <property name="teapwd" type="java.lang.String">
                 <column name="teapwd" length="20" />
-            </key-property>
-            <key-property name="teaagend" type="java.lang.String">
+            </property>
+            <property name="teaagend" type="java.lang.String">
                 <column name="teaagend" length="2" />
-            </key-property>
-        </composite-id>
+            </property>
     </class>
 </hibernate-mapping>
