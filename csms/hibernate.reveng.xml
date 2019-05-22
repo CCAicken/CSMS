@@ -135,8 +135,32 @@
 			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
-<table name="V_TeacherScore" schema="dbo" catalog="CSMS"
-	class="model.VTeacherScore">
+	<table name="V_TeacherScore" schema="dbo" catalog="CSMS"
+		class="model.VTeacherScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_ForumContent" schema="dbo" catalog="CSMS"
+		class="model.TForumContent">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_ForumTitle" schema="dbo" catalog="CSMS"
+		class="model.TForumTitle">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_News" schema="dbo" catalog="CSMS"
+		class="model.TNews">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="T_Photo" schema="dbo" catalog="CSMS"
+	class="model.TPhoto">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>
