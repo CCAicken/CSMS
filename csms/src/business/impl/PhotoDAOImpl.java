@@ -1,26 +1,36 @@
 package business.impl;
 
 import model.TPhoto;
+import basic.iHibBaseDAO;
+import basic.iHibBaseDAOImpl;
 import business.dao.PhotoDAO;
 
 public class PhotoDAOImpl implements PhotoDAO {
 
+	private iHibBaseDAO bdao;
+//	public void setBdao(iHibBaseDAO bdao) {
+//		this.bdao = bdao;
+//	}
+	public PhotoDAOImpl(){
+		bdao= new iHibBaseDAOImpl();
+	} 
 	@Override
 	public TPhoto getPhotoById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (TPhoto) bdao.findById(TPhoto.class, id);
 	}
 
 	@Override
-	public int addPhoto(TPhoto obj) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean addPhoto(TPhoto obj) {
+	 String res=	(String) bdao.insert(obj);
+	 if(res!=null){
+		 return true;
+	 } return false;
 	}
 
 	@Override
 	public boolean deletePhoto(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	TPhoto photo=	(TPhoto) bdao.findById(TPhoto.class, id);
+	return	bdao.delete(photo);
 	}
 
 }

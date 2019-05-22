@@ -10,11 +10,11 @@ public interface NewsDAO {
 	 * @param news
 	 * @return 返回值>0表示成功，<0表示失敗
 	 */
-	public int addNews(TNews news);
+	public boolean addNews(TNews news);
 	/**
 	 * 根據公告id獲取公告
 	 * @param newid
-	 * @return
+	 * @return boolean
 	 */
 	public TNews getNewsById(int newid);
 	/**

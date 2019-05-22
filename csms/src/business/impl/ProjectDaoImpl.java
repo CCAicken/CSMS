@@ -3,38 +3,58 @@ package business.impl;
 import java.util.List;
 
 import model.TProject;
+import basic.iHibBaseDAO;
+import basic.iHibBaseDAOImpl;
 import business.dao.ProjectDAO;
 
 public class ProjectDaoImpl implements ProjectDAO {
+	private iHibBaseDAO bdao;
+
+	// public void setBdao(iHibBaseDAO bdao) {
+	// this.bdao = bdao;
+	// }
+	public ProjectDaoImpl() {
+		bdao = new iHibBaseDAOImpl();
+	}
 
 	@Override
 	public boolean insert(TProject project) {
-		// TODO Auto-generated method stub
+		String res = (String) bdao.insert(project);
+		if (res != null) {
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean update(TProject project) {
-		// TODO Auto-generated method stub
-		return false;
+		TProject sqlproject = (TProject) bdao.findById(TProject.class,
+				project.getProid());
+		sqlproject.setProname(project.getProname());
+		sqlproject.setScenelimit(project.getScenelimit());
+		sqlproject.setCollegelimit(project.getCollegelimit());
+		sqlproject.setTotallimit(project.getTotallimit());
+		sqlproject.setProtype(project.getProtype());
+		return bdao.update(sqlproject);
+
 	}
 
 	@Override
 	public boolean delete(int projectid) {
-		// TODO Auto-generated method stub
-		return false;
+		return bdao.delete(bdao.findById(TProject.class, projectid));
 	}
 
 	@Override
 	public List<TProject> select() {
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "from TProject";
+		return (List<TProject>) bdao.select(hql);
 	}
 
 	@Override
 	public List<TProject> selectByType(int type) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "from TProject where protype=?";
+		Object[] param = { type };
+		return (List<TProject>) bdao.select(hql,param);
 	}
 
 }

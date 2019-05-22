@@ -2,33 +2,49 @@ package business.impl;
 
 import java.util.List;
 
+import model.TProject;
 import model.TScene;
+import model.VScene;
+import basic.iHibBaseDAO;
+import basic.iHibBaseDAOImpl;
 import business.dao.SceneDAO;
 
 public class SceneDaoImpl implements SceneDAO {
-
+	private iHibBaseDAO bdao;
+//	public void setBdao(iHibBaseDAO bdao) {
+//		this.bdao = bdao;
+//	}
+	public SceneDaoImpl(){
+		bdao= new iHibBaseDAOImpl();
+	} 
 	@Override
 	public boolean insert(TScene scene) {
-		// TODO Auto-generated method stub
+		String res=	(String) bdao.insert(scene);
+		if(res!=null)
+		{
+			return true;
+		}
 		return false;
 	}
 
 	@Override
-	public List<TScene> seleScenes() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<VScene> seleScenes() {
+		String hql = "from VScene";
+		return (List<VScene>) bdao.select(hql);
 	}
 
 	@Override
-	public List<TScene> seleScenes(String userid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<VScene> seleScenes(String userid) {
+		String hql = "from TProject where userid=?";
+		Object[] param = { userid };
+		return (List<VScene>) bdao.select(hql,param);
 	}
 
 	@Override
-	public List<TScene> seleOtherScenes(String userid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<VScene> seleOtherScenes(String userid) {
+		String hql = "from TProject where userid=?";
+		Object[] param = { userid };
+		return (List<VScene>) bdao.select(hql,param);
 	}
 
 }

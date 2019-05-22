@@ -30,5 +30,5 @@ public interface MatchDAO {
 	 * @param userid 用户id
 	 * @return 报名对象列表
 	 */
-	public List<TMatch> selectByUser(String userid);
+	public List<VMatch> selectByUser(String userid);
 }

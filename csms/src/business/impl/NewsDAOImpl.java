@@ -3,32 +3,45 @@ package business.impl;
 import java.util.List;
 
 import model.TNews;
+import basic.iHibBaseDAO;
+import basic.iHibBaseDAOImpl;
 import business.dao.NewsDAO;
 
 public class NewsDAOImpl implements NewsDAO {
-
+	private iHibBaseDAO bdao;
+//	public void setBdao(iHibBaseDAO bdao) {
+//		this.bdao = bdao;
+//	}
+	public NewsDAOImpl(){
+		bdao= new iHibBaseDAOImpl();
+	} 
 	@Override
-	public int addNews(TNews news) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean addNews(TNews news) {
+		String res= (String) bdao.insert(news);
+		if(res!=null){
+
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public TNews getNewsById(int newid) {
-		// TODO Auto-generated method stub
-		return null;
+		TNews news=	(TNews) bdao.findById(TNews.class, newid);
+		return news;
 	}
 
 	@Override
 	public List<TNews> getAllNews() {
-		// TODO Auto-generated method stub
-		return null;
+		String hql ="from TNews";
+		return bdao.select(hql);
 	}
 
 	@Override
 	public List<TNews> getNewsByTeaid(String teaid) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql="from TNews where teacerid=?";
+		Object[] para={teaid};
+		return bdao.select(hql, para);
 	}
 
 }

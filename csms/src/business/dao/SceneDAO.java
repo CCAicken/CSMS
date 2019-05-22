@@ -20,18 +20,18 @@ public interface SceneDAO {
 	 * 獲取所有場次信息
 	 * @return
 	 */
-	public List<TScene> seleScenes();
+	public List<VScene> seleScenes();
 	/**
 	 * 根據賬號獲取對應的場次信息
 	 * @param userid 用戶id
 	 * @return
 	 */
-	public List<TScene> seleScenes(String userid);
+	public List<VScene> seleScenes(String userid);
 	
 	/**
 	 * 根據賬號獲取未安排的報名項目
 	 * @param userid 用戶id
 	 * @return
 	 */
-	public List<TScene> seleOtherScenes(String userid);
+	public List<VScene> seleOtherScenes(String userid);
 }
