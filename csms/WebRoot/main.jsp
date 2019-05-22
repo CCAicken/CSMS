@@ -21,7 +21,7 @@
             </div>
             <div class="layui-col-md8">
                 <ul class="layui-nav" lay-filter="">
-                    <li class="layui-nav-item layui-this"><a class="a-nav" href="">首页</a></li>
+                    <li class="layui-nav-item layui-this"><a class="a-nav" href="home.jsp">首页</a></li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">成绩查看</a>
                         <dl class="layui-nav-child">
