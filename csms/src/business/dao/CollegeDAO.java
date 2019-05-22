@@ -36,5 +36,5 @@ public interface CollegeDAO {
 	 * 分页查询数据
 	 * @return
 	 */
-	public List<TCollege> selectByPage();
+	public List<TCollege> selectByPage(int startPage,int pageSize);
 }

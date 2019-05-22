@@ -10,7 +10,7 @@ public interface ForumDAO {
 	 * @param TForum对象
 	 * @return 添加成功的文章编号，如<=0则表示添加失败
 	 */
-	public int addForum(TForumTitle forum);
+	public boolean addForum(TForumTitle forum);
 	
 	/**
 	 * 将博文以及博文相关内容从物理表中完全删除，包括删除评论表，内容表，文章表以及修改内容对应图片的图片状态，用户表中文章发表数量-1
@@ -38,29 +38,13 @@ public interface ForumDAO {
 	 * @return TForumTitle文章对象
 	 */
 	public TForumTitle getTForumById(int forumid);
-	
 	/**
-	 * 获得指定博客用户发表的文章对象列表
-	 * @param userid 用户编号
-	 * @param currentPage 当前页
-	 * @param pageSize 每页最大数量
-	 * @return 文章信息对象列表
+	 * 獲取文章分頁數據
+	 * @param startPage 開始頁
+	 * @param pageSize 每頁數據
+	 * @return
 	 */
-//	public List<VForumTitle> getForumListByPage(String userid,int currentPage, int pageSize);
-	/**
-	 * 返回数据库中某用户发表的文章总数
-	 * @param userid 用户编号
-	 * @return 文章数量
-	 */
-	public int getForumAmountByUser(String userid);
-	
-	/**
-	 * 返回博客用户发表文章，并按pageSize显示的页数
-	 * @param userid 用户编号，每页显示数量
-	 * @param pageSize 每页显示数量
-	 * @return 分页总数
-	 */
-//	public int getPageAmount(String userid, int pageSize);
+	public List<TForumTitle> getForumTitleByPages(int startPage,int pageSize);
 	
 	/**
 	 * 获得按模糊查询实现的所有博客用户发表的文章对象列表
