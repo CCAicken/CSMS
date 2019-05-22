@@ -34,6 +34,12 @@
                                 <option value="3">建筑工程学院</option>
                             </select>
                     </div>
+                    <div class="layui-input-inline">
+                        <select name="modules" lay-verify="required" lay-search>
+                                <option value="1" selected="selected">学生</option>
+                                <option value="2">教师</option>
+                            </select>
+                    </div>
                     <!-- <div class="layui-input-inline">
                         <input class="layui-input" type="text" placeholder="请输入学院名称" />
                     </div>
@@ -53,10 +59,13 @@
                                 <nobr>项目名称</nobr>
                             </th>
                             <th class="text-center">
-                                <nobr>参赛人</nobr>
+                                <nobr>参赛者</nobr>
                             </th>
                             <th class="text-center">
                                 <nobr>学院名称</nobr>
+                            </th>
+                            <th class="text-center">
+                                <nobr>参赛者身份</nobr>
                             </th>
                             <th class="text-center">
                                 <nobr>成绩</nobr>
@@ -79,6 +88,9 @@
                                         <nobr>信息工程学院</nobr>
                                     </td>
                                     <td class="text-center">
+                                        <nobr>学生</nobr>
+                                    </td>
+                                    <td class="text-center">
                                         <nobr>99</nobr>
                                     </td>
                                 </tr>
@@ -97,6 +109,9 @@
                                         <nobr>信息工程学院</nobr>
                                     </td>
                                     <td class="text-center">
+                                        <nobr>学生</nobr>
+                                    </td>
+                                    <td class="text-center">
                                         <nobr>99</nobr>
                                     </td>
                                 </tr>
@@ -113,6 +128,9 @@
                                     </td>
                                     <td class="text-center">
                                         <nobr>信息工程学院</nobr>
+                                    </td>
+                                    <td class="text-center">
+                                        <nobr>学生</nobr>
                                     </td>
                                     <td class="text-center">
                                         <nobr>99</nobr>

@@ -63,6 +63,12 @@
             font-size: 26px;
             color: chocolate;
         }
+        
+        .title {
+            color: blue;
+            margin: 15px 0;
+            font-size: 24px;
+        }
     </style>
     <title>Insert title here</title>
 </head>
@@ -73,21 +79,12 @@
             <div class="">
                 <div class="layui-card">
                     <div class="layui-card-header">
-                        文章信息 <button class="layui-btn layui-bg-blue float layui-btn-sm">修改文章信息</button>
-                    </div>
-                    <div class="layui-card-body">
-                        <table class="table2">
-                            <tr>
-                                <td class="layui-bg-orange">文章主标题</td>
-                                <td>2019-1-1 12:12:12</td>
-                            </tr>
-                        </table>
+                        <span class="title">文章标题：运动会调高高能瞬间</span><button id="addTitle" class="layui-btn layui-bg-blue float layui-btn-sm">编辑文章标题</button>
                     </div>
                 </div>
                 <div class="layui-card">
                     <div class="layui-card-header">
-                        文章内容管理
-                        <a href="#">
+                        文章内容管理<button id="addModel" class="layui-btn layui-bg-blue float layui-btn-sm">添加文章内容</button>
                     </div>
                     <div class="layui-card-body">
                         <table id="demo" lay-filter="test" width="100%"></table>
@@ -96,9 +93,88 @@
             </div>
         </div>
     </div>
+    <!-- 编辑文章标题模态框 -->
+    <div id="editTitle" style="display: none;">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章标题</label>
+                <div class="layui-input-block">
+                    <input type="text" name="content.photocontent" id="forumtitle" required lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- 添加文章内容模态框 -->
+    <div id="editContent" style="display: none;">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">内容照片</label>
+                <div class="layui-input-block">
+                    <input type="text" disabled="disabled" name="content.photocontent" required lay-verify="required" placeholder="请选择一张内容照片" autocomplete="off" class="layui-input layui-bg-gray">
+                </div>
+                <label class="layui-form-label"> </label>
+                <div class="layui-input-inline" style="margin:10px 0;">
+                    <button class="layui-btn layui-bg-blue" id="btn-photo">上传内容图片</button>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">图片预览</label>
+                <div class="layui-input-block">
+                    <div style="width:250px;height:250px;border:1px solid #ccc;">
+                        <img alt="" src="img/defaultuser.jpg" width="100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">文章内容</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入文章内容" name="content.textcontent" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 <script src="layui/layui.js" charset="utf-8"></script>
+<script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
 <script type="text/javascript">
+    // 显示编辑文章标题模态框
+    $("#addTitle").click(function() {
+            layui.use(['layer'], function() {
+                var layer = layui.layer,
+                    $ = layui.$;
+                layer.open({
+                    type: 1, //类型
+                    area: ['500px', '250px'], //定义宽和高
+                    title: '编辑文章标题', //题目
+                    shadeClose: false, //点击遮罩层关闭
+                    content: $('#editTitle') //打开的内容
+                });
+            })
+        })
+        // 显示编辑文章内容模态框
+    $("#addModel").click(function() {
+        layui.use(['layer'], function() {
+            var layer = layui.layer,
+                $ = layui.$;
+            layer.open({
+                type: 1, //类型
+                area: ['700px', '600px'], //定义宽和高
+                title: '编辑文章内容', //题目
+                shadeClose: false, //点击遮罩层关闭
+                content: $('#editContent') //打开的内容
+            });
+        })
+    })
     layui.use(['element', 'carousel', 'table'], function() {
         var element = layui.element;
         var carousel = layui.carousel;
