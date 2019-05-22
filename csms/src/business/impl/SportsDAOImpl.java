@@ -3,26 +3,33 @@ package business.impl;
 import java.util.List;
 
 import model.TConfig;
+import basic.iHibBaseDAO;
 import business.dao.SportsDAO;
 
 public class SportsDAOImpl implements SportsDAO {
-
+	private iHibBaseDAO bdao;
+	public void setBdao(iHibBaseDAO bdao) {
+		this.bdao = bdao;
+	}
 	@Override
 	public boolean insert(TConfig config) {
-		// TODO Auto-generated method stub
-		return false;
+		int row = (Integer)bdao.insert(config);
+		if(row>0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	@Override
 	public boolean update(TConfig config) {
-		// TODO Auto-generated method stub
-		return false;
+		return bdao.update(config);
 	}
 
 	@Override
 	public List<TConfig> select() {
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "from TConfig";
+		return bdao.select(hql);
 	}
 
 }

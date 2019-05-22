@@ -13,19 +13,13 @@ import model.*;
 public interface ScoreClassesDAO {
 	/**
 	 * 
-	 * @param collegeid 学院id
-	 * @return 学院成绩信息
+	 * @param classid 班级id
+	 * @return 班级成绩信息
 	 */
-	public VScore getByClassid(int classid);
+	public VClass getByClassid(int classid);
 	/**
-	 * 查询所有学院成绩
-	 * @return List<ScoreClasses>数据集
+	 * 查询所有班级成绩
+	 * @return List<VClass>数据集
 	 */
-	public List<VCollegeScore> getAllScoreClasses();
-	
-	/**
-	 * 查询所有学院成绩(分页)
-	 * @return List<ScoreClasses>数据集
-	 */
-	public List<VCollegeScore> getAllCollegeScoreBypage(VCollegeScore scoreclasses);
+	public List<VClass> getAllScoreClasses();
 }

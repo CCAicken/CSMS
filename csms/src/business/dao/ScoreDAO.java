@@ -3,6 +3,7 @@ package business.dao;
 import java.util.List;
 
 import model.TScore;
+import model.VScore;
 /**
  * 比赛成绩业务接口类
  * @author Administrator
@@ -28,19 +29,19 @@ public interface ScoreDAO {
 	 * @param userid 用户id
 	 * @return 用户成绩列表
 	 */
-	public List<TScore> getByUser(String userid);
+	public List<VScore> getByUser(String userid);
 
 	/**
 	 * 查询用户的详细成绩列表
 	 * @param collegeid 学院id
 	 * @return 学院成绩列表
 	 */
-	public List<TScore> getByCollege(int collegeid);
+	public List<VScore> getByCollege(int collegeid);
 	
 	/**
 	 * 查询用户的详细成绩列表
 	 * @param classid 班级id
 	 * @return 班级成绩列表
 	 */
-	public List<TScore> getByClass(int classid);
+	public List<VScore> getByClass(int classid);
 }

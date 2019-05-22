@@ -12,19 +12,13 @@ import model.*;
 public interface ScoreStudentDAO {
 	/**
 	 * 
-	 * @param collegeid 学院id
-	 * @return 学院成绩信息
+	 * @param userid 学生账号
+	 * @return 学生成绩信息
 	 */
-	public VStudentScore getByClassid(int userid);
+	public VStudentScore getByUserid(int userid);
 	/**
 	 * 查询所有学生成绩
 	 * @return List<ScoreStudent>数据集
 	 */
 	public List<VStudentScore> getAllScoreStudent();
-	
-	/**
-	 * 查询所有学院成绩(分页)
-	 * @return List<ScoreStudent>数据集
-	 */
-	public List<VStudentScore> getAllCollegeScoreBypage(VStudentScore scorestudent);
 }
