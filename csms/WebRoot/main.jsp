@@ -35,9 +35,9 @@
                         <a href="javascript:;">比赛报名</a>
                         <dl class="layui-nav-child">
                             <!-- 二级菜单 -->
-                            <dd><a class="a-nav" href="index.html">比赛项目查看</a></dd>
-                            <dd><a class="a-nav" href="">比赛时间安排</a></dd>
-                            <dd><a class="a-nav" href="">查看我的项目</a></dd>
+                            <dd><a class="a-nav" href="projectSignUp.jsp">比赛项目查看</a></dd>
+                            <dd><a class="a-nav" href="MatchArrangementView.jsp">比赛时间安排</a></dd>
+                            <dd><a class="a-nav" href="myProject.jsp">查看我的项目</a></dd>
                         </dl>
                     </li>
                 </ul>
@@ -48,8 +48,7 @@
                         <a href="javascript:;">你好：admin</a>
                         <dl class="layui-nav-child">
                             <!-- 二级菜单 -->
-                            <dd><a href="">个人中心</a></dd>
-                            <dd><a href="">修改密码</a></dd>
+                            <dd><a class="a-nav" href="changePwd.jsp">修改密码</a></dd>
                             <dd><a href="">退出登陆</a></dd>
                         </dl>
                     </li>
@@ -59,7 +58,7 @@
         <!--导航栏结束-->
         <div class="layui-row" id="main">
             <article class="">
-                <iframe id="iframe" style="margin-top: 20px;" frameborder="0" scrolling="auto" src="home.html" width="100%"></iframe>
+                <iframe id="iframe" style="margin-top: 20px;" frameborder="0" scrolling="auto" src="home.jsp" width="100%"></iframe>
             </article>
         </div>
     </div>

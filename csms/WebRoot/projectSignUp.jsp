@@ -75,6 +75,7 @@
             </table>
         </div>
     </div>
+    <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.js"></script>
 

@@ -51,6 +51,7 @@
             </p>
         </div>
     </div>
+    <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.js" charset="utf-8"></script>
 <script src="js/home.js" charset="utf-8"></script>

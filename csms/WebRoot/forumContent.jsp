@@ -43,8 +43,7 @@
             </div>
         </div>
     </div>
-    <!--第二列结束-->
-    </div>
+    <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.js"></script>
 

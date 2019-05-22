@@ -84,6 +84,7 @@
             </div>
         </div>
     </div>
+    <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.all.js"></script>
 

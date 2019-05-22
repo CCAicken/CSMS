@@ -35,6 +35,7 @@
             <button class="layui-btn">确认报名</button>
         </div>
     </div>
+    <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.js"></script>
 <script>

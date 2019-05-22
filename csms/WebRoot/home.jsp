@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="css/lgd.css">
 
 </head>
 </head>
@@ -25,7 +24,7 @@
                     <div class="layui-card-body" style="height:535px">
                         <table class="layui-table" lay-skin="nob">
                             <tr>
-                                <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
+                                <td><a href="new.jsp">标题题内容标题内容标题内容标题内容标题内容</a></td>
                             </tr>
                             <tr>
                                 <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
@@ -61,11 +60,12 @@
                             <div class="layui-card layui-col-md4 layui-col-lg4">
                                 <div class="layui-card-header">
                                     <b><span style="font-size:14px;">热点文章</span></b>
+                                    <a href="CompetitionEntryCheck.jsp"><span style="float:right">更多>></span></a>
                                 </div>
                                 <div class="layui-card-body">
                                     <table class="layui-table" lay-skin="nob">
                                         <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
+                                            <td><a href="forumContent.jsp">标题题内容标题内容标题内容标题内容标题内容</a></td>
                                         </tr>
                                         <tr>
                                             <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
@@ -76,27 +76,23 @@
                             <div class="layui-card layui-col-md4 layui-col-lg4">
                                 <div class="layui-card-header">
                                     <b><span style="font-size:14px;">项目报名情况</span></b>
+                                    <a href="CompetitionEntryCheck.jsp"><span style="float:right">更多>></span></a>
                                 </div>
                                 <div class="layui-card-body">
                                     <table class="layui-table" lay-skin="nob">
+                                    <thead>
                                         <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
+                                            <th>项目名称</th>
+                                            <th>已报人数</th>
+                                            <th>未报人数</th>
                                         </tr>
+                                        </thead>
+                                        <tbody>
                                         <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
+                                            <td>800米长跑马拉松（四人组）</td>
+                                            <td>12</td>
+                                            <td>22</td>
+                                        </tr></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -138,14 +134,7 @@
             </div>
         </div>
     </div>
-    <div class="layui-footer footer footer-doc" id="footer">
-        <div class="layui-main">
-            <p><a href="www.yngsxy.net">www.yngsxy.net</a> Copyright © 1999-2019 云南工商学院</p>
-            <p>
-                <a href="" target="_blank" rel="nofollow"> 云教ICP备1206028号 | 滇ICP备17000571号-3 | 滇公网安备53012702000031号</a>
-            </p>
-        </div>
-    </div>
+    <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.js" charset="utf-8"></script>
 <script src="js/home.js" charset="utf-8"></script>

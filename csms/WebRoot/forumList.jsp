@@ -79,11 +79,6 @@
             <div class="">
                 <div class="layui-card">
                     <div class="layui-card-header">
-                        <span class="title">文章标题：运动会调高高能瞬间</span><button id="addTitle" class="layui-btn layui-bg-blue float layui-btn-sm">编辑文章标题</button>
-                    </div>
-                </div>
-                <div class="layui-card">
-                    <div class="layui-card-header">
                         文章内容管理<button id="addModel" class="layui-btn layui-bg-blue float layui-btn-sm">添加文章内容</button>
                     </div>
                     <div class="layui-card-body">
@@ -92,56 +87,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- 编辑文章标题模态框 -->
-    <div id="editTitle" style="display: none;">
-        <form class="layui-form" action="">
-            <div class="layui-form-item">
-                <label class="layui-form-label">文章标题</label>
-                <div class="layui-input-block">
-                    <input type="text" name="content.photocontent" id="forumtitle" required lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <!-- 添加文章内容模态框 -->
-    <div id="editContent" style="display: none;">
-        <form class="layui-form" action="">
-            <div class="layui-form-item">
-                <label class="layui-form-label">内容照片</label>
-                <div class="layui-input-block">
-                    <input type="text" disabled="disabled" name="content.photocontent" required lay-verify="required" placeholder="请选择一张内容照片" autocomplete="off" class="layui-input layui-bg-gray">
-                </div>
-                <label class="layui-form-label"> </label>
-                <div class="layui-input-inline" style="margin:10px 0;">
-                    <button class="layui-btn layui-bg-blue" id="btn-photo">上传内容图片</button>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">图片预览</label>
-                <div class="layui-input-block">
-                    <div style="width:250px;height:250px;border:1px solid #ccc;">
-                        <img alt="" src="img/defaultuser.jpg" width="100%" />
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">文章内容</label>
-                <div class="layui-input-block">
-                    <textarea placeholder="请输入文章内容" name="content.textcontent" class="layui-textarea"></textarea>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                </div>
-            </div>
-        </form>
     </div>
     <%@include file="footer.jsp" %>
 </body>
