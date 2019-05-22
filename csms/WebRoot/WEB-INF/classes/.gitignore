@@ -4,3 +4,5 @@
 /hibernate.cfg.xml
 /model/
 /struts.xml
+/factoryBean.xml
+/action/

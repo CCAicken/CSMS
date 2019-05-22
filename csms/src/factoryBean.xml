@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="bdao" name="bdao" class="basic.iHibBaseDAOImpl" />
+	
+	<bean id="getClassesDAO" name="getClassesDAO" factory-method="getClassesDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	<bean id="getCollegeDAO" name="getCollegeDAO" factory-method="getCollegeDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	
+	<bean id="getMajorDAO" name="getMajorDAO" factory-method="getMajorDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	
+	<bean id="getUserDAO" name="getUserDAO" factory-method="getUserDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	
+	<bean id="getProjectDAO" name="getProjectDAO" factory-method="getProjectDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	
+	<bean id="getScoreCollegeDAO" name="getScoreCollegeDAO" factory-method="getScoreCollegeDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	
+	<bean id="getScoreClassesDAO" name="getScoreClassesDAO" factory-method="getScoreClassesDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	
+	<bean id="getScoreStudentDAO" name="getScoreStudentDAO" factory-method="getScoreStudentDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	
+	<bean id="getMatchDAO" name="getMatchDAO" factory-method="getMatchDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	
+	<bean id="getSceneDAO" name="getSceneDAO" factory-method="getSceneDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	<bean id="getArrangeDAO" name="getArrangeDAO" factory-method="getArrangeDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	<bean id="getForumDAO" name="getForumDAO" factory-method="getForumDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	<bean id="getContentDAO" name="getContentDAO" factory-method="getContentDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	<bean id="getNewsDAO" name="getNewsDAO" factory-method="getNewsDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	<bean id="getPhotoDAO" name="getPhotoDAO" factory-method="getPhotoDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	<bean id="getScoreDAO" name="getScoreDAO" factory-method="getScoreDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+	<bean id="getSportsDAO" name="getSportsDAO" factory-method="getSportsDAO"
+		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
+		autowire="default">
+		<property name="bdao" ref="bdao"></property>
+	</bean>
+</beans>

@@ -9,12 +9,10 @@ import business.dao.NewsDAO;
 
 public class NewsDAOImpl implements NewsDAO {
 	private iHibBaseDAO bdao;
-//	public void setBdao(iHibBaseDAO bdao) {
-//		this.bdao = bdao;
-//	}
-	public NewsDAOImpl(){
-		bdao= new iHibBaseDAOImpl();
-	} 
+	public void setBdao(iHibBaseDAO bdao) {
+		this.bdao = bdao;
+	}
+	
 	@Override
 	public boolean addNews(TNews news) {
 		String res= (String) bdao.insert(news);

@@ -10,12 +10,10 @@ import business.dao.MatchDAO;
 
 public class MatchDaoImpl implements MatchDAO {
 	private iHibBaseDAO bdao;
-//	public void setBdao(iHibBaseDAO bdao) {
-//		this.bdao = bdao;
-//	}
-	public MatchDaoImpl(){
-		bdao= new iHibBaseDAOImpl();
-	} 
+	public void setBdao(iHibBaseDAO bdao) {
+		this.bdao = bdao;
+	}
+	
 	@Override
 	public boolean insert(TMatch match) {
 		String proName = "up_AddMatch(?,?)";

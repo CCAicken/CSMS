@@ -10,12 +10,10 @@ import business.dao.MajorDAO;
 public class MajorDaoImpl implements MajorDAO {
 
 	private iHibBaseDAO bdao;
-//	public void setBdao(iHibBaseDAO bdao) {
-//		this.bdao = bdao;
-//	}
-	public MajorDaoImpl(){
-		bdao= new iHibBaseDAOImpl();
-	} 
+	public void setBdao(iHibBaseDAO bdao) {
+		this.bdao = bdao;
+	}
+	
 	@Override
 	public boolean insert(TMajor major) {
 		int row = (Integer) bdao.insert(major);
@@ -50,14 +48,6 @@ public class MajorDaoImpl implements MajorDAO {
 		Object[] para={collegeid};
 		List<TMajor> list=	(List<TMajor>)bdao.select(hql,para);
 		return list;
-	}
-	
-	public static void main(String[] args){
-		MajorDaoImpl impl= new MajorDaoImpl();
-		List<TMajor> list=impl.select();
-		for(TMajor major :list){
-			System.out.println(major.getMajorname());
-		}
 	}
 
 }

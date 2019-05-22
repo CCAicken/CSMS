@@ -10,12 +10,10 @@ import business.dao.ProjectDAO;
 public class ProjectDaoImpl implements ProjectDAO {
 	private iHibBaseDAO bdao;
 
-	// public void setBdao(iHibBaseDAO bdao) {
-	// this.bdao = bdao;
-	// }
-	public ProjectDaoImpl() {
-		bdao = new iHibBaseDAOImpl();
-	}
+	 public void setBdao(iHibBaseDAO bdao) {
+	 this.bdao = bdao;
+	 }
+	
 
 	@Override
 	public boolean insert(TProject project) {

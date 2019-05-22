@@ -11,12 +11,10 @@ import business.dao.SceneDAO;
 
 public class SceneDaoImpl implements SceneDAO {
 	private iHibBaseDAO bdao;
-//	public void setBdao(iHibBaseDAO bdao) {
-//		this.bdao = bdao;
-//	}
-	public SceneDaoImpl(){
-		bdao= new iHibBaseDAOImpl();
-	} 
+	public void setBdao(iHibBaseDAO bdao) {
+		this.bdao = bdao;
+	}
+	
 	@Override
 	public boolean insert(TScene scene) {
 		String res=	(String) bdao.insert(scene);

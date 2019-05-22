@@ -8,12 +8,10 @@ import business.dao.PhotoDAO;
 public class PhotoDAOImpl implements PhotoDAO {
 
 	private iHibBaseDAO bdao;
-//	public void setBdao(iHibBaseDAO bdao) {
-//		this.bdao = bdao;
-//	}
-	public PhotoDAOImpl(){
-		bdao= new iHibBaseDAOImpl();
-	} 
+	public void setBdao(iHibBaseDAO bdao) {
+		this.bdao = bdao;
+	}
+	
 	@Override
 	public TPhoto getPhotoById(int id) {
 		return (TPhoto) bdao.findById(TPhoto.class, id);
