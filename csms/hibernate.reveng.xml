@@ -3,8 +3,164 @@
 
 <hibernate-reverse-engineering>
 
-<table name="T_Arrange" schema="dbo" catalog="CSMS"
-	class="model.Arrange">
+	<table name="T_Arrange" schema="dbo" catalog="CSMS"
+		class="model.TArrange">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Student" schema="dbo" catalog="CSMS"
+		class="model.TStudent">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Teacher" schema="dbo" catalog="CSMS"
+		class="model.TTeacher">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Score" schema="dbo" catalog="CSMS"
+		class="model.TScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Scene" schema="dbo" catalog="CSMS"
+		class="model.TScene">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Role" schema="dbo" catalog="CSMS"
+		class="model.TRole">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Project" schema="dbo" catalog="CSMS"
+		class="model.TProject">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Match" schema="dbo" catalog="CSMS"
+		class="model.TMatch">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Major" schema="dbo" catalog="CSMS"
+		class="model.TMajor">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Config" schema="dbo" catalog="CSMS"
+		class="model.TConfig">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_College" schema="dbo" catalog="CSMS"
+		class="model.TCollege">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Class" schema="dbo" catalog="CSMS"
+		class="model.TClass">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Arrange" schema="dbo" catalog="CSMS"
+		class="model.VArrange">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Class" schema="dbo" catalog="CSMS"
+		class="model.VClass">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_CollegeScore" schema="dbo" catalog="CSMS"
+		class="model.VCollegeScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Major" schema="dbo" catalog="CSMS"
+		class="model.VMajor">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Match" schema="dbo" catalog="CSMS"
+		class="model.VMatch">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Scene" schema="dbo" catalog="CSMS"
+		class="model.VScene">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Score" schema="dbo" catalog="CSMS"
+		class="model.VScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Student" schema="dbo" catalog="CSMS"
+		class="model.VStudent">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="V_StudentScore" schema="dbo" catalog="CSMS"
+		class="model.VStudentScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Teacher" schema="dbo" catalog="CSMS"
+		class="model.VTeacher">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="V_TeacherScore" schema="dbo" catalog="CSMS"
+		class="model.VTeacherScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_ForumContent" schema="dbo" catalog="CSMS"
+		class="model.TForumContent">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_ForumTitle" schema="dbo" catalog="CSMS"
+		class="model.TForumTitle">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_News" schema="dbo" catalog="CSMS"
+		class="model.TNews">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="T_Photo" schema="dbo" catalog="CSMS"
+	class="model.TPhoto">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>
