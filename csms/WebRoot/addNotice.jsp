@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -12,7 +14,7 @@
         <div style="margin:10px auto;width:1000px;">
             <div class="layui-card">
                 <div class="layui-card-header" style="background-color:rgb(228, 248, 255);color: cornflowerblue;padding: 5px 0;">
-                    <h1>编辑一个博文内容</h1>
+                    <h1>编辑一个公告内容</h1>
                 </div>
                 <div class="layui-card-body">
                     <form class="layui-form" action="">

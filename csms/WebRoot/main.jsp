@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,9 +26,9 @@
                         <a href="javascript:;">成绩查看</a>
                         <dl class="layui-nav-child">
                             <!-- 二级菜单 -->
-                            <dd><a class="a-nav" href="bloger.html">学院成绩</a></dd>
-                            <dd><a class="a-nav" href="">班级成绩</a></dd>
-                            <dd><a class="a-nav" href="">个人成绩</a></dd>
+                            <dd><a class="a-nav" href="collegeScore.jsp">学院成绩</a></dd>
+                            <dd><a class="a-nav" href="classScore.jsp">班级成绩</a></dd>
+                            <dd><a class="a-nav" href="scoreDetail.jsp">个人成绩</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
