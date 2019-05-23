@@ -21,16 +21,10 @@ public class getForumAction extends BaseAction {
 	 * @return
 	 */
 	public String execute() {
-		response.setContentType("application/json");
-		response.setCharacterEncoding("utf-8");
-		Writer out;
 		int startPage=0,pageSize=0;
 		try {
-			ApplicationContext ctx = new ClassPathXmlApplicationContext("bean1.xml");
-			ForumDAO fdao = ctx.getBean("getForumDAO",ForumDAOImpl.class);
-			out = response.getWriter();
-			List<TForumTitle> list = fdao.getForumTitleByPages(startPage, pageSize);
-			int count = fdao.getPageCount();
+			List<TForumTitle> list = forumdao.getForumTitleByPages(startPage, pageSize);
+			int count = forumdao.getPageCount();
 			ReturnData rd = new ReturnData();
 			rd.code = ReturnData.SUCCESS;
 			rd.msg = "³É¹¦";

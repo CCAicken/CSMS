@@ -23,16 +23,9 @@ public class getMacthAction extends BaseAction {
 	 * @return
 	 */
 	public String execute() {
-		response.setContentType("application/json");
-		response.setCharacterEncoding("utf-8");
-		Writer out;
-		int startPage=0,pageSize=0;
 		try {
-			ApplicationContext ctx = new ClassPathXmlApplicationContext("bean1.xml");
-			MatchDAO mdao = ctx.getBean("getMatchDAO",MatchDAO.class);
-			out = response.getWriter();
-			List<VMatch> list = mdao.select();
-			int count = mdao.getPageCount();
+			List<VMatch> list = matchdao.select();
+			int count = matchdao.getPageCount();
 			ReturnData rd = new ReturnData();
 			rd.code = ReturnData.SUCCESS;
 			rd.msg = "³É¹¦";
