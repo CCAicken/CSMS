@@ -68,4 +68,10 @@ public interface ForumDAO {
 	 * @return 文章信息对象列表
 	 */
 //	public List<VForumTitle> getForumsByUser(String userid);
+	
+	/**
+	 * 获取总记录数
+	 * @return 总记录数
+	 */
+	public int getPageCount();
 }
