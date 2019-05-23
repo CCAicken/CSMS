@@ -41,9 +41,10 @@
 		<mapping resource="model/TTeacher.hbm.xml" />
 		<mapping resource="model/VMatch.hbm.xml" />
 		<mapping resource="model/TForumContent.hbm.xml" />
-		<mapping resource="model/TForumTitle.hbm.xml" />
 		<mapping resource="model/TNews.hbm.xml" />
 		<mapping resource="model/TPhoto.hbm.xml" />
+		<mapping resource="model/TForumTitle.hbm.xml" />
+		<mapping resource="model/VForum.hbm.xml" />
 
 	</session-factory>
 
