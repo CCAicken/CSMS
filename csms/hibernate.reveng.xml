@@ -159,8 +159,14 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="T_Photo" schema="dbo" catalog="CSMS"
-	class="model.TPhoto">
+	<table name="T_Photo" schema="dbo" catalog="CSMS"
+		class="model.TPhoto">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="V_Forum" schema="dbo" catalog="CSMS"
+	class="model.VForum">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>

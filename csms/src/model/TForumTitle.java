@@ -1,5 +1,6 @@
 package model;
 
+
 /**
  * TForumTitle entity. @author MyEclipse Persistence Tools
  */
@@ -10,6 +11,8 @@ public class TForumTitle implements java.io.Serializable {
 
 	private Integer forumid;
 	private String title;
+	private String author;
+	private String createtime;
 
 	// Constructors
 
@@ -18,8 +21,10 @@ public class TForumTitle implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TForumTitle(String title) {
+	public TForumTitle(String title, String author, String createtime) {
 		this.title = title;
+		this.author = author;
+		this.createtime = createtime;
 	}
 
 	// Property accessors
@@ -38,6 +43,22 @@ public class TForumTitle implements java.io.Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getAuthor() {
+		return this.author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getCreatetime() {
+		return this.createtime;
+	}
+
+	public void setCreatetime(String createtime) {
+		this.createtime = createtime;
 	}
 
 }
