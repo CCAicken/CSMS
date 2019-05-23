@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
         <style>
             body {
-                background-image: url('img/index.jpg');
+                background-image: url('image/login.jpg');
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
@@ -36,9 +36,7 @@
                         <h1>校园运动会</h1>
                     </div>
                     <div calss="layui-card-body">
-                        <div class="layui-col-lg12 layui-col-md12">
-                            <img alt="" src="img/login.jpg" width="90%" style="margin-left:5%;margin-bottom:10px;">
-                        </div>
+                            <img alt="" src="image/time.jpg" width="85%" height="80%" style="margin-left:5%;margin-bottom:10px;">
                     </div>
                 </div>
                 <div class="layui-card layui-col-lg4 layui-col-md4 layui-col-sm4 layui-col-xs4" style="margin-left:20px;height:330px;">
