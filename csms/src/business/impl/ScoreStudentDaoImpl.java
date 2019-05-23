@@ -2,7 +2,6 @@ package business.impl;
 
 import java.util.List;
 
-import model.VScore;
 import model.VStudentScore;
 import basic.iHibBaseDAO;
 import business.dao.ScoreStudentDAO;
@@ -13,7 +12,7 @@ public class ScoreStudentDaoImpl implements ScoreStudentDAO {
 		this.bdao = bdao;
 	}
 	@Override
-	public VStudentScore getByUserid(int userid) {
+	public VStudentScore getByUserid(String userid) {
 		String hql = "from VStudentScore where userid=?";
 		Object[] param = {userid};
 		List<VStudentScore> list = bdao.select(hql,param);

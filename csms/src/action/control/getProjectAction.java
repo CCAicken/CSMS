@@ -4,11 +4,17 @@ import java.io.IOException;
 import java.util.List;
 
 import model.TProject;
+import model.VScene;
 
 import com.alibaba.fastjson.JSON;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class getProjectAction extends BaseAction {
+	private String userid;
+	
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 
 	/**
 	 * @return
