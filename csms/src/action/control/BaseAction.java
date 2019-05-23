@@ -41,11 +41,16 @@ public class BaseAction extends ActionSupport {
 	protected ScoreStudentDAO scorestudentdao;
 	protected SportsDAO sportsdao;
 	protected UserDAO userdao;
+	protected iHibBaseDAO bdao;
 	public BaseAction() {
 		super();
 		request = ServletActionContext.getRequest();
 		response = ServletActionContext.getResponse();
 		session = request.getSession();
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		
 		application = ServletActionContext.getServletContext();
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"factoryBean.xml");
@@ -66,5 +71,6 @@ public class BaseAction extends ActionSupport {
 		scorestudentdao = ctx.getBean("getScoreStudentDAO", ScoreStudentDAO.class);
 		sportsdao = ctx.getBean("getSportsDAO", SportsDAO.class);
 		userdao = ctx.getBean("getUserDAO", UserDAO.class);
+		bdao = ctx.getBean("bdao", iHibBaseDAO.class);
 	}
 }
