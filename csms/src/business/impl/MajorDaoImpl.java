@@ -50,4 +50,11 @@ public class MajorDaoImpl implements MajorDAO {
 		return list;
 	}
 
+	@Override
+	public int getPageCount() {
+		String hql = "select count(*) from TMajor";
+		int count = bdao.selectValue(hql);
+		return count;
+	}
+
 }

@@ -52,4 +52,17 @@ public class MatchDaoImpl implements MatchDAO {
 			System.out.println(match.getProname()+match.getTeausername());
 		}
 	}
+
+	@Override
+	public List<VMatch> select() {
+		String hql="from VMatch";
+		return bdao.select(hql);
+	}
+	
+	@Override
+	public int getPageCount() {
+		String hql = "select count(*) from TMatch";
+		int count = bdao.selectValue(hql);
+		return count;
+	}
 }

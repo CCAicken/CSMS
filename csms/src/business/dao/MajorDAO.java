@@ -38,4 +38,10 @@ public interface MajorDAO {
 	 * @return 专业对象列表
 	 */
 	public List<TMajor> selectByColl(int collegeid);
+	
+	/**
+	 * 获取总记录数
+	 * @return 总记录数
+	 */
+	public int getPageCount();
 }

@@ -31,4 +31,17 @@ public interface MatchDAO {
 	 * @return 报名对象列表
 	 */
 	public List<VMatch> selectByUser(String userid);
+	
+
+	/**
+	 * 查询报名对象列表
+	 * @return 报名对象列表
+	 */
+	public List<VMatch> select();
+	
+	/**
+	 * 获取总记录数
+	 * @return 总记录数
+	 */
+	public int getPageCount();
 }
