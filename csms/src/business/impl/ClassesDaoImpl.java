@@ -5,6 +5,7 @@ import java.util.List;
 import com.opensymphony.xwork2.Result;
 
 import model.TClass;
+import model.VClass;
 import basic.iHibBaseDAO;
 import basic.iHibBaseDAOImpl;
 import business.dao.ClassesDAO;
@@ -62,4 +63,27 @@ public class ClassesDaoImpl implements ClassesDAO {
 //			System.out.println(cl.getClassname());
 //		}
 //	}
+
+	
+
+	@Override
+	public VClass selectByidVclass(int classid) {
+		VClass cla = (VClass)bdao.findById(VClass.class, classid);
+		return cla;
+	}
+
+	@Override
+	public List<VClass> selectVclass() {
+		String hql = "from VClass";
+		List<VClass> list = (List<VClass>)bdao.select(hql);
+		return list;
+	}
+
+	@Override
+	public List<VClass> selectByMajorVclass(int majorid) {
+		String hql = "from VClass where majorid=?";
+		Object[] para = {majorid};
+		List<VClass> list = (List<VClass>)bdao.select(hql, para);
+		return list;
+	}
 }

@@ -38,4 +38,23 @@ public interface ClassesDAO {
 	 * @return 班级对象列表
 	 */
 	public List<TClass> selectByMajor(int majorid);
+	/**
+	 * 根据班级id获取班级视图对象
+	 * @param classid 班级id
+	 * @return 班级对象
+	 */
+	public VClass selectByidVclass(int classid);
+	
+	/**
+	 * 获取所有班级视图对象列表
+	 * @return 班级对象列表
+	 */
+	public List<VClass> selectVclass();
+
+	/**
+	 * 获取所有班级视图对象列表
+	 * @param majorid 专业id
+	 * @return 班级对象列表
+	 */
+	public List<VClass> selectByMajorVclass(int majorid);
 }
