@@ -2,4 +2,24 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 
-</struts>    
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="getcollege"
+			class="action.control.getCollegeAction">
+		</action>
+		<action name="getmajor" class="action.control.getMajorAction"></action>
+		<action name="getclass" class="action.control.getClassAction"></action>
+		<action name="getforum" class="action.control.getForumAction"></action>
+		<action name="getnew" class="action.control.getNewAction"></action>
+		<action name="getcontent"
+			class="action.control.getContentAction">
+		</action>
+		<action name="getproject"
+			class="action.control.getProjectAction">
+		</action>
+		<action name="getscore" class="action.control.getScoreAction"></action>
+		<action name="login" class="action.control.LoginAction"></action>
+		<action name="logout" class="action.control.getLogoutAction"></action>
+		<action name="getmacth" class="action.control.getMacthAction"></action>
+		<action name="changepwd"
+			class="action.control.ChangePwdAction">
+		</action></package></struts>    
