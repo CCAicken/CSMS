@@ -58,6 +58,17 @@ public class MatchDaoImpl implements MatchDAO {
 		String hql="from VMatch";
 		return bdao.select(hql);
 	}
+
+	@Override
+	public List<VMatch> selectByPage(int startPage,int pageSize) {
+		String hql="from VMatch";
+		List<VMatch> list = (List<VMatch>)bdao.selectByPage(hql, startPage, pageSize);
+		if(list!=null && list.size()>0){
+			return list;
+		}else{
+			return null;
+		}
+	}
 	
 	@Override
 	public int getPageCount() {

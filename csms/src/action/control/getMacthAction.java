@@ -18,13 +18,40 @@ import business.dao.MatchDAO;
 import com.alibaba.fastjson.JSON;
 
 public class getMacthAction extends BaseAction {
+	/**
+	 * 每页记录数
+	 */
+	private int limit;
+	/**
+	 * 当前页数
+	 */
+	private int page;
+	
+	
+	public int getLimit() {
+		return limit;
+	}
 
+
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+
+
+	public int getPage() {
+		return page;
+	}
+
+
+	public void setPage(int page) {
+		this.page = page;
+	}
 	/**
 	 * @return
 	 */
 	public String execute() {
 		try {
-			List<VMatch> list = matchdao.select();
+			List<VMatch> list = matchdao.selectByPage(page, limit);
 			int count = matchdao.getPageCount();
 			ReturnData rd = new ReturnData();
 			rd.code = ReturnData.SUCCESS;

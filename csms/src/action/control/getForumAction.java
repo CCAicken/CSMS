@@ -16,14 +16,44 @@ import business.impl.ForumDAOImpl;
 import com.alibaba.fastjson.JSON;
 
 public class getForumAction extends BaseAction {
+	/**
+	 * 每页记录数
+	 */
+	private int limit;
+	/**
+	 * 当前页数
+	 */
+	private int page;
+	
+	
+	public int getLimit() {
+		return limit;
+	}
+
+
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+
+
+	public int getPage() {
+		return page;
+	}
+
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
 
 	/**
 	 * @return
 	 */
 	public String execute() {
-		int startPage=0,pageSize=0;
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
 		try {
-			List<TForumTitle> list = forumdao.getForumTitleByPages(startPage, pageSize);
+			List<TForumTitle> list = forumdao.getForumTitleByPages(page, limit);
 			int count = forumdao.getPageCount();
 			ReturnData rd = new ReturnData();
 			rd.code = ReturnData.SUCCESS;

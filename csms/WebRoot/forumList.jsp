@@ -82,7 +82,7 @@
                         文章内容管理<button id="addModel" class="layui-btn layui-bg-blue float layui-btn-sm">添加文章内容</button>
                     </div>
                     <div class="layui-card-body">
-                        <table id="demo" lay-filter="test" width="100%"></table>
+                        <table class="layui-table" id="forumlist" lay-filter="test" width="100%"></table>
                     </div>
                 </div>
             </div>
@@ -92,6 +92,10 @@
 </body>
 <script src="layui/layui.js" charset="utf-8"></script>
 <script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
+<script id="barDemo" type="text/html">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
 <script type="text/javascript">
     // 显示编辑文章标题模态框
     $("#addTitle").click(function() {
@@ -130,29 +134,31 @@
         });
         var table = layui.table;
         table.render({
-            elem: '#demo',
+            elem: '#forumlist',
             height: 500,
-            url: 'service/getcontent.action', //数据接口
+            url: 'getforum.action', //数据接口
             cols: [
                 [ //表头
                     {
-                        field: 'ordernum',
-                        title: '内容序号',
-                        width: 40,
-                    }, {
                         field: '',
-                        title: '文章图片',
-                        width: 80,
-                        templet: function(data) {
-                            return "<img src='" + data.photoname + "' style='width:100%'/>"
-                        }
+                        title: '序号',
+                        width: 40,
+                        type:'numbers'
                     }, {
-                        field: 'textcontent',
-                        title: '文章内容',
-                        width: 300,
-                        sort: true
+                        field: 'title',
+                        title: '文章标题',
+                        width: 300
                     }, {
-                        fixed: 'right',
+                        field: 'author',
+                        title: '投稿人',
+                        width: 80
+                        //sort: true //是否排序
+                    }, {
+                        fixed: 'createtime',
+                        title: '时间',
+                        width: 140
+                    }, {
+                        fixed: '',
                         title: '操作',
                         width: 140,
                         toolbar: '#barDemo'
