@@ -46,30 +46,30 @@
                     <div calss="layui-card-body">
                         <div class="layui-row layui-col-space15">
                             <div class="layui-col-lg12 layui-col-md12">
-                                <form class="layui-form" action="" style="width:90%;margin-left:5%;">
+                                <form class="layui-form" action="login.action" style="width:90%;margin-left:5%;">
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">账号：</label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="title" required lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input">
+                                            <input type="text" name="userid" id="userid" required lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input">
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">密码：</label>
                                         <div class="layui-input-block">
-                                            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                            <input type="password" name="password" id="pwd" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">验证码：</label>
                                         <div class="layui-input-inline" style="width:35%;">
-                                            <input type="text" name="safecode" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                                            <input type="text" name="safecode" id="safecode" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                                         </div>
                                         <div class="layui-form-mid layui-word-aux" style="width:90px;height:38px;margin-top:-5px;">
                                             <img src="safecode.do" width="100%" />
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
-                                        <button style="width:45%" class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即登录</button>
+                                        <button style="width:45%" class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo" id="login">立即登录</button>
                                         <button style="width:45%" type="reset" class="layui-btn layui-btn-danger">重置</button>
                                     </div>
                                     <div class="layui-form-item" style="color:#ccc;">
@@ -86,10 +86,10 @@
         </div>
     </body>
     <script src="layui/layui.js" charset="utf-8"></script>
+    <script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
     <script type="text/javascript">
         layui.use(['form', 'laydate'], function() {
 
         });
     </script>
-
     </html>

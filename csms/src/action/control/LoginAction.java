@@ -2,45 +2,66 @@ package action.control;
 
 import java.io.IOException;
 
-import org.apache.struts2.jasper.tagplugins.jstl.core.Out;
+import javax.servlet.ServletException;
 
 import model.TStudent;
 import model.TTeacher;
 
-import com.opensymphony.xwork2.ActionSupport;
 import common.properties.RoleType;
 
 public class LoginAction extends BaseAction {
 	private String userid;
-	private String pwd;
+	private String password;
+	private String safecode;
+	private String errorsText;
+	private String backurl;
 	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getBackurl() {
+		return backurl;
+	}
+
+	public String getErrorsText() {
+		return errorsText;
+	}
+
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setSafecode(String safecode) {
+		this.safecode = safecode;
 	}
 
 	/**
 	 * @return
 	 * @throws IOException 
+	 * @throws ServletException 
 	 */
-	public String execute() throws IOException {
-		TStudent stu = userdao.loginStu(userid, pwd);
+	public String execute() {
+		response.setCharacterEncoding("utf-8");
+		backurl="login.jsp";
+		TStudent stu = userdao.loginStu(userid, password);
 		if(stu!=null){
 			session.setAttribute("loginuser", stu);
 			session.setAttribute("role", RoleType.Student);
 			return SUCCESS;
 		}
 		else{
-			TTeacher tea = userdao.loginTea(userid, pwd);
+			TTeacher tea = userdao.loginTea(userid, password);
 			if(tea!=null){
 				session.setAttribute("loginuser", tea);
 				session.setAttribute("role", RoleType.Teacher);
 				return SUCCESS;
 			}
+			else {
+				errorsText="µ«¬º ß∞‹£¨«Î÷ÿ ‘";
+				return ERROR;
+			}
 		}
-		return ERROR;
+		
 	}
 }

@@ -12,11 +12,14 @@ public class UserDaoImpl implements UserDAO {
 	public void setBdao(iHibBaseDAO bdao) {
 		this.bdao = bdao;
 	}
+//	public UserDaoImpl(){
+//		bdao =  new iHibBaseDAOImpl();
+//	}
 	@Override
 	public TStudent loginStu(String userid, String pwd) {
 		TStudent student = (TStudent)bdao.findById(TStudent.class, userid);
 		if(student != null && !student.getUserid().equals("")){
-			if(student.getPwd()==pwd){
+			if(student.getPwd().equals(pwd)){
 				return student;
 			}else{
 				return null;
@@ -25,7 +28,14 @@ public class UserDaoImpl implements UserDAO {
 			return null;
 		}
 	}
-
+//	public static void main(String[] args){
+//		UserDAO dao = new UserDaoImpl();
+//		TStudent stu = dao.loginStu("1001", "123456");
+//		//TStudent stu = dao.getStudent("1001");
+//		if(stu!=null){
+//		System.out.print(stu.getUsername());
+//		}
+//	}
 	@Override
 	public boolean insertStu(TStudent user) {
 		int row = (Integer)bdao.insert(user);
@@ -104,7 +114,7 @@ public class UserDaoImpl implements UserDAO {
 	public TTeacher loginTea(String userid, String pwd) {
 		TTeacher tea = (TTeacher)bdao.findById(TTeacher.class, userid);
 		if(tea != null && !tea.getUserid().equals("")){
-			if(tea.getPwd()==pwd){
+			if(tea.getPwd().equals(pwd)){
 				return tea;
 			}else{
 				return null;
