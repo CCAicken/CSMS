@@ -79,7 +79,7 @@
             <div class="">
                 <div class="layui-card">
                     <div class="layui-card-header">
-                        文章内容管理<button id="addModel" class="layui-btn layui-bg-blue float layui-btn-sm">添加文章内容</button>
+                        <h1>文章列表</h1>
                     </div>
                     <div class="layui-card-body">
                         <table class="layui-table" id="forumlist" lay-filter="test" width="100%"></table>
@@ -92,39 +92,7 @@
 </body>
 <script src="layui/layui.js" charset="utf-8"></script>
 <script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
-<script id="barDemo" type="text/html">
-  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-</script>
 <script type="text/javascript">
-    // 显示编辑文章标题模态框
-    $("#addTitle").click(function() {
-            layui.use(['layer'], function() {
-                var layer = layui.layer,
-                    $ = layui.$;
-                layer.open({
-                    type: 1, //类型
-                    area: ['500px', '250px'], //定义宽和高
-                    title: '编辑文章标题', //题目
-                    shadeClose: false, //点击遮罩层关闭
-                    content: $('#editTitle') //打开的内容
-                });
-            })
-        })
-        // 显示编辑文章内容模态框
-    $("#addModel").click(function() {
-        layui.use(['layer'], function() {
-            var layer = layui.layer,
-                $ = layui.$;
-            layer.open({
-                type: 1, //类型
-                area: ['700px', '600px'], //定义宽和高
-                title: '编辑文章内容', //题目
-                shadeClose: false, //点击遮罩层关闭
-                content: $('#editContent') //打开的内容
-            });
-        })
-    })
     layui.use(['element', 'carousel', 'table'], function() {
         var element = layui.element;
         var carousel = layui.carousel;
@@ -140,31 +108,30 @@
             cols: [
                 [ //表头
                     {
+                		align:'center',
                         field: '',
                         title: '序号',
-                        width: 40,
+                        width: 100,
                         type:'numbers'
                     }, {
+                		align:'center',
                         field: 'title',
                         title: '文章标题',
-                        width: 600,
+                        width: 400,
                         templet:function(data){
                         	return "<a href='getcontent.action?op=byforumid&titleid="+data.forumid+"'>"+data.title+"</a>"
                         }
                     }, {
+                		align:'center',
                         field: 'author',
                         title: '投稿人',
-                        width: 80
+                        width: 100
                         //sort: true //是否排序
                     }, {
-                        fixed: 'createtime',
+                		align:'center',
+                        field: 'createtime',
                         title: '时间',
-                        width: 140
-                    }, {
-                        fixed: '',
-                        title: '操作',
-                        width: 140,
-                        toolbar: '#barDemo'
+                        width: 200
                     }
                 ]
             ],
@@ -175,18 +142,6 @@
             limits: [5, 10, 15]
                 /* first:true,
                 last:true, */
-        });
-        //监听工具条
-        table.on('tool(demo)', function(obj) {
-            var data = obj.data;
-            if (obj.event === 'edit') {
-                layer.alert('编辑行：<br>' + JSON.stringify(data))
-            } else if (obj.event === 'del') {
-                layer.confirm('真的删除行么', function(index) {
-                    obj.del();
-                    layer.close(index);
-                });
-            }
         });
     });
 </script>

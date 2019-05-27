@@ -40,34 +40,17 @@
                             </tr>
                         </thead>
                         <tbody id="scoretable_tbody">
-                            <c:forEach items="" var="obj" varStatus="xh">
+                            <c:forEach items="scorelist" var="obj">
                                 <tr>
                                     <!-- <td class="text-center"><input type="checkbox" /></td> -->
                                     <td class="text-center">
-                                        <nobr>女生800m</nobr>
+                                        <nobr>${obj.proname }</nobr>
                                     </td>
                                     <td class="text-center">
-                                        <nobr>88</nobr>
+                                        <nobr>${obj.scorenumber }</nobr>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <!-- <td class="text-center"><input type="checkbox" /></td> -->
-                                    <td class="text-center">
-                                        <nobr>女生800m</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>88</nobr>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- <td class="text-center"><input type="checkbox" /></td> -->
-                                    <td class="text-center">
-                                        <nobr>女生800m</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>88</nobr>
-                                    </td>
-                                </tr>
+                            </c:forEach>
                                 <tr class="layui-bg-green">
                                     <!-- <td class="text-center"><input type="checkbox" /></td> -->
                                     <td class="text-center">
@@ -77,7 +60,6 @@
                                         <nobr>平均成绩：88</nobr>
                                     </td>
                                 </tr>
-                            </c:forEach>
                         </tbody>
                     </table>
                 </div>
