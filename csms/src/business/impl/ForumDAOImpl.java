@@ -41,7 +41,11 @@ public class ForumDAOImpl implements ForumDAO {
 	public List<TForumTitle> getForumTitleByPages(int startPage, int pageSize) {
 		String hql = "from TForumTitle";
 		List<TForumTitle> list = (List<TForumTitle>)bdao.selectByPage(hql, startPage, pageSize);
-		return list;
+		if(list!=null && list.size()>0){
+			return list;
+		}else{
+			return null;
+		}
 	}
 	@Override
 	public int getPageCount() {

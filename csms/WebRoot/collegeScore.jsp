@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,12 +28,11 @@
             <div class="layui-card-body">
                 <div class="layui-row layui-form">
                     <div class="layui-input-inline">
-                        <select name="modules" lay-verify="required" lay-search>
-                                <option value="">选择或输入学院名称</option>
-                                <option value="1">信息工程学院</option>
-                                <option value="2">人文学院</option>
-                                <option value="3">建筑工程学院</option>
+                    <div id="college">
+                        <select name="modules" lay-verify="required" v-for="obj in collist" lay-search>
+                                <option value="{{obj.collegeid}}">{{obj.collegename}}</option>
                             </select>
+                            </div>
                     </div>
                     <!-- <div class="layui-input-inline">
                         <input class="layui-input" type="text" placeholder="请输入学院名称" />
@@ -116,5 +116,13 @@
     <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.all.js"></script>
-
+<script src=""></script>
+<script>
+var college = new Vue({
+  el: '#college',
+  data: {
+    collist: []
+  }
+})
+</script>
 </html>
