@@ -45,6 +45,7 @@
 		<mapping resource="model/TPhoto.hbm.xml" />
 		<mapping resource="model/TForumTitle.hbm.xml" />
 		<mapping resource="model/VForum.hbm.xml" />
+		<mapping resource="model/VClassScore.hbm.xml" />
 
 	</session-factory>
 

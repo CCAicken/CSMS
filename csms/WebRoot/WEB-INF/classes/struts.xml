@@ -21,7 +21,9 @@
 		</action>
 		 
 		
-		<action name="getscore" class="action.control.getScoreAction"></action>
+		<action name="getscore" class="action.control.getScoreAction">
+			<result name="success" type="dispatcher">/index.jsp</result>
+		</action>
 		<action name="login" class="action.control.LoginAction">
 			<result name="success" type="dispatcher">/main.jsp</result>
 		</action>

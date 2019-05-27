@@ -1,45 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Struts2Diagram version="2.0">
-  <package name="default" location="112,21" size="1042,456">
-<<<<<<< HEAD
-    <action name="getcollege" location="18,26" size="150,40" />
-    <action name="getmajor" location="266,81" size="150,40" />
-    <action name="getclass" location="438,80" size="150,40" />
-    <action name="getforum" location="616,80" size="150,40" />
-    <action name="getnew" location="816,82" size="150,40" />
-    <action name="getcontent" location="67,134" size="150,40" />
-    <action name="getproject" location="268,142" size="150,40" />
-    <action name="getscore" location="439,139" size="150,40" />
-    <action name="login" location="52,288" size="150,40" />
-    <action name="logout" location="820,133" size="150,40" />
-    <action name="getmacth" location="64,204" size="150,40" />
-    <action name="changepwd" location="271,201" size="150,40" />
-    <action name="getapplication" location="11,361" size="150,40" />
-=======
-    <action name="getcollege" location="41,32" size="150,40" />
-    <action name="getmajor" location="269,84" size="150,40" />
-    <action name="getclass" location="441,83" size="150,40" />
-    <action name="getforum" location="283,251" size="150,40" />
-    <action name="getnew" location="819,85" size="150,40" />
-    <action name="getcontent" location="70,137" size="150,41">
+  <package name="default" location="50,50" size="171,761">
+    <action name="getcollege" location="17,25" size="150,40" />
+    <action name="getmajor" location="17,67" size="150,40" />
+    <action name="getclass" location="17,117" size="150,40" />
+    <action name="getforum" location="17,167" size="150,40" />
+    <action name="getnew" location="17,217" size="150,40" />
+    <action name="getcontent" location="17,267" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="forumContent.jsp" />
       </result>
     </action>
-    <action name="getproject" location="271,145" size="150,40" />
-    <action name="getscore" location="442,142" size="150,40" />
-    <action name="login" location="55,291" size="150,41">
+    <action name="getproject" location="17,367" size="150,40" />
+    <action name="getscore" location="17,417" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="login" location="17,467" size="150,68">
       <result name="success">
         <resourceEdge source="success" routing="0" target="main.jsp" />
       </result>
     </action>
-    <action name="logout" location="823,136" size="150,40" />
-    <action name="getmacth" location="67,207" size="150,40" />
-    <action name="changepwd" location="274,204" size="150,40" />
-    <action name="getapplication" location="18,368" size="150,40" />
->>>>>>> branch 'master' of https://github.com/KzlDeng/CSMS.git
+    <action name="logout" location="17,567" size="150,40" />
+    <action name="getmacth" location="17,617" size="150,40" />
+    <action name="changepwd" location="17,667" size="150,40" />
+    <action name="getapplication" location="17,717" size="150,40" />
   </package>
-  <webResource name="forumContent.jsp" path="/forumContent.jsp" location="50,500" size="150,55" />
-  <webResource name="main.jsp" path="/main.jsp" location="350,500" size="150,55" />
+  <webResource name="forumContent.jsp" path="/forumContent.jsp" location="350,50" size="150,55" />
+  <webResource name="main.jsp" path="/main.jsp" location="350,200" size="150,55" />
+  <webResource name="index.jsp" path="/index.jsp" location="0,0" size="150,55" />
 </Struts2Diagram>
 

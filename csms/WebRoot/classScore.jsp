@@ -58,9 +58,7 @@
                     </div>
                 </div>
                 <div class="layui-row">
-                    <table class="layui-table" id="scoretable">
-
-                    </table>
+                    <table class="layui-table" id="scoretable"></table>
                 </div>
             </div>
         </div>
@@ -81,13 +79,13 @@
         table.render({
             elem: '#scoretable',
             height: '800px', //高度最大化减去差值,
-            url: 'getclass.action',
+            url: 'getscore.action',
             page: true //开启分页
                 ,
             even: true //每行颜色分隔
                 ,
-                limit:2,
-                limits:[2,3,5,7],
+                limit:5,
+                limits:[5,10,15],
             skin: "nob",
             cellMinWidth: 35 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                 //,toolbar: '#toolbarDemo'
@@ -96,30 +94,28 @@
             cols: [
                 [{
                     field: '',
-                    width: 35,
+                    width: 40,
                     title: '序号',
-                    type:numbers,
+                    type:'numbers'
                 }, {
-                    field: '',
+                    field: 'collegename',
                     width: 250,
-                    title: '',
-                    templet: function(d) {
-                        return d.collegename
-                    }
+                    title: '学院名称',
                 }, {
-                    field: '',
+                    field: 'majorname',
                     width: 250,
-                    title: '',
-                    templet: function(d) {
-                        return d.majorname
-                    }
+                    title: '专业名称',
                 }, {
-                    field: 'd.classname',
-                    title: '',
+                    field: 'classname',
+                    title: '班级名称',
                     width: 250,
-                    sort: true
-                }, {
-                    fixed: 'right',
+                },{
+                    fixed: 'scorenumber',
+                    title: '班级成绩',
+                    width: 100
+                },
+                 {
+                    fixed: '',
                     title: '操作',
                     toolbar: '#barDemo',
                     width: 120
