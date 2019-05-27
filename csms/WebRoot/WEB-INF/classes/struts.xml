@@ -17,7 +17,8 @@
 			class="action.control.getProjectAction">
 		</action>
 		<action name="getscore" class="action.control.getScoreAction"></action>
-		<action name="login" class="action.control.LoginAction"></action>
+		<action name="login" class="action.control.LoginAction">
+		</action>
 		<action name="logout" class="action.control.getLogoutAction"></action>
 		<action name="getmacth" class="action.control.getMacthAction"></action>
 		<action name="changepwd"

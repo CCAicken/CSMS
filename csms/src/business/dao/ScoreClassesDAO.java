@@ -2,7 +2,7 @@ package business.dao;
 
 import java.util.List;
 
-import model.*;
+import model.VClass;
 
 
 /**
@@ -22,4 +22,9 @@ public interface ScoreClassesDAO {
 	 * @return List<VClass>数据集
 	 */
 	public List<VClass> getAllScoreClasses();
+	/**
+	 * 分页查询班级成绩
+	 * @return
+	 */
+	public List<VClass> getClassesByPage(int startPage,int pagesize);
 }

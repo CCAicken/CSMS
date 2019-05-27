@@ -27,7 +27,7 @@
                         <dl class="layui-nav-child">
                             <!-- 二级菜单 -->
                             <dd><a class="a-nav" href="collegeScore.jsp">学院成绩</a></dd>
-                            <dd><a class="a-nav" href="classScore.jsp">班级成绩</a></dd>
+                            <dd><a class="a-nav" href="getclass.action?op=table">班级成绩</a></dd>
                             <dd><a class="a-nav" href="scoreDetail.jsp">个人成绩</a></dd>
                         </dl>
                     </li>

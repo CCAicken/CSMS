@@ -37,5 +37,15 @@ public class ScoreClassesDaoImpl implements ScoreClassesDAO {
 			return null;
 		}
 	}
+	@Override
+	public List<VClass> getClassesByPage(int startPage,int pageSize) {
+		String sql="select collegeid,collegename,majorid,majorname,classid,classname,ROUND(AVG(scorenumber), 2) as scorenumber from V_StudentScore GROUP BY classid,classname,collegeid,collegename,majorid,majorname";
+		List<VClass> list=bdao.selectByPage(sql, startPage, pageSize);
+		if(list!=null && list.size()>0){
+			return list;
+		}else{
+			return null;
+		}
+	}
 
 }

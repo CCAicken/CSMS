@@ -59,95 +59,7 @@
                 </div>
                 <div class="layui-row">
                     <table class="layui-table" id="scoretable">
-                        <thead>
-                            <!--<th class="text-center"><input type="checkbox"
-								class="js-checkbox-all" /></th>-->
-                            <th class="text-center">
-                                <nobr>序号</nobr>
-                            </th>
-                            <th class="text-center">
-                                <nobr>学院名称</nobr>
-                            </th>
-                            <th class="text-center">
-                                <nobr>专业名称</nobr>
-                            </th>
-                            <th class="text-center">
-                                <nobr>班级名称</nobr>
-                            </th>
-                            <th class="text-center">
-                                <nobr>平均成绩</nobr>
-                            </th>
-                            <th class="text-center">
-                                <nobr>操作</nobr>
-                            </th>
-                        </thead>
-                        <tbody id="scoretable_tbody">
-                            <c:forEach items="" var="obj" varStatus="xh">
-                                <tr>
-                                    <!-- <td class="text-center"><input type="checkbox" /></td> -->
-                                    <td class="text-center">
-                                        <nobr>1</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>信息工程学院</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>计算机科学与技术</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>2016级计算机科学与技术1班</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>99</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <button class="layui-btn  layui-btn-sm layui-bg-green">查看详情</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- <td class="text-center"><input type="checkbox" /></td> -->
-                                    <td class="text-center">
-                                        <nobr>2</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>信息工程学院</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>计算机科学与技术</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>2016级计算机科学与技术1班</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>99</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <button class="layui-btn  layui-btn-sm  layui-bg-green">查看详情</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- <td class="text-center"><input type="checkbox" /></td> -->
-                                    <td class="text-center">
-                                        <nobr>2</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>信息工程学院</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>计算机科学与技术</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>2016级计算机科学与技术1班</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>99</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <button class="layui-btn  layui-btn-sm layui-bg-green">查看详情</button>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
+
                     </table>
                 </div>
             </div>
@@ -156,5 +68,78 @@
     <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.all.js"></script>
+<script id="barDemo" type="text/html">
+    <button class="layui-btn  layui-btn-sm layui-bg-green">查看详情</button>
+</script>
+<script type="text/javascript">
+    layui.use(['table', 'laydate', 'form', 'jquery'], function() {
+        var table = layui.table;
+        var $ = layui.jquery;
+        var laydate = layui.laydate;
+        var form = layui.form;
 
+        table.render({
+            elem: '#scoretable',
+            height: '800px', //高度最大化减去差值,
+            url: 'getclass.action',
+            page: true //开启分页
+                ,
+            even: true //每行颜色分隔
+                ,
+                limit:2,
+                limits:[2,3,5,7],
+            skin: "nob",
+            cellMinWidth: 35 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                //,toolbar: '#toolbarDemo'
+                ,
+            title: '用户数据表',
+            cols: [
+                [{
+                    field: '',
+                    width: 35,
+                    title: '序号',
+                    type:numbers,
+                }, {
+                    field: '',
+                    width: 250,
+                    title: '',
+                    templet: function(d) {
+                        return d.collegename
+                    }
+                }, {
+                    field: '',
+                    width: 250,
+                    title: '',
+                    templet: function(d) {
+                        return d.majorname
+                    }
+                }, {
+                    field: 'd.classname',
+                    title: '',
+                    width: 250,
+                    sort: true
+                }, {
+                    fixed: 'right',
+                    title: '操作',
+                    toolbar: '#barDemo',
+                    width: 120
+                }]
+            ]
+        });
+
+        //监听工具条
+        table.on('tool(test)', function(obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+                layer.alert('编辑行：<br>' + JSON.stringify(data))
+            } else if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function(index) {
+                    obj.del();
+                    layer.close(index);
+                });
+            }
+        });
+
+    });
+</script>
 </html>

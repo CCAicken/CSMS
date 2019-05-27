@@ -1,12 +1,15 @@
 package action.control;
 
+import java.io.IOException;
 import java.util.List;
 
 import model.VClass;
 import model.VCollegeScore;
 import model.VStudent;
 import model.VStudentScore;
+import util.LayuiData;
 
+import com.alibaba.fastjson.JSON;
 import common.properties.RoleType;
 
 
@@ -33,8 +36,19 @@ public class getScoreAction extends BaseAction {
 	 */
 	public String execute() {
 		if(!classes.equals("")){
-			List<VClass> clalist = scoreclassesdao.getAllScoreClasses();
-			request.setAttribute("clalist", clalist);
+			String startPage = request.getParameter("page");// 当前
+			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
+			List<VClass> clalist = scoreclassesdao.getClassesByPage(Integer.parseInt(startPage), limit);
+			int count = bdao.selectValue("select count(classid) as count from(select collegeid,collegename,majorid,majorname,classid,classname,ROUND(AVG(scorenumber), 2) as scorenumber from V_StudentScore GROUP BY classid,classname,collegeid,collegename,majorid,majorname) as temp");
+			LayuiData data = new LayuiData(0, "成功", count, clalist);
+			try {
+				out.write(JSON.toJSONString(clalist));
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if(!college.equals("")){
 			List<VCollegeScore> collist = scorecollegedao.getAllCollegeScore();
