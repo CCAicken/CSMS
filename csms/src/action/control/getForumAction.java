@@ -1,14 +1,50 @@
 package action.control;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.List;
 
 import model.ReturnData;
 import model.TForumTitle;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import business.dao.ForumDAO;
+import business.impl.ForumDAOImpl;
+
 import com.alibaba.fastjson.JSON;
 
 public class getForumAction extends BaseAction {
+	/**
+	 * 每页记录数
+	 */
+	private int limit;
+	/**
+	 * 当前页数
+	 */
+	private int page;
+	
+	
+	public int getLimit() {
+		return limit;
+	}
+
+
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+
+
+	public int getPage() {
+		return page;
+	}
+
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
 
 	/**
 	 * @return
@@ -17,8 +53,6 @@ public class getForumAction extends BaseAction {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
 		try {
-			int page = Integer.parseInt(request.getParameter("page"));
-			int limit = Integer.parseInt(request.getParameter("limit"));
 			List<TForumTitle> list = forumdao.getForumTitleByPages(page, limit);
 			int count = forumdao.getPageCount();
 			ReturnData rd = new ReturnData();
