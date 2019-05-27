@@ -61,7 +61,7 @@ public class MatchDaoImpl implements MatchDAO {
 
 	@Override
 	public List<VMatch> selectByPage(int startPage,int pageSize) {
-		String hql="from VMatch";
+		String hql="from VMatch order by protype,classid,teacollegeid";
 		List<VMatch> list = (List<VMatch>)bdao.selectByPage(hql, startPage, pageSize);
 		if(list!=null && list.size()>0){
 			return list;
