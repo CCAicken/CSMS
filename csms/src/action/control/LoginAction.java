@@ -58,9 +58,16 @@ public class LoginAction extends BaseAction {
 				return SUCCESS;
 			}
 			else {
-				errorsText="µ«¬º ß∞‹£¨«Î÷ÿ ‘";
-				return ERROR;
+				try {
+					out.write("µ«¬º ß∞‹£¨«Î÷ÿ ‘");
+					out.flush();
+					out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			return SUCCESS;
 		}
 		
 	}

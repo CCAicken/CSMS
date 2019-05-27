@@ -5,16 +5,17 @@ import java.util.List;
 import model.TStudent;
 import model.TTeacher;
 import basic.iHibBaseDAO;
+import basic.iHibBaseDAOImpl;
 import business.dao.UserDAO;
 
 public class UserDaoImpl implements UserDAO {
 	private iHibBaseDAO bdao;
-	public void setBdao(iHibBaseDAO bdao) {
-		this.bdao = bdao;
-	}
-//	public UserDaoImpl(){
-//		bdao =  new iHibBaseDAOImpl();
+//	public void setBdao(iHibBaseDAO bdao) {
+//		this.bdao = bdao;
 //	}
+	public UserDaoImpl(){
+		bdao =  new iHibBaseDAOImpl();
+	}
 	@Override
 	public TStudent loginStu(String userid, String pwd) {
 		TStudent student = (TStudent)bdao.findById(TStudent.class, userid);
@@ -48,11 +49,17 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public boolean updateStuPwd(String userid, String pwd) {
-		String sql="update T_Student set pwd=? where userid=?";
-		Object[] param = {pwd,userid};
-		return bdao.update(sql,param);
+//		String sql="update T_Student set pwd=? where userid=?";
+//		Object[] param = {pwd,userid};
+		TStudent stu= (TStudent)bdao.findById(TStudent.class, userid);
+		stu.setPwd(pwd);
+		boolean flag = bdao.update(stu);
+		return flag;
 	}
-
+//public static void main(String[] args){
+//	UserDaoImpl udao= new UserDaoImpl();
+//	System.out.println(udao.updateStuPwd("1001", "111111"));
+//}
 	@Override
 	public boolean deleteStu(String userid) {
 		TStudent student = (TStudent)bdao.findById(TStudent.class, userid);
