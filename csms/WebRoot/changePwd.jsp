@@ -17,38 +17,38 @@
                         <h1 style="margin-left:20px">修改密码</h1>
                     </div>
                     <div class="layui-card-body">
-                        <form class="layui-form" action="">
+                        <div class="layui-form">
                             <div class="layui-form-item">
                                 <label class="layui-form-label">账号</label>
                                 <div class="layui-input-block">
-                                    <input type="text" disabled="disabled" name="user.userid" required lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input layui-bg-gray">
+                                    <input type="text" disabled="disabled" id="userid" value="${loginuser.userid }" required lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input layui-bg-gray">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">旧密码</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="user.pwd" required lay-verify="required" placeholder="请输入一个用于登录的密码" autocomplete="off" class="layui-input">
+                                    <input type="text" id="oldpwd" required lay-verify="required" placeholder="请输入原登录密码" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">新密码</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="newpwd" required lay-verify="required" placeholder="请再次输入登录密码进行确认" autocomplete="off" class="layui-input">
+                                    <input type="text" id="newpwd" required lay-verify="required" placeholder="请输入新登录密码" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">密码确认</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="confirmpwd" required lay-verify="required" placeholder="请再次输入登录密码进行确认" autocomplete="off" class="layui-input">
+                                    <input type="text" id="confirmpwd" required lay-verify="required" placeholder="请再次输入新登录密码" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
-                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    <button class="layui-btn" id="btnSubmit">立即提交</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,9 +56,43 @@
         <%@include file="footer.jsp" %>
     </body>
     <script src="layui/layui.js" charset="utf-8"></script>
+	<script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
     <script>
-	layui.use('form', function(){
-	  var form = layui.form;
+	layui.use('layer', function(){
+	  var layer = layui.layer;
+	$("#btnSubmit").click(function(){
+		var newpwd = $("#newpwd").val();
+		var confirmpwd = $("#confirmpwd").val();
+		var oldpwd = $("#oldpwd").val();
+		if(newpwd == oldpwd){
+			layer.msg("新密码与旧密码不能一致");
+		}
+		else if(newpwd!=confirmpwd){
+			layer.msg("两次输入的密码不正确");
+		}else{
+			$.ajax({
+		         type: "POST",
+		         url: "changepwd.action",
+		         contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+		         data: {
+		         	userid:$("#userid").val(),
+			         oldpwd:oldpwd,
+			         newpwd:newpwd
+		         },
+		         dataType: "text",
+		         success: function(data){
+			         if(data=="修改成功"){
+			         	window.location.href="login.jsp";	
+			         }else{
+			         	layer.msg(data);
+			         }
+		         },
+		         error:function(e){
+                     console.log(e);
+		         }
+		    });
+	    }
+	})
 	});
 	</script>
     </html>

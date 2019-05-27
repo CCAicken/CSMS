@@ -12,14 +12,27 @@
 		<action name="getnew" class="action.control.getNewAction"></action>
 		<action name="getcontent"
 			class="action.control.getContentAction">
+			<result name="success" type="dispatcher">
+				/forumContent.jsp
+			</result>
 		</action>
 		<action name="getproject"
 			class="action.control.getProjectAction">
 		</action>
 		 
 		
-		<action name="getscore" class="action.control.getScoreAction"></action>
-		<action name="login" class="action.control.LoginAction"></action>
+		<action name="getscore" class="action.control.getScoreAction">
+			<result name="success" type="dispatcher">/index.jsp</result>
+		</action>
+		<action name="login" class="action.control.LoginAction">
+
+			<result name="success" type="dispatcher">/main.jsp</result>
+			<result name="error" type="dispatcher">
+				<param name="location">/error.jsp</param>
+				<param name="errorsText">%{errorsText}</param>
+				<param name="backurl">%{backurl}</param>
+			</result>
+		</action>
 		<action name="logout" class="action.control.getLogoutAction"></action>
 		<action name="getmacth" class="action.control.getMacthAction"></action>
 		<action name="changepwd"

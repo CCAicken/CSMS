@@ -31,7 +31,7 @@
                     <button type="button" class="layui-btn layui-btn">查询</button>
                 </div>
             </div>
-            <table class="layui-table" id="projectlist" lay-filter="test" width="100%"></table>
+            <table class="layui-table" id="forumlist" lay-filter="test" width="100%"></table>
             <!-- <table class="layui-table">
                 <colgroup>
                     <col width="70">
@@ -81,7 +81,7 @@
 <script src="layui/layui.js"></script>
 <script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
 <script id="barDemo" type="text/html">
-  <button type="button" lay-event="add" class="layui-btn layui-btn-xs">前往报名</button>
+  <button type="button" lay-event="add" class="layui-btn layui-btn-xs">报名</button>
 </script>
 <script>
 layui.use(['element', 'carousel', 'table'], function() {
@@ -93,30 +93,31 @@ layui.use(['element', 'carousel', 'table'], function() {
         });
         var table = layui.table;
         table.render({
-            elem: '#projectlist',
+            elem: '#forumlist',
             height: 500,
-            url: 'getproject.action', //数据接口
+            url: 'getmacth.action', //数据接口
             cols: [
                 [ //表头
                     {
                         field: '',
                         title: '序号',
-                        width: 100,
+                        width: 40,
                         type:'numbers'
                     }, {
                         field: 'proname',
                         title: '项目名称',
                         width: 300
                     }, {
-                        field: '',
-                        title: '(当前报名人数/人数限制)',
-                        width: 200,
-                        templet:function(data){
-                         return "<a href=''>("+data.scenelimit+"/"+data.totallimit+")</a>"
-                        }
+                        field: 'number',
+                        title: '当前报名人数',
+                        width: 80
                         //sort: true //是否排序
                     }, {
-                        field: 'protype',
+                        fixed: 'limit',
+                        title: '人数限制',
+                        width: 140
+                    }, {
+                        fixed: 'protype',
                         title: '项目类型',
                         width: 140,
 						templet:function(data){
@@ -131,7 +132,7 @@ layui.use(['element', 'carousel', 'table'], function() {
 							}
 						}
                     }, {
-                        field: '',
+                        fixed: '',
                         title: '操作',
                         width: 140,
                         toolbar: '#barDemo'

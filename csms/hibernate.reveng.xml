@@ -165,8 +165,14 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="V_Forum" schema="dbo" catalog="CSMS"
-	class="model.VForum">
+	<table name="V_Forum" schema="dbo" catalog="CSMS"
+		class="model.VForum">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="V_ClassScore" schema="dbo" catalog="CSMS"
+	class="model.VClassScore">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>

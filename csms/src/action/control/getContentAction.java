@@ -5,6 +5,8 @@ import java.io.Writer;
 import java.util.List;
 
 import model.TForumContent;
+import model.TForumTitle;
+import model.VForum;
 import util.LayuiData;
 
 import com.alibaba.fastjson.JSON;
@@ -39,9 +41,11 @@ public class getContentAction extends BaseAction {
 			return SUCCESS;
 		} else if (op.equals("byforumid")) {
 			//返回所有学院信息列表
-			int forumid  = (Integer) request.getAttribute("forumid");
-			List<TForumContent> listcontent = contentdao.getContentByForumid(forumid);
+			int forumid  = Integer.parseInt(request.getParameter("titleid"));
+			TForumTitle forum = forumdao.getTForumById(forumid);
+			List<VForum> listcontent = contentdao.getContentByForumid(forumid);
 			request.setAttribute("listcontent", listcontent);
+			request.setAttribute("forum", forum);
 			return SUCCESS;
 		} else if (op.equals("byid")) {
 			//根据学院id返回该学院信息列表
