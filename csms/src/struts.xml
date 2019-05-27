@@ -12,6 +12,9 @@
 		<action name="getnew" class="action.control.getNewAction"></action>
 		<action name="getcontent"
 			class="action.control.getContentAction">
+			<result name="success" type="dispatcher">
+				/forumContent.jsp
+			</result>
 		</action>
 		<action name="getproject"
 			class="action.control.getProjectAction">
@@ -20,6 +23,7 @@
 		
 		<action name="getscore" class="action.control.getScoreAction"></action>
 		<action name="login" class="action.control.LoginAction">
+			<result name="success" type="dispatcher">/main.jsp</result>
 		</action>
 		<action name="logout" class="action.control.getLogoutAction"></action>
 		<action name="getmacth" class="action.control.getMacthAction"></action>

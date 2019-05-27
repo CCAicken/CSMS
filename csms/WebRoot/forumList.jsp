@@ -147,7 +147,10 @@
                     }, {
                         field: 'title',
                         title: '文章标题',
-                        width: 300
+                        width: 600,
+                        templet:function(data){
+                        	return "<a href='getcontent.action?op=byforumid&titleid="+data.forumid+"'>"+data.title+"</a>"
+                        }
                     }, {
                         field: 'author',
                         title: '投稿人',

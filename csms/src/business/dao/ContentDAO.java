@@ -3,6 +3,7 @@ package business.dao;
 import java.util.List;
 
 import model.TForumContent;
+import model.VForum;
 
 public interface ContentDAO {
 	/**
@@ -36,5 +37,5 @@ public interface ContentDAO {
 	 * @param forumid 文章編號
 	 * @return 返回TForumContent的list對象
 	 */
-	public List<TForumContent> getContentByForumid(int forumid);
+	public List<VForum> getContentByForumid(int forumid);
 }

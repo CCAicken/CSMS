@@ -48,10 +48,9 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public boolean updateStuPwd(String userid, String pwd) {
-		TStudent student = new TStudent();
-		student.setUserid(userid);
-		student.setPwd(pwd);
-		return bdao.update(student);
+		String sql="update T_Student set pwd=? where userid=?";
+		Object[] param = {pwd,userid};
+		return bdao.update(sql,param);
 	}
 
 	@Override
