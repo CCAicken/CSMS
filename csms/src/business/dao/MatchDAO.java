@@ -52,4 +52,9 @@ public interface MatchDAO {
 	 * @return 总记录数
 	 */
 	public int getPageCount();
+	/**
+	 * 获取报名情况
+	 * @return 数据集
+	 */
+	public List<VMatch> selectAll();
 }

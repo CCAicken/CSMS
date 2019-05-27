@@ -87,8 +87,12 @@
             <property name="teapwd" type="java.lang.String">
                 <column name="teapwd" length="20" />
             </property>
+            
             <property name="teaagend" type="java.lang.String">
                 <column name="teaagend" length="2" />
+            </property>
+            <property name="currentnum" type="java.lang.Integer">
+                <column name="currentnum" />
             </property>
     </class>
 </hibernate-mapping>
