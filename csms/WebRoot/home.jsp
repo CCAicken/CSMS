@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,14 +23,8 @@
                     <div class="layui-card-header">
                         <b><span style="font-size:18px;">运动会公告</span></b>
                     </div>
-                    <div class="layui-card-body" style="height:535px">
-                        <table class="layui-table" lay-skin="nob">
-                            <tr>
-                                <td><a href="new.jsp">标题题内容标题内容标题内容标题内容标题内容</a></td>
-                            </tr>
-                            <tr>
-                                <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                            </tr>
+                    <div class="layui-card-body">
+                        <table class="layui-table" id="table-title" lay-skin="nob">
                         </table>
                     </div>
                 </div>
@@ -60,16 +56,11 @@
                             <div class="layui-card layui-col-md4 layui-col-lg4">
                                 <div class="layui-card-header">
                                     <b><span style="font-size:14px;">热点文章</span></b>
-                                    <a href="CompetitionEntryCheck.jsp"><span style="float:right">更多>></span></a>
+                                    <a href="forumList.jsp"><span style="float:right">更多>></span></a>
                                 </div>
                                 <div class="layui-card-body">
-                                    <table class="layui-table" lay-skin="nob">
-                                        <tr>
-                                            <td><a href="forumContent.jsp">标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
+                                    <table class="layui-table" id="table-forum" lay-skin="nob">
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -137,6 +128,6 @@
     <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.js" charset="utf-8"></script>
+<script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
 <script src="js/home.js" charset="utf-8"></script>
-
 </html>

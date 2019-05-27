@@ -16,6 +16,8 @@
 		<action name="getproject"
 			class="action.control.getProjectAction">
 		</action>
+		 
+		
 		<action name="getscore" class="action.control.getScoreAction"></action>
 		<action name="login" class="action.control.LoginAction">
 		</action>
@@ -23,4 +25,7 @@
 		<action name="getmacth" class="action.control.getMacthAction"></action>
 		<action name="changepwd"
 			class="action.control.ChangePwdAction">
+		</action>
+		<action name="getapplication"
+			class="action.control.getApplication">
 		</action></package></struts>    
