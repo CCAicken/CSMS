@@ -122,7 +122,7 @@
                         title: '文章标题',
                         width: 600,
                         templet:function(data){
-                        	return "<a href='forumContent.jsp?titleid="+data.forumid+"'>"+data.title+"</a>"
+                        	return "<a href='getcontent.action?op=byforumid&titleid="+data.forumid+"'>"+data.title+"</a>"
                         }
                     }, {
                         field: 'author',

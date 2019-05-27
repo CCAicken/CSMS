@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Struts2Diagram version="2.0">
   <package name="default" location="112,21" size="1042,456">
-    <action name="getcollege" location="77,54" size="150,40" />
-    <action name="getmajor" location="262,77" size="150,40" />
-    <action name="getclass" location="434,76" size="150,40" />
-    <action name="getforum" location="612,76" size="150,40" />
-    <action name="getnew" location="812,78" size="150,40" />
-    <action name="getcontent" location="63,130" size="150,40" />
-    <action name="getproject" location="264,138" size="150,40" />
-    <action name="getscore" location="435,135" size="150,40" />
-    <action name="login" location="48,284" size="150,40" />
-    <action name="logout" location="816,129" size="150,40" />
-    <action name="getmacth" location="60,200" size="150,40" />
-    <action name="changepwd" location="267,197" size="150,40" />
-    <action name="getapplication" location="264,292" size="150,40" />
+    <action name="getcollege" location="41,32" size="150,40" />
+    <action name="getmajor" location="269,84" size="150,40" />
+    <action name="getclass" location="441,83" size="150,40" />
+    <action name="getforum" location="283,251" size="150,40" />
+    <action name="getnew" location="819,85" size="150,40" />
+    <action name="getcontent" location="70,137" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="forumContent.jsp" />
+      </result>
+    </action>
+    <action name="getproject" location="271,145" size="150,40" />
+    <action name="getscore" location="442,142" size="150,40" />
+    <action name="login" location="55,291" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="main.jsp" />
+      </result>
+    </action>
+    <action name="logout" location="823,136" size="150,40" />
+    <action name="getmacth" location="67,207" size="150,40" />
+    <action name="changepwd" location="274,204" size="150,40" />
+    <action name="getapplication" location="18,368" size="150,40" />
   </package>
+  <webResource name="forumContent.jsp" path="/forumContent.jsp" location="50,500" size="150,55" />
+  <webResource name="main.jsp" path="/main.jsp" location="350,500" size="150,55" />
 </Struts2Diagram>
 

@@ -22,12 +22,10 @@ public class ChangePwdAction extends BaseAction {
 		PrintWriter out;
 		try {
 			out = response.getWriter();
-			int usertype = (Integer)session.getAttribute("usertype");
-			String op = request.getParameter("op");
-			if(op.equals("change")){
-				String userid = request.getParameter("userid");
+			int usertype = (Integer)session.getAttribute("role");
 				String oldpwd = request.getParameter("oldpwd");
 				String newpwd = request.getParameter("newpwd");
+				String userid = request.getParameter("userid");
 				UserDAO udao = new UserDaoImpl();
 				if(usertype == RoleType.Student){
 					TStudent student = (TStudent)session.getAttribute("loginuser");
@@ -47,7 +45,7 @@ public class ChangePwdAction extends BaseAction {
 					if(oldpwd != teacher.getPwd() || !oldpwd.equals(teacher.getPwd())){
 						out.print("原密码不正确");
 					}else{
-						if(udao.updateStuPwd(userid, newpwd)){
+						if(udao.updateStuPwd(teacher.getUserid(), newpwd)){
 							teacher.setPwd(newpwd);
 							session.setAttribute("loginuser", teacher);
 							out.print("修改成功");
@@ -56,7 +54,6 @@ public class ChangePwdAction extends BaseAction {
 						}
 					}
 				}
-			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

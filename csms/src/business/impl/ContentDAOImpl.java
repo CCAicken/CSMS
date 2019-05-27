@@ -3,6 +3,7 @@ package business.impl;
 import java.util.List;
 
 import model.TForumContent;
+import model.VForum;
 import basic.iHibBaseDAO;
 import business.dao.ContentDAO;
 
@@ -37,10 +38,10 @@ public class ContentDAOImpl implements ContentDAO {
 		return content;
 	}
 	@Override
-	public List<TForumContent> getContentByForumid(int forumid) {
-		String hql = "from TForumContent where forumid=?";
+	public List<VForum> getContentByForumid(int forumid) {
+		String hql = "from VForum where forumid=?";
 		Object[] para = {forumid};
-		List<TForumContent> list = (List<TForumContent>)bdao.select(hql, para);
+		List<VForum> list = (List<VForum>)bdao.select(hql, para);
 		return list;
 	}
 
