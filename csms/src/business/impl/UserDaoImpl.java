@@ -5,17 +5,16 @@ import java.util.List;
 import model.TStudent;
 import model.TTeacher;
 import basic.iHibBaseDAO;
-import basic.iHibBaseDAOImpl;
 import business.dao.UserDAO;
 
 public class UserDaoImpl implements UserDAO {
 	private iHibBaseDAO bdao;
-//	public void setBdao(iHibBaseDAO bdao) {
-//		this.bdao = bdao;
-//	}
-	public UserDaoImpl(){
-		bdao =  new iHibBaseDAOImpl();
+	public void setBdao(iHibBaseDAO bdao) {
+		this.bdao = bdao;
 	}
+//	public UserDaoImpl(){
+//		bdao =  new iHibBaseDAOImpl();
+//	}
 	@Override
 	public TStudent loginStu(String userid, String pwd) {
 		TStudent student = (TStudent)bdao.findById(TStudent.class, userid);

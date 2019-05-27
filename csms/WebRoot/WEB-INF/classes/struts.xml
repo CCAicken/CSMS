@@ -25,7 +25,13 @@
 			<result name="success" type="dispatcher">/index.jsp</result>
 		</action>
 		<action name="login" class="action.control.LoginAction">
+
 			<result name="success" type="dispatcher">/main.jsp</result>
+			<result name="error" type="dispatcher">
+				<param name="location">/error.jsp</param>
+				<param name="errorsText">%{errorsText}</param>
+				<param name="backurl">%{backurl}</param>
+			</result>
 		</action>
 		<action name="logout" class="action.control.getLogoutAction"></action>
 		<action name="getmacth" class="action.control.getMacthAction"></action>
