@@ -1,10 +1,12 @@
 package action.control;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.List;
 
 import model.TClass;
+import model.TForumTitle;
 import model.VClass;
 import util.LayuiData;
 
@@ -20,18 +22,19 @@ public class getClassAction extends BaseAction {
 		String op = request.getParameter("op");
 		//返回layui表格
 		if (op.equals("table")) {
+			
 			String startPage = request.getParameter("page");// 当前
 			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
 			int allcount = bdao
-					.selectValue(("select count(titleid) from TForumTitle"));
+					.selectValue(("select count(forumid) from TForumTitle"));
 			Writer out;
 			try {
 				out = response.getWriter();
 				LayuiData data = new LayuiData(0, "成功", allcount,
 						bdao.selectByPage("from TForumTitle",
 								Integer.parseInt(startPage), limit));
-
-				out.write(JSON.toJSONString(data));
+			
+			out.write(JSON.toJSONString(data));
 				out.flush();
 				out.close();
 			} catch (IOException e) {

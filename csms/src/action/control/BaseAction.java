@@ -1,6 +1,9 @@
 package action.control;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.List;
 
@@ -53,11 +56,10 @@ public class BaseAction extends ActionSupport {
 			request = ServletActionContext.getRequest();
 			response = ServletActionContext.getResponse();
 			session = request.getSession();
-
-			out = response.getWriter();
-
 			response.setContentType("application/json");
 			response.setCharacterEncoding("utf-8");
+			out = response.getWriter();
+			
 
 			application = ServletActionContext.getServletContext();
 			ApplicationContext ctx = new ClassPathXmlApplicationContext(
