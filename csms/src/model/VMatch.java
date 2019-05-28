@@ -34,8 +34,17 @@ public class VMatch implements java.io.Serializable {
 	private String agend;
 	private String teapwd;
 	private String teaagend;
+	private Integer currentnum;
 
 	// Constructors
+
+	public Integer getCurrentnum() {
+		return currentnum;
+	}
+
+	public void setCurrentnum(Integer currentnum) {
+		this.currentnum = currentnum;
+	}
 
 	/** default constructor */
 	public VMatch() {
@@ -62,7 +71,7 @@ public class VMatch implements java.io.Serializable {
 			String collegename, String teausername, String teamobile,
 			Integer teacollegeid, Integer tearoleid, String tearolename,
 			String teacollegename, String pwd, String agend, String teapwd,
-			String teaagend) {
+			String teaagend,Integer currentnum) {
 		this.id = id;
 		this.proname = proname;
 		this.scenelimit = scenelimit;
@@ -91,6 +100,7 @@ public class VMatch implements java.io.Serializable {
 		this.agend = agend;
 		this.teapwd = teapwd;
 		this.teaagend = teaagend;
+		this.currentnum=currentnum;
 	}
 
 	// Property accessors

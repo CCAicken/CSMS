@@ -44,4 +44,10 @@ public interface ScoreDAO {
 	 * @return 班级成绩列表
 	 */
 	public List<VScore> getByClass(int classid);
+	/**
+	 * 查询各个学院的成绩排名
+	 * @param classid 班级id
+	 * @return 班级成绩列表
+	 */
+	public List<VScore> getCollegeScoreOrder();
 }

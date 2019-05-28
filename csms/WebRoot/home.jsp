@@ -70,36 +70,16 @@
                                     <a href="CompetitionEntryCheck.jsp"><span style="float:right">更多>></span></a>
                                 </div>
                                 <div class="layui-card-body">
-                                    <table class="layui-table" lay-skin="nob">
-                                    <thead>
-                                        <tr>
-                                            <th>项目名称</th>
-                                            <th>已报人数</th>
-                                            <th>未报人数</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>800米长跑马拉松（四人组）</td>
-                                            <td>12</td>
-                                            <td>22</td>
-                                        </tr></tbody>
-                                    </table>
+                                    <table class="layui-table" id="table-application" lay-skin="nob"></table>
+                                    
                                 </div>
                             </div>
                             <div class="layui-card layui-col-md4 layui-col-lg4">
                                 <div class="layui-card-header">
-                                    <b><span style="font-size:14px;">成绩排名</span></b>
+                                    <b><span style="font-size:14px;">学院成绩排名</span></b>
                                 </div>
                                 <div class="layui-card-body">
-                                    <table class="layui-table" lay-skin="nob">
-                                        <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
-                                    </table>
+                                    <table class="layui-table" id="table-score" lay-skin="nob"></table>
                                 </div>
                             </div>
                             <div class="layui-card layui-col-md12 layui-col-lg12">

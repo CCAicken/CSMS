@@ -1,5 +1,6 @@
 package business.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.TMatch;
@@ -75,5 +76,22 @@ public class MatchDaoImpl implements MatchDAO {
 		String hql = "select count(*) from TMatch";
 		int count = bdao.selectValue(hql);
 		return count;
+	}
+
+	@Override
+	public List<VMatch> selectAll() {
+		String hql="select proname,protype,currentnum,totallimit from VMatch  group by proname,currentnum,totallimit,protype order by proname";
+		List<VMatch> matchlist=new ArrayList<VMatch>();
+		List list=bdao.select(hql);
+		for (Object	 obj : list) {
+			Object[] objs=(Object[])obj;
+			VMatch match=	new VMatch();
+			match.setProname((String)objs[0]);
+			match.setProtype((Integer)objs[1]);
+			match.setCurrentnum((Integer)objs[2]);
+			match.setTotallimit((Integer)objs[3]);
+			matchlist.add(match);
+		}
+		return matchlist;
 	}
 }
