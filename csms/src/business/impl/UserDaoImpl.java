@@ -28,14 +28,7 @@ public class UserDaoImpl implements UserDAO {
 			return null;
 		}
 	}
-//	public static void main(String[] args){
-//		UserDAO dao = new UserDaoImpl();
-//		TStudent stu = dao.loginStu("1001", "123456");
-//		//TStudent stu = dao.getStudent("1001");
-//		if(stu!=null){
-//		System.out.print(stu.getUsername());
-//		}
-//	}
+
 	@Override
 	public boolean insertStu(TStudent user) {
 		int row = (Integer)bdao.insert(user);
@@ -145,7 +138,13 @@ public class UserDaoImpl implements UserDAO {
 		tea.setPwd(pwd);
 		return bdao.update(tea);
 	}
-
+//	public static void main(String[] args){
+//		UserDAO dao = new UserDaoImpl();
+//		TStudent stu = dao.getStudent("1001");
+//		if(stu!=null){
+//		System.out.print(dao.updateTeaPwd("94001", "123456"));
+//		}
+//	}
 	@Override
 	public boolean deleteTea(String userid) {
 		TTeacher teacher = (TTeacher)bdao.findById(TTeacher.class, userid);

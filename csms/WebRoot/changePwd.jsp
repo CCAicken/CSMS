@@ -83,14 +83,7 @@
 		         success: function(data){
 		         	//alert(data);
 			         if(data=="修改成功"){
-			         //alert(data);
-			         	layer.open({
-					 		content: data,
-					  		yes:function(index,layero){
-						  		window.location.href="login.jsp";
-						  		layer.close(index); //关闭弹出框
-					  		}
-						})
+						window.location.href="login.jsp";
 			         }else{
 			         	//alert(data);
 			         	layer.msg(data);
