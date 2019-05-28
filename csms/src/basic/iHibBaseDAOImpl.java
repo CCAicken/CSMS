@@ -736,6 +736,7 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			ptmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = ptmt.executeQuery();
+			//תlist
 			List list = new ArrayList();
 			ResultSetMetaData md = rs.getMetaData();
 			int columnCount = md.getColumnCount(); // Map rowData;
