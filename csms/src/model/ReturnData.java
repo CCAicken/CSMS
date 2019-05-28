@@ -30,4 +30,12 @@ public class ReturnData {
 	 * 数据的json字符串
 	 */
 	public Object data;
+	/**
+	 * 总成绩
+	 */
+	public double totalScore;
+	/**
+	 * 平均成绩
+	 */
+	public double avgScore;
 }

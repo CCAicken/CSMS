@@ -1,6 +1,7 @@
 package action.control;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.util.List;
 
 import model.ReturnData;
@@ -8,8 +9,6 @@ import model.VClassScore;
 import model.VScore;
 
 import com.alibaba.fastjson.JSON;
-
-
 
 public class getScoreAction extends BaseAction {
 
@@ -35,19 +34,28 @@ public class getScoreAction extends BaseAction {
 				e.printStackTrace();
 			}
 		}else if(op.equals("classdetail")){
-			String classid = request.getParameter("classid");
-			if(classid!=null && !classid.equals("")){
-				List<VScore> scorelist = scoredao.getByClass(Integer.parseInt(classid));
-				request.setAttribute("scorelist", scorelist);
-				return SUCCESS;
-			}else{
-				try {
+			try{
+				String classid = request.getParameter("classid");
+				if(classid!=null && !classid.equals("")){
+					List<VScore> scorelist = scoredao.getByClass(Integer.parseInt(classid));
+					double totalScore = scoreclassesdao.allScore(Integer.parseInt(classid));
+					double avgScore = scoreclassesdao.avgScore(Integer.parseInt(classid));
+					ReturnData data = new ReturnData();
+					data.code = ReturnData.SUCCESS;
+					data.totalScore = totalScore;
+					data.avgScore = avgScore;
+					data.data = scorelist;
+					data.msg = 
+					out.write(JSON.toJSONString(data));
+					out.flush();
+					out.close();
+				}else{
 					out.write("«ÎÀ¢–¬∫Û÷ÿ ‘£°");
 					out.flush();
 					out.close();
-				} catch (IOException e) {
-					e.printStackTrace();
 				}
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 		return SUCCESS;

@@ -69,4 +69,32 @@ public class ScoreClassesDaoImpl implements ScoreClassesDAO {
 		int count = bdao.selectValue(hql);
 		return count;
 	}
+	@Override
+	public double allScore(int classid) {
+		String hql = "select sum(scorenumber) as scorenumber from V_ClassScore where classid=?";
+		Object[] param = {classid};
+		List<VClassScore> list = bdao.select(hql,param);
+		if(list!=null && list.size()>0){
+			for(VClassScore score:list){
+				return score.getScorenumber();
+			}
+			return 0;
+		}else{
+			return 0;
+		}
+	}
+	@Override
+	public double avgScore(int classid) {
+		String hql = "select avg(scorenumber) as scorenumber from V_ClassScore where classid=?";
+		Object[] param = {classid};
+		List<VClassScore> list = bdao.select(hql,param);
+		if(list!=null && list.size()>0){
+			for(VClassScore score:list){
+				return score.getScorenumber();
+			}
+			return 0;
+		}else{
+			return 0;
+		}
+	}
 }

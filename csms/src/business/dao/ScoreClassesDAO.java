@@ -32,4 +32,14 @@ public interface ScoreClassesDAO {
 	 * @return
 	 */
 	public int allScoreCount();
+	/**
+	 * 获取某个班级的总分
+	 * @return
+	 */
+	public double allScore(int classid);
+	/**
+	 * 获取某个班级的平均分
+	 * @return
+	 */
+	public double avgScore(int classid);
 }
