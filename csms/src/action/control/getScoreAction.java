@@ -45,7 +45,7 @@ public class getScoreAction extends BaseAction {
 					data.totalScore = totalScore;
 					data.avgScore = avgScore;
 					data.data = scorelist;
-					data.msg = 
+					data.msg = "³É¹¦";
 					out.write(JSON.toJSONString(data));
 					out.flush();
 					out.close();
