@@ -81,9 +81,18 @@
 		         },
 		         dataType: "text",
 		         success: function(data){
+		         	//alert(data);
 			         if(data=="修改成功"){
-			         	window.location.href="login.jsp";	
+			         //alert(data);
+			         	layer.open({
+					 		content: data,
+					  		yes:function(index,layero){
+						  		window.location.href="login.jsp";
+						  		layer.close(index); //关闭弹出框
+					  		}
+						})
 			         }else{
+			         	//alert(data);
 			         	layer.msg(data);
 			         }
 		         },

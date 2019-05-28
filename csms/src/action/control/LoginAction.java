@@ -44,22 +44,28 @@ public class LoginAction extends BaseAction {
 	public String execute() {
 		response.setCharacterEncoding("utf-8");
 		backurl="login.jsp";
-		TStudent stu = userdao.loginStu(userid, password);
-		if(stu!=null){
-			session.setAttribute("loginuser", stu);
-			session.setAttribute("role", RoleType.Student);
-			return SUCCESS;
-		}
-		else{
-			TTeacher tea = userdao.loginTea(userid, password);
-			if(tea!=null){
-				session.setAttribute("loginuser", tea);
-				session.setAttribute("role", RoleType.Teacher);
+		String sRand = (String) session.getAttribute("rand");
+		if(!safecode.toLowerCase().equals(sRand.toLowerCase())){
+			errorsText="验证码不正确";
+			return ERROR;
+		}else {
+			TStudent stu = userdao.loginStu(userid, password);
+			if(stu!=null){
+				session.setAttribute("loginuser", stu);
+				session.setAttribute("role", RoleType.Student);
 				return SUCCESS;
 			}
-			else {
-				errorsText="登录失败，请重试";
-				return ERROR;
+			else{
+				TTeacher tea = userdao.loginTea(userid, password);
+				if(tea!=null){
+					session.setAttribute("loginuser", tea);
+					session.setAttribute("role", RoleType.Teacher);
+					return SUCCESS;
+				}
+				else {
+					errorsText="登录失败，用户名或密码错误，请重试";
+					return ERROR;
+				}
 			}
 		}
 		
