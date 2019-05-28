@@ -1,12 +1,1 @@
-/.struts.mex
 /action/
-/applicationContext.xml
-/basic/
-/business/
-/common/
-/factoryBean.xml
-/hibernate.cfg.xml
-/model/
-/servlet/
-/struts.xml
-/util/
