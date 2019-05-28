@@ -22,7 +22,9 @@
 		 
 		
 		<action name="getscore" class="action.control.getScoreAction">
-			<result name="success" type="dispatcher">/index.jsp</result>
+			<result name="success" type="dispatcher">
+				/scoreDetail.jsp
+			</result>
 		</action>
 		<action name="login" class="action.control.LoginAction">
 

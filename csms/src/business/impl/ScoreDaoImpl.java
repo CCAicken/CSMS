@@ -59,7 +59,7 @@ public class ScoreDaoImpl implements ScoreDAO {
 
 	@Override
 	public List<VScore> getByClass(int classid) {
-		String hql = "from TScore where classid=?";
+		String hql = "from VScore where classid=?";
 		Object[] param = { classid };
 		List<VScore> list = bdao.select(hql, param);
 		if (list != null && list.size() > 0) {
