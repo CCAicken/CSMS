@@ -5,7 +5,12 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Basic;
 
@@ -25,11 +30,11 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 	public static final int INSERT = 1;// 代表添加操作
 	public static final int UPDATE = 2;// 代表更新操作
 	public static final int DELETE = 3;// 代表删除操作
-	 private static final Log log=LogFactory.getLog(iHibBaseDAOImpl.class);
-	
+	private static final Log log = LogFactory.getLog(iHibBaseDAOImpl.class);
+
 	@Override
 	public Object insert(Object obj) {// obj必须是符合hibernate的pojo对象
-		
+
 		Session session = HibSessionFactory.getSession();
 
 		Transaction tx = null;
@@ -41,7 +46,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			return key;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.insert", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.insert",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (tx != null)
 				tx.rollback();// 撤销
@@ -65,7 +71,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			return true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.insert", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.insert",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (tx != null)
 				tx.rollback();// 撤销
@@ -89,7 +96,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			return true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.delete", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.delete",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (tx != null)
 				tx.rollback();// 撤销
@@ -111,7 +119,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			return true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.delete", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.delete",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (tx != null)
 				tx.rollback();// 撤销
@@ -133,7 +142,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			return true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.update", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.update",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (tx != null)
 				tx.rollback();// 撤销
@@ -154,7 +164,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			return list;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.select", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.select",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (session != null)
 				session.close();
@@ -175,7 +186,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			return list;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.select", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.select",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (session != null)
 				session.close();
@@ -197,7 +209,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			return list;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.select", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.select",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (session != null)
 				session.close();
@@ -223,7 +236,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			return list;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.select", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.select",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (session != null)
 				session.close();
@@ -245,7 +259,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectValue", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectValue",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (session != null)
 				session.close();
@@ -271,7 +286,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectValue", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectValue",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (session != null)
 				session.close();
@@ -294,7 +310,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			session.close();
 			return (int) pages_all;
 		} catch (Exception e) {
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectPages", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectPages",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (session != null)
 				session.close();
@@ -323,7 +340,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			session.close();
 			return (int) pages_all;
 		} catch (Exception e) {
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectPages", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectPages",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (session != null)
 				session.close();
@@ -333,39 +351,43 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 
 	@Override
 	public List selectByPage(String hql, int startPage, int pageSize) {
-		//创建连接
+		// 创建连接
 		Session session = HibSessionFactory.getSession();
 		List pList = null;
 		int currentPage;
 		try {
 			Query query = session.createQuery(hql);
-			//先求出按照pageSize得到的分页页数
+			// 先求出按照pageSize得到的分页页数
 			List list = query.list();
-			//获取查询记录总数
+			// 获取查询记录总数
 			long records = list.size();
-			//计算分页数
-			int pages_all = (int)(records%pageSize==0?records/pageSize:records/pageSize+1);
-			//设置类成员当前页面的操作页码
-			if(startPage<=1){
-				currentPage=1;
-			}else if(startPage>pages_all){
-				currentPage=pages_all;
-			}else {
+			// 计算分页数
+			int pages_all = (int) (records % pageSize == 0 ? records / pageSize
+					: records / pageSize + 1);
+			// 设置类成员当前页面的操作页码
+			if (startPage <= 1) {
+				currentPage = 1;
+			} else if (startPage > pages_all) {
+				currentPage = pages_all;
+			} else {
 				currentPage = startPage;
 			}
-			
+
 			Query query2 = session.createQuery(hql);
-			query2.setFirstResult((currentPage-1)*pageSize);//从第几条记录开始查询
-			query2.setMaxResults(pageSize);//每页显示多少条记录数
+			query2.setFirstResult((currentPage - 1) * pageSize);// 从第几条记录开始查询
+			query2.setMaxResults(pageSize);// 每页显示多少条记录数
 			pList = query2.list();
 			session.close();
 		} catch (Exception e) {
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectPages", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectPages",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
-			if(session!=null) session.close();
+			if (session != null)
+				session.close();
 		}
 		return pList;
 	}
+
 	@Override
 	public List selectByPage(String hql, Object[] para, int startPage,
 			int pageSize) {
@@ -406,7 +428,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			session.close();
 		} catch (Exception e) {
 			e.printStackTrace();
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectPages", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.selectPages",
+			// e));//向日志输出error级别的日志信息
 			if (session != null)
 				session.close();
 		}
@@ -416,18 +439,19 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 	@Override
 	public Object findById(Class cls, Serializable id) {
 		Session session = HibSessionFactory.getSession();
-		log.debug("------根据id查询用户信息-----");//向日志输出debug级别的日志信息
+		log.debug("------根据id查询用户信息-----");// 向日志输出debug级别的日志信息
 		try {
 			Object obj = session.get(cls, id);
 			session.close();
-			log.debug("------根据id查询用户信息成功-----");//向日志输出debug级别的日志信息
-			
+			log.debug("------根据id查询用户信息成功-----");// 向日志输出debug级别的日志信息
+
 			return obj;
 		} catch (HibernateException e) {
 			// TODO Auto-generated catch block
-			//log.error("------根据id查询用户信息失败-----", e);
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.findById", e));//向日志输出error级别的日志信息
-			
+			// log.error("------根据id查询用户信息失败-----", e);
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.findById",
+			// e));//向日志输出error级别的日志信息
+
 			e.printStackTrace();
 			if (session != null)
 				session.close();
@@ -437,7 +461,7 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 
 	@Override
 	public boolean update(String sql) {
-		Session session = HibSessionFactory.getSession(); 
+		Session session = HibSessionFactory.getSession();
 
 		Transaction tx = null;
 		try {
@@ -455,7 +479,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.update", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.update",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (tx != null)
 				tx.rollback();// 撤销
@@ -489,7 +514,8 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.update", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.update",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
 			if (tx != null)
 				tx.rollback();// 撤销
@@ -520,9 +546,10 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//log.error(LogUtil.error("Basic.iHibBaseDAOImpl.delete", e));//向日志输出error级别的日志信息
+			// log.error(LogUtil.error("Basic.iHibBaseDAOImpl.delete",
+			// e));//向日志输出error级别的日志信息
 			e.printStackTrace();
-			
+
 			if (tx != null)
 				tx.rollback();// 撤销
 			if (session != null)
@@ -676,7 +703,7 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			for (int i = 0; i < list.size(); i++) {
 				Object obj = list.get(i);
 				Integer model = (Integer) models.get(i);
-				
+
 				if (model.intValue() == INSERT)
 					session.save(obj);
 				else if (model.intValue() == UPDATE)
@@ -696,5 +723,34 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 				session.close();
 		}
 		return false;
+	}
+
+	@Override
+	public List selectBysql(String sql) {
+		Session session = HibSessionFactory.getSession();
+
+		// 将会话session对象转换为jdbc的connection
+		Connection con = session.connection();
+		PreparedStatement ptmt;
+		try {
+			ptmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = ptmt.executeQuery();
+			List list = new ArrayList();
+			ResultSetMetaData md = rs.getMetaData();
+			int columnCount = md.getColumnCount(); // Map rowData;
+			while (rs.next()) { // rowData = new HashMap(columnCount);
+				Map rowData = new HashMap();
+				for (int i = 1; i <= columnCount; i++) {
+					rowData.put(md.getColumnName(i), rs.getObject(i));
+				}
+				list.add(rowData);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

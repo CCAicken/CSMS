@@ -76,17 +76,10 @@
                             </div>
                             <div class="layui-card layui-col-md4 layui-col-lg4">
                                 <div class="layui-card-header">
-                                    <b><span style="font-size:14px;">成绩排名</span></b>
+                                    <b><span style="font-size:14px;">学院成绩排名</span></b>
                                 </div>
                                 <div class="layui-card-body">
-                                    <table class="layui-table" lay-skin="nob">
-                                        <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>标题题内容标题内容标题内容标题内容标题内容</a></td>
-                                        </tr>
-                                    </table>
+                                    <table class="layui-table" id="table-score" lay-skin="nob"></table>
                                 </div>
                             </div>
                             <div class="layui-card layui-col-md12 layui-col-lg12">

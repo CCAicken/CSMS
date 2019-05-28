@@ -68,7 +68,13 @@ public interface iHibBaseDAO {
 	 * @return List  失败返回null
 	 */
 	public List select(String hql) ;
-	
+
+	/**
+	 * 使用无参数的sql实现查询的
+	 * @param String 符合sql结构的无参数查询语句
+	 * @return List  失败返回null
+	 */
+	public List selectBysql(String sql) ;
 	/**
 	 * 使用无参数的hql实现查询的，他将返回基于hql中查询对象的List数组对象,实现top功能
 	 * @param String 符合hql结构的无参数查询语句

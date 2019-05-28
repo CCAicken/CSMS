@@ -68,49 +68,7 @@ layui.use(['element', 'carousel', 'table'], function() {
 				}
 
 			})
-	// 项目报名情况表格
-	table.render({
-				elem : '#table-application',
-				height : 200,
-				url : "getapplication.action" // 数据接口
-				,
-				page : false // 开启分页
-				,
-				cols : [[ // 表头
-				{
-							field : '',
-							title : '项目名称',
-							templet : function(d) {
-								if (d.protype == 0) {
-									return d.proname + "(个人赛)"
-								} else if (d.protype == 1) {
-									return d.proname + "(学生团体赛)"
-								} else {
-									return d.proname + "(教师团体赛)"
-								}
 
-							}
-						}, {
-							field : 'currentnum',
-							title : '已报人数'
-						}, {
-							field : 'totallimit',
-							title : '人数限制'
-						}]],
-				done : function(res, curr, count) {
-
-					// $('th').hide();// 表头隐藏的样式
-					// $('.layui-table .layui-table-cell >
-					// span').css({'font-weight' : 'bold'});// 表头字体样式
-					/*
-					 * $('th').css({'background-color': '#5792c6', 'color':
-					 * '#fff','font-weight':'bold'}) 表头的样式
-					 * $('.layui-table-page').css('margin-top', '40px');//
-					 * 页码部分的高度调整
-					 */
-				}
-
-			})
 	// 热点文章表格
 	table.render({
 				elem : '#table-forum',
@@ -132,6 +90,86 @@ layui.use(['element', 'carousel', 'table'], function() {
 					$('#table-forum').next().find('.layui-table-header').css({
 								"display" : "none"
 							});
+					// $('th').hide();// 表头隐藏的样式
+					// $('.layui-table .layui-table-cell >
+					// span').css({'font-weight' : 'bold'});// 表头字体样式
+					/*
+					 * $('th').css({'background-color': '#5792c6', 'color':
+					 * '#fff','font-weight':'bold'}) 表头的样式
+					 * $('.layui-table-page').css('margin-top', '40px');//
+					 * 页码部分的高度调整
+					 */
+				}
+
+			})
+	// 项目报名情况表格
+	table.render({
+				elem : '#table-application',
+				height : 200,
+				url : "getapplication.action?op=app" // 数据接口
+				,
+				page : false // 开启分页
+				,
+				cols : [[ // 表头
+				{
+							field : '',
+							title : '项目名称',
+							templet : function(d) {
+								if (d.protype == 0) {
+									return d.proname + "(个人赛)"
+								} else if (d.protype == 1) {
+									return d.proname + "(学生团体赛)"
+								} else {
+									return d.proname + "(教师团体赛)"
+								}
+
+							},
+							width:150
+						}, {
+							field : 'currentnum',
+							title : '已报人数'
+						}, {
+							field : 'totallimit',
+							title : '人数限制'
+						}]],
+				done : function(res, curr, count) {
+
+					// $('th').hide();// 表头隐藏的样式
+					// $('.layui-table .layui-table-cell >
+					// span').css({'font-weight' : 'bold'});// 表头字体样式
+					/*
+					 * $('th').css({'background-color': '#5792c6', 'color':
+					 * '#fff','font-weight':'bold'}) 表头的样式
+					 * $('.layui-table-page').css('margin-top', '40px');//
+					 * 页码部分的高度调整
+					 */
+				}
+
+			})
+	// 报名排行
+	table.render({
+				elem : '#table-score',
+				height : 200,
+				url : "getapplication.action?op=score" // 数据接口
+				,
+				page : false // 开启分页
+				,
+				cols : [[ // 表头
+				{
+							field : '',
+							title : '排名',
+							type:'numbers'
+						},
+				{
+							field : 'collegename',
+							title : '学院名称'
+						}, {
+							field : 'scorenumber',
+							title : '学院分数',
+							sort:true
+						}]],
+				done : function(res, curr, count) {
+
 					// $('th').hide();// 表头隐藏的样式
 					// $('.layui-table .layui-table-cell >
 					// span').css({'font-weight' : 'bold'});// 表头字体样式

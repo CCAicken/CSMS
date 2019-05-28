@@ -9,6 +9,7 @@ import util.LayuiData;
 import com.alibaba.fastjson.JSON;
 
 import model.VMatch;
+import model.VScore;
 
 public class getApplication extends BaseAction {
 
@@ -18,7 +19,18 @@ public class getApplication extends BaseAction {
 	public String execute() {
 	String op=	request.getParameter("op");
 		if(op.equals("score")){
-			List list= bdao.select("select collegename from VScore where collegename!='' group by collegename  union select teacollegename from VScore where teacollegename !=''  group by teacollegename ;");
+			List<VScore> scorelist=scoredao.getCollegeScoreOrder();
+			try {
+				out = response.getWriter();
+				LayuiData data = new LayuiData(0, "³É¹¦", 2, scorelist);
+
+				out.write(JSON.toJSONString(data));
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return SUCCESS;
 		}else {
 			List<VMatch> list = matchdao.selectAll();
