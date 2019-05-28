@@ -22,6 +22,11 @@ public interface ScoreCollegeDAO {
 	 * @return List<ScoreCollege>数据集
 	 */
 	public List<VCollegeScore> getAllCollegeScore();
+	/**
+	 * 分页查询所有学院成绩
+	 * @return List<ScoreCollege>数据集
+	 */
+	public List<VCollegeScore> getAllScoreByPage(int pageSize,int startPage);
 	
 	/**
 	
@@ -45,6 +50,11 @@ public interface ScoreCollegeDAO {
 	 * @param pageSize 每页显示数量
 	 */
 	public int getpageAmount(int pageSize);
+	
+	/**
+	 * 查询数据总条数
+	 */
+	public int geDataCount();
 	/**
 	 * 查询分页总页数（带条件）
 	 * @param opraton 条件
@@ -52,4 +62,24 @@ public interface ScoreCollegeDAO {
 	 * @return
 	 */
 	public int getpageAmountbysearch(String opraton,int pageSize); 
+	/**
+	 * 获取某个学院学生的总分
+	 * @return
+	 */
+	public double allStuScore(int collegeid);
+	/**
+	 * 获取某个学院学生的平均分
+	 * @return
+	 */
+	public double avgStuScore(int collegeid);
+	/**
+	 * 获取某个学院教师的总分
+	 * @return
+	 */
+	public double allTeaScore(int collegeid);
+	/**
+	 * 获取某个学院教师的平均分
+	 * @return
+	 */
+	public double avgTeaScore(int collegeid);
 }

@@ -21,4 +21,27 @@ public interface ScoreStudentDAO {
 	 * @return List<ScoreStudent>数据集
 	 */
 	public List<VStudentScore> getAllScoreStudent();
+	/**
+	 * 分页查询所有学生成绩
+	 * @return List<ScoreStudent>数据集
+	 * @param startPage 需要的页数的数据
+	 * @param pageSize 每页的记录数
+	 * @return
+	 */
+	public List<VStudentScore> getAllScoreByPage(int startPage,int pageSize);
+	/**
+	 * 获取所有学生成绩数量
+	 * @return
+	 */
+	public int allScoreCount();
+	/**
+	 * 获取某个学生的总分
+	 * @return
+	 */
+	public double allScore(String userid);
+	/**
+	 * 获取某个学生的平均分
+	 * @return
+	 */
+	public double avgScore(String userid);
 }

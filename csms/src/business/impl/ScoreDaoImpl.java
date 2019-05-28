@@ -47,7 +47,7 @@ public class ScoreDaoImpl implements ScoreDAO {
 
 	@Override
 	public List<VScore> getByCollege(int collegeid) {
-		String hql = "from TScore where collegeid=?";
+		String hql = "from VScore where collegeid=?";
 		Object[] param = { collegeid };
 		List<VScore> list = bdao.select(hql, param);
 		if (list != null && list.size() > 0) {

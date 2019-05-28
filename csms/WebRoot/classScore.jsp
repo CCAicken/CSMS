@@ -113,7 +113,7 @@
                 },{
                 	align:'center',
                     field: 'scorenumber',
-                    title: '班级成绩',
+                    title: '平均成绩',
                     width: 100
                 },{
                 	align:'center',
@@ -132,6 +132,29 @@
     //查看详情点击事件
     $(document).on('click', ".query", function() {
 	    var classid = $(this).parent().parent().next().children().text().trim();
+	    /* $.ajax({
+			type : 'Post',
+			url : 'getscore.action',
+			data : {
+				classid : classid,
+				op : "classdetail"
+			},
+			dataType : 'json',
+			success : function(data) {
+				if(data=="请刷新后重试！"){
+					layer.msg("请刷新后重试！");
+				}
+			},
+			error : function(XMLHttpRequest, textStatus) { //����ʧ��
+				if (textStatus == 'timeout') {
+					var xmlhttp = window.XMLHttpRequest ? new window.XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHttp");
+					xmlhttp.abort();
+					layer.msg("超时，请重试！");
+				} else if (textStatus == "error") {
+					layer.msg("请刷新后重试！");
+				}
+			}
+		}) */
 		window.location.href="getscore.action?op=classdetail&classid="+classid;
 	});
 </script>

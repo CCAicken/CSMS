@@ -2,8 +2,9 @@ package business.impl;
 
 import java.util.List;
 
-import model.TStudent;
-import model.TTeacher;
+import model.VStudent;
+import model.VTeacher;
+import model.VStudent;
 import basic.iHibBaseDAO;
 import business.dao.UserDAO;
 
@@ -16,8 +17,8 @@ public class UserDaoImpl implements UserDAO {
 //		bdao =  new iHibBaseDAOImpl();
 //	}
 	@Override
-	public TStudent loginStu(String userid, String pwd) {
-		TStudent student = (TStudent)bdao.findById(TStudent.class, userid);
+	public VStudent loginStu(String userid, String pwd) {
+		VStudent student = (VStudent)bdao.findById(VStudent.class, userid);
 		if(student != null && !student.getUserid().equals("")){
 			if(student.getPwd().equals(pwd)){
 				return student;
@@ -30,14 +31,14 @@ public class UserDaoImpl implements UserDAO {
 	}
 //	public static void main(String[] args){
 //		UserDAO dao = new UserDaoImpl();
-//		TStudent stu = dao.loginStu("1001", "123456");
-//		//TStudent stu = dao.getStudent("1001");
+//		VStudent stu = dao.loginStu("1001", "123456");
+//		//VStudent stu = dao.geVStudent("1001");
 //		if(stu!=null){
 //		System.out.print(stu.getUsername());
 //		}
 //	}
 	@Override
-	public boolean insertStu(TStudent user) {
+	public boolean insertStu(VStudent user) {
 		int row = (Integer)bdao.insert(user);
 		if (row>0) {
 			return true;
@@ -50,7 +51,7 @@ public class UserDaoImpl implements UserDAO {
 	public boolean updateStuPwd(String userid, String pwd) {
 //		String sql="update T_Student set pwd=? where userid=?";
 //		Object[] param = {pwd,userid};
-		TStudent stu= (TStudent)bdao.findById(TStudent.class, userid);
+		VStudent stu= (VStudent)bdao.findById(VStudent.class, userid);
 		stu.setPwd(pwd);
 		boolean flag = bdao.update(stu);
 		return flag;
@@ -61,7 +62,7 @@ public class UserDaoImpl implements UserDAO {
 //}
 	@Override
 	public boolean deleteStu(String userid) {
-		TStudent student = (TStudent)bdao.findById(TStudent.class, userid);
+		VStudent student = (VStudent)bdao.findById(VStudent.class, userid);
 		if(student != null && !student.getUserid().equals("")){
 			return bdao.delete(student);
 		}else{
@@ -70,8 +71,8 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public TStudent getStudent(String userid) {
-		TStudent student = (TStudent)bdao.findById(TStudent.class, userid);
+	public VStudent getStudent(String userid) {
+		VStudent student = (VStudent)bdao.findById(VStudent.class, userid);
 		if(student != null && !student.getUserid().equals("")){
 			return student;
 		}else{
@@ -80,10 +81,10 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public List<TStudent> selectStuByColl(String collegeid) {
-		String hql = "from TStudent where collegeid=?";
+	public List<VStudent> selectStuByColl(String collegeid) {
+		String hql = "from VStudent where collegeid=?";
 		Object[] param = {collegeid};
-		List<TStudent> list = bdao.select(hql, param);
+		List<VStudent> list = bdao.select(hql, param);
 		if(list!=null&& list.size()>0){
 			return list;
 		}else{
@@ -92,10 +93,10 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public List<TStudent> selectStuByMajor(String majorid) {
-		String hql = "from TStudent where majorid=?";
+	public List<VStudent> selectStuByMajor(String majorid) {
+		String hql = "from VStudent where majorid=?";
 		Object[] param = {majorid};
-		List<TStudent> list = bdao.select(hql, param);
+		List<VStudent> list = bdao.select(hql, param);
 		if(list!=null&& list.size()>0){
 			return list;
 		}else{
@@ -104,10 +105,10 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public List<TStudent> selectStuByClass(String classid) {
-		String hql = "from TStudent where classid=?";
+	public List<VStudent> selectStuByClass(String classid) {
+		String hql = "from VStudent where classid=?";
 		Object[] param = {classid};
-		List<TStudent> list = bdao.select(hql, param);
+		List<VStudent> list = bdao.select(hql, param);
 		if(list!=null&& list.size()>0){
 			return list;
 		}else{
@@ -116,8 +117,8 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public TTeacher loginTea(String userid, String pwd) {
-		TTeacher tea = (TTeacher)bdao.findById(TTeacher.class, userid);
+	public VTeacher loginTea(String userid, String pwd) {
+		VTeacher tea = (VTeacher)bdao.findById(VTeacher.class, userid);
 		if(tea != null && !tea.getUserid().equals("")){
 			if(tea.getPwd().equals(pwd)){
 				return tea;
@@ -130,7 +131,7 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean insertTea(TTeacher user) {
+	public boolean insertTea(VTeacher user) {
 		int row = (Integer)bdao.insert(user);
 		if (row>0) {
 			return true;
@@ -141,14 +142,14 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public boolean updateTeaPwd(String userid, String pwd) {
-		TTeacher tea = (TTeacher) bdao.findById(TTeacher.class, userid);
+		VTeacher tea = (VTeacher) bdao.findById(VTeacher.class, userid);
 		tea.setPwd(pwd);
 		return bdao.update(tea);
 	}
 
 	@Override
 	public boolean deleteTea(String userid) {
-		TTeacher teacher = (TTeacher)bdao.findById(TTeacher.class, userid);
+		VTeacher teacher = (VTeacher)bdao.findById(VTeacher.class, userid);
 		if(teacher != null && !teacher.getUserid().equals("")){
 			return bdao.delete(teacher);
 		}else{
@@ -157,8 +158,8 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public TTeacher getTeacher(String userid) {
-		TTeacher teacher = (TTeacher)bdao.findById(TTeacher.class, userid);
+	public VTeacher getTeacher(String userid) {
+		VTeacher teacher = (VTeacher)bdao.findById(VTeacher.class, userid);
 		if(teacher != null && !teacher.getUserid().equals("")){
 			return teacher;
 		}else{
@@ -167,10 +168,10 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public List<TTeacher> selectTeaByColl(String collegeid) {
-		String hql = "from TTeacher where collegeid=?";
+	public List<VTeacher> selectTeaByColl(String collegeid) {
+		String hql = "from VTeacher where collegeid=?";
 		Object[] param = {collegeid};
-		List<TTeacher> list = bdao.select(hql, param);
+		List<VTeacher> list = bdao.select(hql, param);
 		if(list!=null&& list.size()>0){
 			return list;
 		}else{

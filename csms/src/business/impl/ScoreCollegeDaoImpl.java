@@ -69,5 +69,63 @@ public class ScoreCollegeDaoImpl implements ScoreCollegeDAO {
 		Object[] param = {opraton};
 		return bdao.selectPages(sql,param, pageSize);
 	}
-
+	@Override
+	public List<VCollegeScore> getAllScoreByPage(int pageSize, int startPage) {
+		String hql="from VCollegeScore";
+		List<VCollegeScore> list=bdao.selectByPage(hql, startPage, pageSize);
+		if(list!=null && list.size()>0){
+			return list;
+		}else{
+			return null;
+		}
+	}
+	@Override
+	public int geDataCount() {
+		String sql="select count(*) from VCollegeScore";
+		return bdao.selectValue(sql);
+	}
+	@Override
+	public double allStuScore(int collegeid) {
+		String hql = "select sum(scorenumber) as scorenumber from VScore where collegeid=?";
+		Object[] param = {collegeid};
+		List list = bdao.select(hql, param);
+		if(list!=null && list.size()>0){
+			return (Double)list.get(0);
+		}else{
+			return 0;
+		}
+	}
+	@Override
+	public double avgStuScore(int collegeid) {
+		String hql = "select avg(scorenumber) as scorenumber from VScore where collegeid=?";
+		Object[] param = {collegeid};
+		List list = bdao.select(hql, param);
+		if(list!=null && list.size()>0){
+			return (Double)list.get(0);
+		}else{
+			return 0;
+		}
+	}
+	@Override
+	public double allTeaScore(int collegeid) {
+		String hql = "select sum(scorenumber) as scorenumber from VScore where teacollegeid=?";
+		Object[] param = {collegeid};
+		List list = bdao.select(hql, param);
+		if(list!=null && list.size()>0){
+			return (Double)list.get(0);
+		}else{
+			return 0;
+		}
+	}
+	@Override
+	public double avgTeaScore(int collegeid) {
+		String hql = "select avg(scorenumber) as scorenumber from VScore where teacollegeid=?";
+		Object[] param = {collegeid};
+		List list = bdao.select(hql, param);
+		if(list!=null && list.size()>0){
+			return (Double)list.get(0);
+		}else{
+			return 0;
+		}
+	}
 }

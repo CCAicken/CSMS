@@ -2,8 +2,8 @@ package business.dao;
 
 import java.util.List;
 
-import model.TStudent;
-import model.TTeacher;
+import model.VStudent;
+import model.VTeacher;
 /**
  * 用户业务接口类
  * @author Administrator
@@ -17,7 +17,7 @@ public interface UserDAO {
 	 * @param pwd 用户密码
 	 * @return user用户对象
 	 */
-	public TStudent loginStu(String userid,String pwd);
+	public VStudent loginStu(String userid,String pwd);
 	
 	//public boolean insert(String userid,String username,String pwd,String agend,String mobile,Classes classes,College college,Role role);
 	/**
@@ -25,7 +25,7 @@ public interface UserDAO {
 	 * @param user 用户对象
 	 * @return 添加结果，true为成功，false为失败
 	 */
-	public boolean insertStu(TStudent user);
+	public boolean insertStu(VStudent user);
 	
 	/**
 	 * 修改学生密码
@@ -47,28 +47,28 @@ public interface UserDAO {
 	 * @param userid 用户id
 	 * @return 用户对象
 	 */
-	public TStudent getStudent(String userid);
+	public VStudent getStudent(String userid);
 	
 	/**
 	 * 根据学院id获取用户对象列表
 	 * @param collegeid 学院id
 	 * @return 用户对象列表
 	 */
-	public List<TStudent> selectStuByColl(String collegeid);
+	public List<VStudent> selectStuByColl(String collegeid);
 	
 	/**
 	 * 根据专业id获取用户对象列表
 	 * @param majorid 专业id
 	 * @return 用户对象列表
 	 */
-	public List<TStudent> selectStuByMajor(String majorid);
+	public List<VStudent> selectStuByMajor(String majorid);
 	
 	/**
 	 * 根据班级id获取用户对象列表
 	 * @param classid 班级id
 	 * @return 用户对象列表
 	 */
-	public List<TStudent> selectStuByClass(String classid);
+	public List<VStudent> selectStuByClass(String classid);
 
 	//教师方法
 	
@@ -78,14 +78,14 @@ public interface UserDAO {
 	 * @param pwd 用户密码
 	 * @return user用户对象
 	 */
-	public TTeacher loginTea(String userid,String pwd);
+	public VTeacher loginTea(String userid,String pwd);
 	
 	/**
 	 * 添加教师用户对象
 	 * @param user 用户对象
 	 * @return 添加结果，true为成功，false为失败
 	 */
-	public boolean insertTea(TTeacher user);
+	public boolean insertTea(VTeacher user);
 	
 	/**
 	 * 修改学生密码
@@ -107,12 +107,12 @@ public interface UserDAO {
 	 * @param userid 用户id
 	 * @return 用户对象
 	 */
-	public TTeacher getTeacher(String userid);
+	public VTeacher getTeacher(String userid);
 	
 	/**
 	 * 根据学院id获取教师对象列表
 	 * @param collegeid 学院id
 	 * @return 教师对象列表
 	 */
-	public List<TTeacher> selectTeaByColl(String collegeid);
+	public List<VTeacher> selectTeaByColl(String collegeid);
 }
