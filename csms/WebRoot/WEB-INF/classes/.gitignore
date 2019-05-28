@@ -1,5 +1,6 @@
 /.struts.mex
 /action/
+<<<<<<< HEAD
 /applicationContext.xml
 /basic/
 /business/
@@ -10,3 +11,6 @@
 /servlet/
 /struts.xml
 /util/
+=======
+/business/
+>>>>>>> refs/remotes/origin/master

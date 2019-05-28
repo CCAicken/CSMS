@@ -43,12 +43,12 @@ public class ChangePwdAction extends BaseAction {
 					}
 				}else{
 					TTeacher teacher = (TTeacher)session.getAttribute("loginuser");
-					if(oldpwd != teacher.getPwd() || !oldpwd.equals(teacher.getPwd())){
+					if(!oldpwd.equals(teacher.getPwd())){
 						out.write("原密码不正确");
 						out.flush();
 						out.close();
 					}else{
-						if(userdao.updateStuPwd(teacher.getUserid(), newpwd)){
+						if(userdao.updateTeaPwd(teacher.getUserid(), newpwd)){
 							//teacher.setPwd(newpwd);
 //							session.setAttribute("loginuser", teacher);
 //							session.setAttribute("role", RoleType.Student);

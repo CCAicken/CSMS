@@ -42,4 +42,7 @@
 		</action>
 		<action name="getapplication"
 			class="action.control.getApplication">
+		</action>
+		<action name="arrangeview"
+			class="action.control.getArrangeAction">
 		</action></package></struts>    

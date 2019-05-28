@@ -146,7 +146,13 @@ public class UserDaoImpl implements UserDAO {
 		tea.setPwd(pwd);
 		return bdao.update(tea);
 	}
-
+//	public static void main(String[] args){
+//		UserDAO dao = new UserDaoImpl();
+//		TStudent stu = dao.getStudent("1001");
+//		if(stu!=null){
+//		System.out.print(dao.updateTeaPwd("94001", "123456"));
+//		}
+//	}
 	@Override
 	public boolean deleteTea(String userid) {
 		VTeacher teacher = (VTeacher)bdao.findById(VTeacher.class, userid);

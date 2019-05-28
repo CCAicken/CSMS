@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 
-import model.TStudent;
-import model.TTeacher;
+import model.VStudent;
+import model.VTeacher;
 
 import common.properties.RoleType;
 
@@ -49,14 +49,14 @@ public class LoginAction extends BaseAction {
 			errorsText="验证码不正确";
 			return ERROR;
 		}else {
-			TStudent stu = userdao.loginStu(userid, password);
+			VStudent stu = userdao.loginStu(userid, password);
 			if(stu!=null){
 				session.setAttribute("loginuser", stu);
 				session.setAttribute("role", RoleType.Student);
 				return SUCCESS;
 			}
 			else{
-				TTeacher tea = userdao.loginTea(userid, password);
+				VTeacher tea = userdao.loginTea(userid, password);
 				if(tea!=null){
 					session.setAttribute("loginuser", tea);
 					session.setAttribute("role", RoleType.Teacher);
