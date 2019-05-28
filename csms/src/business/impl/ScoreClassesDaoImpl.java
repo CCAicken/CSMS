@@ -3,7 +3,9 @@ package business.impl;
 import java.util.List;
 
 import model.VClassScore;
+import model.VScore;
 import basic.iHibBaseDAO;
+import basic.iHibBaseDAOImpl;
 import business.dao.ScoreClassesDAO;
 
 public class ScoreClassesDaoImpl implements ScoreClassesDAO {
@@ -15,7 +17,7 @@ public class ScoreClassesDaoImpl implements ScoreClassesDAO {
 //		// TODO Auto-generated constructor stub
 //		bdao = new iHibBaseDAOImpl();
 //	}
-	@Override
+//	@Override
 	public VClassScore getByClassid(int classid) {
 		//String sql="select collegeid,collegename,majorid,majorname,classid,classname,ROUND(AVG(scorenumber), 2) as scorenumber from V_StudentScore where classid=? GROUP BY classid,classname,collegeid,collegename,majorid,majorname";
 		String hql = "from VClassScore where classid=?";
@@ -65,34 +67,28 @@ public class ScoreClassesDaoImpl implements ScoreClassesDAO {
 //	}
 	@Override
 	public int allScoreCount() {
-		String hql = "select count(classid) from V_ClassScore";
+		String hql = "select count(classid) from VClassScore";
 		int count = bdao.selectValue(hql);
 		return count;
 	}
 	@Override
 	public double allScore(int classid) {
-		String hql = "select sum(scorenumber) as scorenumber from V_ClassScore where classid=?";
+		String hql = "select sum(scorenumber) as scorenumber from VScore where classid=?";
 		Object[] param = {classid};
-		List<VClassScore> list = bdao.select(hql,param);
+		List list = bdao.select(hql, param);
 		if(list!=null && list.size()>0){
-			for(VClassScore score:list){
-				return score.getScorenumber();
-			}
-			return 0;
+			return (Double)list.get(0);
 		}else{
 			return 0;
 		}
 	}
 	@Override
 	public double avgScore(int classid) {
-		String hql = "select avg(scorenumber) as scorenumber from V_ClassScore where classid=?";
+		String hql = "select avg(scorenumber) as scorenumber from VScore where classid=?";
 		Object[] param = {classid};
-		List<VClassScore> list = bdao.select(hql,param);
+		List list = bdao.select(hql, param);
 		if(list!=null && list.size()>0){
-			for(VClassScore score:list){
-				return score.getScorenumber();
-			}
-			return 0;
+			return (Double)list.get(0);
 		}else{
 			return 0;
 		}

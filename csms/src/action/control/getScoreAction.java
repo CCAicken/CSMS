@@ -1,7 +1,6 @@
 package action.control;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.util.List;
 
 import model.ReturnData;
@@ -40,15 +39,10 @@ public class getScoreAction extends BaseAction {
 					List<VScore> scorelist = scoredao.getByClass(Integer.parseInt(classid));
 					double totalScore = scoreclassesdao.allScore(Integer.parseInt(classid));
 					double avgScore = scoreclassesdao.avgScore(Integer.parseInt(classid));
-					ReturnData data = new ReturnData();
-					data.code = ReturnData.SUCCESS;
-					data.totalScore = totalScore;
-					data.avgScore = avgScore;
-					data.data = scorelist;
-					data.msg = "成功";
-					out.write(JSON.toJSONString(data));
-					out.flush();
-					out.close();
+					request.setAttribute("scorelist", scorelist);
+					request.setAttribute("totalScore", totalScore);
+					request.setAttribute("avgScore", avgScore);
+					return SUCCESS;
 				}else{
 					out.write("请刷新后重试！");
 					out.flush();
