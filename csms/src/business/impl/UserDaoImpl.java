@@ -57,7 +57,7 @@ public class UserDaoImpl implements UserDAO {
 	}
 //public static void main(String[] args){
 //	UserDaoImpl udao= new UserDaoImpl();
-//	System.out.println(udao.updateStuPwd("1001", "111111"));
+//	System.out.println(udao.updateTeaPwd("94001", "111111"));
 //}
 	@Override
 	public boolean deleteStu(String userid) {
@@ -141,10 +141,9 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public boolean updateTeaPwd(String userid, String pwd) {
-		TTeacher teacher = new TTeacher();
-		teacher.setUserid(userid);
-		teacher.setPwd(pwd);
-		return bdao.update(teacher);
+		TTeacher tea = (TTeacher) bdao.findById(TTeacher.class, userid);
+		tea.setPwd(pwd);
+		return bdao.update(tea);
 	}
 
 	@Override

@@ -3,13 +3,8 @@ package action.control;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpSession;
-
-import model.*;
-import business.dao.UserDAO;
-import business.impl.UserDaoImpl;
-
-import com.opensymphony.xwork2.ActionSupport;
+import model.TStudent;
+import model.TTeacher;
 
 import common.properties.RoleType;
 
@@ -26,31 +21,46 @@ public class ChangePwdAction extends BaseAction {
 				String oldpwd = request.getParameter("oldpwd");
 				String newpwd = request.getParameter("newpwd");
 				String userid = request.getParameter("userid");
-				UserDAO udao = new UserDaoImpl();
 				if(usertype == RoleType.Student){
 					TStudent student = (TStudent)session.getAttribute("loginuser");
 					if(!oldpwd.equals(student.getPwd())){
-						out.print("原密码不正确");
+						out.write("原密码不正确");
+						out.flush();
+						out.close();
 					}else{
-						if(udao.updateStuPwd(userid, newpwd)){
-							student.setPwd(newpwd);
-							session.setAttribute("loginuser", student);
-							out.print("修改成功");
+						if(userdao.updateStuPwd(userid, newpwd)){
+							//student.setPwd(newpwd); 
+//							session.setAttribute("loginuser", student);
+//							session.setAttribute("role", RoleType.Student);
+							out.write("修改成功");
+							out.flush();
+							out.close();
 						}else{
-							out.print("修改失败");
+							out.write("修改失败");
+							out.flush();
+							out.close();
 						}
 					}
 				}else{
 					TTeacher teacher = (TTeacher)session.getAttribute("loginuser");
 					if(oldpwd != teacher.getPwd() || !oldpwd.equals(teacher.getPwd())){
-						out.print("原密码不正确");
+						out.write("原密码不正确");
+						out.flush();
+						out.close();
 					}else{
-						if(udao.updateStuPwd(teacher.getUserid(), newpwd)){
-							teacher.setPwd(newpwd);
-							session.setAttribute("loginuser", teacher);
-							out.print("修改成功");
+						if(userdao.updateStuPwd(teacher.getUserid(), newpwd)){
+							//teacher.setPwd(newpwd);
+//							session.setAttribute("loginuser", teacher);
+//							session.setAttribute("role", RoleType.Student);
+							//out.print("修改成功");
+							out.write("修改成功");
+							out.flush();
+							out.close();
 						}else{
-							out.print("修改失败");
+							//out.print("修改失败");
+							out.write("修改失败");
+							out.flush();
+							out.close();
 						}
 					}
 				}
