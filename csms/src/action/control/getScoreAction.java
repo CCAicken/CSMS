@@ -16,30 +16,34 @@ import model.VTeacher;
 import com.alibaba.fastjson.JSON;
 
 public class getScoreAction extends BaseAction {
-	private String startPage,limit,collegeid,majorid,classid,strsearch;
+	private String collegeid = "", majorid = "", classid = "", strsearch = "";
+	private int startPage = 1, limit = 1;
+
 	/**
 	 * @return
 	 */
 	public String execute() {
 		String op = request.getParameter("op");
-		if(op.equals("class")){
-			startPage = request.getParameter("page");// 当前
-			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
-			String collegeid = request.getParameter("collegeid");
-			String majorid = request.getParameter("majorid");
-			
-			String strsearch="";
-			if(collegeid!=null&&!collegeid.equals(""))
-			{
-				strsearch=" where collegeid='"+collegeid+"'";
-			}
-			if(majorid!=null&&!majorid.equals("")){
-				strsearch=" where majorid='"+majorid+"'";
-			List<VClassScore> clalist = scoreclassesdao.getAllScoreByPage(strsearch,Integer.parseInt(startPage), limit);
-			int count = scoreclassesdao.allScoreCount(strsearch);
+		if (op.equals("class")) {
 			try {
+				startPage = Integer.parseInt(request.getParameter("page"));// 当前
+				limit = Integer.parseInt(request.getParameter("limit"));// 条数
+				collegeid = request.getParameter("collegeid");
+				majorid = request.getParameter("majorid");
+				classid = request.getParameter("classid");
+				if (collegeid != null && !collegeid.equals("")) {
+					strsearch = " where collegeid='" + collegeid + "'";
+				}
+				if (majorid != null && !majorid.equals("")) {
+					strsearch = " where majorid='" + majorid + "'";
+				}
+				if (classid != null && !classid.equals("")) {
+					strsearch = " where classid='" + classid + "'";
+				}
+				List<VClassScore> clalist = scoreclassesdao.getAllScoreByPage(strsearch, startPage, limit);
+				int count = scoreclassesdao.allScoreCount(strsearch);
 				ReturnData rd = new ReturnData();
-				rd.code=ReturnData.SUCCESS;
+				rd.code = ReturnData.SUCCESS;
 				rd.count = count;
 				rd.data = clalist;
 				out.write(JSON.toJSONString(rd));
@@ -48,21 +52,25 @@ public class getScoreAction extends BaseAction {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else if(op.equals("classdetail")){
-			try{
+		} else if (op.equals("classdetail")) {
+			try {
 				String classid = request.getParameter("classid");
-				if(classid!=null && !classid.equals("")){
-					TClass tclass = (TClass)bdao.findById(TClass.class, Integer.parseInt(classid));
-					List<VScore> scorelist = scoredao.getByClass(Integer.parseInt(classid));
-					double totalScore = scoreclassesdao.allScore(Integer.parseInt(classid));
-					double avgScore = scoreclassesdao.avgScore(Integer.parseInt(classid));
+				if (classid != null && !classid.equals("")) {
+					TClass tclass = (TClass) bdao.findById(TClass.class,
+							Integer.parseInt(classid));
+					List<VScore> scorelist = scoredao.getByClass(Integer
+							.parseInt(classid));
+					double totalScore = scoreclassesdao.allScore(Integer
+							.parseInt(classid));
+					double avgScore = scoreclassesdao.avgScore(Integer
+							.parseInt(classid));
 					request.setAttribute("scorelist", scorelist);
 					request.setAttribute("totalScore", totalScore);
 					request.setAttribute("avgScore", avgScore);
 					request.setAttribute("title", tclass.getClassname());
 					request.setAttribute("type", "class");
 					return SUCCESS;
-				}else{
+				} else {
 					out.write("请刷新后重试！");
 					out.flush();
 					out.close();
@@ -70,20 +78,19 @@ public class getScoreAction extends BaseAction {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else if(op.equals("college")){
-			String startPage = request.getParameter("page");// 当前
-			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
-			String collegeid = request.getParameter("collegeid");
-			String strsearch="";
-			if(collegeid!=null&&!collegeid.equals(""))
-			{
-				strsearch=" where collegeid='"+collegeid+"'";
+		} else if (op.equals("college")) {
+			startPage = Integer.parseInt(request.getParameter("page"));// 当前
+			limit = Integer.parseInt(request.getParameter("limit"));// 条数
+			collegeid = request.getParameter("collegeid");
+			if (collegeid != null && !collegeid.equals("")) {
+				strsearch = " where collegeid='" + collegeid + "'";
 			}
-			List<VCollegeScore> clalist = scorecollegedao.getAllScoreByPage(strsearch,Integer.parseInt(startPage),limit);
+			List<VCollegeScore> clalist = scorecollegedao.getAllScoreByPage(
+					strsearch, startPage, limit);
 			int count = scorecollegedao.geAllCount(strsearch);
 			try {
 				ReturnData rd = new ReturnData();
-				rd.code=ReturnData.SUCCESS;
+				rd.code = ReturnData.SUCCESS;
 				rd.count = count;
 				rd.data = clalist;
 				out.write(JSON.toJSONString(rd));
@@ -92,20 +99,27 @@ public class getScoreAction extends BaseAction {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else if(op.equals("collegedetail")){
-			try{
+		} else if (op.equals("collegedetail")) {
+			try {
 				String collegeid = request.getParameter("collegeid");
-				if(collegeid!=null && !collegeid.equals("")){
-					TCollege college = (TCollege)bdao.findById(TCollege.class, Integer.parseInt(collegeid));
-					List<VScore> scorelist = scoredao.getByCollege(Integer.parseInt(collegeid));
-					if(scorelist!=null && scorelist.size()>0){
-						double stuTotalScore = scorecollegedao.allStuScore(Integer.parseInt(collegeid));
-						double stuAvgScore = scorecollegedao.avgStuScore(Integer.parseInt(collegeid));
-						double teaTotalScore = scorecollegedao.allTeaScore(Integer.parseInt(collegeid));
-						double teaAvgScore = scorecollegedao.avgTeaScore(Integer.parseInt(collegeid));
+				if (collegeid != null && !collegeid.equals("")) {
+					TCollege college = (TCollege) bdao.findById(TCollege.class,
+							Integer.parseInt(collegeid));
+					List<VScore> scorelist = scoredao.getByCollege(Integer
+							.parseInt(collegeid));
+					if (scorelist != null && scorelist.size() > 0) {
+						double stuTotalScore = scorecollegedao
+								.allStuScore(Integer.parseInt(collegeid));
+						double stuAvgScore = scorecollegedao
+								.avgStuScore(Integer.parseInt(collegeid));
+						double teaTotalScore = scorecollegedao
+								.allTeaScore(Integer.parseInt(collegeid));
+						double teaAvgScore = scorecollegedao
+								.avgTeaScore(Integer.parseInt(collegeid));
 						request.setAttribute("teacher", "none");
-						for(VScore score:scorelist){
-							if(score.getProtype() == 3||score.getProtype()==4){
+						for (VScore score : scorelist) {
+							if (score.getProtype() == 3
+									|| score.getProtype() == 4) {
 								request.setAttribute("teacher", "have");
 								break;
 							}
@@ -117,7 +131,7 @@ public class getScoreAction extends BaseAction {
 						request.setAttribute("teaAvgScore", teaAvgScore);
 						request.setAttribute("title", college.getCollegename());
 						request.setAttribute("type", "college");
-					}else{
+					} else {
 						request.setAttribute("scorelist", null);
 						request.setAttribute("stuTotalScore", 0);
 						request.setAttribute("stuAvgScore", 0);
@@ -127,7 +141,7 @@ public class getScoreAction extends BaseAction {
 						request.setAttribute("type", "college");
 					}
 					return SUCCESS;
-				}else{
+				} else {
 					out.write("请刷新后重试！");
 					out.flush();
 					out.close();
@@ -135,29 +149,27 @@ public class getScoreAction extends BaseAction {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else if(op.equals("single")){
-			String startPage = request.getParameter("page");// 当前
-			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
-			String collegeid = request.getParameter("collegeid");
-			String majorid = request.getParameter("majorid");
-			String classid = request.getParameter("classid");
-			
-			String strsearch="";
-			if(collegeid!=null&&!collegeid.equals(""))
-			{
-				strsearch=" where collegeid='"+collegeid+"'";
+		} else if (op.equals("single")) {
+			startPage = Integer.parseInt(request.getParameter("page"));// 当前
+			limit = Integer.parseInt(request.getParameter("limit"));// 条数
+			collegeid = request.getParameter("collegeid");
+			majorid = request.getParameter("majorid");
+			classid = request.getParameter("classid");
+			if (collegeid != null && !collegeid.equals("")) {
+				strsearch = " where collegeid='" + collegeid + "'";
 			}
-			if(majorid!=null&&!majorid.equals("")){
-				strsearch=" where majorid='"+majorid+"'";
+			if (majorid != null && !majorid.equals("")) {
+				strsearch = " where majorid='" + majorid + "'";
 			}
-			if(classid!=null&&!classid.equals("")){
-				strsearch=" where classid='"+classid+"'";
+			if (classid != null && !classid.equals("")) {
+				strsearch = " where classid='" + classid + "'";
 			}
-			List<VScore> stulist = scorestudentdao.getAllScoreByPage(strsearch,Integer.parseInt(startPage),limit);
+			List<VScore> stulist = scorestudentdao.getAllScoreByPage(strsearch,
+					startPage, limit);
 			int count = scorestudentdao.allScoreCount(strsearch);
 			try {
 				ReturnData rd = new ReturnData();
-				rd.code=ReturnData.SUCCESS;
+				rd.code = ReturnData.SUCCESS;
 				rd.count = count;
 				rd.data = stulist;
 				out.write(JSON.toJSONString(rd));
@@ -166,14 +178,16 @@ public class getScoreAction extends BaseAction {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else if(op.equals("singledetail")){
-			try{
+		} else if (op.equals("singledetail")) {
+			try {
 				String userid = request.getParameter("userid");
 				String usertype = request.getParameter("usertype");
-				if(userid!=null && !userid.equals("") && usertype!=null && !usertype.equals("")){
-					if(usertype.equals("1")){
+				if (userid != null && !userid.equals("") && usertype != null
+						&& !usertype.equals("")) {
+					if (usertype.equals("1")) {
 						VStudent student = userdao.getStudent(userid);
-						List<VScore> scorelist = scorestudentdao.getScoreStudent(userid);
+						List<VScore> scorelist = scorestudentdao
+								.getScoreStudent(userid);
 						double totalScore = scorestudentdao.allScore(userid);
 						double avgScore = scorestudentdao.avgScore(userid);
 						request.setAttribute("scorelist", scorelist);
@@ -181,9 +195,10 @@ public class getScoreAction extends BaseAction {
 						request.setAttribute("avgScore", avgScore);
 						request.setAttribute("title", student.getUsername());
 						request.setAttribute("type", "single");
-					}else{
+					} else {
 						VTeacher teacher = userdao.getTeacher(userid);
-						List<VScore> scorelist = scorestudentdao.getScoreStudent(userid);
+						List<VScore> scorelist = scorestudentdao
+								.getScoreStudent(userid);
 						double totalScore = scorestudentdao.allScore(userid);
 						double avgScore = scorestudentdao.avgScore(userid);
 						request.setAttribute("scorelist", scorelist);
@@ -193,7 +208,7 @@ public class getScoreAction extends BaseAction {
 						request.setAttribute("type", "single");
 					}
 					return SUCCESS;
-				}else{
+				} else {
 					out.write("请刷新后重试！");
 					out.flush();
 					out.close();

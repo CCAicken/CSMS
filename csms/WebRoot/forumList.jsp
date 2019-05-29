@@ -82,7 +82,9 @@
                         <h1>文章列表</h1>
                     </div>
                     <div class="layui-card-body">
-                        <table class="layui-table" id="forumlist" lay-filter="test" width="100%"></table>
+	                    <div class="layui-row layui-form">
+	                        <table class="layui-table" id="forumlist" lay-filter="test" width="100%"></table>
+	                    </div>
                     </div>
                 </div>
             </div>
