@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Timestamp;
-
 /**
  * VScene entity. @author MyEclipse Persistence Tools
  */
@@ -11,8 +9,8 @@ public class VScene implements java.io.Serializable {
 	private Integer sceneid;
 	private Integer arrid;
 	private String arrname;
-	private Timestamp starttime;
-	private Timestamp endtime;
+	private String starttime;
+	private String endtime;
 	private String addr;
 	private Integer leveltype;
 	private Integer state;
@@ -53,7 +51,7 @@ public class VScene implements java.io.Serializable {
 
 	/** minimal constructor */
 	public VScene(Integer sceneid, Integer arrid, String arrname,
-			Timestamp starttime, Timestamp endtime, String addr,
+			String starttime, String endtime, String addr,
 			Integer leveltype, Integer state, Integer matchid) {
 		this.sceneid = sceneid;
 		this.arrid = arrid;
@@ -68,7 +66,7 @@ public class VScene implements java.io.Serializable {
 
 	/** full constructor */
 	public VScene(Integer sceneid, Integer arrid, String arrname,
-			Timestamp starttime, Timestamp endtime, String addr,
+			String starttime, String endtime, String addr,
 			Integer leveltype, Integer state, Integer matchid, Integer proid,
 			String proname, Integer scenelimit, Integer collegelimit,
 			Integer totallimit, Integer protype, String userid,
@@ -142,19 +140,19 @@ public class VScene implements java.io.Serializable {
 		this.arrname = arrname;
 	}
 
-	public Timestamp getStarttime() {
+	public String getStarttime() {
 		return this.starttime;
 	}
 
-	public void setStarttime(Timestamp starttime) {
+	public void setStarttime(String starttime) {
 		this.starttime = starttime;
 	}
 
-	public Timestamp getEndtime() {
+	public String getEndtime() {
 		return this.endtime;
 	}
 
-	public void setEndtime(Timestamp endtime) {
+	public void setEndtime(String endtime) {
 		this.endtime = endtime;
 	}
 
