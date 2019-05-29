@@ -70,8 +70,8 @@ public class ScoreCollegeDaoImpl implements ScoreCollegeDAO {
 		return bdao.selectPages(sql,param, pageSize);
 	}
 	@Override
-	public List<VCollegeScore> getAllScoreByPage(int startPage,int pageSize) {
-		String hql="from VCollegeScore";
+	public List<VCollegeScore> getAllScoreByPage(String strwhere,int startPage,int pageSize) {
+		String hql="from VCollegeScore"+strwhere;
 		List<VCollegeScore> list=bdao.selectByPage(hql, startPage, pageSize);
 		if(list!=null && list.size()>0){
 			return list;
@@ -80,8 +80,8 @@ public class ScoreCollegeDaoImpl implements ScoreCollegeDAO {
 		}
 	}
 	@Override
-	public int geDataCount() {
-		String sql="select count(*) from VCollegeScore";
+	public int geAllCount(String strwhere) {
+		String sql="select count(*) from VCollegeScore"+strwhere;
 		return bdao.selectValue(sql);
 	}
 	@Override

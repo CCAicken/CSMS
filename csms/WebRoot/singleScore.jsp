@@ -30,7 +30,7 @@
                     <div class="layui-inline">
                         <div class="layui-input-inline">
                             <select name="college" id="college" lay-filter="college" lay-verify="required" lay-search="">
-                                            <option value="0">选择或输入学院名称</option>
+                                            <option value="">请选择或输入学院名称</option>
                                             <c:forEach items="${listcollege}" var="obj">
                                             <option value="${obj.collegeid }">${obj.collegename }</option>
                                             </c:forEach>
@@ -40,17 +40,21 @@
                     <div class="layui-inline">
                         <div class="layui-input-inline">
                             <select name="major" id="major" lay-filter="major" lay-verify="required" lay-search="">
-                                    <option value="">选择或输入专业名称</option>
+                                    <option value="">请选择或输入专业名称</option>
                                 </select>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <div class="layui-input-inline">
-                            <select name="class" id="class" lay-filter="class" lay-verify="required" lay-search="">
-                                    <option value="">选择或输入班级名称</option>
+                            <select name="classes" id="class" lay-filter="class" lay-verify="required" lay-search="">
+                                    <option value="">请选择或输入班级名称</option>
                                 </select>
                         </div>
                     </div>
+                    <div class="layui-input-inline" style="margin-left: -10px;">
+					<button type="button" class="layui-btn layui-btn" lay-submit
+						lay-filter="search">查询</button>
+				</div>
                 </div>
                 <div class="layui-row">
                     <table class="layui-table" id="scoretable" lay-filter="demo"></table>
@@ -66,10 +70,12 @@
     <button class="layui-btn layui-btn-sm layui-bg-green query">查看详情</button>
 </script>
 <script type="text/javascript">
-    layui.use(['table', 'form','jquery'], function() {
-		/* 动态表格绑定数据 */
+    layui.use(['table', 'form','jquery','layer'], function() {
+        var layer = layui.layer;
+		/* 页面加载动态表格绑定数据 */
         var table = layui.table;
         table.render({
+        	id : 'tableOne',
             elem: '#scoretable',
             height: '800px', //高度最大化减去差值,
             url: 'getscore.action?op=single',
@@ -170,38 +176,81 @@
 		var form = layui.form;
 		var $ = layui.jquery;
 		form.render('select');
- 
-		//医院下拉选事件,获取科室下拉选
 		form.on('select(college)', function(data) {
 			var hosid = data.value;
-			//alert(hosid);
 			$.ajax({
 				type : "post",
-				url : "${pageContext.request.contextPath}/userManger/getDivision1",
-				data : {hosid:hosid},
+				url : "getmajor.action",
+				data : {collegeid:hosid},
 				dataType : "json",
-				success : function(d) {
-					 var tmp = '<option value="">--请选择--</option>';
-					 //改变医院时第三级下拉框回复原样
-					 $("#division2").html(tmp);
-					 for ( var i in d) {
-						 tmp += '<option value="' + d[i].id +  '">' + d[i].divisionName + '</option>';
-					}
-					 $("#division1").html(tmp);					
-					 form.render(); 
+				success : function(succ) {
+					if(succ=="失败"){
+						layer.msg("请刷新后重试");
+					}else{
+						 var tmp = '<option value="">请选择或输入专业名称</option>';
+						 for ( var i in succ.data) {
+							 tmp += '<option value="' + succ.data[i].majorid +  '">' + succ.data[i].majorname + '</option>';
+						}
+						 $("#major").html(tmp);					
+						 form.render();
+					 }
 				},
 				error:function(){
-					layer.alert('请求失败，稍后再试', {icon: 5});
+					layer.msg('请求失败，稍后再试', {icon: 5});
 				}
  
 			});
 		});
+		form.on('select(major)', function(data) {
+			var hosid = data.value;
+			//alert(hosid);
+			$.ajax({
+				type : "post",
+				url : "getclass.action",
+				data : {majorid:hosid},
+				dataType : "json",
+				success : function(succ) {
+				if(succ=="失败"){
+						layer.msg("请刷新后重试");
+					}else{
+						 var tmp = '<option value="">请选择或输入班级名称</option>';
+						 for ( var i in succ.data) {
+							 tmp += '<option value="' + succ.data[i].classid +  '">' + succ.data[i].classname + '</option>';
+						}
+						 $("#class").html(tmp);					
+						 form.render(); 
+					 }
+				},
+				error:function(){
+					layer.msg('请求失败，稍后再试', {icon: 5});
+				}
+ 
+			});
+		});
+		//查询提交
+		form.on('submit(search)', function(data) {
+			table.reload('tableOne', {
+				method : 'post',
+				where : {
+					'collegeid' : data.field.college,
+					'majorid' : data.field.major,
+					'classid' : data.field.classes,
+				},
+				page : {
+					curr : 1
+				}
+			});
+
+			return false;
+		});
     });
-    //查看详情点击事件
-    $(document).on('click', ".query", function() {
-	    var userid = $(this).parent().parent().prev().prev().prev().prev().prev().prev().children().text().trim();
-	    var usertype = $(this).parent().parent().next().children().text().trim();
-		window.location.href="getscore.action?op=singledetail&userid="+userid+"&usertype="+usertype;
-	});
+    $(document).ready(function (){
+	    //查看详情点击事件
+	    $(document).on('click', ".query", function() {
+		    var userid = $(this).parent().parent().prev().prev().prev().prev().prev().prev().children().text().trim();
+		    var usertype = $(this).parent().parent().next().children().text().trim();
+			window.location.href="getscore.action?op=singledetail&userid="+userid+"&usertype="+usertype;
+		});
+    })
 </script>
 </html>

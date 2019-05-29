@@ -28,88 +28,21 @@
             <div class="layui-card-body">
                 <div class="layui-row layui-form">
                     <div class="layui-input-inline">
-                    <div id="college">
-                        <select name="modules" lay-verify="required" v-for="obj in collist" lay-search>
-                                <option value="{{obj.collegeid}}">{{obj.collegename}}</option>
-                            </select>
-                            </div>
+	                    <div id="college">
+	                        <select name="college" id="college" lay-filter="college" lay-verify="required" lay-search="">
+	                             <option value="">请选择或输入学院名称</option>
+	                             <c:forEach items="${listcollege}" var="obj">
+	                             <option value="${obj.collegeid }">${obj.collegename }</option>
+	                             </c:forEach>
+	                         </select>
+	                    </div>
                     </div>
-                    <!-- <div class="layui-input-inline">
-                        <input class="layui-input" type="text" placeholder="请输入学院名称" />
-                    </div>
-                    <div class="layui-input-inline">
-                        <button class="layui-btn">查询</button>
-                    </div> -->
+                    <div class="layui-input-inline" style="margin-left: -10px;">
+					<button type="button" class="layui-btn layui-btn" lay-submit
+						lay-filter="search">查询</button>
                 </div>
                 <div class="layui-row">
                 	<table class="layui-table" id="scoretable" lay-filter="demo"></table>
-                    <%-- <table class="layui-table">
-                        <thead>
-                            <!--<th class="text-center"><input type="checkbox"
-								class="js-checkbox-all" /></th>-->
-                            <th class="text-center">
-                                <nobr>序号</nobr>
-                            </th>
-                            <th class="text-center">
-                                <nobr>学院名称</nobr>
-                            </th>
-                            <th class="text-center">
-                                <nobr>平均成绩</nobr>
-                            </th>
-                            <th class="text-center">
-                                <nobr>操作</nobr>
-                            </th>
-                        </thead>
-                        <tbody id="scoretable_tbody">
-                            <c:forEach items="" var="obj" varStatus="xh">
-                                <tr>
-                                    <!-- <td class="text-center"><input type="checkbox" /></td> -->
-                                    <td class="text-center">
-                                        <nobr>1</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>信息工程学院</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>99</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <button class="layui-btn layui-btn-sm layui-bg-green">查看详情</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- <td class="text-center"><input type="checkbox" /></td> -->
-                                    <td class="text-center">
-                                        <nobr>2</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>信息工程学院</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>99</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <button class="layui-btn layui-btn-sm layui-bg-green">查看详情</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- <td class="text-center"><input type="checkbox" /></td> -->
-                                    <td class="text-center">
-                                        <nobr>2</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>信息工程学院</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <nobr>99</nobr>
-                                    </td>
-                                    <td class="text-center">
-                                        <button class="layui-btn layui-btn-sm layui-bg-green">查看详情</button>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table> --%>
                 </div>
             </div>
         </div>
@@ -128,7 +61,9 @@
         var laydate = layui.laydate;
         var layer = layui.layer;
 
+        //页面加载获取动态表格数据
         table.render({
+        	id:'tableOne',
             elem: '#scoretable',
             height: '800px', //高度最大化减去差值,
             url: 'getscore.action?op=college',
@@ -170,6 +105,20 @@
                 }]
             ]
         });
+        //查询提交
+		form.on('submit(search)', function(data) {
+			table.reload('tableOne', {
+				method : 'post',
+				where : {
+					'collegeid' : data.field.college
+				},
+				page : {
+					curr : 1
+				}
+			});
+
+			return false;
+		});
     });
     //查看详情点击事件
     $(document).on('click', ".query", function() {

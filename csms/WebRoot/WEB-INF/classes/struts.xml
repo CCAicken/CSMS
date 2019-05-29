@@ -5,6 +5,7 @@
 	<package name="default" namespace="/" extends="struts-default">
 		<action name="getcollege"
 			class="action.control.getCollegeAction">
+			<result name="success" type="dispatcher">%{requesturl}</result>
 		</action>
 		<action name="getmajor" class="action.control.getMajorAction"></action>
 		<action name="getclass" class="action.control.getClassAction"></action>

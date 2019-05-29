@@ -25,16 +25,18 @@ public interface ScoreStudentDAO {
 	/**
 	 * 分页查询所有学生成绩
 	 * @return List<ScoreStudent>数据集
+	 * @param strwhere 查询条件（为空填写为""）
 	 * @param startPage 需要的页数的数据
 	 * @param pageSize 每页的记录数
 	 * @return
 	 */
-	public List<VScore> getAllScoreByPage(int startPage,int pageSize);
+	public List<VScore> getAllScoreByPage(String strwhere, int startPage,int pageSize);
 	/**
 	 * 获取所有学生成绩数量
+	 * @param strwhere 查询条件（为空填写为""）
 	 * @return
 	 */
-	public int allScoreCount();
+	public int allScoreCount(String strwhere);
 	/**
 	 * 获取某个学生的总分
 	 * @return

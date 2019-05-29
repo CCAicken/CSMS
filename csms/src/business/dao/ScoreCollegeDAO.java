@@ -24,9 +24,12 @@ public interface ScoreCollegeDAO {
 	public List<VCollegeScore> getAllCollegeScore();
 	/**
 	 * 分页查询所有学院成绩
+	 * @param strwhere 查询条件（为空填写为""）
+	 * @param startPage 当前页
+	 * @param pageSize 每页显示数量
 	 * @return List<ScoreCollege>数据集
 	 */
-	public List<VCollegeScore> getAllScoreByPage(int startPage,int pageSize);
+	public List<VCollegeScore> getAllScoreByPage(String strwhere,int startPage,int pageSize);
 	
 	/**
 	
@@ -35,10 +38,10 @@ public interface ScoreCollegeDAO {
 	 * 根据学院名称查询学院成绩(分页)
 	 * @param cllegeName 学院名称
 	 * @param pageSize 每页显示数量
-	 * @param currpage 当前页
+	 * @param startPage 当前页
 	 * @return List<ScoreCollege>数据集
 	 */
-	public List<VCollegeScore> getCollegeScoreBypage(String cllegeName,int pageSize,int currpage);
+	public List<VCollegeScore> getCollegeScoreBypage(String cllegeName,int pageSize,int startPage);
 	/**
 	 * 查询学院成绩
 	 * @param collegeName 学院名称
@@ -53,8 +56,9 @@ public interface ScoreCollegeDAO {
 	
 	/**
 	 * 查询数据总条数
+	 * @param strwhere 查询条件（为空填写为""）
 	 */
-	public int geDataCount();
+	public int geAllCount(String strwhere);
 	/**
 	 * 查询分页总页数（带条件）
 	 * @param opraton 条件

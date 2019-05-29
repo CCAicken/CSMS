@@ -2,6 +2,7 @@ package action.control;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.ReturnData;
@@ -24,16 +25,21 @@ public class getMajorAction extends BaseAction {
 	 */
 	public String execute() {
 		try {
-			List<TMajor> list = majordao.select();
-			int count = majordao.getPageCount();
-			ReturnData rd = new ReturnData();
-			rd.code = ReturnData.SUCCESS;
-			rd.msg = "成功";
-			rd.count = count;
-			rd.data = list;
-			out.write(JSON.toJSONString(rd));
-			out.flush();
-			out.close();
+			String collegeid = request.getParameter("collegeid");
+			if(collegeid!=null && !collegeid.equals("")){
+				List<TMajor> list = majordao.selectByColl(Integer.parseInt(collegeid));
+				ReturnData rd = new ReturnData();
+				rd.code = ReturnData.SUCCESS;
+				rd.msg = "成功";
+				rd.data = list;
+				out.write(JSON.toJSONString(rd));
+				out.flush();
+				out.close();
+			}else{
+				out.write("失败");
+				out.flush();
+				out.close();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

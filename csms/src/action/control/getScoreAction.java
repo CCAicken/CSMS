@@ -16,17 +16,27 @@ import model.VTeacher;
 import com.alibaba.fastjson.JSON;
 
 public class getScoreAction extends BaseAction {
-
+	private String startPage,limit,collegeid,majorid,classid,strsearch;
 	/**
 	 * @return
 	 */
 	public String execute() {
 		String op = request.getParameter("op");
 		if(op.equals("class")){
-			String startPage = request.getParameter("page");// 当前
+			startPage = request.getParameter("page");// 当前
 			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
-			List<VClassScore> clalist = scoreclassesdao.getAllScoreByPage(Integer.parseInt(startPage), limit);
-			int count = scoreclassesdao.allScoreCount();
+			String collegeid = request.getParameter("collegeid");
+			String majorid = request.getParameter("majorid");
+			
+			String strsearch="";
+			if(collegeid!=null&&!collegeid.equals(""))
+			{
+				strsearch=" where collegeid='"+collegeid+"'";
+			}
+			if(majorid!=null&&!majorid.equals("")){
+				strsearch=" where majorid='"+majorid+"'";
+			List<VClassScore> clalist = scoreclassesdao.getAllScoreByPage(strsearch,Integer.parseInt(startPage), limit);
+			int count = scoreclassesdao.allScoreCount(strsearch);
 			try {
 				ReturnData rd = new ReturnData();
 				rd.code=ReturnData.SUCCESS;
@@ -63,8 +73,14 @@ public class getScoreAction extends BaseAction {
 		}else if(op.equals("college")){
 			String startPage = request.getParameter("page");// 当前
 			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
-			List<VCollegeScore> clalist = scorecollegedao.getAllScoreByPage(Integer.parseInt(startPage),limit);
-			int count = scorecollegedao.geDataCount();
+			String collegeid = request.getParameter("collegeid");
+			String strsearch="";
+			if(collegeid!=null&&!collegeid.equals(""))
+			{
+				strsearch=" where collegeid='"+collegeid+"'";
+			}
+			List<VCollegeScore> clalist = scorecollegedao.getAllScoreByPage(strsearch,Integer.parseInt(startPage),limit);
+			int count = scorecollegedao.geAllCount(strsearch);
 			try {
 				ReturnData rd = new ReturnData();
 				rd.code=ReturnData.SUCCESS;
@@ -122,8 +138,23 @@ public class getScoreAction extends BaseAction {
 		}else if(op.equals("single")){
 			String startPage = request.getParameter("page");// 当前
 			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
-			List<VScore> stulist = scorestudentdao.getAllScoreByPage(Integer.parseInt(startPage),limit);
-			int count = scorestudentdao.allScoreCount();
+			String collegeid = request.getParameter("collegeid");
+			String majorid = request.getParameter("majorid");
+			String classid = request.getParameter("classid");
+			
+			String strsearch="";
+			if(collegeid!=null&&!collegeid.equals(""))
+			{
+				strsearch=" where collegeid='"+collegeid+"'";
+			}
+			if(majorid!=null&&!majorid.equals("")){
+				strsearch=" where majorid='"+majorid+"'";
+			}
+			if(classid!=null&&!classid.equals("")){
+				strsearch=" where classid='"+classid+"'";
+			}
+			List<VScore> stulist = scorestudentdao.getAllScoreByPage(strsearch,Integer.parseInt(startPage),limit);
+			int count = scorestudentdao.allScoreCount(strsearch);
 			try {
 				ReturnData rd = new ReturnData();
 				rd.code=ReturnData.SUCCESS;

@@ -31,6 +31,10 @@ public class ReturnData {
 	 */
 	public Object data;
 	/**
+	 * 数据的json字符串
+	 */
+	public Object data1;
+	/**
 	 * 总成绩
 	 */
 	public double totalScore;
