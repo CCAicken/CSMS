@@ -12,7 +12,14 @@ import com.alibaba.fastjson.JSON;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class getCollegeAction extends BaseAction {
-
+	//成功返回的页面
+		private String requesturl;
+		public String getRequesturl() {
+			return requesturl;
+		}
+		public void setRequesturl(String requesturl) {
+			this.requesturl = requesturl;
+		}
 	/**
 	 * @return
 	 */
@@ -43,6 +50,7 @@ public class getCollegeAction extends BaseAction {
 			//返回所有学院信息列表
 			List<TCollege> listcollege = collegedao.select();
 			request.setAttribute("listcollege", listcollege);
+			requesturl = "singleScore";
 			return SUCCESS;
 		} else if (op.equals("byid")) {
 			//根据学院id返回该学院信息列表

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,31 +29,25 @@
                 <div class="layui-row layui-form">
                     <div class="layui-inline">
                         <div class="layui-input-inline">
-                            <select name="modules" lay-verify="required" lay-search>
-                                            <option value="">选择或输入学院名称</option>
-                                            <option value="1">信息工程学院</option>
-                                            <option value="2">人文学院</option>
-                                            <option value="3">建筑工程学院</option>
+                            <select name="college" id="college" lay-filter="college" lay-verify="required" lay-search="">
+                                            <option value="0">选择或输入学院名称</option>
+                                            <c:forEach items="${listcollege}" var="obj">
+                                            <option value="${obj.collegeid }">${obj.collegename }</option>
+                                            </c:forEach>
                                         </select>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <div class="layui-input-inline">
-                            <select name="modules" lay-verify="required" lay-search>
+                            <select name="major" id="major" lay-filter="major" lay-verify="required" lay-search="">
                                     <option value="">选择或输入专业名称</option>
-                                    <option value="1">计算机科学与技术</option>
-                                    <option value="2">软件工程</option>
-                                    <option value="3">计算机网络</option>
                                 </select>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <div class="layui-input-inline">
-                            <select name="modules" lay-verify="required" lay-search>
+                            <select name="class" id="class" lay-filter="class" lay-verify="required" lay-search="">
                                     <option value="">选择或输入班级名称</option>
-                                    <option value="1">2016计算机科学与技术2班</option>
-                                    <option value="2">2017软件工程1班</option>
-                                    <option value="3">2016计算机网络1班</option>
                                 </select>
                         </div>
                     </div>
@@ -71,12 +66,9 @@
     <button class="layui-btn layui-btn-sm layui-bg-green query">查看详情</button>
 </script>
 <script type="text/javascript">
-    layui.use(['table', 'laydate', 'layer', 'jquery'], function() {
+    layui.use(['table', 'form','jquery'], function() {
+		/* 动态表格绑定数据 */
         var table = layui.table;
-        var $ = layui.jquery;
-        var laydate = layui.laydate;
-        var layer = layui.layer;
-
         table.render({
             elem: '#scoretable',
             height: '800px', //高度最大化减去差值,
@@ -174,6 +166,36 @@
                 }]
             ]
         });
+       	/* 下拉框三级联动 */
+		var form = layui.form;
+		var $ = layui.jquery;
+		form.render('select');
+ 
+		//医院下拉选事件,获取科室下拉选
+		form.on('select(college)', function(data) {
+			var hosid = data.value;
+			//alert(hosid);
+			$.ajax({
+				type : "post",
+				url : "${pageContext.request.contextPath}/userManger/getDivision1",
+				data : {hosid:hosid},
+				dataType : "json",
+				success : function(d) {
+					 var tmp = '<option value="">--请选择--</option>';
+					 //改变医院时第三级下拉框回复原样
+					 $("#division2").html(tmp);
+					 for ( var i in d) {
+						 tmp += '<option value="' + d[i].id +  '">' + d[i].divisionName + '</option>';
+					}
+					 $("#division1").html(tmp);					
+					 form.render(); 
+				},
+				error:function(){
+					layer.alert('请求失败，稍后再试', {icon: 5});
+				}
+ 
+			});
+		});
     });
     //查看详情点击事件
     $(document).on('click', ".query", function() {
