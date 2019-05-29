@@ -26,6 +26,7 @@
                         <a href="javascript:;">成绩查看</a>
                         <dl class="layui-nav-child">
                             <!-- 二级菜单 -->
+                            <dd><a class="a-nav" href="getcollege.action?op=project">项目成绩</a></dd>
                             <dd><a class="a-nav" href="getcollege.action?op=college">学院成绩</a></dd>
                             <dd><a class="a-nav" href="getcollege.action?op=class">班级成绩</a></dd>
                             <dd><a class="a-nav" href="getcollege.action?op=single">个人成绩</a></dd>

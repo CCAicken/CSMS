@@ -55,5 +55,8 @@
 			<result name="success" type="dispatcher">
 				/myProject.jsp
 			</result>
+		</action>
+		<action name="getprojectscore"
+			class="action.control.getProjectScoreAction">
 		</action></package>
 </struts>    

@@ -46,8 +46,15 @@ public interface ScoreDAO {
 	public List<VScore> getByClass(int classid);
 	/**
 	 * 查询各个学院的成绩排名
-	 * @param classid 班级id
-	 * @return 班级成绩列表
+	 * @return 成绩列表
 	 */
 	public List<VScore> getCollegeScoreOrder();
+	/**
+	 * 查询各个项目的成绩排名
+	 * @param strwhere 查询条件（为空时填写为""）
+	 * @param startPage 获取的页面数据
+	 * @param limit 每页的记录数
+	 * @return 成绩列表
+	 */
+	public List<VScore> getProjectScoreOrderByPage(String strwhere,int startPage,int limit);
 }

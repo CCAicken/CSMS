@@ -34,6 +34,8 @@ public class getCollegeAction extends BaseAction {
 			requesturl = "classScore.jsp";
 		}else if(op.equals("college")){
 			requesturl = "collegeScore.jsp";
+		}else if(op.equals("project")){
+			requesturl = "projectScore.jsp";
 		}
 		return SUCCESS;
 //		//·µ»Ølayui±í¸ñ

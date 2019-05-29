@@ -150,22 +150,6 @@
 				}
  
 			});
-			//查询提交
-			form.on('submit(search)', function(data) {
-				table.reload('tableOne', {
-					method : 'post',
-					where : {
-						'collegeid' : data.field.college,
-						'majorid' : data.field.major,
-						'classid' : data.field.classes,
-					},
-					page : {
-						curr : 1
-					}
-				});
-	
-				return false;
-			});
 		});
 		form.on('select(major)', function(data) {
 			var hosid = data.value;
@@ -192,6 +176,22 @@
 				}
  
 			});
+		});
+		//查询提交
+		form.on('submit(search)', function(data) {
+			table.reload('tableOne', {
+				method : 'post',
+				where : {
+					'collegeid' : data.field.college,
+					'majorid' : data.field.major,
+					'classid' : data.field.classes,
+				},
+				page : {
+					curr : 1
+				}
+			});
+
+			return false;
 		});
     });
     //查看详情点击事件

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Struts2Diagram version="2.0">
-  <package name="default" location="50,50" size="242,1017">
-    <action name="getcollege" location="24,32" size="150,41">
+  <package name="default" location="50,50" size="188,1028">
+    <action name="getcollege" location="33,41" size="150,41">
       <result name="success" />
     </action>
-    <action name="getmajor" location="24,124" size="150,40" />
-    <action name="getclass" location="24,174" size="150,40" />
-    <action name="getforum" location="24,224" size="150,40" />
-    <action name="getnew" location="24,274" size="150,40" />
-    <action name="getcontent" location="24,324" size="150,41">
+    <action name="getmajor" location="33,133" size="150,40" />
+    <action name="getclass" location="33,183" size="150,40" />
+    <action name="getforum" location="33,233" size="150,40" />
+    <action name="getnew" location="33,283" size="150,40" />
+    <action name="getcontent" location="33,333" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="forumContent.jsp" />
       </result>
     </action>
-    <action name="getproject" location="24,424" size="150,40" />
-    <action name="getscore" location="24,474" size="150,41">
+    <action name="getproject" location="33,433" size="150,40" />
+    <action name="getscore" location="33,483" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="scoreDetail.jsp" />
       </result>
     </action>
-    <action name="login" location="24,574" size="150,62">
+    <action name="login" location="33,583" size="150,62">
       <result name="success">
         <resourceEdge source="success" routing="0" target="main.jsp" />
       </result>
@@ -27,25 +27,26 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
-    <action name="logout" location="24,674" size="150,40">
+    <action name="logout" location="33,683" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="login.jsp" />
       </result>
     </action>
-    <action name="getmacth" location="24,724" size="150,40" />
-    <action name="changepwd" location="24,774" size="150,40" />
-    <action name="getapplication" location="24,824" size="150,40" />
-    <action name="arrangeview" location="24,874" size="150,41">
+    <action name="getmacth" location="33,733" size="150,40" />
+    <action name="changepwd" location="33,783" size="150,40" />
+    <action name="getapplication" location="33,833" size="150,40" />
+    <action name="arrangeview" location="33,883" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="CompetitionEntryCheck.jsp" />
       </result>
     </action>
-    <action name="entry" location="24,974" size="150,40" />
-    <action name="myproject" location="22,372" size="150,41">
+    <action name="entry" location="33,983" size="150,40" />
+    <action name="myproject" location="31,381" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="myProject.jsp" />
       </result>
     </action>
+    <action name="getprojectscore" location="30,90" size="150,40" />
   </package>
   <webResource name="forumContent.jsp" path="/forumContent.jsp" location="350,50" size="150,55" />
   <webResource name="scoreDetail.jsp" path="/scoreDetail.jsp" location="350,200" size="150,55" />
@@ -53,6 +54,6 @@
   <webResource name="error.jsp" path="/error.jsp" location="350,500" size="150,55" />
   <webResource name="CompetitionEntryCheck.jsp" path="/CompetitionEntryCheck.jsp" location="350,650" size="150,55" />
   <webResource name="myProject.jsp" path="/myProject.jsp" location="350,800" size="150,55" />
-  <webResource name="login.jsp" path="/login.jsp" location="0,0" size="150,55" />
+  <webResource name="login.jsp" path="/login.jsp" location="350,950" size="150,55" />
 </Struts2Diagram>
 
