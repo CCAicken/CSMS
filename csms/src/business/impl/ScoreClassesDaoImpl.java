@@ -46,9 +46,9 @@ public class ScoreClassesDaoImpl implements ScoreClassesDAO {
 		}
 	}
 	@Override
-	public List<VClassScore> getAllScoreByPage(int startPage,int pageSize) {
+	public List<VClassScore> getAllScoreByPage(String strwhere,int startPage,int pageSize) {
 		//String sql="select collegeid,collegename,majorid,majorname,classid,classname,ROUND(AVG(scorenumber), 2) as scorenumber from V_StudentScore GROUP BY classid,classname,collegeid,collegename,majorid,majorname";
-		String hql = "from VClassScore";
+		String hql = "from VClassScore"+strwhere;
 		List<VClassScore> list=bdao.selectByPage(hql, startPage, pageSize);
 		if(list!=null && list.size()>0){
 			return list;
@@ -66,8 +66,8 @@ public class ScoreClassesDaoImpl implements ScoreClassesDAO {
 //		System.out.println(count);
 //	}
 	@Override
-	public int allScoreCount() {
-		String hql = "select count(classid) from VClassScore";
+	public int allScoreCount(String strwhere) {
+		String hql = "select count(classid) from VClassScore"+strwhere;
 		int count = bdao.selectValue(hql);
 		return count;
 	}

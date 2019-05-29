@@ -27,34 +27,28 @@
             </div>
             <div class="layui-card-body">
                 <div class="layui-row layui-form">
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            <select name="college" id="college" lay-filter="college" lay-verify="required" lay-search="">
-                                            <option value="">请选择或输入学院名称</option>
-                                            <c:forEach items="${listcollege}" var="obj">
-                                            <option value="${obj.collegeid }">${obj.collegename }</option>
-                                            </c:forEach>
-                                        </select>
-                        </div>
+                    <div class="layui-input-inline">
+                        <select name="college" id="college" lay-filter="college" lay-verify="required" lay-search="">
+                                        <option value="">请选择或输入学院名称</option>
+                                        <c:forEach items="${listcollege}" var="obj">
+                                        <option value="${obj.collegeid }">${obj.collegename }</option>
+                                        </c:forEach>
+                                    </select>
                     </div>
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            <select name="major" id="major" lay-filter="major" lay-verify="required" lay-search="">
-                                    <option value="">请选择或输入专业名称</option>
-                                </select>
-                        </div>
+                    <div class="layui-input-inline">
+                        <select name="major" id="major" lay-filter="major" lay-verify="required" lay-search="">
+                                <option value="">请选择或输入专业名称</option>
+                            </select>
                     </div>
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            <select name="classes" id="class" lay-filter="class" lay-verify="required" lay-search="">
-                                    <option value="">请选择或输入班级名称</option>
-                                </select>
-                        </div>
+                    <div class="layui-input-inline">
+                        <select name="classes" id="class" lay-filter="class" lay-verify="required" lay-search="">
+                                <option value="">请选择或输入班级名称</option>
+                            </select>
                     </div>
                     <div class="layui-input-inline" style="margin-left: -10px;">
-					<button type="button" class="layui-btn layui-btn" lay-submit
+						<button type="button" class="layui-btn layui-btn" lay-submit
 						lay-filter="search">查询</button>
-				</div>
+					</div>
                 </div>
                 <div class="layui-row">
                     <table class="layui-table" id="scoretable" lay-filter="demo"></table>
