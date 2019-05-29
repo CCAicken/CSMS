@@ -4,7 +4,6 @@ import java.util.List;
 
 import model.VStudent;
 import model.VTeacher;
-import model.VStudent;
 import basic.iHibBaseDAO;
 import business.dao.UserDAO;
 
@@ -117,6 +116,14 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
+	public List<VStudent> selectStuByClassPage(String classid, int page,int limit) {
+		String hql = "from VStudent where classid=?";
+		Object[] param = {classid};
+		List<VStudent> list = bdao.selectByPage(hql, param, page, limit);
+		return list;
+	}
+	
+	@Override
 	public VTeacher loginTea(String userid, String pwd) {
 		VTeacher tea = (VTeacher)bdao.findById(VTeacher.class, userid);
 		if(tea != null && !tea.getUserid().equals("")){
@@ -183,6 +190,15 @@ public class UserDaoImpl implements UserDAO {
 		}else{
 			return null;
 		}
+	}
+
+	@Override
+	public List<VTeacher> selectTeaByCollPage(String collegeid, int page,
+			int limit) {
+		String hql = "from VTeacher where collegeid=?";
+		Object[] param = {collegeid};
+		List<VTeacher> list = bdao.selectByPage(hql, param, page, limit);
+		return list;
 	}
 
 }

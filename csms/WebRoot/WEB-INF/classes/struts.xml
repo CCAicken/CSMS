@@ -45,4 +45,5 @@
 		</action>
 		<action name="arrangeview"
 			class="action.control.getArrangeAction">
-		</action></package></struts>    
+		</action>
+		<action name="entry" class="action.control.CompetitionEntry"></action></package></struts>    
