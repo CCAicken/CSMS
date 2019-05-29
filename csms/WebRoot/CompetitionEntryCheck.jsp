@@ -70,9 +70,21 @@
 
 		//监听提交
 		form.on('submit(search)', function(data) {
-			layer.alert(JSON.stringify(data.field), {
+			layer.alert(JSON.stringify(data.field.collegeid), {
 				title : '最终的提交信息'
 			})
+			table.reload('tableOne', {
+				method : 'post',
+				where : {
+					'strwhere' : data.field.strwhere,
+					'collegeid' : data.field.collegeid,
+					'classid' : data.field.classid,
+				},
+				page : {
+					curr : 1
+				}
+			});
+
 			return false;
 		});
 		table.render({
@@ -110,6 +122,17 @@
 						return "教师用户不分班级";
 					} else {
 						return d.classname;
+					}
+				}
+			}, {
+				field : '',
+				title : '专业',
+				width : 150,
+				templet : function(d) {
+					if (d.majorname == null || d.majorname == "") {
+						return "教师用户专业";
+					} else {
+						return d.majorname;
 					}
 				}
 			}, {

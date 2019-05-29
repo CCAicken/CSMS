@@ -44,6 +44,7 @@
 			class="action.control.getApplication">
 		</action>
 		<action name="arrangeview" class="action.control.getArrangeAction">
+		<result name="success" type="dispatcher">/CompetitionEntryCheck.jsp</result>
 		</action>
 		<action name="entry" class="action.control.CompetitionEntry"></action>
 	</package>
