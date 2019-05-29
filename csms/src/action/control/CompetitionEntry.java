@@ -51,6 +51,7 @@ public class CompetitionEntry extends BaseAction {
 			int count = userdao.teacount(colid);
 			LayuiData data = new LayuiData(0, "³É¹¦", count, list);
 			try {
+				out = response.getWriter();
 				out.write(JSON.toJSONString(data));
 				out.flush();
 				out.close();
