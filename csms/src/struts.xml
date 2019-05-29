@@ -36,7 +36,9 @@
 				<param name="backurl">%{backurl}</param>
 			</result>
 		</action>
-		<action name="logout" class="action.control.getLogoutAction"></action>
+		<action name="logout" class="action.control.getLogoutAction">
+			<result name="success" type="redirect">/login.jsp</result>
+		</action>
 		<action name="getmacth" class="action.control.getMacthAction"></action>
 		<action name="changepwd"
 			class="action.control.ChangePwdAction">
