@@ -1,7 +1,8 @@
 package business.dao;
 
 import java.util.List;
-import model.*;
+
+import model.TProject;
 /**
  * 比赛项目业务接口类
  * @author Administrator
@@ -41,4 +42,17 @@ public interface ProjectDAO {
 	 * @return 项目对象列表
 	 */
 	public List<TProject> selectByType(int type);
+	/**
+	 * 根据角色类型分页获取比赛项目
+	 * @param startPage
+	 * @param pagesize
+	 * @return
+	 */
+	public List<TProject> selectByPage(int roletype,int startPage,int pageSize);
+	/**
+	 * 获取比赛项目数
+	 * @param roletype  角色类型
+	 * @return 返回比赛项目数
+	 */
+	public int getProCount(int roletype);
 }

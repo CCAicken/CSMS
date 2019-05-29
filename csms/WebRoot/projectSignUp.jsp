@@ -32,48 +32,6 @@
                 </div>
             </div>
             <table class="layui-table" id="forumlist" lay-filter="test" width="100%"></table>
-            <!-- <table class="layui-table">
-                <colgroup>
-                    <col width="70">
-                    <col width="200">
-                    <col width="150">
-                    <col width="150">
-                    <col width="150">
-                    <col width="150">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th>序号</th>
-                        <th>项目名称</th>
-                        <th>当前报名人数</th>
-                        <th>人数限制</th>
-                        <th>项目类型</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1000米</td>
-                        <td>5</td>
-                        <td>8</td>
-                        <td>学生个人赛</td>
-                        <td>
-                            <button type="button" 	class="layui-btn layui-btn-xs">报名</button>
-                        </td>
-                    </tr>
-                    <tr>
-                            <td>2</td>
-                            <td>三级跳</td>
-                            <td>5</td>
-                            <td>8</td>
-                            <td>学生个人赛</td>
-                            <td>
-                                <button type="button" 	class="layui-btn layui-btn-xs">报名</button>
-                            </td>
-                        </tr>
-                </tbody>
-            </table> -->
         </div>
     </div>
     <%@include file="footer.jsp" %>
@@ -81,7 +39,7 @@
 <script src="layui/layui.js"></script>
 <script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
 <script id="barDemo" type="text/html">
-  <button type="button" lay-event="add" class="layui-btn layui-btn-xs">报名</button>
+  <button type="button" lay-event="add" class="layui-btn layui-btn-xs baom">报名</button>
 </script>
 <script>
 layui.use(['element', 'carousel', 'table'], function() {
@@ -95,7 +53,7 @@ layui.use(['element', 'carousel', 'table'], function() {
         table.render({
             elem: '#forumlist',
             height: 500,
-            url: 'getmacth.action', //数据接口
+            url: 'getproject.action', //数据接口
             cols: [
                 [ //表头
                     {
@@ -103,23 +61,29 @@ layui.use(['element', 'carousel', 'table'], function() {
                         title: '序号',
                         width: 40,
                         type:'numbers'
-                    }, {
+                    },{
+                    	field: 'proid',
+                        title: '序号',
+                        width: 40,
+                        hide:true,
+                    },
+                     {
                         field: 'proname',
                         title: '项目名称',
-                        width: 300
+                        width: 200
                     }, {
-                        field: 'number',
+                        field: 'currentnum',
                         title: '当前报名人数',
-                        width: 80
+                        width: 200
                         //sort: true //是否排序
                     }, {
-                        fixed: 'limit',
+                        field: 'totallimit',
                         title: '人数限制',
-                        width: 140
+                        width: 200
                     }, {
-                        fixed: 'protype',
+                        field: '',
                         title: '项目类型',
-                        width: 140,
+                        width: 200,
 						templet:function(data){
 							if(data.protype == 1){
 								return "<a href=''>学生个人赛</a>"
@@ -132,18 +96,18 @@ layui.use(['element', 'carousel', 'table'], function() {
 							}
 						}
                     }, {
-                        fixed: '',
+                        field: '',
                         title: '操作',
-                        width: 140,
+                        width: 200,
                         toolbar: '#barDemo'
                     }
                 ]
             ],
             page: true, //开启分页
-            even: true, //每行颜色分隔
-            skin: 'nob', //无边框
+            even: false, //每行颜色分隔
+            //skin: 'nob', //无边框
             limit: 10,
-            limits: [5, 10, 15]
+            limits: [1, 10, 15,20]
                 /* first:true,
                 last:true, */
         });
@@ -155,5 +119,17 @@ layui.use(['element', 'carousel', 'table'], function() {
             }
         });
     });
+    $(document).on('click', ".baom", function() {
+    	var currentnum = $(this).parent().parent().prev().prev().prev().find("div").text().trim();
+   	 	var totalnum = $(this).parent().parent().prev().prev().find("div").text().trim();
+   	 	if(parseInt(currentnum)>=parseInt(totalnum)){
+   	 		layer.msg("该项目报名人数已达上限，请另外选择其他项目");
+   	 	}
+   	 	else{
+		    var proid = $(this).parent().parent().prev().prev().prev().prev().prev().find("div").text().trim();
+		    //layer.msg(proid);
+		    window.location.href="studentSignUp.jsp?proid="+proid;
+	    }
+	});
 </script>
 </html>

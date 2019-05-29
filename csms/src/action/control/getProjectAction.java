@@ -4,10 +4,9 @@ import java.io.IOException;
 import java.util.List;
 
 import model.TProject;
-import model.VScene;
+import util.LayuiData;
 
 import com.alibaba.fastjson.JSON;
-import com.opensymphony.xwork2.ActionSupport;
 
 public class getProjectAction extends BaseAction {
 	private String userid;
@@ -21,8 +20,16 @@ public class getProjectAction extends BaseAction {
 	 * @throws IOException 
 	 */
 	public String execute() throws IOException {
-		List<TProject> prolist = projectdao.select();
-		out.write(JSON.toJSONString(prolist));
+		int roletype = Integer.parseInt(session.getAttribute("role").toString());
+		String startPage = request.getParameter("page");
+		String pageSize = request.getParameter("limit");
+		int count = projectdao.getProCount(roletype);
+		List<TProject> list = projectdao.selectByPage(roletype, Integer.parseInt(startPage), Integer.parseInt(pageSize));
+		out = response.getWriter();
+		LayuiData data = new LayuiData(0, "³É¹¦", count, list);
+		out.write(JSON.toJSONString(data));
+		out.flush();
+		out.close();
 		return SUCCESS;
 	}
 }
