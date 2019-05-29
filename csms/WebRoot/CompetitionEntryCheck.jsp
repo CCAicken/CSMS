@@ -23,14 +23,7 @@
 		</div>
 		<div class="layui-card-body">
 			<div class="layui-row layui-form">
-				<div class="layui-input-inline">
-					<input type="text" placeholder="请输入查询条件" name="strwhere"
-						autocomplete="off" class="layui-input">
-				</div>
-				<div class="layui-input-inline" style="margin-left: -10px;">
-					<button type="button" class="layui-btn layui-btn" lay-submit
-						lay-filter="search">查询</button>
-				</div>
+
 				<div class="layui-input-inline">
 					<select name="collegeid" lay-filter="college">
 						<option value="">选择或输入学院名称</option>
@@ -40,12 +33,20 @@
 					</select>
 				</div>
 				<div class="layui-input-inline" id="select-class">
-					<select name="classid" lay-search="">
-						<option value="">直接选择或搜索选择</option>
+					<select name="classid" id="classid" lay-search="">
+						<option value="">选择或搜索班级</option>
 						<c:forEach items="${classlist }" var="obj">
 							<option value="${obj.classid }">${obj.classname }</option>
 						</c:forEach>
 					</select>
+				</div>
+				<div class="layui-input-inline">
+					<input type="text" placeholder="请输入查询条件" name="strwhere"
+						autocomplete="off" class="layui-input">
+				</div>
+				<div class="layui-input-inline" style="margin-left: -10px;">
+					<button type="button" class="layui-btn layui-btn" lay-submit
+						lay-filter="search">查询</button>
 				</div>
 			</div>
 			<div class="layui-row layui-form">
@@ -65,14 +66,46 @@
 
 		var form = layui.form, table = layui.table;
 		form.on('select(college)', function(data) {
-			alert(data.value)
+			$.ajax({
+				type : 'post',
+				url : "arrangeview.action?op=load",
+				data : {
+					collegeid : data.value,
+					type : 'select',
+				},
+				dataType : "json",
+				success : function(data) {
+					//清空赋值
+					if (data != null) {
+						$("#classid").empty();
+						console.log(data.data);
+						$("#classid").append(new Option("选择或搜索班级", ""));
+						$.each(data, function(index, item) {
+							//赋值
+							$('#classid').append(
+									new Option(item.classname, item.classid));
+						});
+					} else {
+						$("#classid").append(new Option("暂无数据", ""));
+					}
+					layui.form.render("select");
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					layer.msg("后台错误");
+					/*弹出jqXHR对象的信息
+					alert(jqXHR.responseText);
+					alert(jqXHR.status);
+					alert(jqXHR.readyState);
+					alert(jqXHR.statusText);
+					/*弹出其他两个参数的信息
+					alert(textStatus);
+					alert(errorThrown);*/
+				}
+			});
 		});
 
 		//监听提交
 		form.on('submit(search)', function(data) {
-			layer.alert(JSON.stringify(data.field.collegeid), {
-				title : '最终的提交信息'
-			})
 			table.reload('tableOne', {
 				method : 'post',
 				where : {
@@ -92,6 +125,7 @@
 			//height : 513,
 			url : url // 数据接口
 			,
+			height : 'full-275',
 			id : 'tableOne',
 			page : true // 开启分页
 			,

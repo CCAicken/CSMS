@@ -67,7 +67,7 @@
                             <div class="layui-card layui-col-md4 layui-col-lg4">
                                 <div class="layui-card-header">
                                     <b><span style="font-size:14px;">项目报名情况</span></b>
-                                    <a href="CompetitionEntryCheck.jsp"><span style="float:right">更多>></span></a>
+                                    <a href="arrangeview.action?op=list"><span style="float:right">更多>></span></a>
                                 </div>
                                 <div class="layui-card-body">
                                     <table class="layui-table" id="table-application" lay-skin="nob"></table>

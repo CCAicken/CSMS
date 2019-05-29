@@ -57,4 +57,10 @@ public interface ClassesDAO {
 	 * @return 班级对象列表
 	 */
 	public List<VClass> selectByMajorVclass(int majorid);
+	/**
+	 * 根据学院获取所有班级视图对象列表
+	 * @param majorid 专业id
+	 * @return 班级对象列表
+	 */
+	public List<VClass> selectByCollegeVclass(int collegeid);
 }
