@@ -70,7 +70,7 @@
             font-size: 24px;
         }
     </style>
-    <title>Insert title here</title>
+    <title>文章列表</title>
 </head>
 
 <body>

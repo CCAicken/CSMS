@@ -13,7 +13,7 @@
             text-align: center;
         }
     </style>
-    <title>班级成绩查看页面</title>
+    <title>个人成绩查看页面</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
         <div calss="layui-card">
             <div class="layui-card-header layui-bg-gray text-center" style="height: 80px;">
                 <div class="layui-row">
-                    <h1>班级成绩查看页面</h1>
+                    <h1>个人成绩查看页面</h1>
                 </div>
             </div>
             <div class="layui-card-body">
@@ -80,10 +80,10 @@
         table.render({
             elem: '#scoretable',
             height: '800px', //高度最大化减去差值,
-            url: 'getscore.action?op=class',
+            url: 'getscore.action?op=single',
             page: true,
             even: true,
-            limit:5,
+            limit:10,
             limits:[5,10,15],
             skin: "nob",
             cellMinWidth: 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
@@ -93,28 +93,67 @@
                 [{
                 	align:'center',
                     field: '',
-                    width: 100,
+                    width: 80,
                     title: '序号',
                     type:'numbers'
-                }, {
+                },{
                 	align:'center',
-                    field: 'collegename',
-                    width: 150,
-                    title: '学院名称',
-                }, {
+                    field: 'userid',
+                    title: '学号/工号',
+                    width: 130
+                },{
                 	align:'center',
-                    field: 'majorname',
-                    width: 250,
-                    title: '专业名称',
-                }, {
-                    field: 'classname',
-                    title: '班级名称',
-                    width: 250,
+                    field: '',
+                    title: '姓名',
+                    width: 100,
+                    templet:function(data){
+                    	if(data.protype == 1 || data.protype == 2){
+                    		return data.username;
+                    	}else{
+                    		return data.teausername;
+                    	}
+                    }
                 },{
                 	align:'center',
                     field: 'scorenumber',
                     title: '平均成绩',
                     width: 100
+                }, {
+                	align:'center',
+                    field: '',
+                    width: 130,
+                    title: '学院名称',
+                    templet:function(data){
+                    	if(data.protype == 1 || data.protype == 2){
+                    		return data.collegename;
+                    	}else{
+                    		return data.teacollegename;
+                    	}
+                    }
+                }, {
+                	align:'center',
+                    field: '',
+                    width: 200,
+                    title: '专业名称',
+                    templet:function(data){
+                    	if(data.protype == 1 || data.protype == 2){
+                    		return data.majorname;
+                    	}else{
+                    		return "";
+                    	}
+                    }
+                }, {
+                	align:'center',
+                    field: '',
+                    title: '班级名称',
+                    width: 250,
+                    templet:function(data){
+                    	if(data.protype == 1 || data.protype == 2){
+                    		return data.classname;
+                    	}else{
+                    		return "";
+                    	}
+                    }
                 },{
                 	align:'center',
                     field: '',
@@ -122,40 +161,25 @@
                     width: 120,
 					toolbar:'#barDemo'
                 },{
-                    field: 'classid',
-                    title: '班级id',
-                    hide:true
+                    field: '',
+                    title: '用户角色id',
+                    hide:true,
+                    templet:function(data){
+                    	if(data.protype == 1 || data.protype == 2){
+                    		return 1;
+                    	}else{
+                    		return 2;
+                    	}
+                    }
                 }]
             ]
         });
     });
     //查看详情点击事件
     $(document).on('click', ".query", function() {
-	    var classid = $(this).parent().parent().next().children().text().trim();
-	    /* $.ajax({
-			type : 'Post',
-			url : 'getscore.action',
-			data : {
-				classid : classid,
-				op : "classdetail"
-			},
-			dataType : 'json',
-			success : function(data) {
-				if(data=="请刷新后重试！"){
-					layer.msg("请刷新后重试！");
-				}
-			},
-			error : function(XMLHttpRequest, textStatus) { //����ʧ��
-				if (textStatus == 'timeout') {
-					var xmlhttp = window.XMLHttpRequest ? new window.XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHttp");
-					xmlhttp.abort();
-					layer.msg("超时，请重试！");
-				} else if (textStatus == "error") {
-					layer.msg("请刷新后重试！");
-				}
-			}
-		}) */
-		window.location.href="getscore.action?op=classdetail&classid="+classid;
+	    var userid = $(this).parent().parent().prev().prev().prev().prev().prev().prev().children().text().trim();
+	    var usertype = $(this).parent().parent().next().children().text().trim();
+		window.location.href="getscore.action?op=singledetail&userid="+userid+"&usertype="+usertype;
 	});
 </script>
 </html>

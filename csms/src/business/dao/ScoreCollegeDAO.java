@@ -26,7 +26,7 @@ public interface ScoreCollegeDAO {
 	 * 分页查询所有学院成绩
 	 * @return List<ScoreCollege>数据集
 	 */
-	public List<VCollegeScore> getAllScoreByPage(int pageSize,int startPage);
+	public List<VCollegeScore> getAllScoreByPage(int startPage,int pageSize);
 	
 	/**
 	

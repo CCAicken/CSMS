@@ -2,6 +2,7 @@ package business.dao;
 
 import java.util.List;
 
+import model.VScore;
 import model.VStudentScore;
 
 /**
@@ -17,10 +18,10 @@ public interface ScoreStudentDAO {
 	 */
 	public VStudentScore getByUserid(String string);
 	/**
-	 * 查询所有学生成绩
+	 * 查询某个学生/教师成绩
 	 * @return List<ScoreStudent>数据集
 	 */
-	public List<VStudentScore> getAllScoreStudent();
+	public List<VScore> getScoreStudent(String userid);
 	/**
 	 * 分页查询所有学生成绩
 	 * @return List<ScoreStudent>数据集
@@ -28,7 +29,7 @@ public interface ScoreStudentDAO {
 	 * @param pageSize 每页的记录数
 	 * @return
 	 */
-	public List<VStudentScore> getAllScoreByPage(int startPage,int pageSize);
+	public List<VScore> getAllScoreByPage(int startPage,int pageSize);
 	/**
 	 * 获取所有学生成绩数量
 	 * @return
