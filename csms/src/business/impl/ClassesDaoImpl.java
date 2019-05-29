@@ -58,8 +58,8 @@ public class ClassesDaoImpl implements ClassesDAO {
 	}
 //	public static void main(String[] args){
 //		ClassesDAO dao = new ClassesDaoImpl();
-//		List<TClass> list = dao.selectByMajor(1);
-//		for(TClass cl:list){
+//		List<VClass> list = dao.selectByCollegeVclass(5);
+//		for(VClass cl:list){
 //			System.out.println(cl.getClassname());
 //		}
 //	}
@@ -83,6 +83,14 @@ public class ClassesDaoImpl implements ClassesDAO {
 	public List<VClass> selectByMajorVclass(int majorid) {
 		String hql = "from VClass where majorid=?";
 		Object[] para = {majorid};
+		List<VClass> list = (List<VClass>)bdao.select(hql, para);
+		return list;
+	}
+
+	@Override
+	public List<VClass> selectByCollegeVclass(int collegeid) {
+		String hql = "from VClass where collegeid=?";
+		Object[] para = {collegeid};
 		List<VClass> list = (List<VClass>)bdao.select(hql, para);
 		return list;
 	}
