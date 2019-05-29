@@ -45,4 +45,7 @@
 		</action>
 		<action name="arrangeview"
 			class="action.control.getArrangeAction">
+			<result name="success" type="dispatcher">
+				/CompetitionEntryCheck.jsp
+			</result>
 		</action></package></struts>    

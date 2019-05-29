@@ -6,6 +6,8 @@ import java.util.List;
 
 import util.LayuiData;
 import model.TArrange;
+import model.TClass;
+import model.TCollege;
 import model.VScene;
 
 import com.alibaba.fastjson.JSON;
@@ -17,12 +19,21 @@ public class getArrangeAction extends BaseAction {
 	 * @return
 	 */
 	public String execute() {
-		// 获取学院信息和班级专业信息
-
 		String op = request.getParameter("op");
-		if (op.equals("load")) {
+		if(op.equals("list")){
+			// 获取学院信息和班级信息
+			List<TCollege> collegelist = collegedao.select();
+			List<TClass> classlist = classesdao.select();
+			request.setAttribute("collegelist", collegelist);
+			request.setAttribute("classlist", classlist);
+			return SUCCESS;
+		}else if (op.equals("load")) {
 			String startPage = request.getParameter("page");// 当前
 			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
+			String strwhere=request.getParameter("");
+			String collegeid=request.getParameter("");
+			String classid=request.getParameter("");
+			
 			int allcount = bdao
 					.selectValue(("select count(sceneid) from VScene"));
 			Writer out;
@@ -39,7 +50,9 @@ public class getArrangeAction extends BaseAction {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			return SUCCESS;
 		}
 		return SUCCESS;
+		
 	}
 }
