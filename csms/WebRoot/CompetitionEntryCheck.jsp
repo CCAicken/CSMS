@@ -228,20 +228,6 @@
 				}
 			} ] ]
 		})
-		$("#btn-search").click(function() {
-			alert($("#strwhere").val());
-			table.reload('tableOne', {
-				method : 'post',
-				where : {
-					'strwhere' : $("#strwhere").val(),
-					'collegeid' : send_name,
-					'classid' : send_data,
-				},
-				page : {
-					curr : 1
-				}
-			});
-		})
 	});
 </script>
 
