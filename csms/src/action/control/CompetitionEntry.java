@@ -3,12 +3,14 @@ package action.control;
 import java.io.IOException;
 import java.util.List;
 
+import model.ReturnData;
 import model.VStudent;
 import model.VTeacher;
 import util.LayuiData;
 
 import com.alibaba.fastjson.JSON;
 import common.properties.RoleType;
+
 
 
 public class CompetitionEntry extends BaseAction {
@@ -27,16 +29,22 @@ public class CompetitionEntry extends BaseAction {
 	 * @return
 	 */
 	public String execute() {
-		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
 		Integer roletype = (Integer) session.getAttribute("role");
 		if(roletype.equals(RoleType.Student)){
-			VStudent stu = (VStudent)session.getAttribute("loginuser");
+			VStudent stu = (VStudent) session.getAttribute("loginuser");
 			int classid = stu.getClassid();
-			List<VStudent> list = userdao.selectStuByClassPage(classid, page, limit);
+//			Object[] para = {classid};
+//			List<VStudent> stuList = (List<VStudent>)bdao.selectByPage("form VStudent where classid=?", para, page, limit);
+			List<VStudent> stuList = userdao .selectStuByClassPage(classid, page, limit);
 			int count = userdao.stucount(classid);
-			LayuiData data = new LayuiData(0, "成功", count, list);
+			//LayuiData data = new LayuiData(0, "成功", count, stuList);
+			ReturnData data = new ReturnData();
+			data.code=ReturnData.SUCCESS;
+			data.count = count;
+			data.data = stuList;
 			try {
+				out = response.getWriter();
 				out.write(JSON.toJSONString(data));
 				out.flush();
 				out.close();
@@ -47,11 +55,13 @@ public class CompetitionEntry extends BaseAction {
 		}else if(roletype.equals(RoleType.Teacher)){
 			VTeacher tea = (VTeacher) session.getAttribute("loginuser");
 			int colid = tea.getCollegeid();
-			List<VTeacher> list = userdao.selectTeaByCollPage(colid, page, limit);
-			int count = userdao.teacount(colid);
-			LayuiData data = new LayuiData(0, "成功", count, list);
+			//List<VTeacher> teaList = userdao.selectTeaByCollPage(colid, page, limit);
+			Object[] para = {colid};
+			List<VTeacher> teaList = bdao.selectByPage("from VTeacher where collegeid=?", para,page,limit);
+//			int count = userdao.teacount(colid);
+			int count = bdao.selectValue("select count(userid) from VTeacher where collegeid=?", para);
+			LayuiData data = new LayuiData(0, "成功", count, teaList);
 			try {
-				out = response.getWriter();
 				out.write(JSON.toJSONString(data));
 				out.flush();
 				out.close();

@@ -110,22 +110,13 @@ public class UserDaoImpl implements UserDAO {
 			return null;
 		}
 	}
-	public static void main(String[] args){
-		UserDaoImpl udao= new UserDaoImpl();
-		List<VStudent> list = udao.selectStuByClassPage(2, 1, 5);
-		for(VStudent stu:list){
-			System.out.println(stu.getClassname());
-		}
-//		int count =  udao.stucount(1);
-//		System.out.println(count);
-	}
-	@Override
-	public List<VStudent> selectStuByClassPage(int classid, int page,int limit) {
-		String hql = "from VStudent where classid=?";
-		Object[] param = {classid};
-		List<VStudent> list = bdao.selectByPage(hql, param, page, limit);
-		return list;
-	}
+//	public static void main(String[] args){
+//		UserDaoImpl udao= new UserDaoImpl();
+//		List<VStudent> list = udao.selectStuByClassPage(3, 1, 5);
+//		for(VStudent stu:list){
+//			System.out.println(stu.getClassname());
+//		}
+//	}
 	
 	@Override
 	public int stucount(int classid) {
@@ -133,6 +124,14 @@ public class UserDaoImpl implements UserDAO {
 		Object[] para = {classid};
 		int count = bdao.selectValue(hql, para);
 		return count;
+	}
+	
+	@Override
+	public List<VStudent> selectStuByClassPage(int classid, int page,int limit) {
+		String hql = "from VStudent where classid=?";
+		Object[] param = {classid};
+		List<VStudent> list = bdao.selectByPage(hql, param, page, limit);
+		return list;
 	}
 	
 	@Override
