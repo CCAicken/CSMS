@@ -36,7 +36,7 @@
                         <dl class="layui-nav-child">
                             <!-- 二级菜单 -->
                             <dd><a class="a-nav" href="projectSignUp.jsp">比赛项目查看</a></dd>
-                            <dd><a class="a-nav" href="MatchArrangementView.jsp">比赛时间安排</a></dd>
+                            <dd><a class="a-nav" href="arrangeview.action?op=list">比赛时间安排</a></dd>
                             <dd><a class="a-nav" href="myProject.jsp">查看我的项目</a></dd>
                         </dl>
                     </li>

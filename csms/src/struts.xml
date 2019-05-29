@@ -48,5 +48,10 @@
 		<result name="success" type="dispatcher">/CompetitionEntryCheck.jsp</result>
 		</action>
 		<action name="entry" class="action.control.CompetitionEntry"></action>
-	</package>
+		<action name="myproject"
+			class="action.control.myPeojectAction">
+			<result name="success" type="dispatcher">
+				/myProject.jsp
+			</result>
+		</action></package>
 </struts>    

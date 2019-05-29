@@ -33,14 +33,14 @@ public class SceneDaoImpl implements SceneDAO {
 
 	@Override
 	public List<VScene> seleScenes(String userid) {
-		String hql = "from TProject where userid=?";
+		String hql = "from VScene where userid=?";
 		Object[] param = { userid };
 		return (List<VScene>) bdao.select(hql,param);
 	}
 
 	@Override
 	public List<VScene> seleOtherScenes(String userid) {
-		String hql = "from TProject where userid=?";
+		String hql = "from VScene where userid=?";
 		Object[] param = { userid };
 		return (List<VScene>) bdao.select(hql,param);
 	}
