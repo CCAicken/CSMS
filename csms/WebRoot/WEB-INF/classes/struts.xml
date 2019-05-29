@@ -43,7 +43,8 @@
 		<action name="getapplication"
 			class="action.control.getApplication">
 		</action>
-		<action name="arrangeview"
-			class="action.control.getArrangeAction">
+		<action name="arrangeview" class="action.control.getArrangeAction">
 		</action>
-		<action name="entry" class="action.control.CompetitionEntry"></action></package></struts>    
+		<action name="entry" class="action.control.CompetitionEntry"></action>
+	</package>
+</struts>    

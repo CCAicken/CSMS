@@ -128,7 +128,7 @@ layui.use(['element', 'carousel', 'table'], function() {
    	 	else{
 		    var proid = $(this).parent().parent().prev().prev().prev().prev().prev().find("div").text().trim();
 		    //layer.msg(proid);
-		    window.location.href="studentSignUp.jsp?proid="+proid;
+		    window.location.href="studentSignUp.jsp?proid="+encodeURI(proid);
 	    }
 	});
 </script>

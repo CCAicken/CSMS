@@ -13,7 +13,7 @@
             text-align: center;
         }
     </style>
-    <title>Document</title>
+    <title>班级成绩查看页面</title>
 </head>
 
 <body>

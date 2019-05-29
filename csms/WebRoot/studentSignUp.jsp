@@ -39,6 +39,12 @@
 </body>
 <script src="layui/layui.js"></script>
 <script>
+	//var loc=location.href;
+	//var n1=loc.length;//地址的总长度
+	//var n2=loc.indexOf("=");//取得=号的位置
+	//var proid=decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+	//alert(proid);//
+	
     layui.use(['element', 'carousel', 'table'], function() {
         var element = layui.element;
         var carousel = layui.carousel;
@@ -91,7 +97,7 @@
             even: false, //每行颜色分隔
             //skin: 'nob', //无边框
             limit: 10,
-            limits: [1, 10, 15,20]
+            limits: [1, 10, 15,20],
                 /* first:true,
                 last:true, */
         });

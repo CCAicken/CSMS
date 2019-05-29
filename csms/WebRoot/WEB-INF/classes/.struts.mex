@@ -25,16 +25,29 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
+<<<<<<< HEAD
     <action name="logout" location="36,586" size="150,40" />
     <action name="getmacth" location="36,636" size="150,40" />
     <action name="changepwd" location="36,686" size="150,40" />
     <action name="getapplication" location="36,736" size="150,40" />
     <action name="arrangeview" location="37,341" size="150,40" />
     <action name="entry" location="36,796" size="150,40" />
+=======
+    <action name="logout" location="31,581" size="150,40" />
+    <action name="getmacth" location="31,631" size="150,40" />
+    <action name="changepwd" location="31,681" size="150,40" />
+    <action name="getapplication" location="31,731" size="150,40" />
+    <action name="arrangeview" location="32,336" size="150,40">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="CompetitionEntryCheck.jsp" />
+      </result>
+    </action>
+>>>>>>> branch 'master' of https://github.com/KzlDeng/CSMS.git
   </package>
-  <webResource name="forumContent.jsp" path="/forumContent.jsp" location="350,50" size="150,55" />
-  <webResource name="main.jsp" path="/main.jsp" location="546,527" size="150,55" />
-  <webResource name="error.jsp" path="/error.jsp" location="350,350" size="150,55" />
-  <webResource name="scoreDetail.jsp" path="/scoreDetail.jsp" location="350,200" size="150,55" />
+  <webResource name="forumContent.jsp" path="/forumContent.jsp" location="370,315" size="150,55" />
+  <webResource name="main.jsp" path="/main.jsp" location="370,599" size="150,55" />
+  <webResource name="error.jsp" path="/error.jsp" location="367,536" size="150,55" />
+  <webResource name="scoreDetail.jsp" path="/scoreDetail.jsp" location="351,474" size="150,55" />
+  <webResource name="CompetitionEntryCheck.jsp" path="/CompetitionEntryCheck.jsp" location="382,387" size="150,55" />
 </Struts2Diagram>
 

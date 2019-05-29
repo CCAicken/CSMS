@@ -76,7 +76,13 @@ public interface UserDAO {
 	 * @param limit 每页数量
 	 * @return
 	 */
-	public List<VStudent> selectStuByClassPage(String classid,int page,int limit);
+	public List<VStudent> selectStuByClassPage(int classid,int page,int limit);
+	/**
+	 * 班级学生数量
+	 * @param classid
+	 * @return
+	 */
+	public int stucount(int classid);
 	//教师方法
 	
 	/**
@@ -129,5 +135,11 @@ public interface UserDAO {
 	 * @param limit
 	 * @return
 	 */
-	public List<VTeacher> selectTeaByCollPage(String collegeid,int page,int limit);
+	public List<VTeacher> selectTeaByCollPage(int collegeid,int page,int limit);
+	/**
+	 * 学院教师数量
+	 * @param collegeid
+	 * @return
+	 */
+	public int teacount(int collegeid);
 }

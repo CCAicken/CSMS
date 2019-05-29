@@ -5,16 +5,17 @@ import java.util.List;
 import model.VStudent;
 import model.VTeacher;
 import basic.iHibBaseDAO;
+import basic.iHibBaseDAOImpl;
 import business.dao.UserDAO;
 
 public class UserDaoImpl implements UserDAO {
 	private iHibBaseDAO bdao;
-	public void setBdao(iHibBaseDAO bdao) {
-		this.bdao = bdao;
-	}
-//	public UserDaoImpl(){
-//		bdao =  new iHibBaseDAOImpl();
+//	public void setBdao(iHibBaseDAO bdao) {
+//		this.bdao = bdao;
 //	}
+	public UserDaoImpl(){
+		bdao =  new iHibBaseDAOImpl();
+	}
 	@Override
 	public VStudent loginStu(String userid, String pwd) {
 		VStudent student = (VStudent)bdao.findById(VStudent.class, userid);
@@ -55,10 +56,6 @@ public class UserDaoImpl implements UserDAO {
 		boolean flag = bdao.update(stu);
 		return flag;
 	}
-//public static void main(String[] args){
-//	UserDaoImpl udao= new UserDaoImpl();
-//	System.out.println(udao.updateTeaPwd("94001", "111111"));
-//}
 	@Override
 	public boolean deleteStu(String userid) {
 		VStudent student = (VStudent)bdao.findById(VStudent.class, userid);
@@ -114,13 +111,29 @@ public class UserDaoImpl implements UserDAO {
 			return null;
 		}
 	}
-
+	public static void main(String[] args){
+		UserDaoImpl udao= new UserDaoImpl();
+		List<VStudent> list = udao.selectStuByClassPage(2, 1, 5);
+		for(VStudent stu:list){
+			System.out.println(stu.getClassname());
+		}
+//		int count =  udao.stucount(1);
+//		System.out.println(count);
+	}
 	@Override
-	public List<VStudent> selectStuByClassPage(String classid, int page,int limit) {
+	public List<VStudent> selectStuByClassPage(int classid, int page,int limit) {
 		String hql = "from VStudent where classid=?";
 		Object[] param = {classid};
 		List<VStudent> list = bdao.selectByPage(hql, param, page, limit);
 		return list;
+	}
+	
+	@Override
+	public int stucount(int classid) {
+		String hql = "select count(userid) from VStudent where classid=?";
+		Object[] para = {classid};
+		int count = bdao.selectValue(hql, para);
+		return count;
 	}
 	
 	@Override
@@ -193,12 +206,19 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public List<VTeacher> selectTeaByCollPage(String collegeid, int page,
+	public List<VTeacher> selectTeaByCollPage(int collegeid, int page,
 			int limit) {
 		String hql = "from VTeacher where collegeid=?";
 		Object[] param = {collegeid};
 		List<VTeacher> list = bdao.selectByPage(hql, param, page, limit);
 		return list;
+	}
+	@Override
+	public int teacount(int collegeid) {
+		String hql = "select count(userid) from VTeacher where collegeid=?";
+		Object[] para = {collegeid};
+		int count = bdao.selectValue(hql, para);
+		return count;
 	}
 
 }
