@@ -55,15 +55,15 @@
     <button class="layui-btn layui-btn-sm layui-bg-green query">查看详情</button>
 </script>
 <script type="text/javascript">
-    layui.use(['table', 'laydate', 'layer', 'jquery'], function() {
+    layui.use(['table', 'form','layer', 'jquery'], function() {
         var table = layui.table;
         var $ = layui.jquery;
-        var laydate = layui.laydate;
         var layer = layui.layer;
+        var form = layui.form;
 
         //页面加载获取动态表格数据
         table.render({
-        	id:'tableOne',
+        	id : 'tableOne',
             elem: '#scoretable',
             height: '800px', //高度最大化减去差值,
             url: 'getscore.action?op=college',
