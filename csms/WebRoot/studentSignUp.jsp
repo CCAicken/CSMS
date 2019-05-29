@@ -19,7 +19,7 @@
 <body>
     <div class="layui-card">
         <div class="layui-card-header">
-            <h2>学生报名</h2>
+            <h2>比赛报名</h2>
         </div>
         <div class="layui-card-body">
             <div class="layui-form-item">
@@ -63,29 +63,28 @@
                     {
                         field: 'userid',
                         title: '学号/工号',
-                        width: 100,
+                        align:'center'
                     },{
                     	field: 'username',
                         title: '姓名',
-                        width: 100,
-                        hide:true,
+                        align:'center'
                     },
                      {
                         field: 'agend',
                         title: '性别',
-                        width: 70
+                        align:'center'
                     }, {
                         field: 'collegename',
                         title: '学院',
-                        width: 150
+                        align:'center'
                         //sort: true //是否排序
                     }, {
                         field: '',
                         title: '班级',
-                        width: 200,
+                        align:'center',
 						templet:function(data){
 							if(data.classname == ""||data.classname==null){
-								return "";
+								return "老师没有班级";
 							}else{
 								return data.classname;
 							}

@@ -59,31 +59,25 @@ layui.use(['element', 'carousel', 'table'], function() {
                     {
                         field: '',
                         title: '序号',
-                        width: 40,
                         type:'numbers'
                     },{
                     	field: 'proid',
                         title: '序号',
-                        width: 40,
                         hide:true,
                     },
                      {
                         field: 'proname',
                         title: '项目名称',
-                        width: 200
                     }, {
                         field: 'currentnum',
                         title: '当前报名人数',
-                        width: 200
                         //sort: true //是否排序
                     }, {
                         field: 'totallimit',
                         title: '人数限制',
-                        width: 200
                     }, {
                         field: '',
                         title: '项目类型',
-                        width: 200,
 						templet:function(data){
 							if(data.protype == 1){
 								return "<a href=''>学生个人赛</a>"
@@ -98,7 +92,6 @@ layui.use(['element', 'carousel', 'table'], function() {
                     }, {
                         field: '',
                         title: '操作',
-                        width: 200,
                         toolbar: '#barDemo'
                     }
                 ]
