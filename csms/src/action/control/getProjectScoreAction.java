@@ -45,8 +45,8 @@ public class getProjectScoreAction extends BaseAction {
 					}
 				}
 			}
-			List<VScore> clalist = scoredao.getProjectScoreOrderByPage(strsearch, startPage, limit);
-			int count = scorestudentdao.allScoreCount(strsearch);
+			List<VScore> clalist = scoredao.getScoreByPage(strsearch, startPage, limit);
+			int count = scoredao.allScoreCount(strsearch);
 			ReturnData rd = new ReturnData();
 			rd.code = ReturnData.SUCCESS;
 			rd.count = count;

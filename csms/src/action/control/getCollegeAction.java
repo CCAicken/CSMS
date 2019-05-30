@@ -28,12 +28,14 @@ public class getCollegeAction extends BaseAction {
 		//返回所有学院信息列表
 		List<TCollege> listcollege = collegedao.select();
 		request.setAttribute("listcollege", listcollege);
-		if(op.equals("single")){
-			requesturl = "singleScore.jsp";
+		if(op.equals("college")){
+			requesturl = "collegeScore.jsp";
+		}else if(op.equals("major")){
+			requesturl = "majorScore.jsp";
 		}else if(op.equals("class")){
 			requesturl = "classScore.jsp";
-		}else if(op.equals("college")){
-			requesturl = "collegeScore.jsp";
+		}else if(op.equals("single")){
+			requesturl = "singleScore.jsp";
 		}else if(op.equals("project")){
 			requesturl = "projectScore.jsp";
 		}
