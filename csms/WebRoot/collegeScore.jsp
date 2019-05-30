@@ -30,7 +30,7 @@
                     <div class="layui-input-inline">
 	                    <div id="college">
 	                        <select name="college" id="college" lay-filter="college" lay-verify="required" lay-search="">
-	                             <option value="">请选择或输入学院名称</option>
+	                             <option value="0">请选择或输入学院名称</option>
 	                             <c:forEach items="${listcollege}" var="obj">
 	                             <option value="${obj.collegeid }">${obj.collegename }</option>
 	                             </c:forEach>
@@ -65,12 +65,12 @@
         table.render({
         	id : 'tableOne',
             elem: '#scoretable',
-            height: '800px', //高度最大化减去差值,
+            height: 'full-200', //高度最大化减去差值,
             url: 'getscore.action?op=college',
             page: true,
             even: true,
-            limit:5,
-            limits:[5,10,15],
+            limit:10,
+            limits:[10,15,20],
             skin: "nob",
             cellMinWidth: 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                 //,toolbar: '#toolbarDemo'
@@ -79,24 +79,24 @@
                 [{
                 	align:'center',
                     field: '',
-                    width: 100,
+                    width: 200,
                     title: '序号',
                     type:'numbers'
                 }, {
                 	align:'center',
                     field: 'collegename',
-                    width: 150,
+                    width: 340,
                     title: '学院名称',
                 },{
                 	align:'center',
                     field: 'scorenumber',
                     title: '平均成绩',
-                    width: 100
+                    width: 280
                 },{
                 	align:'center',
                     field: '',
                     title: '操作',
-                    width: 120,
+                    width: 288,
 					toolbar:'#barDemo'
                 },{
                     field: 'collegeid',

@@ -29,7 +29,7 @@
                 <div class="layui-row layui-form">
                     <div class="layui-input-inline">
                         <select name="college" id="college" lay-filter="college" lay-verify="required" lay-search="">
-                                        <option value="">请选择或输入学院名称</option>
+                                        <option value="0">请选择或输入学院名称</option>
                                         <c:forEach items="${listcollege}" var="obj">
                                         <option value="${obj.collegeid }">${obj.collegename }</option>
                                         </c:forEach>
@@ -71,12 +71,12 @@
         table.render({
         	id : 'tableOne',
             elem: '#scoretable',
-            height: '800px', //高度最大化减去差值,
+            height: 'full-200', //高度最大化减去差值,
             url: 'getscore.action?op=single',
             page: true,
             even: true,
             limit:10,
-            limits:[5,10,15],
+            limits:[10,15,20],
             skin: "nob",
             cellMinWidth: 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                 //,toolbar: '#toolbarDemo'
@@ -85,7 +85,7 @@
                 [{
                 	align:'center',
                     field: '',
-                    width: 80,
+                    width: 78,
                     title: '序号',
                     type:'numbers'
                 },{
@@ -181,7 +181,7 @@
 					if(succ=="失败"){
 						layer.msg("请刷新后重试");
 					}else{
-						 var tmp = '<option value="">请选择或输入专业名称</option>';
+						 var tmp = '<option value="0">请选择或输入专业名称</option>';
 						 for ( var i in succ.data) {
 							 tmp += '<option value="' + succ.data[i].majorid +  '">' + succ.data[i].majorname + '</option>';
 						}
@@ -207,7 +207,7 @@
 				if(succ=="失败"){
 						layer.msg("请刷新后重试");
 					}else{
-						 var tmp = '<option value="">请选择或输入班级名称</option>';
+						 var tmp = '<option value="0">请选择或输入班级名称</option>';
 						 for ( var i in succ.data) {
 							 tmp += '<option value="' + succ.data[i].classid +  '">' + succ.data[i].classname + '</option>';
 						}

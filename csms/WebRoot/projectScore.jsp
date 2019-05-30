@@ -29,15 +29,16 @@
                 <div class="layui-row layui-form">
                     <div class="layui-input-inline">
                         <select name="college" id="college" lay-filter="college" lay-verify="required" lay-search="">
-                            <option value="">请选择或输入学院名称</option>
+                            <option value="0">请选择或输入学院名称</option>
                             <c:forEach items="${listcollege}" var="obj">
                             <option value="${obj.collegeid }">${obj.collegename }</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="layui-input-inline">
-                        <select name="user" id="user" lay-filter="user" lay-verify="required" lay-search="">
-                                <option value="student" selected="selected">学生</option>
+                        <select name="userselect" id="userselect" lay-filter="userselect">
+                                <option value="0">请选择参赛者身份</option>
+                                <option value="student">学生</option>
                                 <option value="teacher">教师</option>
                             </select>
                     </div>
@@ -67,12 +68,12 @@
         table.render({
         	id : 'tableOne',
             elem: '#scoretable',
-            height: '800px', //高度最大化减去差值,
-            url: 'getprojectscore.action?user=student',
+            height: 'full-200', //高度最大化减去差值,
+            url: 'getprojectscore.action?user='+$("#userselect").val(),
             page: true,
             even: true,
-            limit:5,
-            limits:[5,10,15],
+            limit:10,
+            limits:[10,15,20],
             skin: "nob",
             cellMinWidth: 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                 //,toolbar: '#toolbarDemo'
@@ -87,16 +88,16 @@
                 }, {
                 	align:'center',
                     field: 'proname',
-                    width: 150,
+                    width: 250,
                     title: '项目名称',
                     sort:true
                 }, {
                 	align:'center',
                     field: '',
-                    width: 150,
+                    width: 200,
                     title: '参赛者',
                     templet:function(data){
-	                    if(data.protype==1||ata.protype==1){
+	                    if(data.protype==1||data.protype==2){
 	                    	return data.username
 	                    }else{
 	                    	return data.teausername
@@ -106,10 +107,10 @@
                 	align:'center',
                     field: '',
                     title: '学院名称',
-                    width: 150,
+                    width: 208,
                     sort:true,
                     templet:function(data){
-	                    if(data.protype==1||ata.protype==1){
+	                    if(data.protype==1||data.protype==2){
 	                    	return data.collegename
 	                    }else{
 	                    	return data.teacollegename
@@ -119,9 +120,9 @@
                 	align:'center',
                     field: '',
                     title: '参赛者身份',
-                    width: 100,
+                    width: 150,
                     templet:function(data){
-	                    if(data.protype==1||ata.protype==1){
+	                    if(data.protype==1||data.protype==2){
 	                    	return "学生"
 	                    }else{
 	                    	return "教师"
@@ -131,7 +132,7 @@
                 	align:'center',
                     field: 'scorenumber',
                     title: '成绩',
-                    width: 120,
+                    width: 200,
                     sort:true
                 }]
             ]
@@ -142,7 +143,7 @@
 				method : 'post',
 				where : {
 					'collegeid' : data.field.college,
-					'user' : data.field.user
+					'user' : data.field.userselect
 				},
 				page : {
 					curr : 1

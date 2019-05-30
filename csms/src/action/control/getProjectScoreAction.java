@@ -23,21 +23,25 @@ public class getProjectScoreAction extends BaseAction {
 			String collegeid = request.getParameter("collegeid");
 			String user = request.getParameter("user");
 			String strsearch = "";
-			if (collegeid != null && !collegeid.equals("")) {
-				strsearch = " where collegeid='" + collegeid + "'";
+			if (collegeid != null && !collegeid.equals("") && !collegeid.equals("0")) {
+				if(user.equals("student")){
+					strsearch = " where collegeid='" + collegeid + "'";
+				}else{
+					strsearch = " where teacollegeid='" + collegeid + "'";
+				}
 			}
-			if (user != null && !user.equals("")) {
+			if (user != null && !user.equals("") && !user.equals("0")) {
 				if(strsearch.equals("")){
-					if(user=="student"){
+					if(user.equals("student")){
 						strsearch = " where protype=1 or protype=2";
 					}else{
 						strsearch = " where protype=3 or protype=4";
 					}
 				}else{
-					if(user=="student"){
-						strsearch = " and protype=1 or protype=2";
+					if(user.equals("student")){
+						strsearch += " and (protype=1 or protype=2)";
 					}else{
-						strsearch = " and protype=3 or protype=4";
+						strsearch += " and (protype=3 or protype=4)";
 					}
 				}
 			}

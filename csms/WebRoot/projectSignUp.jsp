@@ -22,7 +22,7 @@
 			<h2>标题</h2>
 		</div>
 		<div class="layui-card-body">
-			<div class="layui-form-item">
+			<div class="layui-row">
 				<div class="layui-input-inline">
 					<input type="text" name="text" id="strwhere" placeholder="请输入查询条件"
 						autocomplete="off" class="layui-input">
@@ -31,8 +31,10 @@
 					<button type="button" id="btn-search" class="layui-btn layui-btn">查询</button>
 				</div>
 			</div>
-			<table class="layui-table" id="forumlist" lay-filter="test"
-				width="100%"></table>
+			<div class="layui-row">
+				<table class="layui-table" id="forumlist" lay-filter="test"
+					width="100%"></table>
+			</div>
 		</div>
 	</div>
 	<%@include file="footer.jsp"%>
@@ -54,13 +56,15 @@
 		table.render({
 			elem : '#forumlist',
 			id : 'tableOne',
-			height : 'full-275',
+			height : 'full-200',
 			url : 'getproject.action', //数据接口
 			cols : [ [ //表头
 			{
+				align : 'center',
 				field : '',
 				title : '序号',
-				type : 'numbers'
+				type : 'numbers',
+				width:100
 			}, {
 				field : 'proid',
 				title : '序号',

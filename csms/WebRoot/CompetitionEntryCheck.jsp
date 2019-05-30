@@ -13,6 +13,10 @@
 <link rel="stylesheet" href="layui/css/layui.css">
 
 <style>
+.layui-table-cell {
+white-space:normal;
+height: inherit;
+}
 </style>
 </head>
 
@@ -123,20 +127,19 @@
 		table.render({
 			elem : '#basic-table',
 			//height : 513,
-			url : url // 数据接口
-			,
-			height : 'full-275',
+			url : url,
+			height : 'full-100',
 			id : 'tableOne',
-			page : true // 开启分页
-			,
+			page : true,
 			limits : [ 5, 10, 15 ],
-
 			cols : [ [ // 表头
 			{
+				align : 'center',
 				field : 'userid',
 				title : '学号',
-				width : 70
+				width : 100
 			}, {
+				align : 'center',
 				field : '',
 				title : '姓名',
 				width : 100,
@@ -148,9 +151,10 @@
 					}
 				}
 			}, {
+				align : 'center',
 				field : '',
 				title : '班级',
-				width : 150,
+				width : 100,
 				templet : function(d) {
 					if (d.classname == null || d.classname == "") {
 						return "教师用户不分班级";
@@ -159,9 +163,10 @@
 					}
 				}
 			}, {
+				align : 'center',
 				field : '',
 				title : '专业',
-				width : 150,
+				width : 100,
 				templet : function(d) {
 					if (d.majorname == null || d.majorname == "") {
 						return "教师用户专业";
@@ -170,9 +175,10 @@
 					}
 				}
 			}, {
+				align : 'center',
 				field : '',
 				title : '院系',
-				width : 150,
+				width : 100,
 				templet : function(d) {
 					if (d.collegename == null || d.collegename == "") {
 						return d.teacollegename;
@@ -181,29 +187,35 @@
 					}
 				}
 			}, {
+				align : 'center',
 				field : 'proname',
 				title : '项目名称',
-				width : 150
+				width : 100
 			}, {
+				align : 'center',
 				field : 'arrname',
 				title : '场次',
-				width : 150
+				width : 100
 			}, {
+				align : 'center',
 				field : 'starttime',
 				title : '开始时间',
-				width : 150
+				width : 110
 			}, {
+				align : 'center',
 				field : 'endtime',
 				title : '结束时间',
-				width : 150
+				width : 110
 			}, {
+				align : 'center',
 				field : 'addr',
 				title : '比赛地点',
-				width : 150
+				width : 75
 			}, {
+				align : 'center',
 				field : '',
 				title : '比赛级别',
-				width : 150,
+				width : 65,
 				templet : function(d) {
 					if (d.leveltype == 1) {
 						return "预赛";
@@ -212,9 +224,10 @@
 					}
 				}
 			}, {
+				align : 'center',
 				field : '',
 				title : '比赛状态',
-				width : 150,
+				width : 75,
 				templet : function(d) {
 					if (d.state == 0) {
 						return "未开始";

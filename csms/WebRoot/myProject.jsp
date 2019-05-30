@@ -48,32 +48,31 @@
 
 					<c:forEach items="${scenlist }" var="obj" varStatus="xh">
 						<tr>
-							<td>${xh.index+1 }</td>
-							<td>${obj.proname }</td>
-							<td>${obj.arrname }</td>
-							<td>${obj.starttime }</td>
-							<td>${obj.endtime }</td>
-							<td>${obj.addr }</td>
+							<td class="text-center">${xh.index+1 }</td>
+							<td class="text-center">${obj.proname }</td>
+							<td class="text-center">${obj.arrname }</td>
+							<td class="text-center">${obj.starttime }</td>
+							<td class="text-center">${obj.endtime }</td>
+							<td class="text-center">${obj.addr }</td>
 							<c:if test="${obj.leveltype==1 }">
-								<td>预赛</td>
+								<td class="text-center">预赛</td>
 							</c:if>
 							<c:if test="${obj.leveltype==2 }">
-								<td>决赛</td>
+								<td class="text-center">决赛</td>
 							</c:if>
 
 							<c:if test="${obj.state == 0 }">
-								<td>未比赛</td>
+								<td class="text-center">未比赛</td>
 							</c:if>
 							<c:if test="${obj.state == 1 }">
-								<td>已结束</td>
+								<td class="text-center">已结束</td>
 							</c:if>
 							<c:if test="${obj.state == 2 }">
-								<td>延时</td>
+								<td class="text-center">延时</td>
 							</c:if>
 							<c:if test="${obj.state == 3 }">
-								<td>取消</td>
+								<td class="text-center">取消</td>
 							</c:if>
-
 						</tr>
 					</c:forEach>
 

@@ -31,13 +31,13 @@ public class getScoreAction extends BaseAction {
 				collegeid = request.getParameter("collegeid");
 				majorid = request.getParameter("majorid");
 				classid = request.getParameter("classid");
-				if (collegeid != null && !collegeid.equals("")) {
+				if (collegeid != null && !collegeid.equals("") && !collegeid.equals("0")) {
 					strsearch = " where collegeid='" + collegeid + "'";
 				}
-				if (majorid != null && !majorid.equals("")) {
+				if (majorid != null && !majorid.equals("") && !majorid.equals("0")) {
 					strsearch = " where majorid='" + majorid + "'";
 				}
-				if (classid != null && !classid.equals("")) {
+				if (classid != null && !classid.equals("") && !classid.equals("0")) {
 					strsearch = " where classid='" + classid + "'";
 				}
 				List<VClassScore> clalist = scoreclassesdao.getAllScoreByPage(strsearch, startPage, limit);
@@ -82,7 +82,7 @@ public class getScoreAction extends BaseAction {
 			startPage = Integer.parseInt(request.getParameter("page"));// 当前
 			limit = Integer.parseInt(request.getParameter("limit"));// 条数
 			collegeid = request.getParameter("collegeid");
-			if (collegeid != null && !collegeid.equals("")) {
+			if (collegeid != null && !collegeid.equals("") && !collegeid.equals("0")) {
 				strsearch = " where collegeid='" + collegeid + "'";
 			}
 			List<VCollegeScore> clalist = scorecollegedao.getAllScoreByPage(
@@ -155,13 +155,13 @@ public class getScoreAction extends BaseAction {
 			collegeid = request.getParameter("collegeid");
 			majorid = request.getParameter("majorid");
 			classid = request.getParameter("classid");
-			if (collegeid != null && !collegeid.equals("")) {
+			if (collegeid != null && !collegeid.equals("") && !collegeid.equals("0")) {
 				strsearch = " where collegeid='" + collegeid + "'";
 			}
-			if (majorid != null && !majorid.equals("")) {
+			if (majorid != null && !majorid.equals("") && !majorid.equals("0")) {
 				strsearch = " where majorid='" + majorid + "'";
 			}
-			if (classid != null && !classid.equals("")) {
+			if (classid != null && !classid.equals("") && !classid.equals("0")) {
 				strsearch = " where classid='" + classid + "'";
 			}
 			List<VScore> stulist = scorestudentdao.getAllScoreByPage(strsearch,

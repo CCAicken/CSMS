@@ -105,7 +105,7 @@
         var table = layui.table;
         table.render({
             elem: '#forumlist',
-            height: 500,
+            height: 'full-200',
             url: 'getforum.action', //数据接口
             cols: [
                 [ //表头
@@ -113,13 +113,13 @@
                 		align:'center',
                         field: '',
                         title: '序号',
-                        width: 100,
+                        width: 180,
                         type:'numbers'
                     }, {
                 		align:'center',
                         field: 'title',
                         title: '文章标题',
-                        width: 400,
+                        width: 478,
                         templet:function(data){
                         	return "<a href='getcontent.action?op=byforumid&titleid="+data.forumid+"'>"+data.title+"</a>"
                         }
@@ -127,13 +127,13 @@
                 		align:'center',
                         field: 'author',
                         title: '投稿人',
-                        width: 100
+                        width: 200
                         //sort: true //是否排序
                     }, {
                 		align:'center',
                         field: 'createtime',
                         title: '时间',
-                        width: 200
+                        width: 250
                     }
                 ]
             ],
@@ -141,7 +141,7 @@
             even: true, //每行颜色分隔
             skin: 'nob', //无边框
             limit: 10,
-            limits: [5, 10, 15]
+            limits: [10, 15,20]
                 /* first:true,
                 last:true, */
         });
