@@ -32,12 +32,20 @@
                 </div>
             </div>
             <table class="layui-table" id="userlist" lay-filter="test" width="100%"></table>
-            <button class="layui-btn">确认报名</button>
+            <button class="layui-btn" id="sure_btn">确认报名</button>
         </div>
     </div>
     <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm tr-data" lay-event="getCheckData">获取选中行数据</button>
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+    <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+  </div>
+</script>
 <script>
 	//var loc=location.href;
 	//var n1=loc.length;//地址的总长度
@@ -56,6 +64,7 @@
         table.render({
             elem: '#userlist',
             height: 500,
+            toolbar: '#toolbarDemo',
             url: 'entry.action', //数据接口
             cols: [
                 [ //表头
@@ -84,7 +93,7 @@
                         align:'center',
 						templet:function(data){
 							if(data.classname == ""||data.classname==null){
-								return "老师没有班级";
+								return "教职工没有班级";
 							}else{
 								return data.classname;
 							}
@@ -100,14 +109,39 @@
                 /* first:true,
                 last:true, */
         });
-        //监听工具条
-        table.on('tool(demo)', function(obj) {
-            var data = obj.data;
-            if (obj.event === 'add') {
-                layer.alert('报名')
-            }
-        });
+        //头工具栏事件
+	  table.on('toolbar(test)', function(obj){
+		   var checkStatus = table.checkStatus(obj.config.id);
+		   switch(obj.event){
+		   	case 'getCheckData':
+		        var data = checkStatus.data;
+		        var jsondata = JSON.stringify(data);
+		        //layer.alert(jsondata);
+		        $.ajax({
+		        	type: "POST",
+        			url: "entry.action",
+			        data: {ds:jsondata,op:"add"},  
+			        dataType:"json",  
+			        success: function(json){  
+			        	alert(json.userid);    
+			        },  
+			        error: function(json){  
+			            alert("请刷新后重试...");  
+			        }  
+		        });
+		      break;
+		      case 'getCheckLength':
+		        var data = checkStatus.data;
+		        layer.msg('选中了：'+ data.length + ' 个');
+		      break;
+		      case 'isAll':
+		        layer.msg(checkStatus.isAll ? '全选': '未全选');
+		      break;
+		    };
+	  });
     });
+    $("#sure_btn").click(function(){
+    	alert($(".tr-data").val());
+    })
 </script>
-
 </html>
