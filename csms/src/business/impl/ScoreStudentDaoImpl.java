@@ -51,12 +51,6 @@ public class ScoreStudentDaoImpl implements ScoreStudentDAO {
 		}
 	}
 	@Override
-	public int allScoreCount(String strwhere) {
-		String hql = "select count(*) from VScore"+strwhere;
-		int count = bdao.selectValue(hql);
-		return count;
-	}
-	@Override
 	public double allScore(String userid) {
 		String hql = "select round(sum(scorenumber),2) as scorenumber from VScore where userid=?";
 		Object[] param = {userid};

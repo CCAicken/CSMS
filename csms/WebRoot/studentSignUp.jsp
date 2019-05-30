@@ -47,11 +47,11 @@
   </div>
 </script>
 <script>
-	//var loc=location.href;
-	//var n1=loc.length;//地址的总长度
-	//var n2=loc.indexOf("=");//取得=号的位置
-	//var proid=decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
-	//alert(proid);//
+	var loc=location.href;
+	var n1=loc.length;//地址的总长度
+	var n2=loc.indexOf("=");//取得=号的位置
+	var proid=decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+	alert(proid);
 	
     layui.use(['element', 'carousel', 'table'], function() {
         var element = layui.element;
@@ -114,19 +114,22 @@
 		   var checkStatus = table.checkStatus(obj.config.id);
 		   switch(obj.event){
 		   	case 'getCheckData':
-		        var data = checkStatus.data;
-		        var jsondata = JSON.stringify(data);
-		        //layer.alert(jsondata);
+		       var data = checkStatus.data;
+		       var str="";
+		       for(var i=0;i<data.length;i++){
+		       str+=data[i].userid+",";
+		       }
+		        //layer.alert(str);
 		        $.ajax({
 		        	type: "POST",
         			url: "entry.action",
-			        data: {ds:jsondata,op:"add"},  
-			        dataType:"json",  
-			        success: function(json){  
-			        	alert(json.userid);    
+			        data: {datastr:str,op:"add",proid:proid},  
+			        dataType:"text",  
+			        success: function(data){  
+			        	alert(data);    
 			        },  
 			        error: function(json){  
-			            alert("请刷新后重试...");  
+			           alert("请刷新后重试...");  
 			        }  
 		        });
 		      break;

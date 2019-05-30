@@ -9,7 +9,6 @@ import model.VTeacher;
 import util.LayuiData;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import common.properties.RoleType;
 
 public class CompetitionEntry extends BaseAction {
@@ -59,6 +58,7 @@ public class CompetitionEntry extends BaseAction {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			return SUCCESS;
 		} else if (roletype.equals(RoleType.Teacher)) {
 			VTeacher tea = (VTeacher) session.getAttribute("loginuser");
 			int colid = tea.getCollegeid();
@@ -80,20 +80,21 @@ public class CompetitionEntry extends BaseAction {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			return SUCCESS;
 		}
 		if (op.equals("add")) {
-			String ds = request.getParameter("ds");
-			JSONObject jsStr = JSONObject.parseObject(ds);
-			String userid = jsStr.getString("userid");
-			System.out.println(userid);
+			String ds = request.getParameter("datastr");
+			String proid = request.getParameter("proid");
+			String a[] = ds.split(",");
 			try {
-				out.write(JSON.toJSONString(jsStr));
+				out.write(a[0]);
 				out.flush();
 				out.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			return SUCCESS;
 		}
 		return SUCCESS;
 	}

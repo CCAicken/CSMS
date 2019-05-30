@@ -32,12 +32,6 @@ public interface ScoreStudentDAO {
 	 */
 	public List<VScore> getAllScoreByPage(String strwhere, int startPage,int pageSize);
 	/**
-	 * 获取所有学生成绩数量
-	 * @param strwhere 查询条件（为空填写为""）
-	 * @return
-	 */
-	public int allScoreCount(String strwhere);
-	/**
 	 * 获取某个学生的总分
 	 * @return
 	 */

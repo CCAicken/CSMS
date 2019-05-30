@@ -77,7 +77,7 @@ public class ScoreDaoImpl implements ScoreDAO {
 	}
 
 	@Override
-	public List<VScore> getProjectScoreOrderByPage(String strwhere,int startPage,int limit) {
+	public List<VScore> getScoreByPage(String strwhere,int startPage,int limit) {
 		String hql = "from VScore"+strwhere;
 		List<VScore> list = bdao.selectByPage(hql, startPage, limit);
 		if (list != null && list.size() > 0) {
@@ -85,5 +85,11 @@ public class ScoreDaoImpl implements ScoreDAO {
 		} else {
 			return null;
 		}
+	}
+	@Override
+	public int allScoreCount(String strwhere) {
+		String hql = "select count(*) from VScore"+strwhere;
+		int count = bdao.selectValue(hql);
+		return count;
 	}
 }
