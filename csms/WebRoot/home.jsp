@@ -34,11 +34,11 @@
         <div class="layui-col-md8 layui-col-lg8" style="width:74%">
             <div class="layui-carousel" id="lb">
                 <div carousel-item>
-                    <img src="image/1.jpg">
                     <img src="image/2.jpg">
-                    <img src="image/3.jpg">
-                    <img src="image/4.jpg">
+                    <img src="image/10.jpg">
                     <img src="image/5.jpg">
+                    <img src="image/6.jpg">
+                    <img src="image/7.jpg">
                 </div>
             </div>
             <!--轮播结束-->
