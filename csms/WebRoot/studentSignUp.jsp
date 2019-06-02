@@ -66,6 +66,7 @@
             height: 500,
             toolbar: '#toolbarDemo',
             url: 'entry.action', //数据接口
+            skin: "nob",
             cols: [
                 [ //表头
                 	{ type: 'checkbox' },
@@ -102,7 +103,7 @@
                 ]
             ],
             page: true, //开启分页
-            even: false, //每行颜色分隔
+            even: true, //每行颜色分隔
             //skin: 'nob', //无边框
             limit: 10,
             limits: [1, 10, 15,20],
@@ -116,41 +117,46 @@
 		   	case 'getCheckData':
 		       var data = checkStatus.data;
 		       var str="";
-		       for(var i=0;i<data.length;i++){
-		       str+=data[i].userid+",";
+		       if(data.length==0){
+		       		layer.msg("请选择报名的人");
 		       }
-		        $.ajax({
-		        	type: "POST",
-        			url: "stuAction.action",
-			        data: {datastr:str,op:"add",proid:proid},  
-			        dataType:"text",  
-			        success: function(data){  
-			        	if(data=="报名成功"){
-				        	layer.msg(data, {
-								time: 0 //不自动关闭
-								,btn: ['确定']
-								,yes: function(index){
-									layer.close(index);
-									//window.location.reload();
-									window.location.href="main.jsp";
-								}
-							});
-						}
-						else{
-							layer.msg(data, {
-								time: 0 //不自动关闭
-								,btn: ['确定']
-								,yes: function(index){
-									layer.close(index);
-									window.location.reload();
-								}
-							});
-						}
-			        }, 
-			        error: function(json){  
-			           layer.alert("请刷新后重试...");  
-			        }  
-		        });
+		       else{
+			       for(var i=0;i<data.length;i++){
+			       str+=data[i].userid+",";
+			       }
+			        $.ajax({
+			        	type: "POST",
+	        			url: "stuAction.action",
+				        data: {datastr:str,op:"add",proid:proid},  
+				        dataType:"text",  
+				        success: function(data){  
+				        	if(data=="报名成功"){
+					        	layer.msg(data, {
+									time: 0 //不自动关闭
+									,btn: ['确定']
+									,yes: function(index){
+										layer.close(index);
+										//window.location.reload();
+										window.location.href="projectSignUp.jsp";
+									}
+								});
+							}
+							else{
+								layer.msg(data, {
+									time: 0 //不自动关闭
+									,btn: ['确定']
+									,yes: function(index){
+										layer.close(index);
+										window.location.reload();
+									}
+								});
+							}
+				        }, 
+				        error: function(json){  
+				           layer.alert("请刷新后重试...");  
+				        }  
+			        });
+		        }
 		      break;
 		      case 'getCheckLength':
 		        var data = checkStatus.data;

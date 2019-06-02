@@ -58,6 +58,7 @@
 			id : 'tableOne',
 			height : 'full-200',
 			url : 'getproject.action', //数据接口
+			skin: "nob",
 			cols : [ [ //表头
 			{
 				align : 'center',
@@ -105,7 +106,7 @@
 				width : 150
 			} ] ],
 			page : true, //开启分页
-			even : false, //每行颜色分隔
+			even : true, //每行颜色分隔
 			//skin: 'nob', //无边框
 			limit : 10,
 			limits : [ 1, 10, 15, 20 ]
