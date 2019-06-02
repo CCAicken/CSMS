@@ -14,7 +14,6 @@ import common.properties.RoleType;
 public class CompetitionEntry extends BaseAction {
 	private int page;
 	private int limit;
-	private String op;
 
 	public void setPage(int page) {
 		this.page = page;
@@ -22,10 +21,6 @@ public class CompetitionEntry extends BaseAction {
 
 	public void setLimit(int limit) {
 		this.limit = limit;
-	}
-
-	public void setOp(String op) {
-		this.op = op;
 	}
 
 	/**
@@ -74,20 +69,6 @@ public class CompetitionEntry extends BaseAction {
 			LayuiData data = new LayuiData(0, "成功", count, teaList);
 			try {
 				out.write(JSON.toJSONString(data));
-				out.flush();
-				out.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return SUCCESS;
-		}
-		if (op.equals("add")) {
-			String ds = request.getParameter("datastr");
-			String proid = request.getParameter("proid");
-			String a[] = ds.split(",");
-			try {
-				out.write(a[0]);
 				out.flush();
 				out.close();
 			} catch (IOException e) {

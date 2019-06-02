@@ -40,13 +40,14 @@
         <resourceEdge source="success" routing="0" target="CompetitionEntryCheck.jsp" />
       </result>
     </action>
-    <action name="entry" location="33,983" size="150,40" />
+    <action name="entry" location="32,933" size="150,40" />
     <action name="myproject" location="31,381" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="myProject.jsp" />
       </result>
     </action>
     <action name="getprojectscore" location="30,90" size="150,40" />
+    <action name="stuAction" location="28,983" size="150,40" />
   </package>
   <webResource name="forumContent.jsp" path="/forumContent.jsp" location="350,50" size="150,55" />
   <webResource name="scoreDetail.jsp" path="/scoreDetail.jsp" location="350,200" size="150,55" />

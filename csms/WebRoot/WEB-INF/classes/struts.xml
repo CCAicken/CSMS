@@ -58,5 +58,6 @@
 		</action>
 		<action name="getprojectscore"
 			class="action.control.getProjectScoreAction">
-		</action></package>
+		</action>
+		<action name="stuAction" class="action.control.StuSignAction"></action></package>
 </struts>    

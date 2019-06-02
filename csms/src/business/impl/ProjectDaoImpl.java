@@ -11,13 +11,14 @@ import common.properties.RoleType;
 public class ProjectDaoImpl implements ProjectDAO {
 	private iHibBaseDAO bdao;
 
-	 public void setBdao(iHibBaseDAO bdao) {
-	 this.bdao = bdao;
-	 }
-//	public ProjectDaoImpl() {
-//		// TODO Auto-generated constructor stub
-//		bdao = new iHibBaseDAOImpl();
-//	}
+	public void setBdao(iHibBaseDAO bdao) {
+		this.bdao = bdao;
+	}
+
+	// public ProjectDaoImpl() {
+	// // TODO Auto-generated constructor stub
+	// bdao = new iHibBaseDAOImpl();
+	// }
 
 	@Override
 	public boolean insert(TProject project) {
@@ -56,43 +57,45 @@ public class ProjectDaoImpl implements ProjectDAO {
 	public List<TProject> selectByType(int type) {
 		String hql = "from TProject where protype=?";
 		Object[] param = { type };
-		return (List<TProject>) bdao.select(hql,param);
+		return (List<TProject>) bdao.select(hql, param);
 	}
 
-
 	@Override
-	public List<TProject> selectByPage(int roletype,int startPage, int pageSize) {
+	public List<TProject> selectByPage(int roletype, int startPage, int pageSize) {
 		String hql = null;
-		if(roletype==RoleType.Student){
+		if (roletype == RoleType.Student) {
 			hql = "from TProject where protype=1 or protype=2";
-		}
-		else if(roletype==RoleType.Teacher){
+		} else if (roletype == RoleType.Teacher) {
 			hql = "from TProject where protype=3 or protype=4";
 		}
 		List<TProject> list = bdao.selectByPage(hql, startPage, pageSize);
 		return list;
 	}
 
-
 	@Override
 	public int getProCount(int roletype) {
 		String hql = null;
-		if(roletype==RoleType.Student){
+		if (roletype == RoleType.Student) {
 			hql = "select count(proid) from TProject where protype=1 or protype=2";
-		}
-		else if(roletype==RoleType.Teacher){
+		} else if (roletype == RoleType.Teacher) {
 			hql = "select count(proid) from TProject where protype=3 or protype=4";
 		}
 		int count = bdao.selectValue(hql);
 		return count;
 	}
 
-//	public static void main(String[] args){
-//		ProjectDAO pdao = new ProjectDaoImpl();
-//		//int row = pdao.getProCount(2);
-//		List<TProject> list = pdao.selectByPage(1, 1, 3);
-//		for(TProject p:list){
-//		System.out.println(p.getProname());
-//		}
-//	}
+	@Override
+	public TProject getptoject(int projectid) {
+		TProject pro = (TProject) bdao.findById(TProject.class, projectid);
+		return pro;
+	}
+
+	// public static void main(String[] args) {
+	// ProjectDAO pdao = new ProjectDaoImpl();
+	// // int row = pdao.getProCount(2);
+	// List<TProject> list = pdao.selectByPage(1, 1, 3);
+	// for (TProject p : list) {
+	// System.out.println(p.getProname());
+	// }
+	// }
 }

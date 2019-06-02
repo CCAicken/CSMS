@@ -41,7 +41,7 @@
 <script src="js/jquery-2.1.1.min.js"></script>
 <script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm tr-data" lay-event="getCheckData">获取选中行数据</button>
+    <button class="layui-btn layui-btn-sm tr-data" lay-event="getCheckData">确认报名</button>
     <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
     <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
   </div>
@@ -51,7 +51,7 @@
 	var n1=loc.length;//地址的总长度
 	var n2=loc.indexOf("=");//取得=号的位置
 	var proid=decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
-	alert(proid);
+	//alert(proid);
 	
     layui.use(['element', 'carousel', 'table'], function() {
         var element = layui.element;
@@ -119,17 +119,36 @@
 		       for(var i=0;i<data.length;i++){
 		       str+=data[i].userid+",";
 		       }
-		        //layer.alert(str);
 		        $.ajax({
 		        	type: "POST",
-        			url: "entry.action",
+        			url: "stuAction.action",
 			        data: {datastr:str,op:"add",proid:proid},  
 			        dataType:"text",  
 			        success: function(data){  
-			        	alert(data);    
-			        },  
+			        	if(data=="报名成功"){
+				        	layer.msg(data, {
+								time: 0 //不自动关闭
+								,btn: ['确定']
+								,yes: function(index){
+									layer.close(index);
+									//window.location.reload();
+									window.location.href="main.jsp";
+								}
+							});
+						}
+						else{
+							layer.msg(data, {
+								time: 0 //不自动关闭
+								,btn: ['确定']
+								,yes: function(index){
+									layer.close(index);
+									window.location.reload();
+								}
+							});
+						}
+			        }, 
 			        error: function(json){  
-			           alert("请刷新后重试...");  
+			           layer.alert("请刷新后重试...");  
 			        }  
 		        });
 		      break;
