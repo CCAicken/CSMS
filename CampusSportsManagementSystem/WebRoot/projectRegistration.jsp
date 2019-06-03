@@ -163,24 +163,17 @@
 									</select></td>
 								</tr>
 								<tr>
-									<td id="regLable"><label class="control-label">当前报名人数:</label>
-									</td>
-									<td><input type="numbr" class="form-control input-sm input"
-										id="username" name="username" placeholder="请输入场次名称" /> <span
-										id="validateName"></span></td>
-								</tr>
-								<tr>
 									<td id="regLable"><label class="control-label">学院人数限制:</label>
 									</td>
 									<td><input type="number" class="form-control input-sm input"
-										id="username" name="username" placeholder="请选择开始时间" /> <span
+										id="username" name="username" placeholder="请输入学院人数限制" /> <span
 										id="validateName"></span></td>
 								</tr>
 								<tr>
 									<td id="regLable"><label class="control-label">总人数限制:</label>
 									</td>
 									<td><input type="number" class="form-control input-sm input"
-										id="username" name="username" placeholder="请选择结束时间" /> <span
+										id="username" name="username" placeholder="请输入总人数限制" /> <span
 										id="validateName"></span></td>
 								</tr>
 								<tr>
