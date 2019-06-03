@@ -18,7 +18,14 @@
 <body>
 	<div class="layui-card">
 		<div class="layui-card-header">
-			<h2>我的比赛项目</h2>
+			<div class="layui-row">
+				<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a><cite>我的比赛项目</cite></a></span>
+			</div>
+		</div>
+		<div class="layui-card-header text-center">
+			<div class="layui-row text-center">
+				<h1>我的比赛项目</h1>
+			</div>
 		</div>
 		<div class="layui-card-body">
 			<table class="layui-table">

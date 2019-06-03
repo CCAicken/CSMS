@@ -14,8 +14,8 @@
 
 <style>
 .layui-table-cell {
-white-space:normal;
-height: inherit;
+	white-space: normal;
+	height: inherit;
 }
 </style>
 </head>
@@ -23,7 +23,14 @@ height: inherit;
 <body>
 	<div class="layui-card">
 		<div class="layui-card-header">
-			<h2>报名查询</h2>
+			<div class="layui-row">
+				<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a><cite>报名查询</cite></a></span>
+			</div>
+		</div>
+		<div class="layui-card-header text-center">
+			<div class="layui-row text-center">
+				<h1>报名查询</h1>
+			</div>
 		</div>
 		<div class="layui-card-body">
 			<div class="layui-row layui-form">

@@ -15,16 +15,26 @@
 <body>
     <div class="layui-card">
         <div class="layui-card-header">
-            <table width="80%">
-            	<tr>
-                	<td id = "articletopic" >${forum.title }</td>
-                    <td id = "articlereview">${forum.author }</td>
-                    <td id = "articlecreate">${forum.createtime }</td>
-                </tr>
-            </table>
+            <div class="layui-card-header">
+			<div class="layui-row">
+			<span class="layui-breadcrumb">
+					<a href="home.jsp">首页</a>
+					<a href="forumList.jsp">文章列表</a>
+				<a><cite>文章内容</cite></a></span>
+				</div>
+				<div class="layui-row text-center">
+				</div>
+			</div>
         </div>
         <div class="layui-card-body">
             <div id="content">
+            <table width="80%" style="font-size:15px; margin-bottom:15px;">
+            	<tr>
+                	<td id = "articletopic" ><b style="font-size:19px;">标题：</b>${forum.title }</td>
+                    <td id = "articlereview"><b style="font-size:19px;">作者：</b>${forum.author }</td>
+                    <td id = "articlecreate"><b style="font-size:19px;">时间：</b></h3>${forum.createtime }</td>
+                </tr>
+            </table>
                 <table>
                 <c:forEach items="${listcontent }" var="content">
                     <tr>
@@ -41,5 +51,10 @@
     <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.js"></script>
-
+<script type="text/javascript">
+	layui.use(['form', 'element' ],function() {
+		var form = layui.form;
+		var element = layui.element;
+	});
+</script>
 </html>

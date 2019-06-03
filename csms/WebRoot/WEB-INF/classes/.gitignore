@@ -1,7 +1,5 @@
 /.struts.mex
 /action/
-<<<<<<< HEAD
-<<<<<<< HEAD
 /applicationContext.xml
 /basic/
 /business/
@@ -10,12 +8,4 @@
 /hibernate.cfg.xml
 /model/
 /servlet/
-/struts.xml
 /util/
-=======
-/business/
->>>>>>> refs/remotes/origin/master
-=======
-/model/
-/common/
->>>>>>> refs/remotes/origin/master

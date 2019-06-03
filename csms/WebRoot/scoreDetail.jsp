@@ -19,11 +19,17 @@
 
 <body>
 	<div class="layui-container">
-		<div calss="layui-card">
-			<div class="layui-card-header layui-bg-gray text-center"
-				style="height: 80px;">
+		<div class="layui-card">
+			project
+			<div class="layui-card-header">
 				<div class="layui-row">
-					<h1>${title }- 成绩详情页面</h1>
+					<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a><cite>成绩详情</cite></a>
+					</span>
+				</div>
+			</div>
+			<div class="layui-card-header text-center">
+				<div class="layui-row text-center">
+					<h1>成绩详情页面</h1>
 				</div>
 			</div>
 			<div class="layui-card-body">
@@ -38,7 +44,8 @@
 						<tbody id="scoretable_tbody">
 							<c:if test="${type eq 'college' }">
 								<tr>
-									<td colspan="2" class="text-center" style="border:3px solid #ccc">学生成绩</td>
+									<td colspan="2" class="text-center"
+										style="border:3px solid #ccc">学生成绩</td>
 								</tr>
 							</c:if>
 							<c:forEach items="${scorelist }" var="obj">
@@ -70,7 +77,8 @@
 							<c:if test="${type eq 'college' }">
 								<c:if test="${teacher eq have}">
 									<tr>
-										<td colspan="2" class="text-center" style="border:3px solid #ccc">教师成绩</td>
+										<td colspan="2" class="text-center"
+											style="border:3px solid #ccc">教师成绩</td>
 									</tr>
 									<c:forEach items="${scorelist }" var="obj">
 										<tr>

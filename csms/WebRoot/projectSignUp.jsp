@@ -19,7 +19,14 @@
 <body>
 	<div class="layui-card">
 		<div class="layui-card-header">
-			<h2>标题</h2>
+			<div class="layui-row">
+				<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a><cite>比赛项目查看</cite></a></span>
+			</div>
+		</div>
+		<div class="layui-card-header text-center">
+			<div class="layui-row text-center">
+				<h1>比赛项目查看</h1>
+			</div>
 		</div>
 		<div class="layui-card-body">
 			<div class="layui-row">
@@ -58,14 +65,14 @@
 			id : 'tableOne',
 			height : 'full-200',
 			url : 'getproject.action', //数据接口
-			skin: "nob",
+			skin : "nob",
 			cols : [ [ //表头
 			{
 				align : 'center',
 				field : '',
 				title : '序号',
 				type : 'numbers',
-				width:100
+				width : 100
 			}, {
 				field : 'proid',
 				title : '序号',
@@ -134,32 +141,32 @@
 			});
 		})
 	});
-<%
-	int roletype = Integer.parseInt(session.getAttribute("role").toString());
-	request.setAttribute("roletype", roletype);
-%>
-	$(document).on(
-			'click',
-			".baom",
-			function() {
-				if(${roletype!=1}){
-					var currentnum = $(this).parent().parent().prev().prev().prev()
-							.find("div").text().trim();
-					var totalnum = $(this).parent().parent().prev().prev().find(
-							"div").text().trim();
-					if (parseInt(currentnum) >= parseInt(totalnum)) {
-						layer.msg("该项目报名人数已达上限，请另外选择其他项目");
-					} else {
-						var proid = $(this).parent().parent().prev().prev().prev()
-								.prev().prev().find("div").text().trim();
-						//layer.msg(proid);
-						window.location.href = "studentSignUp.jsp?proid="
-								+ encodeURI(proid);
-					}
-				}
-				else{
-					layer.msg("你的权限不够");
-				}
-			});
+<%int roletype = Integer.parseInt(session.getAttribute("role")
+					.toString());
+			request.setAttribute("roletype", roletype);%>
+	$(document)
+			.on(
+					'click',
+					".baom",
+					function() {
+						if (${roletype!=1}) {
+							var currentnum = $(this).parent().parent().prev()
+									.prev().prev().find("div").text().trim();
+							var totalnum = $(this).parent().parent().prev()
+									.prev().find("div").text().trim();
+							if (parseInt(currentnum) >= parseInt(totalnum)) {
+								layer.msg("该项目报名人数已达上限，请另外选择其他项目");
+							} else {
+								var proid = $(this).parent().parent().prev()
+										.prev().prev().prev().prev()
+										.find("div").text().trim();
+								//layer.msg(proid);
+								window.location.href = "studentSignUp.jsp?proid="
+										+ encodeURI(proid);
+							}
+						} else {
+							layer.msg("你的权限不够");
+						}
+					});
 </script>
 </html>
