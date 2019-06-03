@@ -18,16 +18,9 @@
 <body>
 	<div class="layui-card">
 		<div class="layui-card-header">
-		<div class="layui-row">
-            <span class="layui-breadcrumb">
-				<a href="home.jsp">首页</a>
-				<a><cite>我的比赛项目</cite></a>
-			</span></div>
-		</div>
-		<div class="layui-card-body">
-		<div class="layui-row">
 			<h2>我的比赛项目</h2>
 		</div>
+		<div class="layui-card-body">
 			<table class="layui-table">
 				<colgroup>
 					<col width="70">
@@ -90,10 +83,5 @@
 	<%@include file="footer.jsp"%>
 </body>
 <script src="layui/layui.js"></script>
-<script>
-layui.use(['form','element'], function() {
-        var form = layui.form;
-        var element = layui.element;
-        });
-</script>
+
 </html>

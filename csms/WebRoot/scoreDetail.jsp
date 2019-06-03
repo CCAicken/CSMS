@@ -22,30 +22,11 @@
 		<div calss="layui-card">
 			<div class="layui-card-header layui-bg-gray text-center"
 				style="height: 80px;">
-            <span class="layui-breadcrumb">
-				<a href="home.jsp">首页</a>
-				<c:if test="${type=='college' }">
-				<a href="getcollege.action?op=college">学院成绩</a>
-				</c:if>
-				<c:if test="${type=='major' }">
-				<a href="getcollege.action?op=major">专业成绩</a>
-				</c:if>
-				<c:if test="${type=='class' }">
-				<a href="getcollege.action?op=colass">班级成绩</a>
-				</c:if>
-				<c:if test="${type=='single' }">
-				<a href="getcollege.action?op=single">个人成绩</a>
-				</c:if>
-				<c:if test="${type=='project' }">
-				<a href="getcollege.action?op=project">项目成绩</a>
-				</c:if>
-				<a><cite>成绩详情</cite></a>
-			</span>
-			</div>
-			<div class="layui-card-body">
 				<div class="layui-row">
 					<h1>${title }- 成绩详情页面</h1>
 				</div>
+			</div>
+			<div class="layui-card-body">
 				<div class="layui-row">
 					<table class="layui-table" id="scoretable">
 						<thead>

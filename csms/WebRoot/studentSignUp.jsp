@@ -19,14 +19,9 @@
 <body>
     <div class="layui-card">
         <div class="layui-card-header">
-            <span class="layui-breadcrumb">
-				<a href="home.jsp">首页</a>
-				<a href="projectSignUp.jsp">项目查看</a>
-				<a><cite>比赛报名</cite></a>
-			</span>
+            <h2>比赛报名</h2>
         </div>
         <div class="layui-card-body">
-            <h2>比赛报名</h2>
             <div class="layui-form-item">
                 <div class="layui-input-inline">
                     <input type="text" id="search"  placeholder="请输入查询条件"

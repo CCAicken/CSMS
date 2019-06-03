@@ -17,16 +17,13 @@
     <div class="layui-container" style="height:auto;">
         <div class="layui-card">
             <div class="layui-card-header">
-            <span class="layui-breadcrumb">
-				<a href="home.jsp">首页</a>
-				<a><cite>公告内容</cite></a>
-			</span>
+                <span style="font-size:18px;"><p>公告</p></span>
             </div>
             <div class="layui-card-body">
                 <div class="layui-container layui-col-space20">
                     <div class="layui-row" style="border-bottom:blanchedalmond 1px sold">
                         <div class="layui-col-md6 layui-col-md6">
-                            <span style="font-size:18px;"><b>公告内容</b></span>
+                            <span style="font-size:18px;"><b>标题</b></span>
                         </div>
                         <div class="layui-col-md6 layui-col-md6">
                             <span style="font-size:16px; float: right; margin-right: 20px;">发布人：admin &nbsp;&nbsp;|&nbsp;&nbsp; 发布时间时间：2019-5-26</span>

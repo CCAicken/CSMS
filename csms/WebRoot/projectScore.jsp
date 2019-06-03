@@ -28,6 +28,8 @@
 			</span>
 			</div>
                 <div class="layui-row text-center">
+            <div class="layui-card-header layui-bg-gray text-center" style="height: 80px;">
+                <div class="layui-row">
                     <h1>项目成绩查看页面</h1>
                 </div>
             </div>
@@ -64,13 +66,12 @@
 <script src="layui/layui.js"></script>
 <script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use(['table', 'laydate', 'layer', 'jquery','form','element'], function() {
+    layui.use(['table', 'laydate', 'layer', 'jquery','form'], function() {
         var table = layui.table;
         var $ = layui.jquery;
         var laydate = layui.laydate;
         var layer = layui.layer;
         var form = layui.form;
-        var element = layui.element;
         //页面加载获取动态表格数据
         table.render({
         	id : 'tableOne',

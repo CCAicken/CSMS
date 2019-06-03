@@ -79,29 +79,17 @@
             <div class="">
                 <div class="layui-card">
                     <div class="layui-card-header">
-            <span class="layui-breadcrumb">
-				<a href="home.jsp">首页</a>
-				<a><cite>编辑文章内容</cite></a>
-			</span>
+                        <span class="title">文章标题：运动会调高高能瞬间</span><button id="addTitle" class="layui-btn layui-bg-blue float layui-btn-sm">编辑文章标题</button>
                     </div>
                 </div>
                 <div class="layui-card">
-					<div class="layui-card-header">
-						<div class="layui-row">
-							<span class="title">文章标题：运动会调高高能瞬间</span>
-							<button id="addTitle"
-								class="layui-btn layui-bg-blue float layui-btn-sm">编辑文章标题</button>
-						</div>
-						<div class="layui-row">
-							文章内容管理
-							<button id="addModel"
-								class="layui-btn layui-bg-blue float layui-btn-sm">添加文章内容</button>
-						</div>
-					</div>
-					<div class="layui-card-body">
-						<table id="demo" lay-filter="test" width="100%"></table>
-					</div>
-				</div>
+                    <div class="layui-card-header">
+                        文章内容管理<button id="addModel" class="layui-btn layui-bg-blue float layui-btn-sm">添加文章内容</button>
+                    </div>
+                    <div class="layui-card-body">
+                        <table id="demo" lay-filter="test" width="100%"></table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
