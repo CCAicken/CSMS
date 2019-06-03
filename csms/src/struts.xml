@@ -42,6 +42,7 @@
 		<action name="getmacth" class="action.control.getMacthAction"></action>
 		<action name="changepwd"
 			class="action.control.ChangePwdAction">
+			<result name="success" type="redirect">/main.jsp</result>
 		</action>
 		<action name="getapplication"
 			class="action.control.getApplication">
