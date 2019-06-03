@@ -1,0 +1,48 @@
+﻿html {
+    background-color: rgb(241,248,252);
+}
+/* 批量导入*/
+.file {
+    position: relative;
+    display: inline-block;
+    background: #337ab7;
+    border: 1px solid #286090;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.file:hover {
+    background: #337ab7;
+    border-color: #286090;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* 列表页面样式*/
+#panel .panel-head {
+    margin-left: 30px;
+}
+article {
+    word-break: break-all;
+}
+#code {
+    display: block;
+    word-wrap: break-word;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid rgb(128, 128, 128);
+    box-shadow: 2px 2px 15px rgba(128, 128, 128, 0.6);
+}
