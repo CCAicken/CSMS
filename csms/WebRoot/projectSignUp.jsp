@@ -134,23 +134,31 @@
 			});
 		})
 	});
-
+<%
+	int roletype = Integer.parseInt(session.getAttribute("role").toString());
+	request.setAttribute("roletype", roletype);
+%>
 	$(document).on(
 			'click',
 			".baom",
 			function() {
-				var currentnum = $(this).parent().parent().prev().prev().prev()
-						.find("div").text().trim();
-				var totalnum = $(this).parent().parent().prev().prev().find(
-						"div").text().trim();
-				if (parseInt(currentnum) >= parseInt(totalnum)) {
-					layer.msg("该项目报名人数已达上限，请另外选择其他项目");
-				} else {
-					var proid = $(this).parent().parent().prev().prev().prev()
-							.prev().prev().find("div").text().trim();
-					//layer.msg(proid);
-					window.location.href = "studentSignUp.jsp?proid="
-							+ encodeURI(proid);
+				if(${roletype==4||roletype==2||roletype==3}){
+					var currentnum = $(this).parent().parent().prev().prev().prev()
+							.find("div").text().trim();
+					var totalnum = $(this).parent().parent().prev().prev().find(
+							"div").text().trim();
+					if (parseInt(currentnum) >= parseInt(totalnum)) {
+						layer.msg("该项目报名人数已达上限，请另外选择其他项目");
+					} else {
+						var proid = $(this).parent().parent().prev().prev().prev()
+								.prev().prev().find("div").text().trim();
+						//layer.msg(proid);
+						window.location.href = "studentSignUp.jsp?proid="
+								+ encodeURI(proid);
+					}
+				}
+				else{
+					layer.msg("你的权限不够");
 				}
 			});
 </script>

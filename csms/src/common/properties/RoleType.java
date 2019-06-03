@@ -13,4 +13,8 @@ public class RoleType {
 	 * 组委会
 	 */
 	public static final int Organization = 3;
+	/**
+	 * 班委
+	 */
+	public static final int Committee = 4;
 }
