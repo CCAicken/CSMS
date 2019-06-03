@@ -23,7 +23,7 @@
             <div class="layui-card-header layui-bg-gray" style="height: 80px;">
             <div class="layui-row">
             <span class="layui-breadcrumb">
-				<a href="main.jsp">首页</a>
+				<a href="home.jsp">首页</a>
 				<a><cite>班级成绩</cite></a>
 			</span>
 			</div>

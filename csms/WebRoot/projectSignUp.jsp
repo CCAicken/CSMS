@@ -20,7 +20,7 @@
 	<div class="layui-card">
 		<div class="layui-card-header">
             <span class="layui-breadcrumb">
-				<a href="main.jsp">首页</a>
+				<a href="home.jsp">首页</a>
 				<a><cite>项目查看</cite></a>
 			</span>
 		</div>

@@ -15,7 +15,7 @@
             <div class="layui-card">
                 <div class="layui-card-header" style="background-color:rgb(228, 248, 255);color: cornflowerblue;padding: 5px 0;">
             <span class="layui-breadcrumb">
-				<a href="main.jsp">首页</a>
+				<a href="home.jsp">首页</a>
 				<a><cite>编辑公告内容</cite></a>
 			</span>
                 </div>

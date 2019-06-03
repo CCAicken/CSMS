@@ -20,8 +20,8 @@
     <div class="layui-card">
         <div class="layui-card-header">
             <span class="layui-breadcrumb">
-				<a href="main.jsp">首页</a>
-				<a href="arrangeview.action?op=list">项目查看</a>
+				<a href="home.jsp">首页</a>
+				<a href="projectSignUp.jsp">项目查看</a>
 				<a><cite>比赛报名</cite></a>
 			</span>
         </div>

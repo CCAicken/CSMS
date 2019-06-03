@@ -25,7 +25,7 @@ height: inherit;
 		<div class="layui-card-header">
 		<div class="layui-row">
             <span class="layui-breadcrumb">
-				<a href="main.jsp">首页</a>
+				<a href="home.jsp">首页</a>
 				<a><cite>报名查询</cite></a>
 			</span></div>
 		</div>

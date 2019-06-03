@@ -80,7 +80,7 @@
                 <div class="layui-card">
                     <div class="layui-card-header">
             <span class="layui-breadcrumb">
-				<a href="main.jsp">首页</a>
+				<a href="home.jsp">首页</a>
 				<a><cite>编辑文章内容</cite></a>
 			</span>
                     </div>

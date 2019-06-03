@@ -23,7 +23,7 @@
 			<div class="layui-card-header layui-bg-gray text-center"
 				style="height: 80px;">
             <span class="layui-breadcrumb">
-				<a href="main.jsp">首页</a>
+				<a href="home.jsp">首页</a>
 				<c:if test="${type=='college' }">
 				<a href="getcollege.action?op=college">学院成绩</a>
 				</c:if>
