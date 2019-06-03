@@ -27,19 +27,19 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">旧密码</label>
                                 <div class="layui-input-block">
-                                    <input type="text" id="oldpwd" required lay-verify="required" placeholder="请输入原登录密码" autocomplete="off" class="layui-input">
+                                    <input type="password" id="oldpwd" required lay-verify="required" placeholder="请输入原登录密码" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">新密码</label>
                                 <div class="layui-input-block">
-                                    <input type="text" id="newpwd" required lay-verify="required" placeholder="请输入新登录密码" autocomplete="off" class="layui-input">
+                                    <input type="password" id="newpwd" required lay-verify="required" placeholder="请输入新登录密码" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">密码确认</label>
                                 <div class="layui-input-block">
-                                    <input type="text" id="confirmpwd" required lay-verify="required" placeholder="请再次输入新登录密码" autocomplete="off" class="layui-input">
+                                    <input type="password" id="confirmpwd" required lay-verify="required" placeholder="请再次输入新登录密码" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -83,7 +83,18 @@
 		         success: function(data){
 		         	//alert(data);
 			         if(data=="修改成功"){
-						window.location.href="login.jsp";
+			         
+			         layer.alert('修改成功，即将跳到主页', {
+  skin: 'layui-layer-lan' //样式类名
+  ,closeBtn: 0
+}, function(){
+   if (top.location !== self.location) {
+    top.location = "main.jsp";//跳出框架，并回到首页
+			         }
+});
+		
+			         
+			       
 			         }else{
 			         	//alert(data);
 			         	layer.msg(data);
