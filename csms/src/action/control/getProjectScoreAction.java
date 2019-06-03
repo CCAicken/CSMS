@@ -47,6 +47,7 @@ public class getProjectScoreAction extends BaseAction {
 			}
 			List<VScore> clalist = scoredao.getScoreByPage(strsearch, startPage, limit);
 			int count = scoredao.allScoreCount(strsearch);
+			request.setAttribute("type", "project");
 			ReturnData rd = new ReturnData();
 			rd.code = ReturnData.SUCCESS;
 			rd.count = count;

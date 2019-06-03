@@ -23,11 +23,18 @@ height: inherit;
 <body>
 	<div class="layui-card">
 		<div class="layui-card-header">
-			<h2>报名查询</h2>
+		<div class="layui-row">
+            <span class="layui-breadcrumb">
+				<a href="main.jsp">首页</a>
+				<a><cite>报名查询</cite></a>
+			</span></div>
+		</div>
 		</div>
 		<div class="layui-card-body">
+				<div class="layui-row">
+			<h2>报名查询</h2>
+			</div>
 			<div class="layui-row layui-form">
-
 				<div class="layui-input-inline">
 					<select name="collegeid" lay-filter="college">
 						<option value="">选择或输入学院名称</option>

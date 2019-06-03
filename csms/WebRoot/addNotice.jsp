@@ -14,9 +14,15 @@
         <div style="margin:10px auto;width:1000px;">
             <div class="layui-card">
                 <div class="layui-card-header" style="background-color:rgb(228, 248, 255);color: cornflowerblue;padding: 5px 0;">
-                    <h1>编辑一个公告内容</h1>
+            <span class="layui-breadcrumb">
+				<a href="main.jsp">首页</a>
+				<a><cite>编辑公告内容</cite></a>
+			</span>
                 </div>
                 <div class="layui-card-body">
+                <div class="layui-row">
+                    <h1>编辑一个公告内容</h1>
+                </div>
                     <form class="layui-form" action="">
                         <div class="layui-form-item">
                             <label class="layui-form-label">公告标题</label>

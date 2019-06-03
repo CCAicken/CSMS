@@ -20,8 +20,14 @@
 <body>
     <div class="layui-container">
         <div calss="layui-card">
-            <div class="layui-card-header layui-bg-gray text-center" style="height: 80px;">
-                <div class="layui-row">
+            <div class="layui-card-header layui-bg-gray" style="height: 80px;">
+            <div class="layui-row">
+            <span class="layui-breadcrumb">
+				<a href="main.jsp">首页</a>
+				<a><cite>专业成绩</cite></a>
+			</span>
+			</div>
+                <div class="layui-row text-center">
                     <h1>专业成绩查看页面</h1>
                 </div>
             </div>

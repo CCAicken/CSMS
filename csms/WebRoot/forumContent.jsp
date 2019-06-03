@@ -15,15 +15,20 @@
 <body>
     <div class="layui-card">
         <div class="layui-card-header">
-            <table width="80%">
-            	<tr>
-                	<td id = "articletopic" >${forum.title }</td>
-                    <td id = "articlereview">${forum.author }</td>
-                    <td id = "articlecreate">${forum.createtime }</td>
-                </tr>
-            </table>
+            <span class="layui-breadcrumb">
+				<a href="main.jsp">首页</a>
+				<a href="forumList.jsp">文章列表</a>
+				<a><cite>文章内容</cite></a>
+			</span>
         </div>
         <div class="layui-card-body">
+            <table width="80%" style="border-bottom:1px solid #ccc;margin-bottom:15px;">
+            	<tr>
+                	<td id = "articletopic" ><h2>标题：${forum.title }</h2></td>
+                    <td id = "articlereview"><h2>作者：${forum.author }</h2></td>
+                    <td id = "articlecreate"><h2>时间：${forum.createtime }</h2></td>
+                </tr>
+            </table>
             <div id="content">
                 <table>
                 <c:forEach items="${listcontent }" var="content">
@@ -41,5 +46,10 @@
     <%@include file="footer.jsp" %>
 </body>
 <script src="layui/layui.js"></script>
-
+<script>
+layui.use(['form','element'], function() {
+        var form = layui.form;
+        var element = layui.element;
+        });
+</script>
 </html>

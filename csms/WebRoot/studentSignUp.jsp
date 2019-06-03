@@ -19,9 +19,14 @@
 <body>
     <div class="layui-card">
         <div class="layui-card-header">
-            <h2>比赛报名</h2>
+            <span class="layui-breadcrumb">
+				<a href="main.jsp">首页</a>
+				<a href="arrangeview.action?op=list">项目查看</a>
+				<a><cite>比赛报名</cite></a>
+			</span>
         </div>
         <div class="layui-card-body">
+            <h2>比赛报名</h2>
             <div class="layui-form-item">
                 <div class="layui-input-inline">
                     <input type="text" id="search"  placeholder="请输入查询条件"

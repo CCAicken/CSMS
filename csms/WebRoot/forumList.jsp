@@ -79,9 +79,13 @@
             <div class="">
                 <div class="layui-card">
                     <div class="layui-card-header">
-                        <h1>文章列表</h1>
+                        <span class="layui-breadcrumb">
+						    <a href="main.jsp">首页</a>
+						    <a><cite>文章列表</cite></a>
+						</span>
                     </div>
                     <div class="layui-card-body">
+                        <h1>文章列表</h1>
 	                    <div class="layui-row layui-form">
 	                        <table class="layui-table" id="forumlist" lay-filter="test" width="100%"></table>
 	                    </div>
