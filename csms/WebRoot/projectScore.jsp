@@ -151,7 +151,7 @@
 						method : 'post',
 						where : {
 							'collegeid' : data.field.college,
-							'user' : data.field.userselect
+							'usertype' : data.field.userselect
 						},
 						page : {
 							curr : 1

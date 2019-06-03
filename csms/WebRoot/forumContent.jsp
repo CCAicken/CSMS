@@ -31,7 +31,7 @@
             <table width="80%" style="font-size:15px; margin-bottom:15px;">
             	<tr>
                 	<td id = "articletopic" ><b style="font-size:19px;">标题：</b>${forum.title }</td>
-                    <td id = "articlereview"><b style="font-size:19px;">作者：</b>${forum.author }</td>
+                    <td id = "articlereview"><b style="font-size:19px;">作者：</b>${forum.author }  |  </td>
                     <td id = "articlecreate"><b style="font-size:19px;">时间：</b></h3>${forum.createtime }</td>
                 </tr>
             </table>

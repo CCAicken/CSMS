@@ -20,10 +20,23 @@
 <body>
 	<div class="layui-container">
 		<div class="layui-card">
-			project
 			<div class="layui-card-header">
 				<div class="layui-row">
-					<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a><cite>成绩详情</cite></a>
+					<span class="layui-breadcrumb"> 
+					<a href="home.jsp">首页</a>
+					<c:if test="${type=='college' }">
+					<a href="getcollege.action?op=college">学院成绩</a>
+					</c:if>
+					<c:if test="${type=='major' }">
+					<a href="getcollege.action?op=major">专业成绩</a>
+					</c:if>
+					<c:if test="${type=='class' }">
+					<a href="getcollege.action?op=class">班级成绩</a>
+					</c:if>
+					<c:if test="${type=='single' }">
+					<a href="getcollege.action?op=single">个人成绩</a>
+					</c:if>
+					<a><cite>成绩详情</cite></a>
 					</span>
 				</div>
 			</div>

@@ -21,7 +21,7 @@ public class getProjectScoreAction extends BaseAction {
 			int startPage = Integer.parseInt(request.getParameter("page"));// 当前
 			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
 			String collegeid = request.getParameter("collegeid");
-			String user = request.getParameter("user");
+			String user = request.getParameter("usertype");
 			String strsearch = "";
 			if (collegeid != null && !collegeid.equals("") && !collegeid.equals("0")) {
 				if(user.equals("student")){
