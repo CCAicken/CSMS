@@ -200,6 +200,7 @@
 			return false;
 		});
     });
+    window.location.href=""
     //查看详情点击事件
     $(document).on('click', ".query", function() {
 	    var classid = $(this).parent().parent().next().children().text().trim();

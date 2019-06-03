@@ -20,7 +20,7 @@
 <body>
     <div class="layui-container">
         <div calss="layui-card">
-            <div class="layui-card-header layui-bg-gray" style="height: 80px;">
+            <div class="layui-card-header">
             <div class="layui-row">
             <span class="layui-breadcrumb">
 				<a href="home.jsp">首页</a>
