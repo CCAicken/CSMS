@@ -37,7 +37,7 @@ public class getProjectAction extends BaseAction {
 			else
 			{
 				count= bdao.selectValue("select count(proid) from TProject where (protype=3 or protype=4) and proname like '%"+proname+"%'");
-				strwhere= "from TProject where (protype=3 or protype=4) or proname like '%"+proname+"%'";
+				strwhere= "from TProject where (protype=3 or protype=4) and proname like '%"+proname+"%'";
 			}
 			List<TProject> list = bdao.selectByPage(strwhere, Integer.parseInt(startPage),Integer.parseInt(pageSize));
 			out = response.getWriter();

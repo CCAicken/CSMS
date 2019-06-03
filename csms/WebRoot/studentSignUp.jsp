@@ -24,7 +24,7 @@
         <div class="layui-card-body">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
-                    <input type="password" name="password" required lay-verify="required" placeholder="请输入查询条件"
+                    <input type="text" id="search"  placeholder="请输入查询条件"
                         autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-input-inline" style="margin-left: -10px;">
@@ -55,6 +55,7 @@
 	//alert(proid);
 	
     layui.use(['element', 'carousel', 'table'], function() {
+    var $ = layui.jquery;
         var element = layui.element;
         var carousel = layui.carousel;
         //导航栏点击
@@ -64,6 +65,7 @@
         var table = layui.table;
         table.render({
             elem: '#userlist',
+            id:'tabledata',
             height: 500,
             toolbar: '#toolbarDemo',
             url: 'entry.action', //数据接口
@@ -168,6 +170,21 @@
 		      break;
 		    };
 	  });
+	  
+	 //查询按钮
+		$("#btn_search").click(function() {
+	  	table.reload('tabledata', {
+				method : 'post',
+				where : {
+					'strwhere' : $("#search").val(),
+					'type' : 'search'
+				},
+				page : {
+					curr : 1
+				}
+			});
+	  	
+	  })
     });
 </script>
 </html>
