@@ -63,9 +63,10 @@ public class ProjectDaoImpl implements ProjectDAO {
 	@Override
 	public List<TProject> selectByPage(int roletype, int startPage, int pageSize) {
 		String hql = null;
-		if (roletype == RoleType.Student) {
+		if (roletype == RoleType.Student || roletype == RoleType.Committee) {
 			hql = "from TProject where protype=1 or protype=2";
-		} else if (roletype == RoleType.Teacher) {
+		} else if (roletype == RoleType.Teacher
+				|| roletype == RoleType.Organization) {
 			hql = "from TProject where protype=3 or protype=4";
 		}
 		List<TProject> list = bdao.selectByPage(hql, startPage, pageSize);
@@ -75,9 +76,10 @@ public class ProjectDaoImpl implements ProjectDAO {
 	@Override
 	public int getProCount(int roletype) {
 		String hql = null;
-		if (roletype == RoleType.Student) {
+		if (roletype == RoleType.Student || roletype == RoleType.Committee) {
 			hql = "select count(proid) from TProject where protype=1 or protype=2";
-		} else if (roletype == RoleType.Teacher) {
+		} else if (roletype == RoleType.Teacher
+				|| roletype == RoleType.Organization) {
 			hql = "select count(proid) from TProject where protype=3 or protype=4";
 		}
 		int count = bdao.selectValue(hql);

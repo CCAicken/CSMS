@@ -142,7 +142,7 @@
 			'click',
 			".baom",
 			function() {
-				if(${roletype==4||roletype==2||roletype==3}){
+				if(${roletype!=1}){
 					var currentnum = $(this).parent().parent().prev().prev().prev()
 							.find("div").text().trim();
 					var totalnum = $(this).parent().parent().prev().prev().find(
