@@ -7,15 +7,13 @@ import javax.servlet.ServletException;
 import model.VStudent;
 import model.VTeacher;
 
-import common.properties.RoleType;
-
 public class LoginAction extends BaseAction {
 	private String userid;
 	private String password;
 	private String safecode;
 	private String errorsText;
 	private String backurl;
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -38,36 +36,34 @@ public class LoginAction extends BaseAction {
 
 	/**
 	 * @return
-	 * @throws IOException 
-	 * @throws ServletException 
+	 * @throws IOException
+	 * @throws ServletException
 	 */
 	public String execute() {
 		response.setCharacterEncoding("utf-8");
-		backurl="login.jsp";
+		backurl = "login.jsp";
 		String sRand = (String) session.getAttribute("rand");
-		if(!safecode.toLowerCase().equals(sRand.toLowerCase())){
-			errorsText="验证码不正确";
+		if (!safecode.toLowerCase().equals(sRand.toLowerCase())) {
+			errorsText = "验证码不正确";
 			return ERROR;
-		}else {
+		} else {
 			VStudent stu = userdao.loginStu(userid, password);
-			if(stu!=null){
+			if (stu != null) {
 				session.setAttribute("loginuser", stu);
-				session.setAttribute("role", RoleType.Student);
+				session.setAttribute("role", stu.getRoleid());
 				return SUCCESS;
-			}
-			else{
+			} else {
 				VTeacher tea = userdao.loginTea(userid, password);
-				if(tea!=null){
+				if (tea != null) {
 					session.setAttribute("loginuser", tea);
-					session.setAttribute("role", RoleType.Teacher);
+					session.setAttribute("role", tea.getRoleid());
 					return SUCCESS;
-				}
-				else {
-					errorsText="登录失败，用户名或密码错误，请重试";
+				} else {
+					errorsText = "登录失败，用户名或密码错误，请重试";
 					return ERROR;
 				}
 			}
 		}
-		
+
 	}
 }

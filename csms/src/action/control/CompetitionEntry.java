@@ -9,7 +9,6 @@ import model.VTeacher;
 import util.LayuiData;
 
 import com.alibaba.fastjson.JSON;
-
 import common.properties.RoleType;
 
 public class CompetitionEntry extends BaseAction {
@@ -29,19 +28,24 @@ public class CompetitionEntry extends BaseAction {
 	 */
 	public String execute() {
 		response.setCharacterEncoding("utf-8");
-		String type=request.getParameter("type");
-		if(type!=null&&!type.equals("")){
-			String strwhere=request.getParameter("strwhere");
+		String type = request.getParameter("type");
+		if (type != null && !type.equals("")) {
+			String strwhere = request.getParameter("strwhere");
 			Integer roletype = (Integer) session.getAttribute("role");
-			if (roletype.equals(RoleType.Student)) {
+			if (roletype.equals(RoleType.Student)
+					|| roletype.equals(RoleType.Committee)) {
 				VStudent stu = (VStudent) session.getAttribute("loginuser");
 				int classid = stu.getClassid();
 				// Object[] para = {classid};
 				// List<VStudent> stuList =
 				// (List<VStudent>)bdao.selectByPage("form VStudent where classid=?",
 				// para, page, limit);
-				List<VStudent> stuList = bdao.selectByPage("from VStudent where classid="+classid+" and (username like '%"+strwhere+"%' or userid like '%"+strwhere+"%')", page, limit);
-						
+				List<VStudent> stuList = bdao.selectByPage(
+						"from VStudent where classid=" + classid
+								+ " and (username like '%" + strwhere
+								+ "%' or userid like '%" + strwhere + "%')",
+						page, limit);
+
 				int count = userdao.stucount(classid);
 				// LayuiData data = new LayuiData(0, "成功", count, stuList);
 				ReturnData data = new ReturnData();
@@ -58,17 +62,25 @@ public class CompetitionEntry extends BaseAction {
 					e.printStackTrace();
 				}
 				return SUCCESS;
-			} else if (roletype.equals(RoleType.Teacher)) {
+			} else if (roletype.equals(RoleType.Teacher)
+					|| roletype.equals(RoleType.Organization)) {
 				VTeacher tea = (VTeacher) session.getAttribute("loginuser");
 				int colid = tea.getCollegeid();
-				// List<VTeacher> teaList = userdao.selectTeaByCollPage(colid, page,
+				// List<VTeacher> teaList = userdao.selectTeaByCollPage(colid,
+				// page,
 				// limit);
 				List<VTeacher> teaList = bdao.selectByPage(
-						"from VTeacher where collegeid="+colid+" and (username like '%"+strwhere+"%' or userid like '%"+strwhere+"%')", page, limit);
+						"from VTeacher where collegeid=" + colid
+								+ " and (username like '%" + strwhere
+								+ "%' or userid like '%" + strwhere + "%')",
+						page, limit);
 				// int count = userdao.teacount(colid);
-				int count = bdao.selectValue(
-						"select count(userid) from VTeacher where collegeid="+colid+" and (username like '%"+strwhere+"%' or userid like '%"+strwhere+"%')"
-						);
+				int count = bdao
+						.selectValue("select count(userid) from VTeacher where collegeid="
+								+ colid
+								+ " and (username like '%"
+								+ strwhere
+								+ "%' or userid like '%" + strwhere + "%')");
 				LayuiData data = new LayuiData(0, "成功", count, teaList);
 				try {
 					out.write(JSON.toJSONString(data));
@@ -80,10 +92,11 @@ public class CompetitionEntry extends BaseAction {
 				}
 				return SUCCESS;
 			}
-			
+
 		} else {
 			Integer roletype = (Integer) session.getAttribute("role");
-			if (roletype.equals(RoleType.Student)) {
+			if (roletype.equals(RoleType.Student)
+					|| roletype.equals(RoleType.Committee)) {
 				VStudent stu = (VStudent) session.getAttribute("loginuser");
 				int classid = stu.getClassid();
 				// Object[] para = {classid};
@@ -108,10 +121,12 @@ public class CompetitionEntry extends BaseAction {
 					e.printStackTrace();
 				}
 				return SUCCESS;
-			} else if (roletype.equals(RoleType.Teacher)) {
+			} else if (roletype.equals(RoleType.Teacher)
+					|| roletype.equals(RoleType.Organization)) {
 				VTeacher tea = (VTeacher) session.getAttribute("loginuser");
 				int colid = tea.getCollegeid();
-				// List<VTeacher> teaList = userdao.selectTeaByCollPage(colid, page,
+				// List<VTeacher> teaList = userdao.selectTeaByCollPage(colid,
+				// page,
 				// limit);
 				Object[] para = { colid };
 				List<VTeacher> teaList = bdao.selectByPage(
@@ -132,7 +147,7 @@ public class CompetitionEntry extends BaseAction {
 				return SUCCESS;
 			}
 		}
-		
+
 		return SUCCESS;
 	}
 }
