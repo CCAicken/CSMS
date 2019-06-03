@@ -28,11 +28,10 @@
                         autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-input-inline" style="margin-left: -10px;">
-                    <button type="button" class="layui-btn layui-btn">查询</button>
+                    <button type="button" id="btn_search" class="layui-btn layui-btn">查询</button>
                 </div>
             </div>
             <table class="layui-table" id="userlist" lay-filter="test" width="100%"></table>
-            <button class="layui-btn" id="sure_btn">确认报名</button>
         </div>
     </div>
     <%@include file="footer.jsp" %>
@@ -47,6 +46,8 @@
   </div>
 </script>
 <script>
+ 	var $ = layui.jquery;
+ 	//js获取传来的项目id
 	var loc=location.href;
 	var n1=loc.length;//地址的总长度
 	var n2=loc.indexOf("=");//取得=号的位置
@@ -168,8 +169,5 @@
 		    };
 	  });
     });
-    $("#sure_btn").click(function(){
-    	alert($(".tr-data").val());
-    })
 </script>
 </html>
