@@ -236,7 +236,6 @@
 							return false;
 						});
 					});
-	window.location.href = ""
 	//查看详情点击事件
 	$(document)
 			.on(
