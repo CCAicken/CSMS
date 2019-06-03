@@ -103,6 +103,10 @@
 	<%@include file="footer.jsp"%>
 </body>
 <script src="layui/layui.js" charset="utf-8"></script>
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+  </div>
+</script>
 <script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
 <script type="text/javascript">
 	layui
@@ -119,6 +123,7 @@
 						table
 								.render({
 									elem : '#forumlist',
+			toolbar : '#toolbarDemo',
 									height : 'full-200',
 									url : 'getforum.action', //数据接口
 									cols : [ [ //表头
