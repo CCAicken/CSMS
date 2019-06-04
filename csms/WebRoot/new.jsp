@@ -35,7 +35,7 @@
 							<span style="font-size:18px;"><b>${news.newstitle }</b></span>
 						</div>
 						<div class="layui-col-md6 layui-col-md6">
-							<span style="font-size:16px; float: right; margin-right: 20px;">发布人：admin
+							<span style="font-size:16px; float: right; margin-right: 20px;">发布人：${news.username}
 								&nbsp;&nbsp;&nbsp;&nbsp; 发布时间时间：${news.datetime }</span>
 						</div>
 					</div>
