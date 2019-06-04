@@ -11,6 +11,11 @@ import util.LayuiData;
 import com.alibaba.fastjson.JSON;
 
 public class getNewAction extends BaseAction {
+	private String newsId;
+
+	public void setNewsId(String newsId) {
+		this.newsId = newsId;
+	}
 
 	/**
 	 * @return
@@ -18,12 +23,7 @@ public class getNewAction extends BaseAction {
 	public String execute() {
 		List<TNews> newslist = null;
 		VNews news = null;
-		String newsId = request.getParameter("newsId");
-		if (newsId != null) {
-			news = newsdao.getNewsById(Integer.parseInt(newsId));
-			request.setAttribute("news", news);
-			return SUCCESS;
-		} else {
+		if (newsId.equals("")) {
 			int allcount = bdao.selectValue(("select count(newid) from TNews"));
 			Writer out;
 			try {
@@ -39,7 +39,10 @@ public class getNewAction extends BaseAction {
 				e.printStackTrace();
 			}
 			return SUCCESS;
-
+		} else {
+			news = newsdao.getNewsById(Integer.parseInt(newsId));
+			request.setAttribute("news", news);
+			return ERROR;
 		}
 	}
 }

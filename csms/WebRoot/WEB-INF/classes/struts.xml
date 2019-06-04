@@ -10,7 +10,9 @@
 		<action name="getmajor" class="action.control.getMajorAction"></action>
 		<action name="getclass" class="action.control.getClassAction"></action>
 		<action name="getforum" class="action.control.getForumAction"></action>
-		<action name="getnew" class="action.control.getNewAction"></action>
+		<action name="getnew" class="action.control.getNewAction">
+			<result name="error" type="dispatcher">/new.jsp</result>
+		</action>
 		<action name="getcontent"
 			class="action.control.getContentAction">
 			<result name="success" type="dispatcher">

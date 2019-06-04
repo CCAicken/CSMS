@@ -7,7 +7,11 @@
     <action name="getmajor" location="42,142" size="150,40" />
     <action name="getclass" location="42,192" size="150,40" />
     <action name="getforum" location="42,242" size="150,40" />
-    <action name="getnew" location="42,292" size="150,40" />
+    <action name="getnew" location="42,292" size="150,40">
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="new.jsp" />
+      </result>
+    </action>
     <action name="getcontent" location="42,342" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="forumContent.jsp" />
@@ -61,5 +65,6 @@
   <webResource name="myProject.jsp" path="/myProject.jsp" location="350,800" size="150,55" />
   <webResource name="login.jsp" path="/login.jsp" location="350,950" size="150,55" />
   <webResource name="index.jsp" path="/index.jsp" location="50,1100" size="150,55" />
+  <webResource name="new.jsp" path="/new.jsp" location="0,0" size="150,55" />
 </Struts2Diagram>
 

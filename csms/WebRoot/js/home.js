@@ -47,7 +47,7 @@ layui.use(['element', 'carousel', 'table'], function() {
 					field : '',
 					title : '',
 					templet : function(d) {
-						return "<a href='new.jsp?newid=" + d.newid + "'>"
+						return "<a href='getnew.action?newsId=" + d.newid + "'>"
 								+ d.newstitle + "</a>"
 					}
 				}]],
