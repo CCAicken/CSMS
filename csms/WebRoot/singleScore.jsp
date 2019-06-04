@@ -110,7 +110,7 @@
 					},
 					{
 						align : 'center',
-						field : '',
+						field : 'username',
 						title : '姓名',
 						width : 100,
 						templet : function(data) {
@@ -130,7 +130,7 @@
 					},
 					{
 						align : 'center',
-						field : '',
+						field : 'collegename',
 						width : 130,
 						title : '学院名称',
 						templet : function(data) {
@@ -144,7 +144,7 @@
 					},
 					{
 						align : 'center',
-						field : '',
+						field : 'majorname',
 						width : 200,
 						title : '专业名称',
 						templet : function(data) {
@@ -158,7 +158,7 @@
 					},
 					{
 						align : 'center',
-						field : '',
+						field : 'classname',
 						title : '班级名称',
 						width : 250,
 						templet : function(data) {
