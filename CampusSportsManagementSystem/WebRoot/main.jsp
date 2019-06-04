@@ -85,29 +85,29 @@
                             </a>
                             <ul class="collapse nav nav-list" id="information">
                                 <li role="presentation" id="openReport">
-                                    <a href="projectRegistration.jsp" class="sidebarclick">
+                                    <a href="collegeManagement.jsp" class="sidebarclick">
                                         <span>学院管理</span>
                                     </a>
                                 </li>
                                 <li role="presentation" id="submitReport">
-                                    <a href="venueArrangementServlet.do" class="sidebarclick">
+                                    <a href="majorManagement.jsp" class="sidebarclick">
                                         <span>专业管理</span>
                                     </a>
                                 </li>
                                 <li role="presentation" id="submitReport">
-                                    <a href="venueArrangementServlet.do" class="sidebarclick">
+                                    <a href="classManagement.jsp" class="sidebarclick">
                                         <span>班级管理</span>
                                     </a>
                                 </li>
                                 <li role="presentation" id="submitReport">
-                                    <a href="venueArrangementServlet.do" class="sidebarclick">
+                                    <a href="studentManagement.jsp" class="sidebarclick">
                                         <span>学生管理</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li role="presentation">
-                            <a href="sporttime.jsp" class="sidebarclick" data-toggle="collapse">
+                            <a href="teacherManagement.jsp" class="sidebarclick" data-toggle="collapse">
                                 <i class="iconfont icon-set"></i>
                                 <span>教职工管理</span>
                             </a>
@@ -120,7 +120,7 @@
                             </a>
                             <ul class="collapse nav nav-list" id="matchtime">
                                 <li role="presentation" id="openReport">
-                                    <a href="projectRegistration.jsp" class="sidebarclick">
+                                    <a href="setSportTime.jsp" class="sidebarclick">
                                         <span>赛事管理</span>
                                     </a>
                                 </li>
