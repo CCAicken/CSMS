@@ -71,250 +71,223 @@
 <script id="barDemo" type="text/html">
     <button class="layui-btn layui-btn-sm layui-bg-green query">查看详情</button>
 </script>
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+  </div>
+</script>
 <script type="text/javascript">
-	layui
-			.use(
-					[ 'table', 'form', 'jquery', 'layer' ],
-					function() {
-						var layer = layui.layer;
-						/* 页面加载动态表格绑定数据 */
-						var table = layui.table;
-						table.render({
-							id : 'tableOne',
-							elem : '#scoretable',
-							height : 'full-200', //高度最大化减去差值,
-							url : 'getscore.action?op=single',
-							page : true,
-							even : true,
-							limit : 10,
-							limits : [ 10, 15, 20 ],
-							skin : "nob",
-							cellMinWidth : 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-							//,toolbar: '#toolbarDemo'
-							title : '用户数据表',
-							cols : [ [
-									{
-										align : 'center',
-										field : '',
-										width : 78,
-										title : '序号',
-										type : 'numbers'
-									},
-									{
-										align : 'center',
-										field : 'userid',
-										title : '学号/工号',
-										width : 130
-									},
-									{
-										align : 'center',
-										field : '',
-										title : '姓名',
-										width : 100,
-										templet : function(data) {
-											if (data.protype == 1
-													|| data.protype == 2) {
-												return data.username;
-											} else {
-												return data.teausername;
-											}
-										}
-									},
-									{
-										align : 'center',
-										field : 'scorenumber',
-										title : '平均成绩',
-										width : 100
-									},
-									{
-										align : 'center',
-										field : '',
-										width : 130,
-										title : '学院名称',
-										templet : function(data) {
-											if (data.protype == 1
-													|| data.protype == 2) {
-												return data.collegename;
-											} else {
-												return data.teacollegename;
-											}
-										}
-									},
-									{
-										align : 'center',
-										field : '',
-										width : 200,
-										title : '专业名称',
-										templet : function(data) {
-											if (data.protype == 1
-													|| data.protype == 2) {
-												return data.majorname;
-											} else {
-												return "";
-											}
-										}
-									},
-									{
-										align : 'center',
-										field : '',
-										title : '班级名称',
-										width : 250,
-										templet : function(data) {
-											if (data.protype == 1
-													|| data.protype == 2) {
-												return data.classname;
-											} else {
-												return "";
-											}
-										}
-									},
-									{
-										align : 'center',
-										field : '',
-										title : '操作',
-										width : 120,
-										toolbar : '#barDemo'
-									},
-									{
-										field : '',
-										title : '用户角色id',
-										hide : true,
-										templet : function(data) {
-											if (data.protype == 1
-													|| data.protype == 2) {
-												return 1;
-											} else {
-												return 2;
-											}
-										}
-									} ] ]
-						});
-						/* 下拉框三级联动 */
-						var form = layui.form;
-						var $ = layui.jquery;
-						form.render('select');
-						form
-								.on(
-										'select(college)',
-										function(data) {
-											var hosid = data.value;
-											$
-													.ajax({
-														type : "post",
-														url : "getmajor.action",
-														data : {
-															collegeid : hosid
-														},
-														dataType : "json",
-														success : function(succ) {
-															if (succ == "失败") {
-																layer
-																		.msg("请刷新后重试");
-															} else {
-																var tmp = '<option value="0">请选择或输入专业名称</option>';
-																for ( var i in succ.data) {
-																	tmp += '<option value="' + succ.data[i].majorid +  '">'
-																			+ succ.data[i].majorname
-																			+ '</option>';
-																}
-																$("#major")
-																		.html(
-																				tmp);
-																form.render();
-															}
-														},
-														error : function() {
-															layer
-																	.msg(
-																			'请求失败，稍后再试',
-																			{
-																				icon : 5
-																			});
-														}
+	layui.use([ 'table', 'form', 'jquery', 'layer' ],function() {
+		var layer = layui.layer;
+		/* 页面加载动态表格绑定数据 */
+		var table = layui.table;
+		var ins1 = table.render({
+			id : 'tableOne',
+			elem : '#scoretable',
+			toolbar : '#toolbarDemo',
+			height : 'full-200', //高度最大化减去差值,
+			url : 'getscore.action?op=single',
+			page : true,
+			even : true,
+			limit : 10,
+			limits : [ 10, 15, 20 ],
+			skin : "nob",
+			cellMinWidth : 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+			//,toolbar: '#toolbarDemo'
+			title : '用户数据表',
+			cols : [ [
+					{
+						align : 'center',
+						field : '',
+						width : 78,
+						title : '序号',
+						type : 'numbers'
+					},
+					{
+						align : 'center',
+						field : 'userid',
+						title : '学号/工号',
+						width : 130
+					},
+					{
+						align : 'center',
+						field : 'username',
+						title : '姓名',
+						width : 100,
+						templet : function(data) {
+							if (data.protype == 1
+									|| data.protype == 2) {
+								return data.username;
+							} else {
+								return data.teausername;
+							}
+						}
+					},
+					{
+						align : 'center',
+						field : 'scorenumber',
+						title : '平均成绩',
+						width : 100
+					},
+					{
+						align : 'center',
+						field : 'collegename',
+						width : 130,
+						title : '学院名称',
+						templet : function(data) {
+							if (data.protype == 1
+									|| data.protype == 2) {
+								return data.collegename;
+							} else {
+								return data.teacollegename;
+							}
+						}
+					},
+					{
+						align : 'center',
+						field : 'majorname',
+						width : 200,
+						title : '专业名称',
+						templet : function(data) {
+							if (data.protype == 1
+									|| data.protype == 2) {
+								return data.majorname;
+							} else {
+								return "";
+							}
+						}
+					},
+					{
+						align : 'center',
+						field : 'classname',
+						title : '班级名称',
+						width : 250,
+						templet : function(data) {
+							if (data.protype == 1
+									|| data.protype == 2) {
+								return data.classname;
+							} else {
+								return "";
+							}
+						}
+					},
+					{
+						align : 'center',
+						field : '',
+						title : '操作',
+						width : 120,
+						toolbar : '#barDemo'
+					},
+					{
+						field : '',
+						title : '用户角色id',
+						hide : true,
+						templet : function(data) {
+							if (data.protype == 1
+									|| data.protype == 2) {
+								return 1;
+							} else {
+								return 2;
+							}
+						}
+					} ] ]
+		});
+		/* 下拉框三级联动 */
+		var form = layui.form;
+		var $ = layui.jquery;
+		form.render('select');
+		form.on('select(college)',function(data) {
+			var hosid = data.value;
+			$.ajax({
+				type : "post",
+				url : "getmajor.action",
+				data : {
+					collegeid : hosid
+				},
+				dataType : "json",
+				success : function(succ) {
+					if (succ == "失败") {
+						layer
+								.msg("请刷新后重试");
+					} else {
+						var tmp = '<option value="0">请选择或输入专业名称</option>';
+						for ( var i in succ.data) {
+							tmp += '<option value="' + succ.data[i].majorid +  '">'
+									+ succ.data[i].majorname
+									+ '</option>';
+						}
+						$("#major").html(tmp);
+						form.render();
+					}
+				},
+				error : function() {
+					layer.msg('请求失败，稍后再试',{icon : 5});
+				}
 
-													});
-										});
-						form
-								.on(
-										'select(major)',
-										function(data) {
-											var hosid = data.value;
-											//alert(hosid);
-											$
-													.ajax({
-														type : "post",
-														url : "getclass.action",
-														data : {
-															majorid : hosid
-														},
-														dataType : "json",
-														success : function(succ) {
-															if (succ == "失败") {
-																layer
-																		.msg("请刷新后重试");
-															} else {
-																var tmp = '<option value="0">请选择或输入班级名称</option>';
-																for ( var i in succ.data) {
-																	tmp += '<option value="' + succ.data[i].classid +  '">'
-																			+ succ.data[i].classname
-																			+ '</option>';
-																}
-																$("#class")
-																		.html(
-																				tmp);
-																form.render();
-															}
-														},
-														error : function() {
-															layer
-																	.msg(
-																			'请求失败，稍后再试',
-																			{
-																				icon : 5
-																			});
-														}
+			});
+		});
+		form.on('select(major)',function(data) {
+			var hosid = data.value;
+			//alert(hosid);
+			$.ajax({
+				type : "post",
+				url : "getclass.action",
+				data : {
+					majorid : hosid
+				},
+				dataType : "json",
+				success : function(succ) {
+					if (succ == "失败") {
+						layer.msg("请刷新后重试");
+					} else {
+						var tmp = '<option value="0">请选择或输入班级名称</option>';
+						for ( var i in succ.data) {
+							tmp += '<option value="' + succ.data[i].classid +  '">'
+									+ succ.data[i].classname
+									+ '</option>';
+						}
+						$("#class").html(tmp);
+						form.render();
+					}
+				},
+				error : function() {
+					layer.msg('请求失败，稍后再试',{icon : 5});
+				}
 
-													});
-										});
-						//查询提交
-						form.on('submit(search)', function(data) {
-							table.reload('tableOne', {
-								method : 'post',
-								where : {
-									'collegeid' : data.field.college,
-									'majorid' : data.field.major,
-									'classid' : data.field.classes,
-								},
-								page : {
-									curr : 1
-								}
-							});
+			});
+		});
+		//查询提交
+		form.on('submit(search)', function(data) {
+			table.reload('tableOne', {
+				method : 'post',
+				where : {
+					'collegeid' : data.field.college,
+					'majorid' : data.field.major,
+					'classid' : data.field.classes,
+				},
+				page : {
+					curr : 1
+				}
+			});
 
-							return false;
-						});
-					});
-	$(document)
-			.ready(
-					function() {
-						//查看详情点击事件
-						$(document)
-								.on(
-										'click',
-										".query",
-										function() {
-											var userid = $(this).parent()
-													.parent().prev().prev()
-													.prev().prev().prev()
-													.prev().children().text()
-													.trim();
-											var usertype = $(this).parent()
-													.parent().next().children()
-													.text().trim();
-											window.location.href = "getscore.action?op=singledetail&userid="
-													+ userid
-													+ "&usertype="
-													+ usertype;
-										});
-					})
+			return false;
+		});
+	});
+	$(document).ready(function() {
+		//查看详情点击事件
+		$(document).on('click',".query",function() {
+			var userid = $(this).parent()
+					.parent().prev().prev()
+					.prev().prev().prev()
+					.prev().children().text()
+					.trim();
+			var usertype = $(this).parent()
+					.parent().next().children()
+					.text().trim();
+			window.location.href = "getscore.action?op=singledetail&userid="
+					+ userid
+					+ "&usertype="
+					+ usertype;
+		});
+	})
 </script>
 </html>

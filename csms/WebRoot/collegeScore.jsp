@@ -62,6 +62,10 @@
 <script id="barDemo" type="text/html">
     <button class="layui-btn layui-btn-sm layui-bg-green query">查看详情</button>
 </script>
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+  </div>
+</script>
 <script type="text/javascript">
 	layui.use([ 'table', 'form', 'layer', 'jquery' ], function() {
 		var table = layui.table;
@@ -73,6 +77,7 @@
 		table.render({
 			id : 'tableOne',
 			elem : '#scoretable',
+			toolbar : '#toolbarDemo',
 			height : 'full-200', //高度最大化减去差值,
 			url : 'getscore.action?op=college',
 			page : true,

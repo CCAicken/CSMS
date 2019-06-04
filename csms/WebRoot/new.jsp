@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,44 +32,23 @@
 					<div class="layui-row"
 						style="border-bottom:blanchedalmond 1px sold">
 						<div class="layui-col-md6 layui-col-md6">
-							<span style="font-size:18px;"><b>标题</b></span>
+							<span style="font-size:18px;"><b>${news.newstitle }</b></span>
 						</div>
 						<div class="layui-col-md6 layui-col-md6">
-							<span style="font-size:16px; float: right; margin-right: 20px;">发布人：admin
-								&nbsp;&nbsp;|&nbsp;&nbsp; 发布时间时间：2019-5-26</span>
+							<span style="font-size:16px; float: right; margin-right: 20px;">发布人：${news.username}
+								&nbsp;&nbsp;&nbsp;&nbsp; 发布时间时间：${news.datetime }</span>
 						</div>
 					</div>
 					<div class="layui-row">
 						<div class="layui-col-md12" style="width:97%">
 							<article for="text">
-								5sjsj就是纠结啊盛大的撒娇打算睡觉扩大睡觉了打开巨大的垃圾受打击啊 wwwffffff\n
-								5sjsj就是纠结啊盛大的撒娇打算睡觉扩大睡觉了打开巨大的垃圾受打击啊 wwwffffff
-								5sjsj就是纠结啊盛大的撒娇打算睡觉扩大睡觉了打开巨大的垃圾受打击啊 wwwffffff
-								5sjsj就是纠结啊盛大的撒娇打算睡觉扩大睡觉了打开巨大的垃圾受打击啊 wwwffffff
-								5sjsj就是纠结啊盛大的撒娇打算睡觉扩大睡觉了打开巨大的垃圾受打击啊 wwwffffff
-								5sjsj就是纠结啊盛大的撒娇打算睡觉扩大睡觉了打开巨大的垃圾受打击啊 wwwffffff
-								5sjsj就是纠结啊盛大的撒娇打算睡觉扩大睡觉了打开巨大的垃圾受打击啊 wwwffffff
-								5sjsj就是纠结啊盛大的撒娇打算睡觉扩大睡觉了打开巨大的垃圾受打击啊 wwwffffff v
-								5sjsj就是纠结啊盛大的撒娇打算睡觉扩大睡觉了打开巨大的垃圾受打击啊 wwwffffff
-								5sjsj就是纠结啊盛大的撒娇打算睡觉扩大睡觉了打开巨大的垃圾受打击啊 wwwffffff</article>
+							${news.newscontent}
+							</article>
 						</div>
 					</div>
 				</div>
 
 			</div>
-		</div>
-	</div>
-
-	<div class="layui-footer footer footer-doc" id="footer">
-		<div class="layui-main">
-			<p>
-				<a href="www.yngsxy.net">www.yngsxy.net</a> Copyright © 1999-2019
-				云南工商学院
-			</p>
-			<p>
-				<a href="" target="_blank" rel="nofollow"> 云教ICP备1206028号 |
-					滇ICP备17000571号-3 | 滇公网安备53012702000031号</a>
-			</p>
 		</div>
 	</div>
 	<%@include file="footer.jsp"%>

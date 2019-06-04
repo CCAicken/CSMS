@@ -68,7 +68,10 @@
 	<%@include file="footer.jsp"%>
 </body>
 <script src="layui/layui.all.js"></script>
-
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+  </div>
+</script>
 <script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
 <script>
 	layui.use([ 'form', 'table' ], function() {
@@ -133,6 +136,7 @@
 		});
 		table.render({
 			elem : '#basic-table',
+			toolbar : '#toolbarDemo',
 			//height : 513,
 			url : url,
 			height : 'full-100',

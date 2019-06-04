@@ -51,6 +51,10 @@
 <script id="barDemo" type="text/html">
   <button type="button" lay-event="add" class="layui-btn layui-btn-sm baom">报名</button>
 </script>
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+  </div>
+</script>
 <script>
 	layui.use([ 'element', 'carousel', 'table' ], function() {
 		var element = layui.element;
@@ -63,6 +67,7 @@
 		table.render({
 			elem : '#forumlist',
 			id : 'tableOne',
+			toolbar : '#toolbarDemo',
 			height : 'full-200',
 			url : 'getproject.action', //数据接口
 			skin : "nob",

@@ -63,6 +63,10 @@
 	<%@include file="footer.jsp"%>
 </body>
 <script src="layui/layui.js"></script>
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+  </div>
+</script>
 <script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
 <script type="text/javascript">
 	layui.use([ 'table', 'laydate', 'layer', 'jquery', 'form', 'element' ],
@@ -77,6 +81,7 @@
 				table.render({
 					id : 'tableOne',
 					elem : '#scoretable',
+			toolbar : '#toolbarDemo',
 					height : 'full-200', //高度最大化减去差值,
 					url : 'getprojectscore.action?user='
 							+ $("#userselect").val(),
