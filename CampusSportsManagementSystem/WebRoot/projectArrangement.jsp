@@ -50,7 +50,7 @@
 						<button class="btn btn-info" type="button" id="btn-search"
 							style="height:34px;margin-left:10px;" data-toggle="modal" data-target="#myModal">
 							<span class="glyphicon glyphicon-add" id="search">添加</span>
-						</button>
+						</button></span>
 						</div>
 					</div>
 				</div>
@@ -188,9 +188,7 @@
 						<button type="button" class="btn btn-primary">确定</button>
 					</div>
 				</div>
-				<!-- /.modal-content -->
 			</div>
-			<!-- /.modal -->
 		</div>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
