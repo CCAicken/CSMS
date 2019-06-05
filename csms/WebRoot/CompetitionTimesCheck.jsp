@@ -195,7 +195,13 @@
 				field : 'arrid',
 				hide : true
 			} ] ]
-		})
+		})//查看详情点击事件
+	$(document).on('click',".query",function() {
+		var majorid = $(this).parent().parent().next()
+				.children().text().trim();
+		window.location.href = "getscore.action?op=majordetail&majorid="
+				+ majorid;
+	});
 	});
 </script>
 
