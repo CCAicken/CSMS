@@ -46,13 +46,36 @@ public class LoginAction extends BaseAction {
 			if (stu != null) {
 				session.setAttribute("loginuser", stu);
 				session.setAttribute("role", stu.getRoleid());
-				return SUCCESS;
+				try {
+					out.write("µÇÂ¼³É¹¦");
+					out.flush();
+					out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else {
 				VTeacher tea = userdao.loginTea(userid, password);
 				if (tea != null) {
 					session.setAttribute("loginuser", tea);
 					session.setAttribute("role", tea.getRoleid());
-					return SUCCESS;
+					try {
+						out.write("µÇÂ¼³É¹¦");
+						out.flush();
+						out.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else {
+					try {
+						out.write("µÇÂ¼Ê§°Ü£¬ÇëÖØÊÔ");
+						out.flush();
+						out.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 		}
