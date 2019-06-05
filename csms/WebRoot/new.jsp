@@ -11,6 +11,18 @@
 <title>公告详细信息</title>
 <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
 <link rel="stylesheet" type="text/css" href="css/lgd.css">
+<style type="text/css">
+	body {
+    background-color: rgb(209, 207, 207);
+    overflow: hidden;
+      overflow-y: scroll;
+    
+}
+
+body::-webkit-scrollbar {
+        display: none;
+    }
+</style>
 </head>
 
 <body>

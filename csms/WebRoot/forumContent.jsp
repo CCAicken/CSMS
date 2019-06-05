@@ -11,7 +11,18 @@
     <title>文章内容</title>
     <link rel="stylesheet" href="layui/css/layui.css">
 </head>
+<style type="text/css">
+	body {
+    background-color: rgb(209, 207, 207);
+    overflow: hidden;
+      overflow-y: scroll;
+    
+}
 
+body::-webkit-scrollbar {
+        display: none;
+    }
+</style>
 <body>
     <div class="layui-card">
         <div class="layui-card-header">
