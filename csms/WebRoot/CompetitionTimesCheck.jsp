@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>报名查询</title>
+<title>项目场次查询</title>
 <link rel="stylesheet" href="layui/css/layui.css">
 
 <style>
@@ -24,35 +24,18 @@
 	<div class="layui-card">
 		<div class="layui-card-header">
 			<div class="layui-row">
-				<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a><cite>比赛时间安排查询</cite></a></span>
+				<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a><cite>场次信息</cite></a></span>
 			</div>
 		</div>
 		<div class="layui-card-header text-center">
 			<div class="layui-row text-center">
-				<h1>比赛时间安排查询</h1>
+				<h1>场次信息</h1>
 			</div>
 		</div>
 		<div class="layui-card-body">
 			<div class="layui-row layui-form">
-
 				<div class="layui-input-inline">
-					<select name="collegeid" lay-filter="college">
-						<option value="">选择或输入学院名称</option>
-						<c:forEach items="${collegelist }" var="obj">
-							<option value="${obj.collegeid }">${obj.collegename }</option>
-						</c:forEach>
-					</select>
-				</div>
-				<div class="layui-input-inline" id="select-class">
-					<select name="classid" id="classid" lay-search="">
-						<option value="">选择或搜索班级</option>
-						<c:forEach items="${classlist }" var="obj">
-							<option value="${obj.classid }">${obj.classname }</option>
-						</c:forEach>
-					</select>
-				</div>
-				<div class="layui-input-inline">
-					<input type="text" placeholder="请输入查询条件" name="strwhere"
+					<input type="text" placeholder="场次名称/项目名称/比赛地点" name="strwhere"
 						autocomplete="off" class="layui-input">
 				</div>
 				<div class="layui-input-inline" style="margin-left: -10px;">
@@ -68,6 +51,9 @@
 	<%@include file="footer.jsp"%>
 </body>
 <script src="layui/layui.all.js"></script>
+<script id="barDemo" type="text/html">
+    <button class="layui-btn layui-btn-sm layui-bg-green query">查看详情</button>
+</script>
 <script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
   </div>
@@ -75,9 +61,6 @@
 <script src="js/jquery-2.1.1.min.js" charset="utf-8"></script>
 <script>
 	layui.use([ 'form', 'table' ], function() {
-
-		var url = "arrangeview.action?op=load";
-
 		var form = layui.form, table = layui.table;
 		form.on('select(college)', function(data) {
 			$.ajax({
@@ -137,8 +120,7 @@
 		table.render({
 			elem : '#basic-table',
 			toolbar : '#toolbarDemo',
-			//height : 513,
-			url : url,
+			url : "arrangeview.action?op=getarr",
 			height : 'full-100',
 			id : 'tableOne',
 			page : true,
@@ -146,66 +128,19 @@
 			cols : [ [ // 表头
 			{
 				align : 'center',
-				field : 'userid',
-				title : '学号',
+				field : '',
+				title : '序号',
+				width : 100,
+				type : 'numbers'
+			}, {
+				align : 'center',
+				field : 'arrname',
+				title : '场次名称',
 				width : 100
-			}, {
-				align : 'center',
-				field : '',
-				title : '姓名',
-				width : 100,
-				templet : function(d) {
-					if (d.username == null || d.username == "") {
-						return d.teausername;
-					} else {
-						return d.username;
-					}
-				}
-			}, {
-				align : 'center',
-				field : '',
-				title : '班级',
-				width : 100,
-				templet : function(d) {
-					if (d.classname == null || d.classname == "") {
-						return "教师用户不分班级";
-					} else {
-						return d.classname;
-					}
-				}
-			}, {
-				align : 'center',
-				field : '',
-				title : '专业',
-				width : 100,
-				templet : function(d) {
-					if (d.majorname == null || d.majorname == "") {
-						return "教师用户专业";
-					} else {
-						return d.majorname;
-					}
-				}
-			}, {
-				align : 'center',
-				field : '',
-				title : '院系',
-				width : 100,
-				templet : function(d) {
-					if (d.collegename == null || d.collegename == "") {
-						return d.teacollegename;
-					} else {
-						return d.collegename;
-					}
-				}
 			}, {
 				align : 'center',
 				field : 'proname',
 				title : '项目名称',
-				width : 100
-			}, {
-				align : 'center',
-				field : 'arrname',
-				title : '场次',
 				width : 100
 			}, {
 				align : 'center',
@@ -250,6 +185,15 @@
 						return "取消";
 					}
 				}
+			}, {
+				align : 'center',
+				field : '',
+				title : '操作',
+				width : 230,
+				toolbar : '#barDemo'
+			}, {
+				field : 'arrid',
+				hide : true
 			} ] ]
 		})
 	});

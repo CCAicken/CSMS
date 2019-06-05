@@ -3,6 +3,7 @@ package business.impl;
 import java.util.List;
 
 import model.TArrange;
+import model.VArrange;
 import basic.iHibBaseDAO;
 import basic.iHibBaseDAOImpl;
 import business.dao.ArrangeDAO;
@@ -31,9 +32,9 @@ public class ArrangeDaoImpl implements ArrangeDAO {
 	}
 
 	@Override
-	public List<TArrange> select() {
-		String hql = "from TArrange";
-		List<TArrange> list = bdao.select(hql);
+	public List<VArrange> select(String strWhere) {
+		String hql = "from VArrange"+strWhere;
+		List<VArrange> list = bdao.select(hql);
 		return list;
 	}
 //	public static void main(String[] args){
@@ -43,5 +44,16 @@ public class ArrangeDaoImpl implements ArrangeDAO {
 //			System.out.println(a.getArrname());
 //		}
 //	}
+	@Override
+	public int getCount(String strWhere) {
+		String hql = "select count(*) from VArrange"+strWhere;
+		int count = bdao.selectValue(hql);
+		return count;
+	}
+	@Override
+	public VArrange selectById(int arrid) {
+		VArrange arrange = (VArrange)bdao.findById(VArrange.class, arrid);
+		return arrange;
+	}
 
 }
