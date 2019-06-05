@@ -32,11 +32,7 @@
 		<action name="login" class="action.control.LoginAction">
 
 			<result name="success" type="dispatcher">/main.jsp</result>
-			<result name="error" type="dispatcher">
-				<param name="location">/error.jsp</param>
-				<param name="errorsText">%{errorsText}</param>
-				<param name="backurl">%{backurl}</param>
-			</result>
+			
 		</action>
 		<action name="logout" class="action.control.getLogoutAction">
 			<result name="success" type="redirect">/login.jsp</result>

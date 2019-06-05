@@ -23,12 +23,9 @@
         <resourceEdge source="success" routing="0" target="scoreDetail.jsp" />
       </result>
     </action>
-    <action name="login" location="42,592" size="150,62">
+    <action name="login" location="42,592" size="150,82">
       <result name="success">
         <resourceEdge source="success" routing="0" target="main.jsp" />
-      </result>
-      <result name="error">
-        <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
     <action name="logout" location="42,692" size="150,41">
@@ -60,7 +57,6 @@
   <webResource name="forumContent.jsp" path="/forumContent.jsp" location="350,50" size="150,55" />
   <webResource name="scoreDetail.jsp" path="/scoreDetail.jsp" location="350,200" size="150,55" />
   <webResource name="main.jsp" path="/main.jsp" location="350,350" size="150,55" />
-  <webResource name="error.jsp" path="/error.jsp" location="350,500" size="150,55" />
   <webResource name="CompetitionEntryCheck.jsp" path="/CompetitionEntryCheck.jsp" location="350,650" size="150,55" />
   <webResource name="myProject.jsp" path="/myProject.jsp" location="350,800" size="150,55" />
   <webResource name="login.jsp" path="/login.jsp" location="350,950" size="150,55" />
