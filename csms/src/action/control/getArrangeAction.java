@@ -5,9 +5,11 @@ import java.io.Writer;
 import java.util.List;
 
 import util.LayuiData;
+import model.ReturnData;
 import model.TArrange;
 import model.TClass;
 import model.TCollege;
+import model.VArrange;
 import model.VClass;
 import model.VScene;
 
@@ -29,7 +31,6 @@ public class getArrangeAction extends BaseAction {
 			request.setAttribute("classlist", classlist);
 			return SUCCESS;
 		} else if (op.equals("load")) {
-
 			String type = request.getParameter("type");
 			if (type != null) {
 				String collegeid = request.getParameter("collegeid");
@@ -111,6 +112,25 @@ public class getArrangeAction extends BaseAction {
 				return SUCCESS;
 			}
 
+		}else if(op.equals("getarr")){
+			try {
+				String where = request.getParameter("strwhere");
+				String strWhere = "";
+				if(where!= null && !where.equals("")){
+					strWhere = "where arrname like'%"+where+"%' or proname like'%"+where+"%' or addr like'%"+where+"%'";
+				}
+				List<VArrange> list = arrangedao.select(strWhere);
+				ReturnData data = new ReturnData();
+				data.code = ReturnData.SUCCESS;
+				data.data = list;
+				data.count = arrangedao.getCount(strWhere);
+				out.write(JSON.toJSONString(data));
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return SUCCESS;
 
