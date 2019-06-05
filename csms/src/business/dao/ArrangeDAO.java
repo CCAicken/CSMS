@@ -36,9 +36,11 @@ public interface ArrangeDAO {
 	/**
 	 * 获取所有场次安排列表
 	 * @param strWhere 查询条件（为空是填写为""）
+	 * @param startPage 获取数据页面
+	 * @param pageSize 每页的记录数
 	 * @return 场次安排列表
 	 */
-	public List<VArrange> select(String strWhere);
+	public List<VArrange> selectByPage(String strWhere,int pageSize,int startPage);
 
 	/**
 	 * 获取所有场次安排列表数据量

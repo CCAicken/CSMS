@@ -33,9 +33,9 @@ public class ArrangeDaoImpl implements ArrangeDAO {
 	}
 
 	@Override
-	public List<VArrange> select(String strWhere) {
+	public List<VArrange> selectByPage(String strWhere,int pageSize,int startPage) {
 		String hql = "from VArrange"+strWhere;
-		List<VArrange> list = bdao.select(hql);
+		List<VArrange> list = bdao.selectByPage(hql, startPage, pageSize);
 		return list;
 	}
 	@Override

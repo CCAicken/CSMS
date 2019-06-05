@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Timestamp;
-
 /**
  * VArrange entity. @author MyEclipse Persistence Tools
  */
@@ -12,8 +10,8 @@ public class VArrange implements java.io.Serializable {
 	private String arrname;
 	private Integer proid;
 	private String proname;
-	private Timestamp starttime;
-	private Timestamp endtime;
+	private String starttime;
+	private String endtime;
 	private String addr;
 	private Integer leveltype;
 	private Integer state;
@@ -30,7 +28,7 @@ public class VArrange implements java.io.Serializable {
 
 	/** full constructor */
 	public VArrange(Integer arrid, String arrname, Integer proid,
-			String proname, Timestamp starttime, Timestamp endtime,
+			String proname, String starttime, String endtime,
 			String addr, Integer leveltype, Integer state, Integer scenelimit,
 			Integer collegelimit, Integer totallimit, Integer protype) {
 		this.arrid = arrid;
@@ -82,19 +80,19 @@ public class VArrange implements java.io.Serializable {
 		this.proname = proname;
 	}
 
-	public Timestamp getStarttime() {
+	public String getStarttime() {
 		return this.starttime;
 	}
 
-	public void setStarttime(Timestamp starttime) {
+	public void setStarttime(String starttime) {
 		this.starttime = starttime;
 	}
 
-	public Timestamp getEndtime() {
+	public String getEndtime() {
 		return this.endtime;
 	}
 
-	public void setEndtime(Timestamp endtime) {
+	public void setEndtime(String endtime) {
 		this.endtime = endtime;
 	}
 

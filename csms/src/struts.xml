@@ -21,7 +21,9 @@
 		</action>
 		<action name="getproject"
 			class="action.control.getProjectAction">
-		</action>
+		<result name="success" type="dispatcher">
+			/CompetitionTimesCheck.jsp
+		</result></action>
 		 
 		
 		<action name="getscore" class="action.control.getScoreAction">

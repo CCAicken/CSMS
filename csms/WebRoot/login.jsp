@@ -105,7 +105,7 @@ body {
 	});
 	$("#safecodeImage").click(function(){
 		var myDate = new Date();
-		$("img").attr("src", "safecode.do?"+myDate.getMilliseconds())
+		$("#safecodeImage").attr("src", "safecode.do?"+myDate.getMilliseconds())
 	})
 	$("#btn_login").click(function() {
 		var userid = $("#userid").val();
