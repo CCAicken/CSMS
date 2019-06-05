@@ -84,7 +84,7 @@
 						table.render({
 							id : 'tableOne',
 							elem : '#scoretable',
-							toolbar : '#toolbarDemo',
+			toolbar : '#toolbarDemo',
 							height : 'full-150', //高度最大化减去差值,
 							url : 'getscore.action?op=major',
 							page : true,
