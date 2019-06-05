@@ -28,23 +28,21 @@
         </div>
         <div class="layui-card-body">
             <div id="content">
-            <table width="80%" style="font-size:15px; margin-bottom:15px;">
+            <table width="80%" style="font-size:16px; margin-bottom:15px;">
             	<tr>
                 	<td id = "articletopic" ><b style="font-size:19px;">标题：</b>${forum.title }</td>
                     <td id = "articlereview"><b style="font-size:19px;">作者：</b>${forum.author }  |  </td>
                     <td id = "articlecreate"><b style="font-size:19px;">时间：</b></h3>${forum.createtime }</td>
                 </tr>
             </table>
-                <table>
                 <c:forEach items="${listcontent }" var="content">
-                    <tr>
-                        <td><img src="${content.picpath }" width="80%"></td>
-                    </tr>
-                    <tr>
-                        <td>${content.textcontent }</td>
-                    </tr>
+                    <div class="layui-row" style="text-align:center;">
+                        <div><img src="${content.picpath }" width="80%"></div>
+                    </div>
+                    <div class="layui-row" style="width:80%;margin:auto;">
+                        <div style="padding:30px 0;font-size:20px;margin:auto 0;">${content.textcontent }</div>
+                    </div>
                  </c:forEach>
-                </table>
             </div>
         </div>
     </div>
