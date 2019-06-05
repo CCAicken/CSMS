@@ -44,7 +44,44 @@
 				</div>
 			</div>
 			<div class="layui-row layui-form">
-				<table class="layui-table" id="basic-table"></table>
+				<table class="layui-table">
+					<thead>
+						<th>序号</th>
+						<c:if test="${protype==1||protype==2 }">
+						<th>学号</th>
+						</c:if>
+						<c:if test="${protype==3||protype==4 }">
+						<th>工号</th>
+						</c:if>
+						<th>姓名</th>
+						<th>性别</th>
+						<th>学院</th>
+						<c:if test="${protype==1||protype==2 }">
+						<th>专业</th>
+						<th>班级</th>
+						</c:if>
+					</thead>
+					<tbody>
+					<c:forEach items="${arrlist }" var="arrange" varStatus="status">
+						<tr>
+							<td>${status.index + 1}</td>
+							<td>${arrange.userid }</td>
+							<c:if test="${protype==1||protype==2 }">
+							<td>${arrange.username }</td>
+							<td>${arrange.agend }</td>
+							<td>${arrange.collegename }</td>
+							<td>${arrange.majorname }</td>
+							<td>${arrange.classname }</td>
+							</c:if>
+							<c:if test="${protype==3||protype==4 }">
+							<td>${arrange.teausername }</td>
+							<td>${arrange.teaagend }</td>
+							<td>${arrange.teacollegename }</td>
+							</c:if>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -200,7 +237,7 @@
 	//查看详情点击事件
 	$(document).on('click',".query",function() {
 		var arrid = $(this).parent().parent().next().children().text().trim();
-		window.location.href = "getarrdetail.action?arrid="+ arrid;
+		window.location.href = "getscore.action?arrid="+ arrid;
 	});
 </script>
 

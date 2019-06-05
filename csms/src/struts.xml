@@ -58,5 +58,10 @@
 		<action name="getprojectscore"
 			class="action.control.getProjectScoreAction">
 		</action>
-		<action name="stuAction" class="action.control.StuSignAction"></action></package>
+		<action name="stuAction" class="action.control.StuSignAction"></action>
+		<action name="getarrdetail"
+			class="action.control.getArrDetail">
+		<result name="success" type="dispatcher">
+			/CompetitionDetailCheck.jsp
+		</result></action></package>
 </struts>    
