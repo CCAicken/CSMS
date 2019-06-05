@@ -69,6 +69,17 @@
 	margin: 15px 0;
 	font-size: 24px;
 }
+
+body {
+    background-color: rgb(209, 207, 207);
+    overflow: hidden;
+      overflow-y: scroll;
+    
+}
+
+body::-webkit-scrollbar {
+        display: none;
+    }
 </style>
 <title>Insert title here</title>
 </head>

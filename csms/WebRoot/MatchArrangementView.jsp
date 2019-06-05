@@ -9,8 +9,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>比赛安排</title>
     <link rel="stylesheet" href="layui/css/layui.css">
-    <style>
-    </style>
+    <style type="text/css">
+	body {
+    background-color: rgb(209, 207, 207);
+    overflow: hidden;
+      overflow-y: scroll;
+    
+}
+
+body::-webkit-scrollbar {
+        display: none;
+    }
+</style>
 </head>
 
 <body>
