@@ -12,7 +12,16 @@
 <style>
 .text-center {
 	text-align: center;
+}body {
+    background-color: rgb(209, 207, 207);
+    overflow: hidden;
+      overflow-y: scroll;
+    
 }
+
+body::-webkit-scrollbar {
+        display: none;
+    }
 </style>
 <title>学院成绩查看页面</title>
 </head>

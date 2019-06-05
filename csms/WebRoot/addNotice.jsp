@@ -7,8 +7,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
 <title>Insert title here</title>
-</head>
 
+<style type="text/css">
+	body {
+    background-color: rgb(209, 207, 207);
+    overflow: hidden;
+      overflow-y: scroll;
+    
+}
+
+body::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+</head>
 <body>
 	<div class="layui-container">
 		<div style="margin:10px auto;width:1000px;">
