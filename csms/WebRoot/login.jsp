@@ -104,8 +104,12 @@
         			safecode:safecode
         		},
         		dataType : "text",
-				success : function(){
-					
+				success : function(data){
+					if(data=="登录成功"){
+						window.location.href="main.jsp";
+					}else{
+						layer.msg(data);
+					}
         		},
         	});
         })
