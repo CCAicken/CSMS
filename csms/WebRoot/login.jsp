@@ -27,7 +27,6 @@ body {
 </style>
 <title>Insert title here</title>
 </head>
-
 <body>
 	<div class="layui-container" style="margin-top:180px;">
 		<div class="layui-row">
@@ -51,7 +50,8 @@ body {
 				<div calss="layui-card-body">
 					<div class="layui-row layui-col-space15">
 						<div class="layui-col-lg12 layui-col-md12">
-							<div class="layui-form" style="width:90%;margin-left:5%;">
+							<div class="layui-form" action="login.action"
+								style="width:90%;margin-left:5%;">
 								<div class="layui-form-item">
 									<label class="layui-form-label">账号：</label>
 									<div class="layui-input-block">
@@ -77,7 +77,7 @@ body {
 									</div>
 									<div class="layui-form-mid layui-word-aux"
 										style="width:90px;height:38px;margin-top:-5px;">
-										<img src="safecode.do" width="100%" id="safecodeImage" />
+										<img src="safecode.do" width="100%" />
 									</div>
 								</div>
 								<div class="layui-form-item">
@@ -101,43 +101,76 @@ body {
 <script src="layui/layui.js" charset="utf-8"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
-	layui.use([ 'form', 'laydate' ], function() {
-	});
-	$("#safecodeImage").click(function(){
-		var myDate = new Date();
-		$("#safecodeImage").attr("src", "safecode.do?"+myDate.getMilliseconds())
-	})
-	$("#btn_login").click(function() {
-		var userid = $("#userid").val();
-		var password = $("#password").val();
-		var safecode = $("#safecode").val();
-		//layer.msg(userid+password+safecode);
-		if (userid == "" || userid == null) {
-			layer.msg("账号不能为空");
-		} else if (password == "" || password == null) {
-			layer.msg("密码不能为空");
-		} else if (safecode == "" || safecode == null) {
-			layer.msg("验证码不能为空");
-		} else {
-			$.ajax({
-				type : "POST",
-				url : "login.action",
-				data : {
-					userid : userid,
-					password : password,
-					safecode : safecode
-				},
-				dataType : "text",
-				success : function(data) {
-					if (data == "登录成功") {
-						window.location.href = "main.jsp";
-					} else {
-						layer.msg(data);
-					}
-				},
-			});
+	layui.use('layer', function() {
+		var layer = layui.layer;
+		function login() {
+			var userid = $("#userid").val();
+			var password = $("#password").val();
+			var safecode = $("#safecode").val();
+			if (userid == null || userid == "") {
+
+				layer.tips('用户名不能为空！', '#userid', {
+					tips : [ 1, '#FF5722' ],
+					time : 3000
+				});
+			} else if (password == null || password == "") {
+				layer.tips('密码不能为空！', '#password', {
+					tips : [ 1, '#FF5722' ],
+					time : 3000
+				});
+			} else if (safecode == null || safecode == "") {
+				layer.tips('验证码不能为空！', '#safecode', {
+					tips : [ 1, '#FF5722' ],
+					time : 3000
+				});
+			} else {
+				//layer.msg(userid+password+safecode);
+				$.ajax({
+					type : "POST",
+					url : "login.action",
+					data : {
+						userid : userid,
+						password : password,
+						safecode : safecode
+					},
+					dataType : "text",
+					success : function(msg) {
+						if (msg == "登录成功") {
+							window.location.href = "main.jsp";
+						} else {
+							layer.alert(msg, {
+								skin : 'demo-class',
+								closeBtn : 0,
+								anim : 5
+							//动画类型
+							});
+						}
+
+					},
+				});
+			}
 		}
-	})
+		;
+		$("#btn_login").click(function() {
+			login();
+		});
+
+		$("#userid").keypress(function(e) {
+			if ((e.keyCode || e.which) == 13) {
+				login();
+			}
+		});
+		$("#password").keypress(function(e) {
+			if ((e.keyCode || e.which) == 13) {
+				login();
+			}
+		});
+		$("#safecode").keypress(function(e) {
+			if ((e.keyCode || e.which) == 13) {
+				login();
+			}
+		});
+	});
 </script>
 
 </html>
