@@ -65,5 +65,6 @@
 			class="action.control.getArrDetail">
 		<result name="success" type="dispatcher">
 			/CompetitionDetailCheck.jsp
-		</result></action></package>
+		</result></action>
+		<action name="test" class="action.control.testAction"></action></package>
 </struts>    
