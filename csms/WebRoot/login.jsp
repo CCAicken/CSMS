@@ -24,6 +24,17 @@ body {
 	color: chocolate;
 	margin: 10px 0;
 }
+
+body .demo-class .layui-layer-title {
+	background: #FF5722;
+	color: #fff;
+	border: none;
+}
+
+body .demo-class .layui-layer-btn a {
+	background: #FF5722;
+	border-color: #FF5722;
+}
 </style>
 <title>Insert title here</title>
 </head>
@@ -77,7 +88,7 @@ body {
 									</div>
 									<div class="layui-form-mid layui-word-aux"
 										style="width:90px;height:38px;margin-top:-5px;">
-										<img src="safecode.do" width="100%" />
+										<img id="imagesafecode" src="safecode.do" width="100%" />
 									</div>
 								</div>
 								<div class="layui-form-item">
@@ -101,8 +112,14 @@ body {
 <script src="layui/layui.js" charset="utf-8"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
-	layui.use('layer', function() {
+	layui.use([ 'layer', 'laydate' ], function() {
 		var layer = layui.layer;
+		$("#imagesafecode").click(
+				function() {
+					var myDate = new Date();
+					$("#imagesafecode").attr("src",
+							"safecode.do?" + myDate.getMilliseconds())
+				})
 		function login() {
 			var userid = $("#userid").val();
 			var password = $("#password").val();
