@@ -21,8 +21,7 @@
 		</action>
 		<action name="getproject"
 			class="action.control.getProjectAction">
-		<result name="success" type="dispatcher">
-			/CompetitionTimesCheck.jsp
+		<result name="success" type="dispatcher">%{returnUrl}
 		</result></action>
 		 
 		
@@ -59,7 +58,9 @@
 		</action>
 		<action name="getprojectscore"
 			class="action.control.getProjectScoreAction">
-		</action>
+		<result name="success" type="dispatcher">
+			/projectScoreDetail.jsp
+		</result></action>
 		<action name="stuAction" class="action.control.StuSignAction"></action>
 		<action name="getarrdetail"
 			class="action.control.getArrDetail">

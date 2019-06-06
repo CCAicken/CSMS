@@ -6,6 +6,7 @@ import java.util.List;
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import model.ReturnData;
+import model.TProject;
 import model.VClassScore;
 import model.VScore;
 
@@ -18,43 +19,43 @@ public class getProjectScoreAction extends BaseAction {
 	 */
 	public String execute() {
 		try{
-			int startPage = Integer.parseInt(request.getParameter("page"));// 当前
-			int limit = Integer.parseInt(request.getParameter("limit"));// 条数
-			String collegeid = request.getParameter("collegeid");
-			String user = request.getParameter("usertype");
-			String strsearch = "";
-			if (collegeid != null && !collegeid.equals("") && !collegeid.equals("0")) {
-				if(user.equals("student")){
-					strsearch = " where collegeid='" + collegeid + "'";
-				}else{
-					strsearch = " where teacollegeid='" + collegeid + "'";
+			String op = request.getParameter("op");
+			if(op.equals("prodetail")){
+				String proid = request.getParameter("proid");
+				if(proid!=null && !proid.equals("")){
+					List<VScore> proscorelist = scoredao.getScoreByProSingle(Integer.parseInt(proid));
+					request.setAttribute("proscorelist", proscorelist);
+					TProject project = projectdao.getptoject(Integer.parseInt(proid));
+					request.setAttribute("project", project);
+					return SUCCESS;
 				}
-			}
-			if (user != null && !user.equals("") && !user.equals("0")) {
-				if(strsearch.equals("")){
-					if(user.equals("student")){
-						strsearch = " where protype=1 or protype=2";
-					}else{
-						strsearch = " where protype=3 or protype=4";
-					}
-				}else{
-					if(user.equals("student")){
-						strsearch += " and (protype=1 or protype=2)";
-					}else{
-						strsearch += " and (protype=3 or protype=4)";
+			}else if(op.equals("load")){
+				String project = request.getParameter("project");
+				String user = request.getParameter("usertype");
+				String strsearch = "";
+				if (project != null && !project.equals("") && !project.equals("0")) {
+					strsearch = " and proid=" + project;
+				}
+				if (user != null && !user.equals("") && !user.equals("0")) {
+					if(user.equals("stusingle")){
+						strsearch = " and protype=1";
+					}else if(user.equals("stuteam")){
+						strsearch = " and protype=2";
+					}else if(user.equals("teasingle")){
+						strsearch = " and protype=3";
+					}else if(user.equals("teateam")){
+						strsearch = " and protype=4";
 					}
 				}
+				List<VScore> clalist = scoredao.getScore(strsearch);
+				request.setAttribute("type", "project");
+				ReturnData rd = new ReturnData();
+				rd.code = ReturnData.SUCCESS;
+				rd.data = clalist;
+				out.write(JSON.toJSONString(rd));
+				out.flush();
+				out.close();
 			}
-			List<VScore> clalist = scoredao.getScoreByPage(strsearch, startPage, limit);
-			request.setAttribute("type", "project");
-			int count = scoredao.allScoreCount(strsearch);
-			ReturnData rd = new ReturnData();
-			rd.code = ReturnData.SUCCESS;
-			rd.count = count;
-			rd.data = clalist;
-			out.write(JSON.toJSONString(rd));
-			out.flush();
-			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
