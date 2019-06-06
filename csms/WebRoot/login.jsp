@@ -24,14 +24,9 @@ body {
 	color: chocolate;
 	margin: 10px 0;
 }
-body .demo-class .layui-layer-title{background:#FF5722; color:#fff; border: none;}
-body .demo-class .layui-layer-btn a{
-    background: #FF5722;
-    border-color: #FF5722;}
 </style>
 <title>Insert title here</title>
 </head>
-
 <body>
 	<div class="layui-container" style="margin-top:180px;">
 		<div class="layui-row">
@@ -101,16 +96,13 @@ body .demo-class .layui-layer-btn a{
 			</div>
 		</div>
 	</div>
+	</div>
 </body>
 <script src="layui/layui.js" charset="utf-8"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
-	layui.use([ 'layer', 'laydate' ], function() {
+	layui.use('layer', function() {
 		var layer = layui.layer;
-		$("#safecode").click(function(){
-		var myDate = new Date();
-		$("#safecode").attr("src", "safecode.do?"+myDate.getMilliseconds())
-	})
 		function login() {
 			var userid = $("#userid").val();
 			var password = $("#password").val();
@@ -146,11 +138,12 @@ body .demo-class .layui-layer-btn a{
 						if (msg == "登录成功") {
 							window.location.href = "main.jsp";
 						} else {
-						 layer.alert(msg, {
-    skin: 'demo-class'
-    ,closeBtn: 0
-    ,anim: 5 //动画类型
-  });
+							layer.alert(msg, {
+								skin : 'demo-class',
+								closeBtn : 0,
+								anim : 5
+							//动画类型
+							});
 						}
 
 					},
