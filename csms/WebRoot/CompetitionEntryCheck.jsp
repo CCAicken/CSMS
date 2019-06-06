@@ -151,7 +151,8 @@ body::-webkit-scrollbar {
 			height : 'full-100',
 			id : 'tableOne',
 			page : true,
-			limits : [ 5, 10, 15 ],
+			limit : 10,
+			limits : [ 10, 15,20 ],
 			cols : [ [ // 表头
 			{
 				align : 'center',

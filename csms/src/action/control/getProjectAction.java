@@ -3,10 +3,13 @@ package action.control;
 import java.io.IOException;
 import java.util.List;
 
+import org.aspectj.weaver.patterns.IfPointcut.IfTruePointcut;
+
 import model.TProject;
 import util.LayuiData;
 
 import com.alibaba.fastjson.JSON;
+
 import common.properties.RoleType;
 
 public class getProjectAction extends BaseAction {
@@ -21,7 +24,12 @@ public class getProjectAction extends BaseAction {
 	 * @throws IOException
 	 */
 	public String execute() throws IOException {
-
+		String op = request.getParameter("op");
+		if(op.equals("getproject")){
+			List<TProject> projectlist = projectdao.select();
+			request.setAttribute("projectlist", projectlist);
+			return SUCCESS;
+		}
 		String type = request.getParameter("type");
 		if (type != null && !type.equals("")) {
 			String proname = request.getParameter("strwhere");

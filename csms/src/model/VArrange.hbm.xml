@@ -18,10 +18,10 @@
             <property name="proname" type="java.lang.String">
                 <column name="proname" length="100" />
             </property>
-            <property name="starttime" type="java.sql.Timestamp">
+            <property name="starttime" type="java.lang.String">
                 <column name="starttime" length="23" />
             </property>
-            <property name="endtime" type="java.sql.Timestamp">
+            <property name="endtime" type="java.lang.String">
                 <column name="endtime" length="23" />
             </property>
             <property name="addr" type="java.lang.String">

@@ -114,12 +114,22 @@ public class getArrangeAction extends BaseAction {
 
 		}else if(op.equals("getarr")){
 			try {
+				int startPage = Integer.parseInt(request.getParameter("page"));// 当前
+				int limit = Integer.parseInt(request.getParameter("limit"));// 条数
 				String where = request.getParameter("strwhere");
+				String project = request.getParameter("project");
 				String strWhere = "";
 				if(where!= null && !where.equals("")){
-					strWhere = "where arrname like'%"+where+"%' or proname like'%"+where+"%' or addr like'%"+where+"%'";
+					strWhere = " where (arrname like'%"+where+"%' or proname like'%"+where+"%' or addr like'%"+where+"%')";
 				}
-				List<VArrange> list = arrangedao.select(strWhere);
+				if(project!= null && !project.equals("")){
+					if(strWhere!= null && !strWhere.equals("")){
+						strWhere = " and proid="+project;
+					}else{
+						strWhere = " where proid="+project;
+					}
+				}
+				List<VArrange> list = arrangedao.selectByPage(strWhere, limit, startPage);
 				ReturnData data = new ReturnData();
 				data.code = ReturnData.SUCCESS;
 				data.data = list;

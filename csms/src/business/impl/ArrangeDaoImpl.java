@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.TArrange;
 import model.VArrange;
+import model.VScene;
 import basic.iHibBaseDAO;
 import basic.iHibBaseDAOImpl;
 import business.dao.ArrangeDAO;
@@ -32,18 +33,11 @@ public class ArrangeDaoImpl implements ArrangeDAO {
 	}
 
 	@Override
-	public List<VArrange> select(String strWhere) {
+	public List<VArrange> selectByPage(String strWhere,int pageSize,int startPage) {
 		String hql = "from VArrange"+strWhere;
-		List<VArrange> list = bdao.select(hql);
+		List<VArrange> list = bdao.selectByPage(hql, startPage, pageSize);
 		return list;
 	}
-//	public static void main(String[] args){
-//		ArrangeDAO dao = new ArrangeDaoImpl();
-//		List<TArrange> list = dao.select();
-//		for(TArrange a:list){
-//			System.out.println(a.getArrname());
-//		}
-//	}
 	@Override
 	public int getCount(String strWhere) {
 		String hql = "select count(*) from VArrange"+strWhere;
@@ -51,9 +45,18 @@ public class ArrangeDaoImpl implements ArrangeDAO {
 		return count;
 	}
 	@Override
-	public VArrange selectById(int arrid) {
-		VArrange arrange = (VArrange)bdao.findById(VArrange.class, arrid);
-		return arrange;
+	public List<VScene> selectById(int arrid) {
+		String hql = "from VScene where arrid=?";
+		Object[] param = {arrid};
+		List<VScene> list = bdao.select(hql,param);
+		return list;
+	}
+	@Override
+	public int getProType(int arrid) {
+		String hql = "select protype from VArrange where arrid=?";
+		Object[] param = {arrid};
+		int count = bdao.selectValue(hql,param);
+		return count;
 	}
 
 }
