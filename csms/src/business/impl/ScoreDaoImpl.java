@@ -82,11 +82,45 @@ public class ScoreDaoImpl implements ScoreDAO {
 			return null;
 		}
 	}
+	
+	@Override
+	public List<VScore> getScore(String strwhere) {
+		String hql = "from VScore s1 where scorenumber = (select max(s2.scorenumber) from VScore s2 group by s2.proid having s1.proid=s2.proid)" + strwhere;
+		List<VScore> list = bdao.select(hql);
+		if (list != null && list.size() > 0) {
+			return list;
+		} else {
+			return null;
+		}
+	}
 
 	@Override
 	public int allScoreCount(String strwhere) {
 		String hql = "select count(*) from VScore" + strwhere;
 		int count = bdao.selectValue(hql);
 		return count;
+	}
+
+	@Override
+	public List<VScore> getScoreByProSingle(int proid) {
+		String hql = "from VScore where proid=? and (protype=1 or protype=3) order by scorenumber desc";
+		Object[] param = {proid};
+		List<VScore> list = bdao.select(hql,param);
+		if (list != null && list.size() > 0) {
+			return list;
+		} else {
+			return null;
+		}
+	}
+	@Override
+	public List<VScore> getScoreByProTeam(int proid) {
+		String hql = "from VScore where proid=? and (protype=2 or protype=3) group by sceneid,teacollegeid,collegeid,classid order by scorenumber desc";
+		Object[] param = {proid};
+		List<VScore> list = bdao.select(hql,param);
+		if (list != null && list.size() > 0) {
+			return list;
+		} else {
+			return null;
+		}
 	}
 }

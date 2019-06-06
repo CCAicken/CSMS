@@ -18,9 +18,7 @@
       </result>
     </action>
     <action name="getproject" location="63,463" size="150,41">
-      <result name="success">
-        <resourceEdge source="success" routing="0" target="CompetitionTimesCheck.jsp" />
-      </result>
+      <result name="success" />
     </action>
     <action name="getscore" location="63,513" size="150,41">
       <result name="success">
@@ -51,7 +49,11 @@
         <resourceEdge source="success" routing="0" target="myProject.jsp" />
       </result>
     </action>
-    <action name="getprojectscore" location="55,128" size="150,40" />
+    <action name="getprojectscore" location="55,128" size="150,40">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="projectScoreDetail.jsp" />
+      </result>
+    </action>
     <action name="stuAction" location="58,1013" size="150,40" />
     <action name="getarrdetail" location="61,41" size="150,41">
       <result name="success">
@@ -70,5 +72,6 @@
   <webResource name="new.jsp" path="/new.jsp" location="350,500" size="150,55" />
   <webResource name="CompetitionTimesCheck.jsp" path="/CompetitionTimesCheck.jsp" location="350,1100" size="150,55" />
   <webResource name="CompetitionDetailCheck.jsp" path="/CompetitionDetailCheck.jsp" location="50,1250" size="150,55" />
+  <webResource name="projectScoreDetail.jsp" path="/projectScoreDetail.jsp" location="0,0" size="150,55" />
 </Struts2Diagram>
 

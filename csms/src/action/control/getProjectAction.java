@@ -13,11 +13,16 @@ import com.alibaba.fastjson.JSON;
 import common.properties.RoleType;
 
 public class getProjectAction extends BaseAction {
-	private String userid;
+	private String returnUrl;
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setReturnUrl(String returnUrl) {
+		this.returnUrl = returnUrl;
 	}
+
+	public String getReturnUrl() {
+		return returnUrl;
+	}
+
 
 	/**
 	 * @return
@@ -28,6 +33,12 @@ public class getProjectAction extends BaseAction {
 		if(op.equals("getproject")){
 			List<TProject> projectlist = projectdao.select();
 			request.setAttribute("projectlist", projectlist);
+			returnUrl = "CompetitionTimesCheck.jsp";
+			return SUCCESS;
+		}else if(op.equals("project")){
+			List<TProject> projectlist = projectdao.select();
+			request.setAttribute("projectlist", projectlist);
+			returnUrl = "projectScore.jsp";
 			return SUCCESS;
 		}
 		String type = request.getParameter("type");

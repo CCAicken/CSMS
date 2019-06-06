@@ -58,6 +58,26 @@ public interface ScoreDAO {
 	 */
 	public List<VScore> getScoreByPage(String strwhere,int startPage,int limit);
 	/**
+	 * 查询指定项目的个人赛成绩列表
+	 * @param proid 项目id
+	 * @return 成绩列表
+	 */
+	public List<VScore> getScoreByProSingle(int proid);
+	/**
+	 * 查询指定项目的团体赛成绩列表
+	 * @param proid 项目id
+	 * @return 成绩列表
+	 */
+	public List<VScore> getScoreByProTeam(int proid);
+	/**
+	 * 查询成绩列表
+	 * @param strwhere 查询条件（为空时填写为""）
+	 * @param startPage 获取的页面数据
+	 * @param limit 每页的记录数
+	 * @return 成绩列表
+	 */
+	public List<VScore> getScore(String strwhere);
+	/**
 	 * 查询成绩总记录数
 	 * @param strwhere 查询条件（为空时填写为""）
 	 * @return 成绩列表
