@@ -225,7 +225,7 @@ body::-webkit-scrollbar {
 						}
 						$("#major").html(tmp);
 						var tmp2 = '<option value="0">请选择或输入班级名称</option>';
-						$("#class").html(tmp);
+						$("#class").html(tmp2);
 						form.render();
 					}
 				},
