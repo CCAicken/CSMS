@@ -3,9 +3,9 @@ package business.impl;
 import java.util.List;
 
 import model.TProject;
+import model.VProject;
 import basic.iHibBaseDAO;
 import business.dao.ProjectDAO;
-
 import common.properties.RoleType;
 
 public class ProjectDaoImpl implements ProjectDAO {
@@ -53,6 +53,12 @@ public class ProjectDaoImpl implements ProjectDAO {
 		return (List<TProject>) bdao.select(hql);
 	}
 
+	@Override
+	public List<VProject> selectList(String strwhere) {
+		String hql = "from VProject"+strwhere;
+		return (List<VProject>) bdao.select(hql);
+	}
+	
 	@Override
 	public List<TProject> selectByType(int type) {
 		String hql = "from TProject where protype=?";

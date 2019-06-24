@@ -7,6 +7,7 @@ import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import model.ReturnData;
 import model.TProject;
+import model.VProject;
 import model.VClassScore;
 import model.VScore;
 
@@ -29,6 +30,52 @@ public class getProjectScoreAction extends BaseAction {
 					request.setAttribute("project", project);
 					return SUCCESS;
 				}
+			}else if(op.equals("record")){
+				String project = request.getParameter("project");
+				String user = request.getParameter("usertype");
+				String strsearch = "";
+				if (project != null && !project.equals("") && !project.equals("0")) {
+					if(strsearch!=null && !strsearch.equals("")){
+						strsearch = " where proid=" + project;
+					}else{
+						strsearch += " and proid=" + project;
+					}
+				}
+				if (user != null && !user.equals("") && !user.equals("0")) {
+					if(user.equals("stusingle")){
+						if(strsearch!=null && !strsearch.equals("")){
+							strsearch = " where protype=1";
+						}else{
+							strsearch += " and protype=1";
+						}
+					}else if(user.equals("stuteam")){
+						if(strsearch!=null && !strsearch.equals("")){
+							strsearch = " where protype=2";
+						}else{
+							strsearch += " and protype=2";
+						}
+					}else if(user.equals("teasingle")){
+						if(strsearch!=null && !strsearch.equals("")){
+							strsearch = " where protype=3";
+						}else{
+							strsearch += " and protype=3";
+						}
+					}else if(user.equals("teateam")){
+						if(strsearch!=null && !strsearch.equals("")){
+							strsearch = " where protype=4";
+						}else{
+							strsearch += " and protype=4";
+						}
+					}
+				}
+				List<VProject> clalist = scoredao.selectList(strsearch);
+				request.setAttribute("type", "project");
+				ReturnData rd = new ReturnData();
+				rd.code = ReturnData.SUCCESS;
+				rd.data = clalist;
+				out.write(JSON.toJSONString(rd));
+				out.flush();
+				out.close();
 			}else if(op.equals("load")){
 				String project = request.getParameter("project");
 				String user = request.getParameter("usertype");

@@ -107,7 +107,7 @@ body::-webkit-scrollbar {
 			elem : '#scoretable',
 			toolbar : '#toolbarDemo',
 			height : 'full-200', //高度最大化减去差值,
-			url : 'getprojectscore.action?op=load&user='
+			url : 'getprojectscore.action?op=record&user='
 					+ $("#userselect").val(),
 			even : true,
 			skin : "nob",
@@ -177,6 +177,81 @@ body::-webkit-scrollbar {
 				hide : true
 			} ] ]
 		});
+		/* table.render({
+			id : 'tableOne',
+			elem : '#scoretable',
+			toolbar : '#toolbarDemo',
+			height : 'full-200', //高度最大化减去差值,
+			url : 'getprojectscore.action?op=load&user='
+					+ $("#userselect").val(),
+			even : true,
+			skin : "nob",
+			cellMinWidth : 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+			//,toolbar: '#toolbarDemo'
+			title : '用户数据表',
+			cols : [ [ {
+				align : 'center',
+				field : '',
+				title : '序号',
+				type : 'numbers'
+			}, {
+				align : 'center',
+				field : 'proname',
+				title : '项目名称',
+				sort : true
+			}, {
+				align : 'center',
+				field : '',
+				title : '项目类型',
+				templet : function(data) {
+					if (data.protype == 1) {
+						return "学生个人赛"
+					} else if (data.protype == 2) {
+						return "学生团体赛"
+					} else if (data.protype == 3) {
+						return "教师个人赛"
+					} else if (data.protype == 4) {
+						return "教师团体赛"
+					}
+				}
+			}, {
+				align : 'center',
+				field : '',
+				title : '参赛者',
+				templet : function(data) {
+					if (data.protype == 1 || data.protype == 2) {
+						return data.username
+					} else {
+						return data.teausername
+					}
+				}
+			}, {
+				align : 'center',
+				field : '',
+				title : '学院名称',
+				sort : true,
+				templet : function(data) {
+					if (data.protype == 1 || data.protype == 2) {
+						return data.collegename
+					} else {
+						return data.teacollegename
+					}
+				}
+			}, {
+				align : 'center',
+				field : 'scorenumber',
+				title : '最高分成绩',
+				sort : true
+			}, {
+				align : 'center',
+				field : '',
+				title : '操作',
+				toolbar : '#barDemo'
+			}, {
+				field : 'proid',
+				hide : true
+			} ] ]
+		}); */
 		//查询提交
 		form.on('submit(search)', function(data) {
 			table.reload('tableOne', {

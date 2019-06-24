@@ -3,6 +3,7 @@ package business.dao;
 import java.util.List;
 
 import model.TProject;
+import model.VProject;
 
 /**
  * 比赛项目业务接口类
@@ -53,6 +54,13 @@ public interface ProjectDAO {
 	 */
 	public List<TProject> select();
 
+	/**
+	 * 获取所有项目对象列表
+	 * @param strwhere查询条件
+	 * @return 项目对象列表
+	 */
+	public List<VProject> selectList(String strwhere);
+	
 	/**
 	 * 通过项目类型获取项目对象列表
 	 * 
