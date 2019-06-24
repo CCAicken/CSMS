@@ -16,7 +16,6 @@ public class UserDaoImpl implements UserDAO {
 		this.bdao = bdao;
 	}
 
-	//
 	// public UserDaoImpl() {
 	// bdao = new iHibBaseDAOImpl();
 	// }
@@ -249,7 +248,13 @@ public class UserDaoImpl implements UserDAO {
 	// public static void main(String[] args) {
 	// UserDAO dao = new UserDaoImpl();
 	// List<VTeacher> list = dao.selectTeaByCollPage(null, 1, 1, 10);
+	// List<VStudent> stulist = dao.selectStuByClassPage(null, 13, 1, 10);
 	// System.out.print(list.get(0).getUsername());
+	// System.out.print(stulist.get(0).getUsername());
+	// int stucount = dao.stucount(null, 13);
+	// int teacount = dao.teacount(null, 1);
+	// System.out.print(stucount);
+	// System.out.print(teacount);
 	// }
 
 }
