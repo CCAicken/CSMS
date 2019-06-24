@@ -95,9 +95,11 @@ public class ProjectDaoImpl implements ProjectDAO {
 	// public static void main(String[] args) {
 	// ProjectDAO pdao = new ProjectDaoImpl();
 	// // int row = pdao.getProCount(2);
-	// List<TProject> list = pdao.selectByPage(1, 1, 3);
-	// for (TProject p : list) {
-	// System.out.println(p.getProname());
-	// }
+	// // List<TProject> list = pdao.selectByPage(1, 1, 3);
+	// // for (TProject p : list) {
+	// // System.out.println(p.getProname());
+	// // }
+	// TProject pro = pdao.getptoject(1);
+	// System.out.println(pro.getProname());
 	// }
 }

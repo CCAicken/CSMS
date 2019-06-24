@@ -22,7 +22,6 @@
 		<mapping resource="model/TScore.hbm.xml" />
 		<mapping resource="model/TScene.hbm.xml" />
 		<mapping resource="model/TRole.hbm.xml" />
-		<mapping resource="model/TProject.hbm.xml" />
 		<mapping resource="model/TMajor.hbm.xml" />
 		<mapping resource="model/TConfig.hbm.xml" />
 		<mapping resource="model/TCollege.hbm.xml" />
@@ -48,6 +47,7 @@
 		<mapping resource="model/VForum.hbm.xml" />
 		<mapping resource="model/VClassScore.hbm.xml" />
 		<mapping resource="model/VNews.hbm.xml" />
+		<mapping resource="model/TProject.hbm.xml" />
 
 	</session-factory>
 
