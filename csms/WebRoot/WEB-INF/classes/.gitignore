@@ -1,2 +1,18 @@
+<<<<<<< HEAD
 /business/
+=======
+/.struts.mex
+>>>>>>> refs/remotes/origin/master
 /action/
+<<<<<<< HEAD
+=======
+/applicationContext.xml
+/basic/
+/business/
+/common/
+/factoryBean.xml
+/hibernate.cfg.xml
+/model/
+/servlet/
+/util/
+>>>>>>> refs/remotes/origin/master

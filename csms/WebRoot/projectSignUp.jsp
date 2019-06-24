@@ -108,13 +108,13 @@ body::-webkit-scrollbar {
 				align : 'center',
 				templet : function(data) {
 					if (data.protype == 1) {
-						return "<a href=''>学生个人赛</a>"
+						return "学生个人赛"
 					} else if (data.protype == 2) {
-						return "<a href=''>学生团体赛</a>"
+						return "学生团体赛"
 					} else if (data.protype == 3) {
-						return "<a href=''>教师个人赛</a>"
+						return "教师个人赛"
 					} else if (data.protype == 4) {
-						return "<a href=''>教师团体赛</a>"
+						return "教师团体赛"
 					}
 				}
 			}, {
@@ -156,11 +156,7 @@ body::-webkit-scrollbar {
 <%int roletype = Integer.parseInt(session.getAttribute("role")
 					.toString());
 			request.setAttribute("roletype", roletype);%>
-	$(document)
-			.on(
-					'click',
-					".baom",
-					function() {
+	$(document).on('click',".baom",function() {
 						if (${roletype!=1}) {
 							var currentnum = $(this).parent().parent().prev()
 									.prev().prev().find("div").text().trim();
