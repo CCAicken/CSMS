@@ -1,14 +1,11 @@
+/.struts.mex
 /action/
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+/applicationContext.xml
+/basic/
 /business/
-/model/
->>>>>>> branch 'master' of https://github.com/KzlDeng/CSMS.git
-=======
-/business/
-/model/
->>>>>>> branch 'master' of https://github.com/KzlDeng/CSMS.git
 /common/
+/factoryBean.xml
+/hibernate.cfg.xml
+/model/
 /servlet/
 /util/
