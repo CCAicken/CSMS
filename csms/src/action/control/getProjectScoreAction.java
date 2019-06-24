@@ -68,7 +68,8 @@ public class getProjectScoreAction extends BaseAction {
 						}
 					}
 				}
-				List<VProject> clalist = scoredao.selectList(strsearch);
+				strsearch += " order by protype";
+				List<VProject> clalist = projectdao.selectList(strsearch);
 				request.setAttribute("type", "project");
 				ReturnData rd = new ReturnData();
 				rd.code = ReturnData.SUCCESS;

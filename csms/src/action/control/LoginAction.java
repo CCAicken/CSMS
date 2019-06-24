@@ -1,9 +1,12 @@
 package action.control;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 
+import model.TConfig;
 import model.VStudent;
 import model.VTeacher;
 
@@ -42,6 +45,21 @@ public class LoginAction extends BaseAction {
 				e.printStackTrace();
 			}
 		} else {
+			TConfig config = sportsdao.getConfig();
+			if(config!=null){
+				session.setAttribute("config", config);
+				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		        String newDate = df.format(new Date());
+		        int res=config.getStarttime().compareTo(newDate);//if(res>0) config.getStarttime>newDate
+		        int res2=config.getEndtime().compareTo(newDate);
+		        if(res<=0&&res2>=0){
+		        	session.setAttribute("sporttype", "yes");
+		        }else{
+		        	session.setAttribute("sporttype", "no");
+		        }
+			}else{
+				session.setAttribute("sporttype", "no");
+			}
 			VStudent stu = userdao.loginStu(userid, password);
 			if (stu != null) {
 				session.setAttribute("loginuser", stu);

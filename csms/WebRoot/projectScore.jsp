@@ -47,7 +47,7 @@ body::-webkit-scrollbar {
 						<select name="project" id="project" lay-filter="project"
 							lay-verify="required" lay-search="">
 							<option value="0">请选择或输入项目名称</option>
-							<c:forEach items="${projectlist}" var="obj">
+							<%-- <c:forEach items="${projectlist}" var="obj">
 								<c:if test="${obj.protype==1 }">
 								<option value="${obj.proid }">${obj.proname }(学生个人赛)</option>
 								</c:if>
@@ -60,7 +60,7 @@ body::-webkit-scrollbar {
 								<c:if test="${obj.protype==4 }">
 								<option value="${obj.proid }">${obj.proname }(教师团体赛)</option>
 								</c:if>
-							</c:forEach>
+							</c:forEach> --%>
 						</select>
 					</div>
 					<div class="layui-input-inline">
@@ -86,7 +86,7 @@ body::-webkit-scrollbar {
 </body>
 <script src="layui/layui.js"></script>
 <script id="barDemo" type="text/html">
-    <button class="layui-btn layui-btn-sm layui-bg-green query">查看详情</button>
+    <button class="layui-btn layui-btn-sm layui-bg-green query">查看本届详情</button>
 </script>
 <script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
@@ -101,6 +101,47 @@ body::-webkit-scrollbar {
 		var layer = layui.layer;
 		var form = layui.form;
 		var element = layui.element;
+		//加载项目下拉框
+		form.render('select');
+		form.on('select(project)',function(data) {
+			$.ajax({
+				type : "post",
+				url : "getproject.action",
+				data : {},
+				dataType : "json",
+				success : function(succ) {
+					if (succ == "失败") {
+						layer.msg("请刷新后重试");
+					} else {
+						var tmp = '<option value="0">请选择或输入项目名称</option>';
+						for ( var i in succ.data) {
+							if(succ.data[i].protype == 1){
+								tmp += '<option value="' + succ.data[i].proid +  '">'
+								+ succ.data[i].proname
+								+ '(学生个人赛)</option>';
+							}else if(succ.data[i].protype == 2){
+								tmp += '<option value="' + succ.data[i].proid +  '">'
+								+ succ.data[i].proname
+								+ '(学生团体赛)</option>';
+							}else if(succ.data[i].protype == 3){
+								tmp += '<option value="' + succ.data[i].proid +  '">'
+								+ succ.data[i].proname
+								+ '(教师个人赛)</option>';
+							}else if(succ.data[i].protype == 4){
+								tmp += '<option value="' + succ.data[i].proid +  '">'
+								+ succ.data[i].proname
+								+ '(教师团体赛)</option>';
+							}
+						}
+						$("#project").html(tmp);
+						form.render();
+					}
+				},
+				error : function() {
+					layer.msg('请求失败，稍后再试',{icon : 5});
+				}
+			});
+		});
 		//页面加载获取动态表格数据
 		table.render({
 			id : 'tableOne',
@@ -141,32 +182,48 @@ body::-webkit-scrollbar {
 				}
 			}, {
 				align : 'center',
-				field : '',
-				title : '参赛者',
-				templet : function(data) {
-					if (data.protype == 1 || data.protype == 2) {
-						return data.username
-					} else {
-						return data.teausername
-					}
-				}
-			}, {
-				align : 'center',
-				field : '',
-				title : '学院名称',
-				sort : true,
-				templet : function(data) {
-					if (data.protype == 1 || data.protype == 2) {
-						return data.collegename
-					} else {
-						return data.teacollegename
-					}
-				}
-			}, {
-				align : 'center',
-				field : 'scorenumber',
-				title : '最高分成绩',
+				field : 'record',
+				title : '最高记录',
 				sort : true
+			}, {
+				align : 'center',
+				field : '',
+				title : '记录保持者',
+				templet : function(data) {
+					var sportid = "${config.sportid}";
+					if(sportid == data.sportid){
+						if (data.protype == 1) {
+							return "<i class='layui-icon layui-icon-fire' style='color:red;float:left;'></i>"+data.username
+						} else if (data.protype == 3){
+							return "<i class='layui-icon layui-icon-fire' style='color:red;float:left;'></i>"+data.teausername
+						} else if (data.protype == 2){
+							return "<i class='layui-icon layui-icon-fire' style='color:red;float:left;'></i>"+data.classname
+						} else if (data.protype == 4){
+							return "<i class='layui-icon layui-icon-fire' style='color:red;float:left;'></i>"+data.collegename
+						}
+					}else{
+						if (data.protype == 1) {
+							return data.username
+						} else if (data.protype == 3){
+							return data.teausername
+						} else if (data.protype == 2){
+							return data.classname
+						} else if (data.protype == 4){
+							return data.collegename
+						}
+					}
+				}
+			}, {
+				align : 'center',
+				field : 'collegename',
+				title : '学院名称',
+				templet : function(data) {
+					if (data.protype == 4) {
+						return ""
+					} else {
+						return data.collegename
+					}
+				}
 			}, {
 				align : 'center',
 				field : '',

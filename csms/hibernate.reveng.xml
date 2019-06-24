@@ -177,7 +177,14 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="V_News" schema="dbo" catalog="CSMS" class="model.VNews">
+	<table name="V_News" schema="dbo" catalog="CSMS"
+		class="model.VNews">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="V_Project" schema="dbo" catalog="CSMS"
+	class="model.VProject">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>
