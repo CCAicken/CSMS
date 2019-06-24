@@ -79,7 +79,7 @@ public class LoginAction extends BaseAction {
 				}
 			}
 		}
-		return null;
+		return SUCCESS;
 
 	}
 }

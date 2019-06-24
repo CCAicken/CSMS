@@ -16,9 +16,11 @@ public class UserDaoImpl implements UserDAO {
 		this.bdao = bdao;
 	}
 
-	// public UserDaoImpl(){
+	//
+	// public UserDaoImpl() {
 	// bdao = new iHibBaseDAOImpl();
 	// }
+
 	@Override
 	public VStudent loginStu(String userid, String pwd) {
 		VStudent student = (VStudent) bdao.findById(VStudent.class, userid);
@@ -126,16 +128,28 @@ public class UserDaoImpl implements UserDAO {
 	// }
 
 	@Override
-	public int stucount(int classid) {
-		String hql = "select count(userid) from VStudent where classid=?";
+	public int stucount(String strwhere, int classid) {
+		String hql = null;
+		if (strwhere != null) {
+			hql = "select count(userid) from VStudent where classid=? and "
+					+ strwhere;
+		} else {
+			hql = "select count(userid) from VStudent where classid=?";
+		}
 		Object[] para = { classid };
 		int count = bdao.selectValue(hql, para);
 		return count;
 	}
 
 	@Override
-	public List<VStudent> selectStuByClassPage(int classid, int page, int limit) {
-		String hql = "from VStudent where classid=?";
+	public List<VStudent> selectStuByClassPage(String strwhere, int classid,
+			int page, int limit) {
+		String hql = null;
+		if (strwhere != null) {
+			hql = "from VStudent where classid=? and " + strwhere;
+		} else {
+			hql = "from VStudent where classid=?";
+		}
 		Object[] param = { classid };
 		List<VStudent> list = bdao.selectByPage(hql, param, page, limit);
 		return list;
@@ -172,13 +186,6 @@ public class UserDaoImpl implements UserDAO {
 		return bdao.update(tea);
 	}
 
-	// public static void main(String[] args){
-	// UserDAO dao = new UserDaoImpl();
-	// TStudent stu = dao.getStudent("1001");
-	// if(stu!=null){
-	// System.out.print(dao.updateTeaPwd("94001", "123456"));
-	// }
-	// }
 	@Override
 	public boolean deleteTea(String userid) {
 		VTeacher teacher = (VTeacher) bdao.findById(VTeacher.class, userid);
@@ -212,19 +219,37 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public List<VTeacher> selectTeaByCollPage(int collegeid, int page, int limit) {
-		String hql = "from VTeacher where collegeid=?";
+	public List<VTeacher> selectTeaByCollPage(String strwhere, int collegeid,
+			int page, int limit) {
+		String hql = null;
+		if (strwhere != null) {
+			hql = "from VTeacher where collegeid=? and " + strwhere;
+		} else {
+			hql = "from VTeacher where collegeid=?";
+		}
 		Object[] param = { collegeid };
 		List<VTeacher> list = bdao.selectByPage(hql, param, page, limit);
 		return list;
 	}
 
 	@Override
-	public int teacount(int collegeid) {
-		String hql = "select count(userid) from VTeacher where collegeid=?";
+	public int teacount(String strwhere, int collegeid) {
+		String hql = null;
+		if (strwhere != null) {
+			hql = "select count(userid) from VTeacher where collegeid=? and "
+					+ strwhere;
+		} else {
+			hql = "select count(userid) from VTeacher where collegeid=?";
+		}
 		Object[] para = { collegeid };
 		int count = bdao.selectValue(hql, para);
 		return count;
 	}
+
+	// public static void main(String[] args) {
+	// UserDAO dao = new UserDaoImpl();
+	// List<VTeacher> list = dao.selectTeaByCollPage(null, 1, 1, 10);
+	// System.out.print(list.get(0).getUsername());
+	// }
 
 }

@@ -61,26 +61,49 @@ public class ProjectDaoImpl implements ProjectDAO {
 	}
 
 	@Override
-	public List<TProject> selectByPage(int roletype, int startPage, int pageSize) {
+	public List<TProject> selectByPage(String strwhere, int roletype,
+			int startPage, int pageSize) {
 		String hql = null;
-		if (roletype == RoleType.Student || roletype == RoleType.Committee) {
-			hql = "from TProject where protype=1 or protype=2";
-		} else if (roletype == RoleType.Teacher
-				|| roletype == RoleType.Organization) {
-			hql = "from TProject where protype=3 or protype=4";
+		if (strwhere != null) {
+			if (roletype == RoleType.Student || roletype == RoleType.Committee) {
+				hql = "from TProject where (protype=1 or protype=2) and "
+						+ strwhere;
+			} else if (roletype == RoleType.Teacher
+					|| roletype == RoleType.Organization) {
+				hql = "from TProject where (protype=3 or protype=4) and "
+						+ strwhere;
+			}
+		} else {
+			if (roletype == RoleType.Student || roletype == RoleType.Committee) {
+				hql = "from TProject where (protype=1 or protype=2)";
+			} else if (roletype == RoleType.Teacher
+					|| roletype == RoleType.Organization) {
+				hql = "from TProject where (protype=3 or protype=4)";
+			}
 		}
 		List<TProject> list = bdao.selectByPage(hql, startPage, pageSize);
 		return list;
 	}
 
 	@Override
-	public int getProCount(int roletype) {
+	public int getProCount(String strwhere, int roletype) {
 		String hql = null;
-		if (roletype == RoleType.Student || roletype == RoleType.Committee) {
-			hql = "select count(proid) from TProject where protype=1 or protype=2";
-		} else if (roletype == RoleType.Teacher
-				|| roletype == RoleType.Organization) {
-			hql = "select count(proid) from TProject where protype=3 or protype=4";
+		if (strwhere != null) {
+			if (roletype == RoleType.Student || roletype == RoleType.Committee) {
+				hql = "select count(proid) from TProject where (protype=1 or protype=2) and "
+						+ strwhere;
+			} else if (roletype == RoleType.Teacher
+					|| roletype == RoleType.Organization) {
+				hql = "select count(proid) from TProject where (protype=3 or protype=4) and "
+						+ strwhere;
+			}
+		} else {
+			if (roletype == RoleType.Student || roletype == RoleType.Committee) {
+				hql = "select count(proid) from TProject where (protype=1 or protype=2)";
+			} else if (roletype == RoleType.Teacher
+					|| roletype == RoleType.Organization) {
+				hql = "select count(proid) from TProject where (protype=3 or protype=4)";
+			}
 		}
 		int count = bdao.selectValue(hql);
 		return count;

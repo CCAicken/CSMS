@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import model.TProject;
-import model.VStudent;
 import util.LayuiData;
 
 import com.alibaba.fastjson.JSON;
@@ -25,9 +24,6 @@ public class getProjectAction extends BaseAction {
 	 * @throws IOException
 	 */
 	public String execute() throws IOException {
-		VStudent loginstu = userdao.getStudent("1001");
-		session.setAttribute("loginuser", loginstu);
-		session.setAttribute("role", loginstu.getRoleid());
 		// String op = request.getParameter("op");
 		// if (op.equals("getproject")) {
 		// List<TProject> projectlist = projectdao.select();
@@ -73,12 +69,19 @@ public class getProjectAction extends BaseAction {
 		// out.close();
 		// return null;
 		// } else {
+
 		int roletype = Integer
 				.parseInt(session.getAttribute("role").toString());
 		String startPage = request.getParameter("page");
 		String pageSize = request.getParameter("limit");
-		int count = projectdao.getProCount(roletype);
-		List<TProject> list = projectdao.selectByPage(roletype,
+
+		String proname = request.getParameter("strwhere");
+		String strwhere = null;
+		if (proname != null && !proname.equals("")) {
+			strwhere = "proname like '%" + proname + "%'";
+		}
+		int count = projectdao.getProCount(strwhere, roletype);
+		List<TProject> list = projectdao.selectByPage(strwhere, roletype,
 				Integer.parseInt(startPage), Integer.parseInt(pageSize));
 		out = response.getWriter();
 		LayuiData data = new LayuiData(0, "³É¹¦", count, list);
