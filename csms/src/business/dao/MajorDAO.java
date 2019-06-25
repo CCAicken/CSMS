@@ -44,4 +44,19 @@ public interface MajorDAO {
 	 * @return 总记录数
 	 */
 	public int getPageCount();
+	
+	/**
+	 * 分页查询专业成绩
+	 * @param strwhere 查询条件（为空是填写为""）
+	 * @param startPage 获取的页面数据
+	 * @param pagesize 每页的记录数
+	 * @return
+	 */
+	public List<VMajorScore> getAllScoreByPage(String strwhere,int startPage,int pagesize);
+	/**
+	 * 获取所有专业成绩数量
+	 * @param strwhere 查询条件（为空是填写为""）
+	 * @return
+	 */
+	public int allScoreCount(String strwhere);
 }

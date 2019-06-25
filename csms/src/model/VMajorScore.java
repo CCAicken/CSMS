@@ -1,12 +1,13 @@
 package model;
 
 /**
- * VCollegeScore entity. @author MyEclipse Persistence Tools
+ * VMajorScore entity. @author MyEclipse Persistence Tools
  */
 
-public class VCollegeScore implements java.io.Serializable {
-	private Integer collegeid;
+public class VMajorScore implements java.io.Serializable {
+	private Integer majorid;
 	private String collegename;
+	private String majorname;
 	private Double scorenumber;
 	private Double allscore;
 	private Integer sportid;
@@ -14,14 +15,20 @@ public class VCollegeScore implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public VCollegeScore() {
+	public VMajorScore() {
+	}
+
+	/** minimal constructor */
+	public VMajorScore(String majorname) {
+		this.majorname = majorname;
 	}
 
 	/** full constructor */
-	public VCollegeScore(Integer collegeid, String collegename,
+	public VMajorScore(Integer majorid, String collegename, String majorname,
 			Double scorenumber, Double allscore, Integer sportid) {
-		this.collegeid = collegeid;
+		this.majorid = majorid;
 		this.collegename = collegename;
+		this.majorname = majorname;
 		this.scorenumber = scorenumber;
 		this.allscore = allscore;
 		this.sportid = sportid;
@@ -29,12 +36,12 @@ public class VCollegeScore implements java.io.Serializable {
 
 	// Property accessors
 
-	public Integer getCollegeid() {
-		return this.collegeid;
+	public Integer getMajorid() {
+		return this.majorid;
 	}
 
-	public void setCollegeid(Integer collegeid) {
-		this.collegeid = collegeid;
+	public void setMajorid(Integer majorid) {
+		this.majorid = majorid;
 	}
 
 	public String getCollegename() {
@@ -43,6 +50,14 @@ public class VCollegeScore implements java.io.Serializable {
 
 	public void setCollegename(String collegename) {
 		this.collegename = collegename;
+	}
+
+	public String getMajorname() {
+		return this.majorname;
+	}
+
+	public void setMajorname(String majorname) {
+		this.majorname = majorname;
 	}
 
 	public Double getScorenumber() {

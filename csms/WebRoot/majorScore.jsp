@@ -79,157 +79,112 @@ body::-webkit-scrollbar {
   </div>
 </script>
 <script type="text/javascript">
-	layui
-			.use(
-					[ 'table', 'laydate', 'layer', 'jquery', 'form' ],
-					function() {
-						var table = layui.table;
-						var $ = layui.jquery;
-						var laydate = layui.laydate;
-						var layer = layui.layer;
-						var form = layui.form;
+	layui.use([ 'table', 'laydate', 'layer', 'jquery', 'form' ],function() {
+		var table = layui.table;
+		var $ = layui.jquery;
+		var laydate = layui.laydate;
+		var layer = layui.layer;
+		var form = layui.form;
 
-						//页面加载获取动态表格数据
-						table.render({
-							id : 'tableOne',
-							elem : '#scoretable',
+		//页面加载获取动态表格数据
+		table.render({
+			id : 'tableOne',
+			elem : '#scoretable',
 			toolbar : '#toolbarDemo',
-							height : 'full-150', //高度最大化减去差值,
-							url : 'getscore.action?op=major',
-							page : true,
-							even : true,
-							limit : 10,
-							limits : [ 10, 15, 20 ],
-							skin : "nob",
-							cellMinWidth : 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-							//,toolbar: '#toolbarDemo'
-							title : '用户数据表',
-							cols : [ [ {
-								align : 'center',
-								field : '',
-								width : 160,
-								title : '序号',
-								type : 'numbers'
-							}, {
-								align : 'center',
-								field : 'collegename',
-								width : 238,
-								title : '学院名称',
-							}, {
-								align : 'center',
-								field : 'majorname',
-								width : 320,
-								title : '专业名称',
-							}, {
-								align : 'center',
-								field : 'scorenumber',
-								title : '平均成绩',
-								width : 150
-							}, {
-								align : 'center',
-								field : '',
-								title : '操作',
-								width : 230,
-								toolbar : '#barDemo'
-							}, {
-								field : 'majorid',
-								title : '班级id',
-								hide : true
-							} ] ]
-						});
-						/* 下拉框二级联动 */
-						var $ = layui.jquery;
-						form.render('select');
-						form
-								.on(
-										'select(college)',
-										function(data) {
-											var hosid = data.value;
-											$
-													.ajax({
-														type : "post",
-														url : "getmajor.action",
-														data : {
-															collegeid : hosid
-														},
-														dataType : "json",
-														success : function(succ) {
-															if (succ == "失败") {
-																layer
-																		.msg("请刷新后重试");
-															} else {
-																var tmp = '<option value="0">请选择或输入专业名称</option>';
-																for ( var i in succ.data) {
-																	tmp += '<option value="' + succ.data[i].majorid +  '">'
-																			+ succ.data[i].majorname
-																			+ '</option>';
-																}
-																$("#major")
-																		.html(
-																				tmp);
-																form.render();
-															}
-														},
-														error : function() {
-															layer
-																	.msg(
-																			'请求失败，稍后再试',
-																			{
-																				icon : 5
-																			});
-														}
+			height : 'full-150', //高度最大化减去差值,
+			url : 'getscore.action?op=major',
+			page : true,
+			even : true,
+			limit : 10,
+			limits : [ 10, 15, 20 ],
+			skin : "nob",
+			cellMinWidth : 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+			//,toolbar: '#toolbarDemo'
+			title : '用户数据表',
+			cols : [ [ {
+				align : 'center',
+				field : '',
+				title : '序号',
+				type : 'numbers'
+			}, {
+				align : 'center',
+				field : 'majorname',
+				title : '专业名称'
+			},{
+				align : 'center',
+				field : 'collegename',
+				title : '学院名称'
+			}, {
+				align : 'center',
+				field : 'allscore',
+				title : '总成绩'
+			},{
+				align : 'center',
+				field : 'scorenumber',
+				title : '平均成绩'
+			}, {
+				align : 'center',
+				field : '',
+				title : '操作',
+				toolbar : '#barDemo'
+			}, {
+				field : 'majorid',
+				hide : true
+			} ] ]
+		});
+		/* 下拉框二级联动 */
+		var $ = layui.jquery;
+		form.render('select');
+		form.on('select(college)',function(data) {
+			var hosid = data.value;
+			$.ajax({
+				type : "post",
+				url : "getmajor.action",
+				data : {
+					collegeid : hosid
+				},
+				dataType : "json",
+				success : function(succ) {
+					if (succ == "失败") {
+						layer
+								.msg("请刷新后重试");
+					} else {
+						var tmp = '<option value="0">请选择或输入专业名称</option>';
+						for ( var i in succ.data) {
+							tmp += '<option value="' + succ.data[i].majorid +  '">'
+								+ succ.data[i].majorname
+								+ '</option>';
+						}
+						$("#major").html(tmp);
+						form.render();
+					}
+				},
+				error : function() {
+					layer.msg('请求失败，稍后再试',{icon : 5});
+				}
 
-													});
-										});
-						//查询提交
-						form.on('submit(search)', function(data) {
-							table.reload('tableOne', {
-								method : 'post',
-								where : {
-									'collegeid' : data.field.college,
-									'majorid' : data.field.major
-								},
-								page : {
-									curr : 1
-								}
-							});
+			});
+		});
+		//查询提交
+		form.on('submit(search)', function(data) {
+			table.reload('tableOne', {
+				method : 'post',
+				where : {
+					'collegeid' : data.field.college,
+					'majorid' : data.field.major
+				},
+				page : {
+					curr : 1
+				}
+			});
 
-							return false;
-						});
-					});
+			return false;
+		});
+	});
 	//查看详情点击事件
-	$(document)
-			.on(
-					'click',
-					".query",
-					function() {
-						var majorid = $(this).parent().parent().next()
-								.children().text().trim();
-						/* $.ajax({
-							type : 'Post',
-							url : 'getscore.action',
-							data : {
-								classid : classid,
-								op : "classdetail"
-							},
-							dataType : 'json',
-							success : function(data) {
-								if(data=="请刷新后重试！"){
-									layer.msg("请刷新后重试！");
-								}
-							},
-							error : function(XMLHttpRequest, textStatus) { //����ʧ��
-								if (textStatus == 'timeout') {
-									var xmlhttp = window.XMLHttpRequest ? new window.XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHttp");
-									xmlhttp.abort();
-									layer.msg("超时，请重试！");
-								} else if (textStatus == "error") {
-									layer.msg("请刷新后重试！");
-								}
-							}
-						}) */
-						window.location.href = "getscore.action?op=majordetail&majorid="
-								+ majorid;
-					});
+	$(document).on('click',".query",function() {
+		var majorid = $(this).parent().parent().next().children().text().trim();
+		window.location.href = "getscore.action?op=majordetail&majorid="+ majorid;
+	});
 </script>
 </html>

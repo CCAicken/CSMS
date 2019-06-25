@@ -104,101 +104,92 @@ body::-webkit-scrollbar {
 			//,toolbar: '#toolbarDemo'
 			title : '用户数据表',
 			cols : [ [
-					{
-						align : 'center',
-						field : '',
-						width : 78,
-						title : '序号',
-						type : 'numbers'
-					},
-					{
-						align : 'center',
-						field : 'userid',
-						title : '学号/工号',
-						width : 130
-					},
-					{
-						align : 'center',
-						field : 'username',
-						title : '姓名',
-						width : 100,
-						templet : function(data) {
-							if (data.protype == 1
-									|| data.protype == 2) {
-								return data.username;
-							} else {
-								return data.teausername;
-							}
+				{
+					align : 'center',
+					field : '',
+					title : '序号',
+					type : 'numbers'
+				},
+				{
+					align : 'center',
+					field : 'userid',
+					title : '学号/工号'
+				},
+				{
+					align : 'center',
+					field : 'username',
+					title : '姓名',
+					templet : function(data) {
+						if (data.protype == 1
+								|| data.protype == 2) {
+							return data.username;
+						} else {
+							return data.teausername;
 						}
-					},
-					{
-						align : 'center',
-						field : 'scorenumber',
-						title : '平均成绩',
-						width : 100
-					},
-					{
-						align : 'center',
-						field : 'collegename',
-						width : 130,
-						title : '学院名称',
-						templet : function(data) {
-							if (data.protype == 1
-									|| data.protype == 2) {
-								return data.collegename;
-							} else {
-								return data.teacollegename;
-							}
+					}
+				},
+				{
+					align : 'center',
+					field : 'scorenumber',
+					title : '平均成绩'
+				},
+				{
+					align : 'center',
+					field : 'collegename',
+					title : '学院名称',
+					templet : function(data) {
+						if (data.protype == 1
+								|| data.protype == 2) {
+							return data.collegename;
+						} else {
+							return data.teacollegename;
 						}
-					},
-					{
-						align : 'center',
-						field : 'majorname',
-						width : 200,
-						title : '专业名称',
-						templet : function(data) {
-							if (data.protype == 1
-									|| data.protype == 2) {
-								return data.majorname;
-							} else {
-								return "";
-							}
+					}
+				},
+				{
+					align : 'center',
+					field : 'majorname',
+					title : '专业名称',
+					templet : function(data) {
+						if (data.protype == 1
+								|| data.protype == 2) {
+							return data.majorname;
+						} else {
+							return "教职工";
 						}
-					},
-					{
-						align : 'center',
-						field : 'classname',
-						title : '班级名称',
-						width : 250,
-						templet : function(data) {
-							if (data.protype == 1
-									|| data.protype == 2) {
-								return data.classname;
-							} else {
-								return "";
-							}
+					}
+				},
+				{
+					align : 'center',
+					field : 'classname',
+					title : '班级名称',
+					templet : function(data) {
+						if (data.protype == 1
+								|| data.protype == 2) {
+							return data.classname;
+						} else {
+							return "";
 						}
-					},
-					{
-						align : 'center',
-						field : '',
-						title : '操作',
-						width : 120,
-						toolbar : '#barDemo'
-					},
-					{
-						field : '',
-						title : '用户角色id',
-						hide : true,
-						templet : function(data) {
-							if (data.protype == 1
-									|| data.protype == 2) {
-								return 1;
-							} else {
-								return 2;
-							}
+					}
+				},
+				{
+					align : 'center',
+					field : '',
+					title : '操作',
+					toolbar : '#barDemo'
+				},
+				{
+					field : '',
+					hide : true,
+					templet : function(data) {
+						if (data.protype == 1
+								|| data.protype == 2) {
+							return 1;
+						} else {
+							return 2;
 						}
-					} ] ]
+					}
+				} ] ]
 		});
 		/* 下拉框三级联动 */
 		var form = layui.form;

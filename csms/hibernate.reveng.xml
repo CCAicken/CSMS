@@ -201,8 +201,14 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="V_CollegeScore" schema="dbo" catalog="CSMS"
-	class="model.VCollegeScore">
+	<table name="V_CollegeScore" schema="dbo" catalog="CSMS"
+		class="model.VCollegeScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="V_MajorScore" schema="dbo" catalog="CSMS"
+	class="model.VMajorScore">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>

@@ -9,6 +9,7 @@ import model.TCollege;
 import model.TMajor;
 import model.VClassScore;
 import model.VCollegeScore;
+import model.VMajorScore;
 import model.VScore;
 import model.VStudent;
 import model.VStudentScore;
@@ -108,8 +109,8 @@ public class getScoreAction extends BaseAction {
 				if (majorid != null && !majorid.equals("") && !majorid.equals("0")) {
 					strsearch = " and majorid='" + majorid + "'";
 				}
-				List<VScore> clalist = scoredao.getScoreByPage(strsearch, startPage, limit);
-				int count = scoredao.allScoreCount(strsearch);
+				List<VMajorScore> clalist = majordao.getAllScoreByPage(strsearch, startPage, limit);
+				int count = majordao.allScoreCount(strsearch);
 				ReturnData rd = new ReturnData();
 				rd.code = ReturnData.SUCCESS;
 				rd.count = count;

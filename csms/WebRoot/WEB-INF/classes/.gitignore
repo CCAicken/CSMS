@@ -16,3 +16,6 @@
 /struts.xml
 /util/
 >>>>>>> refs/remotes/origin/master
+/VMajorScore.class
+/VMajorScore.hbm.xml
+/VMajorScoreId.class

@@ -12,7 +12,9 @@
 		<!-- <property name="connection.url">
 			jdbc:sqlserver://localhost:1433;DatabaseName=CSMS
 			</property> -->
-		<property name="connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=CSMS</property>
+		<property name="connection.url">
+			jdbc:sqlserver://localhost:1433;DatabaseName=CSMS
+		</property>
 
 		<property name="connection.username">sa</property>
 		<property name="connection.password">123456</property>
@@ -53,6 +55,7 @@
 		<mapping resource="model/VTeacherScore.hbm.xml" />
 		<mapping resource="model/VClassScore.hbm.xml" />
 		<mapping resource="model/VCollegeScore.hbm.xml" />
+		<mapping resource="model/VMajorScore.hbm.xml" />
 
 	</session-factory>
 

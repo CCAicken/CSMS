@@ -20,13 +20,9 @@ public class ScoreClassesDaoImpl implements ScoreClassesDAO {
 	}
 	HttpSession session = ServletActionContext.getRequest().getSession();
 	TConfig config = (TConfig)session.getAttribute("config");
-//	public ScoreClassesDaoImpl() {
-//		// TODO Auto-generated constructor stub
-//		bdao = new iHibBaseDAOImpl();
-//	}
+
 	@Override
 	public VClassScore getByClassid(int classid) {
-		//String sql="select collegeid,collegename,majorid,majorname,classid,classname,ROUND(AVG(scorenumber), 2) as scorenumber from V_StudentScore where classid=? GROUP BY classid,classname,collegeid,collegename,majorid,majorname";
 		String hql = "from VClassScore where classid=? and sportid=?";
 		Object[] param={classid,config.getSportid()};
 		List<VClassScore> list=bdao.select(hql, param);
@@ -43,7 +39,6 @@ public class ScoreClassesDaoImpl implements ScoreClassesDAO {
 
 	@Override
 	public List<VClassScore> getAllScoreClasses() {
-		//String sql="select collegeid,collegename,majorid,majorname,classid,classname,ROUND(AVG(scorenumber), 2) as scorenumber from V_StudentScore GROUP BY classid,classname,collegeid,collegename,majorid,majorname";
 		String hql = "from VClassScore where sportid="+config.getSportid();
 		List<VClassScore> list=bdao.select(hql);
 		if(list!=null && list.size()>0){
@@ -54,7 +49,6 @@ public class ScoreClassesDaoImpl implements ScoreClassesDAO {
 	}
 	@Override
 	public List<VClassScore> getAllScoreByPage(String strwhere,int startPage,int pageSize) {
-		//String sql="select collegeid,collegename,majorid,majorname,classid,classname,ROUND(AVG(scorenumber), 2) as scorenumber from V_StudentScore GROUP BY classid,classname,collegeid,collegename,majorid,majorname";
 		String hql = "from VClassScore where sportid="+config.getSportid()+strwhere;
 		List<VClassScore> list=bdao.selectByPage(hql, startPage, pageSize);
 		if(list!=null && list.size()>0){

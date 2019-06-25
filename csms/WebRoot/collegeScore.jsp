@@ -100,28 +100,27 @@ body::-webkit-scrollbar {
 			cols : [ [ {
 				align : 'center',
 				field : '',
-				width : 200,
 				title : '序号',
 				type : 'numbers'
 			}, {
 				align : 'center',
 				field : 'collegename',
-				width : 340,
-				title : '学院名称',
+				title : '学院名称'
 			}, {
 				align : 'center',
+				field : 'allscore',
+				title : '总成绩'
+			},{
+				align : 'center',
 				field : 'scorenumber',
-				title : '平均成绩',
-				width : 280
+				title : '平均成绩'
 			}, {
 				align : 'center',
 				field : '',
 				title : '操作',
-				width : 288,
 				toolbar : '#barDemo'
 			}, {
 				field : 'collegeid',
-				title : '学院id',
 				hide : true
 			} ] ]
 		});
