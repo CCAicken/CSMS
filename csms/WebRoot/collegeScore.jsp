@@ -91,8 +91,8 @@ body::-webkit-scrollbar {
 			url : 'getscore.action?op=college',
 			page : true,
 			even : true,
-			limit : 10,
-			limits : [ 10, 15, 20 ],
+			limit : 5,
+			limits : [ 5,10, 15 ],
 			skin : "nob",
 			cellMinWidth : 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
 			//,toolbar: '#toolbarDemo'

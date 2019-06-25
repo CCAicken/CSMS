@@ -7,9 +7,12 @@
 			class="action.control.getCollegeAction">
 			<result name="success" type="dispatcher">%{requesturl}</result>
 		</action>
-		<action name="getmajor" class="action.control.getMajorAction"></action>
-		<action name="getclass" class="action.control.getClassAction"></action>
-		<action name="getforum" class="action.control.getForumAction"></action>
+		<action name="getmajor" class="action.control.getMajorAction">
+			<result name="success"></result></action>
+		<action name="getclass" class="action.control.getClassAction">
+			<result name="success"></result></action>
+		<action name="getforum" class="action.control.getForumAction">
+			<result name="success"></result></action>
 		<action name="getnew" class="action.control.getNewAction">
 			<result name="error" type="dispatcher">/new.jsp</result>
 		</action>
@@ -32,13 +35,14 @@
 		</action>
 		<action name="login" class="action.control.LoginAction">
 
-			
-			
-		</action>
+
+
+		<result name="success"></result></action>
 		<action name="logout" class="action.control.getLogoutAction">
 			<result name="success" type="redirect">/login.jsp</result>
 		</action>
-		<action name="getmacth" class="action.control.getMacthAction"></action>
+		<action name="getmacth" class="action.control.getMacthAction">
+			<result name="success"></result></action>
 		<action name="changepwd"
 			class="action.control.ChangePwdAction">
 			<result name="success" type="redirect">/main.jsp</result>
@@ -49,7 +53,8 @@
 		<action name="arrangeview" class="action.control.getArrangeAction">
 		<result name="success" type="dispatcher">/CompetitionEntryCheck.jsp</result>
 		</action>
-		<action name="entry" class="action.control.CompetitionEntry"></action>
+		<action name="entry" class="action.control.CompetitionEntry">
+			<result name="success"></result></action>
 		<action name="myproject"
 			class="action.control.myPeojectAction">
 			<result name="success" type="dispatcher">
@@ -61,11 +66,13 @@
 		<result name="success" type="dispatcher">
 			/projectScoreDetail.jsp
 		</result></action>
-		<action name="stuAction" class="action.control.StuSignAction"></action>
+		<action name="stuAction" class="action.control.StuSignAction">
+			<result name="success"></result></action>
 		<action name="getarrdetail"
 			class="action.control.getArrDetail">
 		<result name="success" type="dispatcher">
 			/CompetitionDetailCheck.jsp
 		</result></action>
-		<action name="test" class="action.control.testAction"></action></package>
+		<action name="test" class="action.control.testAction">
+			<result name="success"></result></action></package>
 </struts>    

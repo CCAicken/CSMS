@@ -4,9 +4,15 @@
     <action name="getcollege" location="53,86" size="150,41">
       <result name="success" />
     </action>
-    <action name="getmajor" location="63,171" size="150,40" />
-    <action name="getclass" location="63,213" size="150,40" />
-    <action name="getforum" location="63,263" size="150,40" />
+    <action name="getmajor" location="63,171" size="150,40">
+      <result name="success" />
+    </action>
+    <action name="getclass" location="63,213" size="150,40">
+      <result name="success" />
+    </action>
+    <action name="getforum" location="63,263" size="150,40">
+      <result name="success" />
+    </action>
     <action name="getnew" location="63,313" size="150,41">
       <result name="error">
         <resourceEdge source="error" routing="0" target="new.jsp" />
@@ -25,13 +31,17 @@
         <resourceEdge source="success" routing="0" target="scoreDetail.jsp" />
       </result>
     </action>
-    <action name="login" location="63,613" size="150,40" />
+    <action name="login" location="63,613" size="150,40">
+      <result name="success" />
+    </action>
     <action name="logout" location="63,713" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="login.jsp" />
       </result>
     </action>
-    <action name="getmacth" location="63,763" size="150,40" />
+    <action name="getmacth" location="63,763" size="150,40">
+      <result name="success" />
+    </action>
     <action name="changepwd" location="63,813" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="main.jsp" />
@@ -43,7 +53,9 @@
         <resourceEdge source="success" routing="0" target="CompetitionEntryCheck.jsp" />
       </result>
     </action>
-    <action name="entry" location="62,963" size="150,40" />
+    <action name="entry" location="62,963" size="150,40">
+      <result name="success" />
+    </action>
     <action name="myproject" location="61,411" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="myProject.jsp" />
@@ -54,13 +66,17 @@
         <resourceEdge source="success" routing="0" target="projectScoreDetail.jsp" />
       </result>
     </action>
-    <action name="stuAction" location="58,1013" size="150,40" />
+    <action name="stuAction" location="58,1013" size="150,40">
+      <result name="success" />
+    </action>
     <action name="getarrdetail" location="61,41" size="150,41">
       <result name="success">
         <resourceEdge source="success" routing="0" target="CompetitionDetailCheck.jsp" />
       </result>
     </action>
-    <action name="test" location="65,560" size="150,40" />
+    <action name="test" location="65,560" size="150,40">
+      <result name="success" />
+    </action>
   </package>
   <webResource name="forumContent.jsp" path="/forumContent.jsp" location="350,50" size="150,55" />
   <webResource name="scoreDetail.jsp" path="/scoreDetail.jsp" location="350,200" size="150,55" />
