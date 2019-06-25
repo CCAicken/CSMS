@@ -30,14 +30,15 @@ public class CompetitionEntry extends BaseAction {
 				.parseInt(session.getAttribute("role").toString());
 		VStudent student = (VStudent) session.getAttribute("loginuser");
 		int classid = student.getClassid();
-		List<VStudent> list = projectdao.selectPageClass(null, classid, page,
-				limit);
-		int count = projectdao.stuAmount(null, classid);
+		List<VStudent> list = bdao.selectByPage(
+				"from VStudent where classid=13", page, limit);
+		int count = bdao
+				.selectValue("select count(userid) from VStudent where classid=13");
 		PrintWriter out = response.getWriter();
 		LayuiData data = new LayuiData();
 		data.code = LayuiData.SUCCESS;
-		data.count = count;
-		data.data = data;
+		data.count = 10;
+		data.data = list;
 		out.write(JSON.toJSONString(data));
 		out.flush();
 		out.close();
