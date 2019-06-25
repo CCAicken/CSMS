@@ -19,5 +19,8 @@
         <property name="teacerid" type="java.lang.Integer">
             <column name="teacerid" not-null="true" />
         </property>
+        <property name="sportid" type="java.lang.Integer">
+            <column name="sportid" />
+        </property>
     </class>
 </hibernate-mapping>

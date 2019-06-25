@@ -12,6 +12,7 @@ public class TNews implements java.io.Serializable {
 	private String newstitle;
 	private String newscontent;
 	private Integer teacerid;
+	private Integer sportid;
 
 	// Constructors
 
@@ -59,5 +60,11 @@ public class TNews implements java.io.Serializable {
 	public void setTeacerid(Integer teacerid) {
 		this.teacerid = teacerid;
 	}
+	public Integer getSportid() {
+		return this.sportid;
+	}
 
+	public void setSportid(Integer sportid) {
+		this.sportid = sportid;
+	}
 }
