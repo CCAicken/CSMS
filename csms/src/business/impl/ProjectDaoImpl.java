@@ -3,11 +3,11 @@ package business.impl;
 import java.util.List;
 
 import model.TProject;
-<<<<<<< HEAD
+
 import model.VProject;
-=======
+
 import model.VStudent;
->>>>>>> refs/remotes/origin/master
+
 import basic.iHibBaseDAO;
 import business.dao.ProjectDAO;
 import common.properties.RoleType;
