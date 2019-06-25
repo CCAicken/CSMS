@@ -54,9 +54,9 @@ public class ProjectDaoImpl implements ProjectDAO {
 	}
 
 	@Override
-	public List<VProject> selectList(String strwhere) {
+	public List<VProject> selectList(String strwhere,int startPage, int pageSize) {
 		String hql = "from VProject"+strwhere;
-		return (List<VProject>) bdao.select(hql);
+		return (List<VProject>) bdao.selectByPage(hql, startPage, pageSize);
 	}
 	
 	@Override
@@ -92,7 +92,7 @@ public class ProjectDaoImpl implements ProjectDAO {
 	}
 
 	@Override
-	public int getProCount(String strwhere, int roletype) {
+	public int getProCountByRole(String strwhere, int roletype) {
 		String hql = null;
 		if (strwhere != null) {
 			if (roletype == RoleType.Student || roletype == RoleType.Committee) {
@@ -111,6 +111,14 @@ public class ProjectDaoImpl implements ProjectDAO {
 				hql = "select count(proid) from TProject where (protype=3 or protype=4)";
 			}
 		}
+		int count = bdao.selectValue(hql);
+		return count;
+	}
+	
+	@Override
+	public int getProCount(String strwhere) {
+		String hql = null;
+		hql = "select count(proid) from TProject"+ strwhere;
 		int count = bdao.selectValue(hql);
 		return count;
 	}

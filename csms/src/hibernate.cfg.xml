@@ -23,7 +23,6 @@
 		<mapping resource="model/TScene.hbm.xml" />
 		<mapping resource="model/TRole.hbm.xml" />
 		<mapping resource="model/TMajor.hbm.xml" />
-		<mapping resource="model/TConfig.hbm.xml" />
 		<mapping resource="model/TCollege.hbm.xml" />
 		<mapping resource="model/TClass.hbm.xml" />
 		<mapping resource="model/TArrange.hbm.xml" />
@@ -49,6 +48,7 @@
 		<mapping resource="model/VNews.hbm.xml" />
 		<mapping resource="model/TProject.hbm.xml" />
 		<mapping resource="model/VProject.hbm.xml" />
+		<mapping resource="model/TConfig.hbm.xml" />
 
 	</session-factory>
 

@@ -37,10 +37,7 @@ public class SportsDAOImpl implements SportsDAO {
 		String hql = "from TConfig order by sportid desc";
 		List<TConfig> list = bdao.select(hql);
 		if(list!=null && list.size()>0){
-			for(TConfig config:list){
-				return config;
-			}
-			return null;
+			return list.get(0);
 		}else{
 			return null;
 		}

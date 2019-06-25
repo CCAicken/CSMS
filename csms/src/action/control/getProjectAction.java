@@ -80,7 +80,7 @@ public class getProjectAction extends BaseAction {
 		if (proname != null && !proname.equals("")) {
 			strwhere = "proname like '%" + proname + "%'";
 		}
-		int count = projectdao.getProCount(strwhere, roletype);
+		int count = projectdao.getProCountByRole(strwhere, roletype);
 		List<TProject> list = null;
 		if(startPage==null||startPage.equals("")||pageSize==null||pageSize.equals("")){
 			list = projectdao.select();

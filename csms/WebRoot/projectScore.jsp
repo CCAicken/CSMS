@@ -101,9 +101,9 @@ body::-webkit-scrollbar {
 		var layer = layui.layer;
 		var form = layui.form;
 		var element = layui.element;
+		loadProject();
 		//加载项目下拉框
-		form.render('select');
-		form.on('select(project)',function(data) {
+		function loadProject() {
 			$.ajax({
 				type : "post",
 				url : "getproject.action",
@@ -141,7 +141,7 @@ body::-webkit-scrollbar {
 					layer.msg('请求失败，稍后再试',{icon : 5});
 				}
 			});
-		});
+		};
 		//页面加载获取动态表格数据
 		table.render({
 			id : 'tableOne',
@@ -155,6 +155,9 @@ body::-webkit-scrollbar {
 			cellMinWidth : 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
 			//,toolbar: '#toolbarDemo'
 			title : '用户数据表',
+			page:true,
+			limit:5,
+			limits:[5,10,15],
 			cols : [ [ {
 				align : 'center',
 				field : '',
@@ -167,8 +170,9 @@ body::-webkit-scrollbar {
 				sort : true
 			}, {
 				align : 'center',
-				field : '',
+				field : 'protype',
 				title : '项目类型',
+				sort : true,
 				templet : function(data) {
 					if (data.protype == 1) {
 						return "学生个人赛"
@@ -183,8 +187,7 @@ body::-webkit-scrollbar {
 			}, {
 				align : 'center',
 				field : 'record',
-				title : '最高记录',
-				sort : true
+				title : '最高记录'
 			}, {
 				align : 'center',
 				field : '',

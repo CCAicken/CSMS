@@ -55,7 +55,7 @@ body::-webkit-scrollbar {
                             <dd><a class="a-nav" href="myproject.action?userid=${loginuser.userid}">查看我的项目</a></dd>
                         </dl>
                     </li>
-                    <li><span style="font-size:20px;">${config.sportname }</span></li>
+                    <li class="layui-nav-item"><span style="font-size:26px;margin-left:20px;">${config.sportname }</span></li>
                 </ul>
             </div>
             <div class="layui-col-md2">

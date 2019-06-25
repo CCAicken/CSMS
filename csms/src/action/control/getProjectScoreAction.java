@@ -33,47 +33,50 @@ public class getProjectScoreAction extends BaseAction {
 			}else if(op.equals("record")){
 				String project = request.getParameter("project");
 				String user = request.getParameter("usertype");
+				String page = request.getParameter("page");
+				String limit = request.getParameter("limit");
 				String strsearch = "";
 				if (project != null && !project.equals("") && !project.equals("0")) {
 					if(strsearch!=null && !strsearch.equals("")){
-						strsearch = " where proid=" + project;
+						strsearch = " and proid=" + project;
 					}else{
-						strsearch += " and proid=" + project;
+						strsearch += " where proid=" + project;
 					}
 				}
 				if (user != null && !user.equals("") && !user.equals("0")) {
 					if(user.equals("stusingle")){
 						if(strsearch!=null && !strsearch.equals("")){
-							strsearch = " where protype=1";
+							strsearch = " and protype=1";
 						}else{
-							strsearch += " and protype=1";
+							strsearch += " where protype=1";
 						}
 					}else if(user.equals("stuteam")){
 						if(strsearch!=null && !strsearch.equals("")){
-							strsearch = " where protype=2";
+							strsearch = " and protype=2";
 						}else{
-							strsearch += " and protype=2";
+							strsearch += " where protype=2";
 						}
 					}else if(user.equals("teasingle")){
 						if(strsearch!=null && !strsearch.equals("")){
-							strsearch = " where protype=3";
+							strsearch = " and protype=3";
 						}else{
-							strsearch += " and protype=3";
+							strsearch += " where protype=3";
 						}
 					}else if(user.equals("teateam")){
 						if(strsearch!=null && !strsearch.equals("")){
-							strsearch = " where protype=4";
+							strsearch = " and protype=4";
 						}else{
-							strsearch += " and protype=4";
+							strsearch += " where protype=4";
 						}
 					}
 				}
-				strsearch += " order by protype";
-				List<VProject> clalist = projectdao.selectList(strsearch);
+				//strsearch += " order by protype";
+				List<VProject> clalist = projectdao.selectList(strsearch,Integer.parseInt(page),Integer.parseInt(limit));
 				request.setAttribute("type", "project");
 				ReturnData rd = new ReturnData();
 				rd.code = ReturnData.SUCCESS;
 				rd.data = clalist;
+				rd.count= projectdao.getProCount(strsearch);
 				out.write(JSON.toJSONString(rd));
 				out.flush();
 				out.close();

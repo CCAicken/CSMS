@@ -57,12 +57,6 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-	<table name="T_Config" schema="dbo" catalog="CSMS"
-		class="model.TConfig">
-		<primary-key>
-			<generator class="identity"></generator>
-		</primary-key>
-	</table>
 	<table name="T_College" schema="dbo" catalog="CSMS"
 		class="model.TCollege">
 		<primary-key>
@@ -183,8 +177,14 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="V_Project" schema="dbo" catalog="CSMS"
-	class="model.VProject">
+	<table name="V_Project" schema="dbo" catalog="CSMS"
+		class="model.VProject">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="T_Config" schema="dbo" catalog="CSMS"
+	class="model.TConfig">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>
