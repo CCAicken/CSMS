@@ -30,7 +30,7 @@ public class getScoreAction extends BaseAction {
 			limit = Integer.parseInt(request.getParameter("limit"));// ÌõÊý
 			collegeid = request.getParameter("collegeid");
 			if (collegeid != null && !collegeid.equals("") && !collegeid.equals("0")) {
-				strsearch = " where collegeid='" + collegeid + "'";
+				strsearch = " and collegeid='" + collegeid + "'";
 			}
 			List<VCollegeScore> clalist = scorecollegedao.getAllScoreByPage(
 					strsearch, startPage, limit);
@@ -154,13 +154,13 @@ public class getScoreAction extends BaseAction {
 				majorid = request.getParameter("majorid");
 				classid = request.getParameter("classid");
 				if (collegeid != null && !collegeid.equals("") && !collegeid.equals("0")) {
-					strsearch = " where collegeid='" + collegeid + "'";
+					strsearch = " and collegeid='" + collegeid + "'";
 				}
 				if (majorid != null && !majorid.equals("") && !majorid.equals("0")) {
-					strsearch = " where majorid='" + majorid + "'";
+					strsearch = " and majorid='" + majorid + "'";
 				}
 				if (classid != null && !classid.equals("") && !classid.equals("0")) {
-					strsearch = " where classid='" + classid + "'";
+					strsearch = " and classid='" + classid + "'";
 				}
 				List<VClassScore> clalist = scoreclassesdao.getAllScoreByPage(strsearch, startPage, limit);
 				int count = scoreclassesdao.allScoreCount(strsearch);
