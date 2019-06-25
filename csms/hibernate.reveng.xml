@@ -201,4 +201,10 @@
 		<generator class="identity"></generator>
 	</primary-key>
 </table>
+<table name="T_Config" schema="dbo" catalog="CSMS"
+	class="model.TConfig">
+	<primary-key>
+		<generator class="identity"></generator>
+	</primary-key>
+</table>
 </hibernate-reverse-engineering>

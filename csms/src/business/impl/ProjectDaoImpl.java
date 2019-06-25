@@ -8,7 +8,6 @@ import org.apache.struts2.ServletActionContext;
 
 import model.TConfig;
 import model.TProject;
-import model.VProject;
 import model.VSportProject;
 import model.VStudent;
 import basic.iHibBaseDAO;

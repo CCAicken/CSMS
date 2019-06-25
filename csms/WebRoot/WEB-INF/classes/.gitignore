@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /action/
 /basic/
 /business/
@@ -5,3 +6,13 @@
 /model/
 /servlet/
 /util/
+=======
+/action/
+/basic/
+/business/
+/common/
+/model/
+/servlet/
+/struts.xml
+/util/
+>>>>>>> refs/remotes/origin/master

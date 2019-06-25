@@ -97,12 +97,12 @@ body::-webkit-scrollbar {
 										type : 'checkbox'
 									},
 									{
-										field : 'proid',
+										field : 'userid',
 										title : '学号/工号',
 										align : 'center'
 									},
 									{
-										field : 'proname',
+										field : 'username',
 										title : '姓名',
 										align : 'center'
 									},
