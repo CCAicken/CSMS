@@ -50,7 +50,7 @@ public class CompetitionEntry extends BaseAction {
 					+ ") and proid="
 					+ proid
 					+ ") and classid="
-					+ classid;
+					+ classid + "and limit<5";
 			if (conditions != null && !conditions.equals("")) {
 				strwhere = " and username like '%" + conditions
 						+ "%' or collegename like '%" + conditions
@@ -64,7 +64,7 @@ public class CompetitionEntry extends BaseAction {
 					+ ") and proid="
 					+ proid
 					+ ") and classid="
-					+ classid;
+					+ classid + "and limit<5";
 			if (conditions != null && !conditions.equals("")) {
 				strwhere = " and username like '%" + conditions
 						+ "%' or collegename like '%" + conditions
@@ -89,7 +89,7 @@ public class CompetitionEntry extends BaseAction {
 					+ ") and proid="
 					+ proid
 					+ ") and collegeid="
-					+ collegeid;
+					+ collegeid + "and limit<5";
 			if (conditions != null && !conditions.equals("")) {
 				strwhere = " and username like '%" + conditions
 						+ "%' or collegename like '%" + conditions;
@@ -103,7 +103,7 @@ public class CompetitionEntry extends BaseAction {
 					+ ") and proid="
 					+ proid
 					+ ") and collegeid="
-					+ collegeid;
+					+ collegeid + "and limit<5";
 			if (conditions != null && !conditions.equals("")) {
 				strwhere = " and username like '%" + conditions
 						+ "%' or collegename like '%" + conditions;
