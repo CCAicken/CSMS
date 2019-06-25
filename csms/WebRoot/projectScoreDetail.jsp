@@ -32,7 +32,7 @@ body::-webkit-scrollbar {
 		<div class="layui-card">
 			<div class="layui-card-header">
 				<div class="layui-row">
-					<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a href="getproject.action?op=project">项目成绩</a> <a><cite>项目成绩详情</cite></a>
+					<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a href="projectScore.jsp">项目成绩</a> <a><cite>项目成绩详情</cite></a>
 					</span>
 				</div>
 			</div>
@@ -59,6 +59,9 @@ body::-webkit-scrollbar {
 							<th>排名</th>
 							<th>参赛人</th>
 							<th>学院</th>
+							<c:if test="${project.protype==1 || project.protype==2}">
+							<th>班级</th>
+							</c:if>
 							<th>成绩</th>
 						</thead>
 						<tbody>
@@ -68,6 +71,7 @@ body::-webkit-scrollbar {
 								<c:if test="${project.protype==1 || project.protype==2}">
 								<td>${obj.username }</td>
 								<td>${obj.collegename }</td>
+								<td>${obj.classname }</td>
 								</c:if>
 								<c:if test="${project.protype==3 || project.protype==4}">
 								<td>${obj.teausername }</td>

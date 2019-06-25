@@ -80,9 +80,13 @@ public class getProjectAction extends BaseAction {
 		if (proname != null && !proname.equals("")) {
 			strwhere = "proname like '%" + proname + "%'";
 		}
-		int count = projectdao.getProCount(strwhere, roletype);
-		List<TProject> list = projectdao.selectByPage(strwhere, roletype,
-				Integer.parseInt(startPage), Integer.parseInt(pageSize));
+		int count = projectdao.getProCountByRole(strwhere, roletype);
+		List<TProject> list = null;
+		if(startPage==null||startPage.equals("")||pageSize==null||pageSize.equals("")){
+			list = projectdao.select();
+		}else{
+			list = projectdao.selectByPage(strwhere, roletype,Integer.parseInt(startPage), Integer.parseInt(pageSize));
+		}
 		out = response.getWriter();
 		LayuiData data = new LayuiData(0, "³É¹¦", count, list);
 		out.write(JSON.toJSONString(data));

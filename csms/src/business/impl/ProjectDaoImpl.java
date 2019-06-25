@@ -3,10 +3,13 @@ package business.impl;
 import java.util.List;
 
 import model.TProject;
+
+import model.VProject;
+
 import model.VStudent;
+
 import basic.iHibBaseDAO;
 import business.dao.ProjectDAO;
-
 import common.properties.RoleType;
 
 public class ProjectDaoImpl implements ProjectDAO {
@@ -55,6 +58,12 @@ public class ProjectDaoImpl implements ProjectDAO {
 	}
 
 	@Override
+	public List<VProject> selectList(String strwhere,int startPage, int pageSize) {
+		String hql = "from VProject"+strwhere;
+		return (List<VProject>) bdao.selectByPage(hql, startPage, pageSize);
+	}
+	
+	@Override
 	public List<TProject> selectByType(int type) {
 		String hql = "from TProject where protype=?";
 		Object[] param = { type };
@@ -87,7 +96,7 @@ public class ProjectDaoImpl implements ProjectDAO {
 	}
 
 	@Override
-	public int getProCount(String strwhere, int roletype) {
+	public int getProCountByRole(String strwhere, int roletype) {
 		String hql = null;
 		if (strwhere != null) {
 			if (roletype == RoleType.Student || roletype == RoleType.Committee) {
@@ -106,6 +115,14 @@ public class ProjectDaoImpl implements ProjectDAO {
 				hql = "select count(proid) from TProject where (protype=3 or protype=4)";
 			}
 		}
+		int count = bdao.selectValue(hql);
+		return count;
+	}
+	
+	@Override
+	public int getProCount(String strwhere) {
+		String hql = null;
+		hql = "select count(proid) from TProject"+ strwhere;
 		int count = bdao.selectValue(hql);
 		return count;
 	}

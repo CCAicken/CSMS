@@ -22,6 +22,12 @@ public interface SportsDAO {
 	 * @return 更新结果，true为成功，false为失败
 	 */
 	public boolean update(TConfig config);
+
+	/**
+	 * 获取最新配置对象
+	 * @return 配置对象
+	 */
+	public TConfig getConfig();
 	
 	/**
 	 * 获取所有配置对象列表

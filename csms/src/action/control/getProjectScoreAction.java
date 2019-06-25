@@ -7,6 +7,7 @@ import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import model.ReturnData;
 import model.TProject;
+import model.VProject;
 import model.VClassScore;
 import model.VScore;
 
@@ -29,6 +30,56 @@ public class getProjectScoreAction extends BaseAction {
 					request.setAttribute("project", project);
 					return SUCCESS;
 				}
+			}else if(op.equals("record")){
+				String project = request.getParameter("project");
+				String user = request.getParameter("usertype");
+				String page = request.getParameter("page");
+				String limit = request.getParameter("limit");
+				String strsearch = "";
+				if (project != null && !project.equals("") && !project.equals("0")) {
+					if(strsearch!=null && !strsearch.equals("")){
+						strsearch = " and proid=" + project;
+					}else{
+						strsearch += " where proid=" + project;
+					}
+				}
+				if (user != null && !user.equals("") && !user.equals("0")) {
+					if(user.equals("stusingle")){
+						if(strsearch!=null && !strsearch.equals("")){
+							strsearch = " and protype=1";
+						}else{
+							strsearch += " where protype=1";
+						}
+					}else if(user.equals("stuteam")){
+						if(strsearch!=null && !strsearch.equals("")){
+							strsearch = " and protype=2";
+						}else{
+							strsearch += " where protype=2";
+						}
+					}else if(user.equals("teasingle")){
+						if(strsearch!=null && !strsearch.equals("")){
+							strsearch = " and protype=3";
+						}else{
+							strsearch += " where protype=3";
+						}
+					}else if(user.equals("teateam")){
+						if(strsearch!=null && !strsearch.equals("")){
+							strsearch = " and protype=4";
+						}else{
+							strsearch += " where protype=4";
+						}
+					}
+				}
+				//strsearch += " order by protype";
+				List<VProject> clalist = projectdao.selectList(strsearch,Integer.parseInt(page),Integer.parseInt(limit));
+				request.setAttribute("type", "project");
+				ReturnData rd = new ReturnData();
+				rd.code = ReturnData.SUCCESS;
+				rd.data = clalist;
+				rd.count= projectdao.getProCount(strsearch);
+				out.write(JSON.toJSONString(rd));
+				out.flush();
+				out.close();
 			}else if(op.equals("load")){
 				String project = request.getParameter("project");
 				String user = request.getParameter("usertype");

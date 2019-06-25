@@ -215,8 +215,7 @@ body::-webkit-scrollbar {
 				dataType : "json",
 				success : function(succ) {
 					if (succ == "失败") {
-						layer
-								.msg("请刷新后重试");
+						layer.msg("请刷新后重试");
 					} else {
 						var tmp = '<option value="0">请选择或输入专业名称</option>';
 						for ( var i in succ.data) {
@@ -225,6 +224,8 @@ body::-webkit-scrollbar {
 									+ '</option>';
 						}
 						$("#major").html(tmp);
+						var tmp2 = '<option value="0">请选择或输入班级名称</option>';
+						$("#class").html(tmp2);
 						form.render();
 					}
 				},

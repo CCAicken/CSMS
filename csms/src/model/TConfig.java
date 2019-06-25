@@ -1,6 +1,5 @@
 package model;
 
-
 /**
  * TConfig entity. @author MyEclipse Persistence Tools
  */
@@ -9,7 +8,8 @@ public class TConfig implements java.io.Serializable {
 
 	// Fields
 
-	private Integer configid;
+	private Integer sportid;
+	private String sportname;
 	private String starttime;
 	private String endtime;
 	private String reportstart;
@@ -22,8 +22,9 @@ public class TConfig implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TConfig(String starttime, String endtime,
+	public TConfig(String sportname, String starttime, String endtime,
 			String reportstart, String reportend) {
+		this.sportname = sportname;
 		this.starttime = starttime;
 		this.endtime = endtime;
 		this.reportstart = reportstart;
@@ -32,12 +33,20 @@ public class TConfig implements java.io.Serializable {
 
 	// Property accessors
 
-	public Integer getConfigid() {
-		return this.configid;
+	public Integer getSportid() {
+		return this.sportid;
 	}
 
-	public void setConfigid(Integer configid) {
-		this.configid = configid;
+	public void setSportid(Integer sportid) {
+		this.sportid = sportid;
+	}
+
+	public String getSportname() {
+		return this.sportname;
+	}
+
+	public void setSportname(String sportname) {
+		this.sportname = sportname;
 	}
 
 	public String getStarttime() {

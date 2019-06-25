@@ -9,8 +9,10 @@
 		<property name="dialect">
 			org.hibernate.dialect.SQLServerDialect
 		</property>
+		<property name="connection.url">
+			jdbc:sqlserver://localhost:1433;DatabaseName=CSMS
+		</property>
 		<property name="connection.url">jdbc:sqlserver://192.168.3.60:1433;DatabaseName=CSMS</property>
-
 		<property name="connection.username">sa</property>
 		<property name="connection.password">123456</property>
 		<property name="connection.driver_class">
@@ -22,7 +24,6 @@
 		<mapping resource="model/TScene.hbm.xml" />
 		<mapping resource="model/TRole.hbm.xml" />
 		<mapping resource="model/TMajor.hbm.xml" />
-		<mapping resource="model/TConfig.hbm.xml" />
 		<mapping resource="model/TCollege.hbm.xml" />
 		<mapping resource="model/TClass.hbm.xml" />
 		<mapping resource="model/TArrange.hbm.xml" />
@@ -47,6 +48,8 @@
 		<mapping resource="model/VClassScore.hbm.xml" />
 		<mapping resource="model/VNews.hbm.xml" />
 		<mapping resource="model/TProject.hbm.xml" />
+		<mapping resource="model/VProject.hbm.xml" />
+		<mapping resource="model/TConfig.hbm.xml" />
 
 	</session-factory>
 
