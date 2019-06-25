@@ -19,5 +19,8 @@
         <property name="createtime" type="java.lang.String">
             <column name="createtime" length="23" />
         </property>
+        <property name="sportid" type="java.lang.Integer">
+            <column name="sportid" />
+        </property>
     </class>
 </hibernate-mapping>
