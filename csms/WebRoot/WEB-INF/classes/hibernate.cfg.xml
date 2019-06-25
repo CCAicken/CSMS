@@ -11,7 +11,7 @@
 		</property>
 		<!-- <property name="connection.url">
 			jdbc:sqlserver://localhost:1433;DatabaseName=CSMS
-		</property> -->
+			</property> -->
 		<property name="connection.url">
 			jdbc:sqlserver://192.168.3.60:1433;DatabaseName=CSMS
 		</property>
@@ -33,13 +33,10 @@
 		<mapping resource="model/TMatch.hbm.xml" />
 		<mapping resource="model/VArrange.hbm.xml" />
 		<mapping resource="model/VClass.hbm.xml" />
-		<mapping resource="model/VCollegeScore.hbm.xml" />
 		<mapping resource="model/VMajor.hbm.xml" />
 		<mapping resource="model/VScene.hbm.xml" />
 		<mapping resource="model/VStudent.hbm.xml" />
-		<mapping resource="model/VStudentScore.hbm.xml" />
 		<mapping resource="model/VTeacher.hbm.xml" />
-		<mapping resource="model/VTeacherScore.hbm.xml" />
 		<mapping resource="model/TTeacher.hbm.xml" />
 		<mapping resource="model/VMatch.hbm.xml" />
 		<mapping resource="model/TForumContent.hbm.xml" />
@@ -47,7 +44,6 @@
 		<mapping resource="model/TPhoto.hbm.xml" />
 		<mapping resource="model/TForumTitle.hbm.xml" />
 		<mapping resource="model/VForum.hbm.xml" />
-		<mapping resource="model/VClassScore.hbm.xml" />
 		<mapping resource="model/VNews.hbm.xml" />
 		<mapping resource="model/TProject.hbm.xml" />
 		<mapping resource="model/VProject.hbm.xml" />
@@ -55,6 +51,10 @@
 		<mapping resource="model/TSportProject.hbm.xml" />
 		<mapping resource="model/VSportProject.hbm.xml" />
 		<mapping resource="model/VScore.hbm.xml" />
+		<mapping resource="model/VStudentScore.hbm.xml" />
+		<mapping resource="model/VTeacherScore.hbm.xml" />
+		<mapping resource="model/VClassScore.hbm.xml" />
+		<mapping resource="model/VCollegeScore.hbm.xml" />
 
 	</session-factory>
 

@@ -81,12 +81,6 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-	<table name="V_CollegeScore" schema="dbo" catalog="CSMS"
-		class="model.VCollegeScore">
-		<primary-key>
-			<generator class="identity"></generator>
-		</primary-key>
-	</table>
 	<table name="V_Major" schema="dbo" catalog="CSMS"
 		class="model.VMajor">
 		<primary-key>
@@ -111,22 +105,10 @@
 			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
-	<table name="V_StudentScore" schema="dbo" catalog="CSMS"
-		class="model.VStudentScore">
-		<primary-key>
-			<generator class="identity"></generator>
-		</primary-key>
-	</table>
 	<table name="V_Teacher" schema="dbo" catalog="CSMS"
 		class="model.VTeacher">
 		<primary-key>
 			<generator class="assigned"></generator>
-		</primary-key>
-	</table>
-	<table name="V_TeacherScore" schema="dbo" catalog="CSMS"
-		class="model.VTeacherScore">
-		<primary-key>
-			<generator class="identity"></generator>
 		</primary-key>
 	</table>
 	<table name="T_ForumContent" schema="dbo" catalog="CSMS"
@@ -155,12 +137,6 @@
 	</table>
 	<table name="V_Forum" schema="dbo" catalog="CSMS"
 		class="model.VForum">
-		<primary-key>
-			<generator class="identity"></generator>
-		</primary-key>
-	</table>
-	<table name="V_ClassScore" schema="dbo" catalog="CSMS"
-		class="model.VClassScore">
 		<primary-key>
 			<generator class="identity"></generator>
 		</primary-key>
@@ -195,14 +171,38 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="V_Score" schema="dbo" catalog="CSMS"
-	class="model.VScore">
-	<primary-key>
-		<generator class="identity"></generator>
-	</primary-key>
-</table>
-<table name="T_Config" schema="dbo" catalog="CSMS"
-	class="model.TConfig">
+	<table name="V_Score" schema="dbo" catalog="CSMS"
+		class="model.VScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Config" schema="dbo" catalog="CSMS"
+		class="model.TConfig">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_StudentScore" schema="dbo" catalog="CSMS"
+		class="model.VStudentScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_TeacherScore" schema="dbo" catalog="CSMS"
+		class="model.VTeacherScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_ClassScore" schema="dbo" catalog="CSMS"
+		class="model.VClassScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="V_CollegeScore" schema="dbo" catalog="CSMS"
+	class="model.VCollegeScore">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>

@@ -5,10 +5,10 @@ package model;
  */
 
 public class VCollegeScore implements java.io.Serializable {
-
 	private Integer collegeid;
 	private String collegename;
 	private Double scorenumber;
+	private Integer sportid;
 
 	// Constructors
 
@@ -18,10 +18,11 @@ public class VCollegeScore implements java.io.Serializable {
 
 	/** full constructor */
 	public VCollegeScore(Integer collegeid, String collegename,
-			Double scorenumber) {
+			Double scorenumber, Integer sportid) {
 		this.collegeid = collegeid;
 		this.collegename = collegename;
 		this.scorenumber = scorenumber;
+		this.sportid = sportid;
 	}
 
 	// Property accessors
@@ -50,42 +51,11 @@ public class VCollegeScore implements java.io.Serializable {
 		this.scorenumber = scorenumber;
 	}
 
-	public boolean equals(Object other) {
-		if ((this == other))
-			return true;
-		if ((other == null))
-			return false;
-		if (!(other instanceof VCollegeScore))
-			return false;
-		VCollegeScore castOther = (VCollegeScore) other;
-
-		return ((this.getCollegeid() == castOther.getCollegeid()) || (this
-				.getCollegeid() != null && castOther.getCollegeid() != null && this
-				.getCollegeid().equals(castOther.getCollegeid())))
-				&& ((this.getCollegename() == castOther.getCollegename()) || (this
-						.getCollegename() != null
-						&& castOther.getCollegename() != null && this
-						.getCollegename().equals(castOther.getCollegename())))
-				&& ((this.getScorenumber() == castOther.getScorenumber()) || (this
-						.getScorenumber() != null
-						&& castOther.getScorenumber() != null && this
-						.getScorenumber().equals(castOther.getScorenumber())));
+	public Integer getSportid() {
+		return this.sportid;
 	}
 
-	public int hashCode() {
-		int result = 17;
-
-		result = 37 * result
-				+ (getCollegeid() == null ? 0 : this.getCollegeid().hashCode());
-		result = 37
-				* result
-				+ (getCollegename() == null ? 0 : this.getCollegename()
-						.hashCode());
-		result = 37
-				* result
-				+ (getScorenumber() == null ? 0 : this.getScorenumber()
-						.hashCode());
-		return result;
+	public void setSportid(Integer sportid) {
+		this.sportid = sportid;
 	}
-
 }

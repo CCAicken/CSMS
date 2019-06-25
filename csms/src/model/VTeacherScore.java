@@ -24,6 +24,7 @@ public class VTeacherScore implements java.io.Serializable {
 	private String collegename;
 	private String pwd;
 	private String agend;
+	private Integer sportid;
 
 	// Constructors
 
@@ -48,7 +49,7 @@ public class VTeacherScore implements java.io.Serializable {
 			Integer scenelimit, Integer collegelimit, Integer totallimit,
 			Integer protype, String rolename, String username, String mobile,
 			Integer collegeid, Integer roleid, String collegename, String pwd,
-			String agend) {
+			String agend, Integer sportid) {
 		this.scoreid = scoreid;
 		this.matchid = matchid;
 		this.scorenumber = scorenumber;
@@ -67,6 +68,7 @@ public class VTeacherScore implements java.io.Serializable {
 		this.collegename = collegename;
 		this.pwd = pwd;
 		this.agend = agend;
+		this.sportid = sportid;
 	}
 
 	// Property accessors
@@ -215,129 +217,11 @@ public class VTeacherScore implements java.io.Serializable {
 		this.agend = agend;
 	}
 
-	public boolean equals(Object other) {
-		if ((this == other))
-			return true;
-		if ((other == null))
-			return false;
-		if (!(other instanceof VTeacherScore))
-			return false;
-		VTeacherScore castOther = (VTeacherScore) other;
-
-		return ((this.getScoreid() == castOther.getScoreid()) || (this
-				.getScoreid() != null && castOther.getScoreid() != null && this
-				.getScoreid().equals(castOther.getScoreid())))
-				&& ((this.getMatchid() == castOther.getMatchid()) || (this
-						.getMatchid() != null && castOther.getMatchid() != null && this
-						.getMatchid().equals(castOther.getMatchid())))
-				&& ((this.getScorenumber() == castOther.getScorenumber()) || (this
-						.getScorenumber() != null
-						&& castOther.getScorenumber() != null && this
-						.getScorenumber().equals(castOther.getScorenumber())))
-				&& ((this.getProid() == castOther.getProid()) || (this
-						.getProid() != null && castOther.getProid() != null && this
-						.getProid().equals(castOther.getProid())))
-				&& ((this.getUserid() == castOther.getUserid()) || (this
-						.getUserid() != null && castOther.getUserid() != null && this
-						.getUserid().equals(castOther.getUserid())))
-				&& ((this.getProname() == castOther.getProname()) || (this
-						.getProname() != null && castOther.getProname() != null && this
-						.getProname().equals(castOther.getProname())))
-				&& ((this.getScenelimit() == castOther.getScenelimit()) || (this
-						.getScenelimit() != null
-						&& castOther.getScenelimit() != null && this
-						.getScenelimit().equals(castOther.getScenelimit())))
-				&& ((this.getCollegelimit() == castOther.getCollegelimit()) || (this
-						.getCollegelimit() != null
-						&& castOther.getCollegelimit() != null && this
-						.getCollegelimit().equals(castOther.getCollegelimit())))
-				&& ((this.getTotallimit() == castOther.getTotallimit()) || (this
-						.getTotallimit() != null
-						&& castOther.getTotallimit() != null && this
-						.getTotallimit().equals(castOther.getTotallimit())))
-				&& ((this.getProtype() == castOther.getProtype()) || (this
-						.getProtype() != null && castOther.getProtype() != null && this
-						.getProtype().equals(castOther.getProtype())))
-				&& ((this.getRolename() == castOther.getRolename()) || (this
-						.getRolename() != null
-						&& castOther.getRolename() != null && this
-						.getRolename().equals(castOther.getRolename())))
-				&& ((this.getUsername() == castOther.getUsername()) || (this
-						.getUsername() != null
-						&& castOther.getUsername() != null && this
-						.getUsername().equals(castOther.getUsername())))
-				&& ((this.getMobile() == castOther.getMobile()) || (this
-						.getMobile() != null && castOther.getMobile() != null && this
-						.getMobile().equals(castOther.getMobile())))
-				&& ((this.getCollegeid() == castOther.getCollegeid()) || (this
-						.getCollegeid() != null
-						&& castOther.getCollegeid() != null && this
-						.getCollegeid().equals(castOther.getCollegeid())))
-				&& ((this.getRoleid() == castOther.getRoleid()) || (this
-						.getRoleid() != null && castOther.getRoleid() != null && this
-						.getRoleid().equals(castOther.getRoleid())))
-				&& ((this.getCollegename() == castOther.getCollegename()) || (this
-						.getCollegename() != null
-						&& castOther.getCollegename() != null && this
-						.getCollegename().equals(castOther.getCollegename())))
-				&& ((this.getPwd() == castOther.getPwd()) || (this.getPwd() != null
-						&& castOther.getPwd() != null && this.getPwd().equals(
-						castOther.getPwd())))
-				&& ((this.getAgend() == castOther.getAgend()) || (this
-						.getAgend() != null && castOther.getAgend() != null && this
-						.getAgend().equals(castOther.getAgend())));
+	public Integer getSportid() {
+		return this.sportid;
 	}
 
-	public int hashCode() {
-		int result = 17;
-
-		result = 37 * result
-				+ (getScoreid() == null ? 0 : this.getScoreid().hashCode());
-		result = 37 * result
-				+ (getMatchid() == null ? 0 : this.getMatchid().hashCode());
-		result = 37
-				* result
-				+ (getScorenumber() == null ? 0 : this.getScorenumber()
-						.hashCode());
-		result = 37 * result
-				+ (getProid() == null ? 0 : this.getProid().hashCode());
-		result = 37 * result
-				+ (getUserid() == null ? 0 : this.getUserid().hashCode());
-		result = 37 * result
-				+ (getProname() == null ? 0 : this.getProname().hashCode());
-		result = 37
-				* result
-				+ (getScenelimit() == null ? 0 : this.getScenelimit()
-						.hashCode());
-		result = 37
-				* result
-				+ (getCollegelimit() == null ? 0 : this.getCollegelimit()
-						.hashCode());
-		result = 37
-				* result
-				+ (getTotallimit() == null ? 0 : this.getTotallimit()
-						.hashCode());
-		result = 37 * result
-				+ (getProtype() == null ? 0 : this.getProtype().hashCode());
-		result = 37 * result
-				+ (getRolename() == null ? 0 : this.getRolename().hashCode());
-		result = 37 * result
-				+ (getUsername() == null ? 0 : this.getUsername().hashCode());
-		result = 37 * result
-				+ (getMobile() == null ? 0 : this.getMobile().hashCode());
-		result = 37 * result
-				+ (getCollegeid() == null ? 0 : this.getCollegeid().hashCode());
-		result = 37 * result
-				+ (getRoleid() == null ? 0 : this.getRoleid().hashCode());
-		result = 37
-				* result
-				+ (getCollegename() == null ? 0 : this.getCollegename()
-						.hashCode());
-		result = 37 * result
-				+ (getPwd() == null ? 0 : this.getPwd().hashCode());
-		result = 37 * result
-				+ (getAgend() == null ? 0 : this.getAgend().hashCode());
-		return result;
+	public void setSportid(Integer sportid) {
+		this.sportid = sportid;
 	}
-
 }

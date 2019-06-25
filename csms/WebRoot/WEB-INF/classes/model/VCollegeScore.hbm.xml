@@ -6,14 +6,18 @@
 -->
 <hibernate-mapping>
     <class name="model.VCollegeScore" table="V_CollegeScore" schema="dbo" catalog="CSMS">
-            <id name="collegeid" type="java.lang.Integer">
-                <column name="collegeid" />
-            </id>
-            <property name="collegename" type="java.lang.String">
-                <column name="collegename" length="20" />
-            </property>
-            <property name="scorenumber" type="java.lang.Double">
-                <column name="scorenumber" precision="53" scale="0" />
-            </property>
+        <id name="collegeid" type="java.lang.Integer">
+            <column name="collegeid" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="collegename" type="java.lang.String">
+            <column name="collegename" length="20" />
+        </property>
+        <property name="scorenumber" type="java.lang.Double">
+            <column name="scorenumber" precision="53" scale="0" />
+        </property>
+        <property name="sportid" type="java.lang.Integer">
+            <column name="sportid" />
+        </property>
     </class>
 </hibernate-mapping>
