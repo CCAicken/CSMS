@@ -11,10 +11,10 @@
             <generator class="assigned"></generator>
         </id>
         <property name="username" type="java.lang.String">
-            <column name="username" length="50" />
+            <column name="username" length="50" not-null="true" />
         </property>
         <property name="pwd" type="java.lang.String">
-            <column name="pwd" length="20" />
+            <column name="pwd" length="20" not-null="true" />
         </property>
         <property name="agend" type="java.lang.String">
             <column name="agend" length="2" />
@@ -27,6 +27,9 @@
         </property>
         <property name="roleid" type="java.lang.Integer">
             <column name="roleid" />
+        </property>
+        <property name="limit" type="java.lang.Integer">
+            <column name="limit" />
         </property>
     </class>
 </hibernate-mapping>

@@ -6,6 +6,8 @@ package model;
 
 public class TTeacher implements java.io.Serializable {
 
+	// Fields
+
 	private String userid;
 	private String username;
 	private String pwd;
@@ -13,6 +15,7 @@ public class TTeacher implements java.io.Serializable {
 	private String mobile;
 	private Integer collegeid;
 	private Integer roleid;
+	private Integer limit;
 
 	// Constructors
 
@@ -22,7 +25,7 @@ public class TTeacher implements java.io.Serializable {
 
 	/** full constructor */
 	public TTeacher(String userid, String username, String pwd, String agend,
-			String mobile, Integer collegeid, Integer roleid) {
+			String mobile, Integer collegeid, Integer roleid, Integer limit) {
 		this.userid = userid;
 		this.username = username;
 		this.pwd = pwd;
@@ -30,6 +33,7 @@ public class TTeacher implements java.io.Serializable {
 		this.mobile = mobile;
 		this.collegeid = collegeid;
 		this.roleid = roleid;
+		this.limit = limit;
 	}
 
 	// Property accessors
@@ -88,6 +92,14 @@ public class TTeacher implements java.io.Serializable {
 
 	public void setRoleid(Integer roleid) {
 		this.roleid = roleid;
+	}
+
+	public Integer getLimit() {
+		return this.limit;
+	}
+
+	public void setLimit(Integer limit) {
+		this.limit = limit;
 	}
 
 }

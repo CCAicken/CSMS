@@ -15,6 +15,7 @@ public class TStudent implements java.io.Serializable {
 	private String mobile;
 	private Integer classid;
 	private Integer roleid;
+	private Integer limit;
 
 	// Constructors
 
@@ -24,7 +25,7 @@ public class TStudent implements java.io.Serializable {
 
 	/** full constructor */
 	public TStudent(String userid, String username, String pwd, String agend,
-			String mobile, Integer classid, Integer roleid) {
+			String mobile, Integer classid, Integer roleid, Integer limit) {
 		this.userid = userid;
 		this.username = username;
 		this.pwd = pwd;
@@ -32,6 +33,7 @@ public class TStudent implements java.io.Serializable {
 		this.mobile = mobile;
 		this.classid = classid;
 		this.roleid = roleid;
+		this.limit = limit;
 	}
 
 	// Property accessors
@@ -90,6 +92,14 @@ public class TStudent implements java.io.Serializable {
 
 	public void setRoleid(Integer roleid) {
 		this.roleid = roleid;
+	}
+
+	public Integer getLimit() {
+		return this.limit;
+	}
+
+	public void setLimit(Integer limit) {
+		this.limit = limit;
 	}
 
 }

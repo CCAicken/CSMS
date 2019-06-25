@@ -5,7 +5,6 @@ package model;
  */
 
 public class VTeacher implements java.io.Serializable {
-
 	private String userid;
 	private String username;
 	private String pwd;
@@ -13,6 +12,7 @@ public class VTeacher implements java.io.Serializable {
 	private String mobile;
 	private Integer collegeid;
 	private Integer roleid;
+	private Integer limit;
 	private String collegename;
 	private String rolename;
 
@@ -24,7 +24,7 @@ public class VTeacher implements java.io.Serializable {
 
 	/** full constructor */
 	public VTeacher(String userid, String username, String pwd, String agend,
-			String mobile, Integer collegeid, Integer roleid,
+			String mobile, Integer collegeid, Integer roleid, Integer limit,
 			String collegename, String rolename) {
 		this.userid = userid;
 		this.username = username;
@@ -33,6 +33,7 @@ public class VTeacher implements java.io.Serializable {
 		this.mobile = mobile;
 		this.collegeid = collegeid;
 		this.roleid = roleid;
+		this.limit = limit;
 		this.collegename = collegename;
 		this.rolename = rolename;
 	}
@@ -95,6 +96,14 @@ public class VTeacher implements java.io.Serializable {
 		this.roleid = roleid;
 	}
 
+	public Integer getLimit() {
+		return this.limit;
+	}
+
+	public void setLimit(Integer limit) {
+		this.limit = limit;
+	}
+
 	public String getCollegename() {
 		return this.collegename;
 	}
@@ -110,73 +119,4 @@ public class VTeacher implements java.io.Serializable {
 	public void setRolename(String rolename) {
 		this.rolename = rolename;
 	}
-
-	public boolean equals(Object other) {
-		if ((this == other))
-			return true;
-		if ((other == null))
-			return false;
-		if (!(other instanceof VTeacher))
-			return false;
-		VTeacher castOther = (VTeacher) other;
-
-		return ((this.getUserid() == castOther.getUserid()) || (this
-				.getUserid() != null && castOther.getUserid() != null && this
-				.getUserid().equals(castOther.getUserid())))
-				&& ((this.getUsername() == castOther.getUsername()) || (this
-						.getUsername() != null
-						&& castOther.getUsername() != null && this
-						.getUsername().equals(castOther.getUsername())))
-				&& ((this.getPwd() == castOther.getPwd()) || (this.getPwd() != null
-						&& castOther.getPwd() != null && this.getPwd().equals(
-						castOther.getPwd())))
-				&& ((this.getAgend() == castOther.getAgend()) || (this
-						.getAgend() != null && castOther.getAgend() != null && this
-						.getAgend().equals(castOther.getAgend())))
-				&& ((this.getMobile() == castOther.getMobile()) || (this
-						.getMobile() != null && castOther.getMobile() != null && this
-						.getMobile().equals(castOther.getMobile())))
-				&& ((this.getCollegeid() == castOther.getCollegeid()) || (this
-						.getCollegeid() != null
-						&& castOther.getCollegeid() != null && this
-						.getCollegeid().equals(castOther.getCollegeid())))
-				&& ((this.getRoleid() == castOther.getRoleid()) || (this
-						.getRoleid() != null && castOther.getRoleid() != null && this
-						.getRoleid().equals(castOther.getRoleid())))
-				&& ((this.getCollegename() == castOther.getCollegename()) || (this
-						.getCollegename() != null
-						&& castOther.getCollegename() != null && this
-						.getCollegename().equals(castOther.getCollegename())))
-				&& ((this.getRolename() == castOther.getRolename()) || (this
-						.getRolename() != null
-						&& castOther.getRolename() != null && this
-						.getRolename().equals(castOther.getRolename())));
-	}
-
-	public int hashCode() {
-		int result = 17;
-
-		result = 37 * result
-				+ (getUserid() == null ? 0 : this.getUserid().hashCode());
-		result = 37 * result
-				+ (getUsername() == null ? 0 : this.getUsername().hashCode());
-		result = 37 * result
-				+ (getPwd() == null ? 0 : this.getPwd().hashCode());
-		result = 37 * result
-				+ (getAgend() == null ? 0 : this.getAgend().hashCode());
-		result = 37 * result
-				+ (getMobile() == null ? 0 : this.getMobile().hashCode());
-		result = 37 * result
-				+ (getCollegeid() == null ? 0 : this.getCollegeid().hashCode());
-		result = 37 * result
-				+ (getRoleid() == null ? 0 : this.getRoleid().hashCode());
-		result = 37
-				* result
-				+ (getCollegename() == null ? 0 : this.getCollegename()
-						.hashCode());
-		result = 37 * result
-				+ (getRolename() == null ? 0 : this.getRolename().hashCode());
-		return result;
-	}
-
 }
