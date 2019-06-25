@@ -15,23 +15,14 @@ public class StuSignAction extends BaseAction {
 			String proid = request.getParameter("proid");
 			String a[] = ds.split(",");
 
-			int count = 0;
+			boolean result = false;
+			// int result = 0;
 			for (int i = 0; i < a.length; i++) {
-				count = matchdao.countUser(Integer.parseInt(proid),
-						(String) a[i]);
-				if (count > 0) {
-					break;
-				}
-			}
-			if (count <= 0) {
-				boolean result = false;
-				for (int i = 0; i < a.length; i++) {
-					result = matchdao.isSignUp((String) a[i],
-							Integer.parseInt(proid));
-					if (result == false) {
-						break;
-					}
-				}
+				result = matchdao.isSignUp((String) a[i],
+						Integer.parseInt(proid));
+				// String procName = "up_AddMatch(" + (String) a[i] + ","
+				// + Integer.parseInt(proid) + ")";
+				// result = (Integer) bdao.executeProduce(procName);
 				try {
 					if (result) {
 						out.write("报名成功");
@@ -46,17 +37,6 @@ public class StuSignAction extends BaseAction {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else {
-
-				try {
-					out.write("有同学已经报名过该项目，请认真审核后再报");
-					out.flush();
-					out.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
 			}
 		}
 		return SUCCESS;

@@ -14,6 +14,11 @@ import common.properties.RoleType;
 public class CompetitionEntry extends BaseAction {
 	private int page;
 	private int limit;
+	private int proid;
+
+	public void setProid(int proid) {
+		this.proid = proid;
+	}
 
 	public void setPage(int page) {
 		this.page = page;
@@ -31,13 +36,41 @@ public class CompetitionEntry extends BaseAction {
 		int roletype = Integer
 				.parseInt(session.getAttribute("role").toString());
 		PrintWriter out = response.getWriter();
+		String conditions = request.getParameter("strwhere");
+		String strwhere = null;
+		String hql = null;
+		String hql2 = null;
+		System.out.println(proid);
 		if (roletype == RoleType.Student || roletype == RoleType.Committee) {
 			VStudent student = (VStudent) session.getAttribute("loginuser");
 			int classid = student.getClassid();
-			String hql = "from VStudent where classid=" + classid;
-			List<VStudent> list = bdao.selectByPage(hql, page, limit);
-			String hql2 = "select count(*) from VStudent where classid="
+			// hql = "from VStudent where classid=" + classid;
+			hql = "from VStudent where userid not in (select userid from VMatch where userid in (select userid from VStudent where classid="
+					+ classid
+					+ ") and proid="
+					+ proid
+					+ ") and classid="
 					+ classid;
+			if (conditions != null && !conditions.equals("")) {
+				strwhere = " and username like '%" + conditions
+						+ "%' or collegename like '%" + conditions
+						+ "%' or classname like '%" + conditions + "%'";
+				hql += strwhere;
+			}
+			List<VStudent> list = bdao.selectByPage(hql, page, limit);
+			// hql2 = "select count(*) from VStudent where classid=" + classid;
+			hql2 = "select count(*) from VStudent where userid not in (select userid from VMatch where userid in (select userid from VStudent where classid="
+					+ classid
+					+ ") and proid="
+					+ proid
+					+ ") and classid="
+					+ classid;
+			if (conditions != null && !conditions.equals("")) {
+				strwhere = " and username like '%" + conditions
+						+ "%' or collegename like '%" + conditions
+						+ "%' or classname like '%" + conditions + "%'";
+				hql2 += strwhere;
+			}
 			int count = bdao.selectValue(hql2);
 			LayuiData data = new LayuiData();
 			data.code = LayuiData.SUCCESS;
@@ -50,10 +83,32 @@ public class CompetitionEntry extends BaseAction {
 				|| roletype == RoleType.Organization) {
 			VTeacher tea = (VTeacher) session.getAttribute("loginuser");
 			int collegeid = tea.getCollegeid();
-			String hql = "from VTeacher where collegeid=?" + collegeid;
-			List<VTeacher> list = bdao.selectByPage(hql, page, limit);
-			String hql2 = "select count(*) from VTeacher where collegeid=?"
+			// hql = "from VTeacher where collegeid=" + collegeid;
+			hql = "from VTeacher where userid not in (select userid from VMatch where userid in (select userid from VTeacher where collegeid="
+					+ collegeid
+					+ ") and proid="
+					+ proid
+					+ ") and collegeid="
 					+ collegeid;
+			if (conditions != null && !conditions.equals("")) {
+				strwhere = " and username like '%" + conditions
+						+ "%' or collegename like '%" + conditions;
+				hql += strwhere;
+			}
+			List<VTeacher> list = bdao.selectByPage(hql, page, limit);
+			// hql2 = "select count(*) from VTeacher where collegeid=" +
+			// collegeid;
+			hql = "select count(*) from VTeacher where userid not in (select userid from VMatch where userid in (select userid from VTeacher where collegeid="
+					+ collegeid
+					+ ") and proid="
+					+ proid
+					+ ") and collegeid="
+					+ collegeid;
+			if (conditions != null && !conditions.equals("")) {
+				strwhere = " and username like '%" + conditions
+						+ "%' or collegename like '%" + conditions;
+				hql2 += strwhere;
+			}
 			int count = bdao.selectValue(hql2);
 			LayuiData data = new LayuiData();
 			data.code = LayuiData.SUCCESS;

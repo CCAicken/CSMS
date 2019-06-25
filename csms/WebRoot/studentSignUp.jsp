@@ -71,7 +71,7 @@ body::-webkit-scrollbar {
 	var n1 = loc.length;//地址的总长度
 	var n2 = loc.indexOf("=");//取得=号的位置
 	var proid = decodeURI(loc.substr(n2 + 1, n1 - n2));//从=号后面的内容
-	alert(proid);
+	//alert(proid);
 
 	layui
 			.use(
@@ -90,7 +90,7 @@ body::-webkit-scrollbar {
 							id : 'tabledata',
 							height : 500,
 							toolbar : '#toolbarDemo',
-							url : 'entry.action', //数据接口
+							url : 'entry.action?proid='+proid, //数据接口
 							skin : "nob",
 							cols : [ [ //表头
 									{
