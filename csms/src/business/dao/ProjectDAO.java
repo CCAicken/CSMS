@@ -3,7 +3,11 @@ package business.dao;
 import java.util.List;
 
 import model.TProject;
+<<<<<<< HEAD
 import model.VProject;
+=======
+import model.VStudent;
+>>>>>>> refs/remotes/origin/master
 
 /**
  * 比赛项目业务接口类
@@ -88,6 +92,7 @@ public interface ProjectDAO {
 	 * @param roletype 角色类型
 	 * @return 返回比赛项目数
 	 */
+<<<<<<< HEAD
 	public int getProCountByRole(String strwhere, int roletype);
 
 	/**
@@ -97,4 +102,23 @@ public interface ProjectDAO {
 	 * @return 返回比赛项目数
 	 */
 	public int getProCount(String strwhere);
+=======
+	public int getProCount(String strwhere, int roletype);
+
+	/**
+	 * 获取报名班级学生
+	 * 
+	 * @param strwhere
+	 *            查询条件
+	 * @param classid
+	 *            班级id
+	 * @param page
+	 * @param limit
+	 * @return
+	 */
+	public List<VStudent> selectPageClass(String strwhere, int classid,
+			int page, int limit);
+
+	public int stuAmount(String strwhere, int classid);
+>>>>>>> refs/remotes/origin/master
 }

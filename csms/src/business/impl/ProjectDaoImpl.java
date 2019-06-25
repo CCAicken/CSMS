@@ -3,7 +3,11 @@ package business.impl;
 import java.util.List;
 
 import model.TProject;
+<<<<<<< HEAD
 import model.VProject;
+=======
+import model.VStudent;
+>>>>>>> refs/remotes/origin/master
 import basic.iHibBaseDAO;
 import business.dao.ProjectDAO;
 import common.properties.RoleType;
@@ -129,6 +133,30 @@ public class ProjectDaoImpl implements ProjectDAO {
 		return pro;
 	}
 
+	@Override
+	public List<VStudent> selectPageClass(String strwhere, int classid,
+			int page, int limit) {
+		// TODO Auto-generated method stub
+		String hql = "from VStudent where classid=?";
+		if (strwhere != null && !strwhere.equals("")) {
+			hql += strwhere;
+		}
+		Object[] para = { classid };
+		return bdao.selectByPage(hql, para, page, limit);
+	}
+
+	@Override
+	public int stuAmount(String strwhere, int classid) {
+		// TODO Auto-generated method stub
+		String hql = "select count(userid) from VStudent where classid=?";
+		if (strwhere != null && !strwhere.equals("")) {
+			hql += strwhere;
+		}
+		Object[] para = { classid };
+		int count = bdao.selectValue(hql, para);
+		return count;
+	}
+
 	// public static void main(String[] args) {
 	// ProjectDAO pdao = new ProjectDaoImpl();
 	// // int row = pdao.getProCount(2);
@@ -136,7 +164,9 @@ public class ProjectDaoImpl implements ProjectDAO {
 	// // for (TProject p : list) {
 	// // System.out.println(p.getProname());
 	// // }
-	// TProject pro = pdao.getptoject(1);
-	// System.out.println(pro.getProname());
+	// List<VStudent> list = pdao.selectPageClass(null, 13, 1, 10);
+	// for (VStudent stu : list) {
+	// System.out.println(stu.getUsername());
+	// }
 	// }
 }
