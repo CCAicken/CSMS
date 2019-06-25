@@ -12,16 +12,17 @@
 <style>
 table {
 	text-align: center;
-}body {
-    background-color: rgb(209, 207, 207);
-    overflow: hidden;
-      overflow-y: scroll;
-    
+}
+
+body {
+	background-color: rgb(209, 207, 207);
+	overflow: hidden;
+	overflow-y: scroll;
 }
 
 body::-webkit-scrollbar {
-        display: none;
-    }
+	display: none;
+}
 </style>
 </head>
 
@@ -70,7 +71,7 @@ body::-webkit-scrollbar {
 	var n1 = loc.length;//地址的总长度
 	var n2 = loc.indexOf("=");//取得=号的位置
 	var proid = decodeURI(loc.substr(n2 + 1, n1 - n2));//从=号后面的内容
-	//alert(proid);
+	alert(proid);
 
 	layui
 			.use(
@@ -96,12 +97,12 @@ body::-webkit-scrollbar {
 										type : 'checkbox'
 									},
 									{
-										field : 'userid',
+										field : 'proid',
 										title : '学号/工号',
 										align : 'center'
 									},
 									{
-										field : 'username',
+										field : 'proname',
 										title : '姓名',
 										align : 'center'
 									},

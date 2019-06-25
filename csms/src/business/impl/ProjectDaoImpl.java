@@ -3,6 +3,7 @@ package business.impl;
 import java.util.List;
 
 import model.TProject;
+import model.VStudent;
 import basic.iHibBaseDAO;
 import business.dao.ProjectDAO;
 
@@ -61,26 +62,49 @@ public class ProjectDaoImpl implements ProjectDAO {
 	}
 
 	@Override
-	public List<TProject> selectByPage(int roletype, int startPage, int pageSize) {
+	public List<TProject> selectByPage(String strwhere, int roletype,
+			int startPage, int pageSize) {
 		String hql = null;
-		if (roletype == RoleType.Student || roletype == RoleType.Committee) {
-			hql = "from TProject where protype=1 or protype=2";
-		} else if (roletype == RoleType.Teacher
-				|| roletype == RoleType.Organization) {
-			hql = "from TProject where protype=3 or protype=4";
+		if (strwhere != null) {
+			if (roletype == RoleType.Student || roletype == RoleType.Committee) {
+				hql = "from TProject where (protype=1 or protype=2) and "
+						+ strwhere;
+			} else if (roletype == RoleType.Teacher
+					|| roletype == RoleType.Organization) {
+				hql = "from TProject where (protype=3 or protype=4) and "
+						+ strwhere;
+			}
+		} else {
+			if (roletype == RoleType.Student || roletype == RoleType.Committee) {
+				hql = "from TProject where (protype=1 or protype=2)";
+			} else if (roletype == RoleType.Teacher
+					|| roletype == RoleType.Organization) {
+				hql = "from TProject where (protype=3 or protype=4)";
+			}
 		}
 		List<TProject> list = bdao.selectByPage(hql, startPage, pageSize);
 		return list;
 	}
 
 	@Override
-	public int getProCount(int roletype) {
+	public int getProCount(String strwhere, int roletype) {
 		String hql = null;
-		if (roletype == RoleType.Student || roletype == RoleType.Committee) {
-			hql = "select count(proid) from TProject where protype=1 or protype=2";
-		} else if (roletype == RoleType.Teacher
-				|| roletype == RoleType.Organization) {
-			hql = "select count(proid) from TProject where protype=3 or protype=4";
+		if (strwhere != null) {
+			if (roletype == RoleType.Student || roletype == RoleType.Committee) {
+				hql = "select count(proid) from TProject where (protype=1 or protype=2) and "
+						+ strwhere;
+			} else if (roletype == RoleType.Teacher
+					|| roletype == RoleType.Organization) {
+				hql = "select count(proid) from TProject where (protype=3 or protype=4) and "
+						+ strwhere;
+			}
+		} else {
+			if (roletype == RoleType.Student || roletype == RoleType.Committee) {
+				hql = "select count(proid) from TProject where (protype=1 or protype=2)";
+			} else if (roletype == RoleType.Teacher
+					|| roletype == RoleType.Organization) {
+				hql = "select count(proid) from TProject where (protype=3 or protype=4)";
+			}
 		}
 		int count = bdao.selectValue(hql);
 		return count;
@@ -92,12 +116,40 @@ public class ProjectDaoImpl implements ProjectDAO {
 		return pro;
 	}
 
+	@Override
+	public List<VStudent> selectPageClass(String strwhere, int classid,
+			int page, int limit) {
+		// TODO Auto-generated method stub
+		String hql = "from VStudent where classid=?";
+		if (strwhere != null && !strwhere.equals("")) {
+			hql += strwhere;
+		}
+		Object[] para = { classid };
+		return bdao.selectByPage(hql, para, page, limit);
+	}
+
+	@Override
+	public int stuAmount(String strwhere, int classid) {
+		// TODO Auto-generated method stub
+		String hql = "select count(userid) from VStudent where classid=?";
+		if (strwhere != null && !strwhere.equals("")) {
+			hql += strwhere;
+		}
+		Object[] para = { classid };
+		int count = bdao.selectValue(hql, para);
+		return count;
+	}
+
 	// public static void main(String[] args) {
 	// ProjectDAO pdao = new ProjectDaoImpl();
 	// // int row = pdao.getProCount(2);
-	// List<TProject> list = pdao.selectByPage(1, 1, 3);
-	// for (TProject p : list) {
-	// System.out.println(p.getProname());
+	// // List<TProject> list = pdao.selectByPage(1, 1, 3);
+	// // for (TProject p : list) {
+	// // System.out.println(p.getProname());
+	// // }
+	// List<VStudent> list = pdao.selectPageClass(null, 13, 1, 10);
+	// for (VStudent stu : list) {
+	// System.out.println(stu.getUsername());
 	// }
 	// }
 }
