@@ -165,6 +165,10 @@ body::-webkit-scrollbar {
 				type : 'numbers'
 			}, {
 				align : 'center',
+				field : 'sportname',
+				title : '运动会'
+			}, {
+				align : 'center',
 				field : 'proname',
 				title : '项目名称',
 				sort : true

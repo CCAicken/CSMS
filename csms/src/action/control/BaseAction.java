@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.TConfig;
 import model.TMajor;
 
 import org.apache.struts2.ServletActionContext;
@@ -59,7 +60,6 @@ public class BaseAction extends ActionSupport {
 			response.setContentType("application/json");
 			response.setCharacterEncoding("utf-8");
 			out = response.getWriter();
-			
 
 			application = ServletActionContext.getServletContext();
 			ApplicationContext ctx = new ClassPathXmlApplicationContext(

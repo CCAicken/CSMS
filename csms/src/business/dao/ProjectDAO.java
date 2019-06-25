@@ -3,9 +3,8 @@ package business.dao;
 import java.util.List;
 
 import model.TProject;
-
 import model.VProject;
-
+import model.VSportProject;
 import model.VStudent;
 
 
@@ -56,7 +55,7 @@ public interface ProjectDAO {
 	 * 
 	 * @return 项目对象列表
 	 */
-	public List<TProject> select();
+	public List<VSportProject> select();
 
 	/**
 	 * 获取所有项目对象列表
@@ -65,7 +64,7 @@ public interface ProjectDAO {
 	 * @param pagesize
 	 * @return 项目对象列表
 	 */
-	public List<VProject> selectList(String strwhere,int startPage, int pageSize);
+	public List<VSportProject> selectList(String strwhere,int startPage, int pageSize);
 	
 	/**
 	 * 通过项目类型获取项目对象列表
@@ -74,7 +73,7 @@ public interface ProjectDAO {
 	 *            项目类型
 	 * @return 项目对象列表
 	 */
-	public List<TProject> selectByType(int type);
+	public List<VSportProject> selectByType(int type);
 
 	/**
 	 * 根据角色类型分页获取比赛项目
@@ -83,7 +82,7 @@ public interface ProjectDAO {
 	 * @param pagesize
 	 * @return
 	 */
-	public List<TProject> selectByPage(String strwhere, int roletype,
+	public List<VSportProject> selectByPage(String strwhere, int roletype,
 			int startPage, int pageSize);
 
 	/**

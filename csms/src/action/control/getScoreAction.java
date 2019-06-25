@@ -103,10 +103,10 @@ public class getScoreAction extends BaseAction {
 				collegeid = request.getParameter("collegeid");
 				majorid = request.getParameter("majorid");
 				if (collegeid != null && !collegeid.equals("") && !collegeid.equals("0")) {
-					strsearch = " where collegeid='" + collegeid + "'";
+					strsearch = " and collegeid='" + collegeid + "'";
 				}
 				if (majorid != null && !majorid.equals("") && !majorid.equals("0")) {
-					strsearch = " where majorid='" + majorid + "'";
+					strsearch = " and majorid='" + majorid + "'";
 				}
 				List<VScore> clalist = scoredao.getScoreByPage(strsearch, startPage, limit);
 				int count = scoredao.allScoreCount(strsearch);
@@ -207,13 +207,13 @@ public class getScoreAction extends BaseAction {
 			majorid = request.getParameter("majorid");
 			classid = request.getParameter("classid");
 			if (collegeid != null && !collegeid.equals("") && !collegeid.equals("0")) {
-				strsearch = " where collegeid='" + collegeid + "'";
+				strsearch = " and collegeid='" + collegeid + "'";
 			}
 			if (majorid != null && !majorid.equals("") && !majorid.equals("0")) {
-				strsearch = " where majorid='" + majorid + "'";
+				strsearch = " and majorid='" + majorid + "'";
 			}
 			if (classid != null && !classid.equals("") && !classid.equals("0")) {
-				strsearch = " where classid='" + classid + "'";
+				strsearch = " and classid='" + classid + "'";
 			}
 			List<VScore> stulist = scorestudentdao.getAllScoreByPage(strsearch,
 					startPage, limit);

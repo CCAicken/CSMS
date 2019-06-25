@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import model.TProject;
+import model.VSportProject;
 import util.LayuiData;
 
 import com.alibaba.fastjson.JSON;
@@ -81,7 +82,7 @@ public class getProjectAction extends BaseAction {
 			strwhere = "proname like '%" + proname + "%'";
 		}
 		int count = projectdao.getProCountByRole(strwhere, roletype);
-		List<TProject> list = null;
+		List<VSportProject> list = null;
 		if(startPage==null||startPage.equals("")||pageSize==null||pageSize.equals("")){
 			list = projectdao.select();
 		}else{
