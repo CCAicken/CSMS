@@ -90,7 +90,7 @@ body::-webkit-scrollbar {
 							id : 'tabledata',
 							height : 500,
 							toolbar : '#toolbarDemo',
-							url : 'entry.action?proid='+proid, //数据接口
+							url : 'entry.action?proid=' + proid, //数据接口
 							skin : "nob",
 							cols : [ [ //表头
 									{
@@ -114,6 +114,12 @@ body::-webkit-scrollbar {
 									{
 										field : 'collegename',
 										title : '学院',
+										align : 'center'
+									//sort: true //是否排序
+									},
+									{
+										field : 'limit',
+										title : '已报项目',
 										align : 'center'
 									//sort: true //是否排序
 									},
@@ -149,9 +155,11 @@ body::-webkit-scrollbar {
 											case 'getCheckData':
 												var data = checkStatus.data;
 												var str = "";
+												//layer.msg(JSON.stringify(data));
 												if (data.length == 0) {
 													layer.msg("请选择报名的人");
-												} else {
+													//layer.msg(data.length);
+												}else {
 													for (var i = 0; i < data.length; i++) {
 														str += data[i].userid
 																+ ",";
