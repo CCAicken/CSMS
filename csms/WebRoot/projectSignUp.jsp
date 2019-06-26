@@ -153,9 +153,7 @@ body::-webkit-scrollbar {
 			});
 		})
 	});
-<%int roletype = Integer.parseInt(session.getAttribute("role")
-					.toString());
-			request.setAttribute("roletype", roletype);%>
+
 	$(document).on('click',".baom",function() {
 						if (${roletype!=1}) {
 							var currentnum = $(this).parent().parent().prev()
@@ -169,8 +167,27 @@ body::-webkit-scrollbar {
 										.prev().prev().prev().prev()
 										.find("div").text().trim();
 								//layer.msg(proid);
-								window.location.href = "studentSignUp.jsp?proid="
+								$.ajax({
+									type : "POST",
+									url : "stuAction.action",
+									data : {
+										op:'islogin'
+									},
+									dataType : "text",
+									success : function(msg) {
+										if (msg == "已登录") {
+											window.location.href = "studentSignUp.jsp?proid="
 										+ encodeURI(proid);
+										} else {
+											layer.alert(msg, {
+												skin : 'demo-class',
+												closeBtn : 0,
+												anim : 5
+											//动画类型
+											});
+										}
+									},
+								});
 							}
 						} else {
 							layer.msg("你的权限不够");

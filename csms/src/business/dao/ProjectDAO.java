@@ -102,4 +102,23 @@ public interface ProjectDAO {
 	 */
 	public int getProCount(String strwhere);
 
+	/**
+	 * 获取当前运动会所有项目
+	 * 
+	 * @param strwhere
+	 * @param page
+	 * @param limit
+	 * @return
+	 */
+	public List<VSportProject> getAllProject(String strwhere, int page,
+			int limit);
+
+	/**
+	 * 获取当前运动会所有项目
+	 * 
+	 * @param strwhere
+	 * @return
+	 */
+	public int getAllAmount(String strwhere);
+
 }

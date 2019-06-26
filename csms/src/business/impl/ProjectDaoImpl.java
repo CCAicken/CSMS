@@ -13,8 +13,6 @@ import org.apache.struts2.ServletActionContext;
 import basic.iHibBaseDAO;
 import business.dao.ProjectDAO;
 
-import common.properties.RoleType;
-
 public class ProjectDaoImpl implements ProjectDAO {
 	private iHibBaseDAO bdao;
 
@@ -26,7 +24,6 @@ public class ProjectDaoImpl implements ProjectDAO {
 	}
 
 	// public ProjectDaoImpl() {
-	// // TODO Auto-generated constructor stub
 	// bdao = new iHibBaseDAOImpl();
 	// }
 
@@ -89,11 +86,10 @@ public class ProjectDaoImpl implements ProjectDAO {
 		} else if (strwhere == null) {
 			strwhere = "";
 		}
-		if (roletype == RoleType.Student || roletype == RoleType.Committee) {
+		if (roletype == 0) {
 			hql = "from VSportProject where (protype=1 or protype=2) and sportid="
 					+ config.getSportid() + strwhere;
-		} else if (roletype == RoleType.Teacher
-				|| roletype == RoleType.Organization) {
+		} else if (roletype == 1) {
 			hql = "from VSportProject where (protype=3 or protype=4) and sportid="
 					+ config.getSportid() + strwhere;
 		}
@@ -109,11 +105,10 @@ public class ProjectDaoImpl implements ProjectDAO {
 		} else if (strwhere == null) {
 			strwhere = "";
 		}
-		if (roletype == RoleType.Student || roletype == RoleType.Committee) {
+		if (roletype == 0) {
 			hql = "select count(*) from VSportProject where (protype=1 or protype=2) and sportid="
 					+ config.getSportid() + strwhere;
-		} else if (roletype == RoleType.Teacher
-				|| roletype == RoleType.Organization) {
+		} else if (roletype == 1) {
 			hql = "select count(*) from VSportProject where (protype=3 or protype=4) and sportid="
 					+ config.getSportid() + strwhere;
 		}
@@ -124,6 +119,11 @@ public class ProjectDaoImpl implements ProjectDAO {
 	@Override
 	public int getProCount(String strwhere) {
 		String hql = null;
+		if (strwhere != null) {
+			strwhere = " and " + strwhere;
+		} else if (strwhere == null) {
+			strwhere = "";
+		}
 		hql = "select count(*) from VSportProject where sportid="
 				+ config.getSportid() + strwhere;
 		int count = bdao.selectValue(hql);
@@ -136,16 +136,40 @@ public class ProjectDaoImpl implements ProjectDAO {
 		return pro;
 	}
 
+	public List<VSportProject> getAllProject(String strwhere, int page,
+			int limit) {
+		if (strwhere != null) {
+			strwhere = " and " + strwhere;
+		} else if (strwhere == null) {
+			strwhere = "";
+		}
+		String hql = "from VSportProject where sportid=" + config.getSportid();
+		if (strwhere != null) {
+			hql += strwhere;
+		}
+		List<VSportProject> list = bdao.selectByPage(hql, page, limit);
+		return list;
+	}
+
+	@Override
+	public int getAllAmount(String strwhere) {
+		// TODO Auto-generated method stub
+		if (strwhere != null) {
+			strwhere = " and " + strwhere;
+		} else if (strwhere == null) {
+			strwhere = "";
+		}
+		String hql = "select count(*) from VSportProject where sportid="
+				+ config.getSportid();
+		if (strwhere != null) {
+			hql += strwhere;
+		}
+		int count = bdao.selectValue(hql);
+		return count;
+	}
+
 	// public static void main(String[] args) {
 	// ProjectDAO pdao = new ProjectDaoImpl();
-	// // int row = pdao.getProCount(2);
-	// // List<TProject> list = pdao.selectByPage(1, 1, 3);
-	// // for (TProject p : list) {
-	// // System.out.println(p.getProname());
-	// // }
-	// List<VStudent> list = pdao.selectPageClass(null, 13, 1, 10);
-	// for (VStudent stu : list) {
-	// System.out.println(stu.getUsername());
-	// }
+	// List<VSportProject> list = pdao.get
 	// }
 }

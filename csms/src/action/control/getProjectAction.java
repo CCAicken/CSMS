@@ -3,6 +3,7 @@ package action.control;
 import java.io.IOException;
 import java.util.List;
 
+import model.TUser;
 import model.VSportProject;
 import util.LayuiData;
 
@@ -24,78 +25,58 @@ public class getProjectAction extends BaseAction {
 	 * @throws IOException
 	 */
 	public String execute() throws IOException {
-		String op = request.getParameter("op");
-		if (op.equals("getproject")) {
-			List<VSportProject> projectlist = projectdao.select();
-			request.setAttribute("projectlist", projectlist);
-			returnUrl = "CompetitionTimesCheck.jsp";
-			return SUCCESS;
-		} else if (op.equals("project")) {
-			List<VSportProject> projectlist = projectdao.select();
-			request.setAttribute("projectlist", projectlist);
-			returnUrl = "projectScore.jsp";
-			return SUCCESS;
-		}
-		// String type = request.getParameter("type");
-		// if (type != null && !type.equals("")) {
-		// String proname = request.getParameter("strwhere");
-		// int roletype = Integer.parseInt(session.getAttribute("role")
-		// .toString());
-		// String startPage = request.getParameter("page");
-		// String pageSize = request.getParameter("limit");
-		// int count = 0;
-		// String strwhere = "";
-		// if (roletype == RoleType.Student || roletype == RoleType.Committee) {
-		// count = bdao
-		// .selectValue("select count(proid) from TProject where (protype=1 or protype=2) and proname like '%"
-		// + proname + "%'");
-		// strwhere =
-		// "from TProject where (protype=1 or protype=2) and proname like '%"
-		// + proname + "%'";
-		// } else {
-		// count = bdao
-		// .selectValue("select count(proid) from TProject where (protype=3 or protype=4) and proname like '%"
-		// + proname + "%'");
-		// strwhere =
-		// "from TProject where (protype=3 or protype=4) and proname like '%"
-		// + proname + "%'";
+		// String op = request.getParameter("op");
+		// if (op.equals("getproject")) {
+		// List<VSportProject> projectlist = projectdao.select();
+		// request.setAttribute("projectlist", projectlist);
+		// returnUrl = "CompetitionTimesCheck.jsp";
+		// return SUCCESS;
+		// } else if (op.equals("project")) {
+		// List<VSportProject> projectlist = projectdao.select();
+		// request.setAttribute("projectlist", projectlist);
+		// returnUrl = "projectScore.jsp";
+		// return SUCCESS;
 		// }
-		// List<TProject> list = bdao.selectByPage(strwhere,
-		// Integer.parseInt(startPage), Integer.parseInt(pageSize));
-		// out = response.getWriter();
-		// LayuiData data = new LayuiData(0, "成功", count, list);
-		// out.write(JSON.toJSONString(data));
-		// out.flush();
-		// out.close();
-		// return null;
-		// } else {
 
-		int roletype = Integer
-				.parseInt(session.getAttribute("role").toString());
+		TUser user = (TUser) session.getAttribute("loginuser");
 		String startPage = request.getParameter("page");
 		String pageSize = request.getParameter("limit");
-
 		String proname = request.getParameter("strwhere");
 		String strwhere = null;
-		if (proname != null && !proname.equals("")) {
-			strwhere = "proname like '%" + proname + "%'";
-		}
-		int count = projectdao.getProCountByRole(strwhere, roletype);
-		List<VSportProject> list = null;
-		if (startPage == null || startPage.equals("") || pageSize == null
-				|| pageSize.equals("")) {
-			list = projectdao.select();
+		if (user != null) {
+			int roletype = user.getUsertype();
+			if (proname != null && !proname.equals("")) {
+				strwhere = "proname like '%" + proname + "%'";
+			}
+			int count = projectdao.getProCountByRole(strwhere, roletype);
+			List<VSportProject> list = null;
+			if (startPage == null || startPage.equals("") || pageSize == null
+					|| pageSize.equals("")) {
+				list = projectdao.select();
+			} else {
+				list = projectdao
+						.selectByPage(strwhere, roletype,
+								Integer.parseInt(startPage),
+								Integer.parseInt(pageSize));
+			}
+			out = response.getWriter();
+			LayuiData data = new LayuiData(0, "成功", count, list);
+			out.write(JSON.toJSONString(data));
+			out.flush();
+			out.close();
 		} else {
-			list = projectdao.selectByPage(strwhere, roletype,
+			if (proname != null && !proname.equals("")) {
+				strwhere = "proname like '%" + proname + "%'";
+			}
+			int count = projectdao.getAllAmount(strwhere);
+			List<VSportProject> list = projectdao.getAllProject(strwhere,
 					Integer.parseInt(startPage), Integer.parseInt(pageSize));
+			out = response.getWriter();
+			LayuiData data = new LayuiData(0, "成功", count, list);
+			out.write(JSON.toJSONString(data));
+			out.flush();
+			out.close();
 		}
-		out = response.getWriter();
-		LayuiData data = new LayuiData(0, "成功", count, list);
-		out.write(JSON.toJSONString(data));
-		out.flush();
-		out.close();
 		return null;
-		// }
-
 	}
 }
