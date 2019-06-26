@@ -18,8 +18,8 @@ body {
 	background-color: rgb(209, 207, 207);
 	overflow: hidden;
 	overflow-y: scroll;
+	
 }
-
 body::-webkit-scrollbar {
 	display: none;
 }
@@ -39,7 +39,7 @@ body::-webkit-scrollbar {
 				<h1>比赛报名</h1>
 			</div>
 		</div>
-		<div class="layui-card-body">
+		<div class="layui-card-body" id="body">
 			<form id="info" method="post">
 				<div class="layui-form-item">
 					<div class="layui-input-inline">
@@ -53,6 +53,9 @@ body::-webkit-scrollbar {
 					<div class="layui-input-inline" style="margin-left: -10px;">
 						<button type="button" id="btn1" class="layui-btn layui-btn">确认</button>
 					</div>
+					<div class="layui-input-inline" style="margin-left: -10px;">
+						<button type="button" id="btn_sign" class="layui-btn layui-btn">报名</button>
+					</div>
 				</div>
 				<!--  姓名：<input type="text" id="user"> 班级：<input type="text"
 					id="greed"> 年龄：<input type="text" id="age"> <input
@@ -65,8 +68,8 @@ body::-webkit-scrollbar {
 					<col width="20%">
 				</colgroup>
 				<tr id="t1">
-					<td>姓名</td>  
-					<td>班级</td>  
+					<td>学号/工号</td>
+					<td>姓名</td>
 					<td>是否删除</td>
 				</tr>
 			</table>
@@ -77,37 +80,128 @@ body::-webkit-scrollbar {
 <script src="layui/layui.js"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(
-        function () {
-        $("#btn1").click(
-            function () {
-                //创建tr节点
-                var $tr = $("<tr></tr>");
-                //遍历获取输入的内容
-                $("#info input:text").each(
-                        function (index,
-                            domEle) {
-                            //添加td节点
-                            var $td = $("<td></td>");
-                            //将内容循环添加到创建好的TD中
-                            $td.append($(
-                                domEle).val());
-                                //将td添加到创建好的TR 中
-                                $td.appendTo($tr);
-                            });
-                            //创建TD--删除
-                            var $td = $("<td><button type='button' class='layui-btn layui-btn-primary layui-btn-sm del'><i class='layui-icon'>&#xe640;</i></button></td>");
-                            //将内容循环添加到创建好的TD中
-                            $td.appendTo($tr);
-                            $tr.appendTo("#tab");
-
-                            //执行删除操作
-                            $(".del").click(function () {
-                                //alert("@@@@@@@@@@@@");
-                                $(this).parent().parent().remove();
-                            });
-                        });
-
-            });
+	
+	layui.use([ 'table', 'form', 'jquery', 'layer' ],function() {
+		var layer = layui.layer;
+	    $(document).ready(function () {
+	    	var $ = layui.jquery;
+			//js获取传来的项目id
+			var loc = location.href;
+			var n1 = loc.length;//地址的总长度
+			var n2 = loc.indexOf("=");//取得=号的位置
+			var proid = decodeURI(loc.substr(n2 + 1, n1 - n2));//从=号后面的内容
+			alert(proid);
+	    	//添加运动员按钮
+	        $("#btn1").click(function () {
+		        var userid = $("#userid").val();
+		        var username = $("#username").val();
+		        if(userid==null||userid==""){
+		        	layer.msg("学号或工号不能为空");
+		        }
+		        else if(username==null||username==""){
+		        	layer.msg("姓名不能为空");
+		        }
+		        else{
+	        		addtable();
+	        		$("#userid").val("");
+	        		$("#username").val("");
+	        	}
+	    	});
+	    	
+	    	//报名按钮
+	    	$("#btn_sign").click(function(){
+	    		var data = getTableContent('tab');
+	    		//alert(JSON.stringify(data));
+	    		//alert(data);
+	    		
+	    		//数组转json数据
+	    		var json = [];
+	    		for (var i = 1; i < data.length; i++) {
+				     var j = {};
+				     j.userid = data[i][0];
+				     j.username = data[i][1];
+				      //这里还可以继续添加属性j.属性 = 值
+				     json.push(j);
+				}
+				//layer.msg(JSON.stringify(json));
+				$.ajax({
+					type : "post",
+					url : "stuAction.action",
+					data : {
+						userinfo:JSON.stringify(json),
+						proid:proid,
+						op:'add'
+					},
+					dataType : "json",
+					success : function(succ) {
+						if (succ == "失败") {
+							layer.msg("请刷新后重试");
+						} else {
+							layer.msg(succ);
+						}
+					},
+					error : function() {
+						layer.msg('请求失败，稍后再试',{icon : 5});
+					}
+	
+				});
+	    	})
+	    	
+	    	function addtable(){
+	    	//创建tr节点
+	        	var $tr = $("<tr></tr>");
+	           	//遍历获取输入的内容
+	          	$("#info input:text").each(function (index,domEle) {
+	              	//添加td节点
+	               	var $td = $("<td></td>");
+	              	//将内容循环添加到创建好的TD中
+	              	$td.append($(domEle).val());
+	                //将td添加到创建好的TR 中
+	                $td.appendTo($tr);
+	             });
+	         	//创建TD--删除
+	          	var $td = $("<td><button type='button' class='layui-btn layui-btn-primary layui-btn-sm del'><i class='layui-icon'>&#xe640;</i></button></td>");
+	         	//将内容循环添加到创建好的TD中
+	          	$td.appendTo($tr);
+	 			$tr.appendTo("#tab");
+	
+	       		//执行删除操作
+	        	$(".del").click(function () {
+	           		//alert("@@@@@@@@@@@@");
+	            	$(this).parent().parent().remove();
+	        	});
+	    	}
+	    	
+	    	/** 
+		     * 遍历表格内容返回数组
+		     * @param  Int   id 表格id
+		     * @return Array
+		     */
+		    function getTableContent(id){
+		        var mytable = document.getElementById(id);
+		        var data = [];
+		        for(var i=0,rows=mytable.rows.length; i<rows; i++){
+		            for(var j=0,cells=mytable.rows[i].cells.length-1; j<cells; j++){
+		                if(!data[i]){
+		                    data[i] = new Array();
+		                }
+		                data[i][j] = mytable.rows[i].cells[j].innerHTML;
+		            }
+		        }
+		        return data;
+		    }
+			//function showTableContent(id){
+		        //var data = getTableContent(id);
+		        //var tmp = '';
+		        //for(i=0,rows=data.length; i<rows; i++){
+		            //for(j=0,cells=data[i].length; j<cells; j++){
+		                //tmp += data[i][j] + ',';
+		            //}
+		            //tmp += '<br>';
+		        //}
+		        //aler(tmp);
+		    //}
+		});
+	})
 </script>
 </html>
