@@ -3,7 +3,6 @@ package action.control;
 import java.io.IOException;
 import java.util.List;
 
-import model.TProject;
 import model.VSportProject;
 import util.LayuiData;
 
@@ -25,18 +24,18 @@ public class getProjectAction extends BaseAction {
 	 * @throws IOException
 	 */
 	public String execute() throws IOException {
-		// String op = request.getParameter("op");
-		// if (op.equals("getproject")) {
-		// List<TProject> projectlist = projectdao.select();
-		// request.setAttribute("projectlist", projectlist);
-		// returnUrl = "CompetitionTimesCheck.jsp";
-		// return SUCCESS;
-		// } else if (op.equals("project")) {
-		// List<TProject> projectlist = projectdao.select();
-		// request.setAttribute("projectlist", projectlist);
-		// returnUrl = "projectScore.jsp";
-		// return SUCCESS;
-		// }
+		String op = request.getParameter("op");
+		if (op.equals("getproject")) {
+			List<VSportProject> projectlist = projectdao.select();
+			request.setAttribute("projectlist", projectlist);
+			returnUrl = "CompetitionTimesCheck.jsp";
+			return SUCCESS;
+		} else if (op.equals("project")) {
+			List<VSportProject> projectlist = projectdao.select();
+			request.setAttribute("projectlist", projectlist);
+			returnUrl = "projectScore.jsp";
+			return SUCCESS;
+		}
 		// String type = request.getParameter("type");
 		// if (type != null && !type.equals("")) {
 		// String proname = request.getParameter("strwhere");
@@ -83,10 +82,12 @@ public class getProjectAction extends BaseAction {
 		}
 		int count = projectdao.getProCountByRole(strwhere, roletype);
 		List<VSportProject> list = null;
-		if(startPage==null||startPage.equals("")||pageSize==null||pageSize.equals("")){
+		if (startPage == null || startPage.equals("") || pageSize == null
+				|| pageSize.equals("")) {
 			list = projectdao.select();
-		}else{
-			list = projectdao.selectByPage(strwhere, roletype,Integer.parseInt(startPage), Integer.parseInt(pageSize));
+		} else {
+			list = projectdao.selectByPage(strwhere, roletype,
+					Integer.parseInt(startPage), Integer.parseInt(pageSize));
 		}
 		out = response.getWriter();
 		LayuiData data = new LayuiData(0, "³É¹¦", count, list);
