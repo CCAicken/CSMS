@@ -3,17 +3,15 @@ package action.control;
 import java.io.IOException;
 import java.util.List;
 
-import model.ReturnData;
+import util.LayuiData;
 import model.TClass;
 import model.TCollege;
 import model.TMajor;
+import model.TUser;
 import model.VClassScore;
 import model.VCollegeScore;
 import model.VMajorScore;
 import model.VScore;
-import model.VStudent;
-import model.VStudentScore;
-import model.VTeacher;
 
 import com.alibaba.fastjson.JSON;
 
@@ -37,8 +35,8 @@ public class getScoreAction extends BaseAction {
 					strsearch, startPage, limit);
 			int count = scorecollegedao.geAllCount(strsearch);
 			try {
-				ReturnData rd = new ReturnData();
-				rd.code = ReturnData.SUCCESS;
+				LayuiData rd = new LayuiData();
+				rd.code = LayuiData.SUCCESS;
 				rd.count = count;
 				rd.data = clalist;
 				out.write(JSON.toJSONString(rd));
@@ -111,8 +109,8 @@ public class getScoreAction extends BaseAction {
 				}
 				List<VMajorScore> clalist = majordao.getAllScoreByPage(strsearch, startPage, limit);
 				int count = majordao.allScoreCount(strsearch);
-				ReturnData rd = new ReturnData();
-				rd.code = ReturnData.SUCCESS;
+				LayuiData rd = new LayuiData();
+				rd.code = LayuiData.SUCCESS;
 				rd.count = count;
 				rd.data = clalist;
 				out.write(JSON.toJSONString(rd));
@@ -165,8 +163,8 @@ public class getScoreAction extends BaseAction {
 				}
 				List<VClassScore> clalist = scoreclassesdao.getAllScoreByPage(strsearch, startPage, limit);
 				int count = scoreclassesdao.allScoreCount(strsearch);
-				ReturnData rd = new ReturnData();
-				rd.code = ReturnData.SUCCESS;
+				LayuiData rd = new LayuiData();
+				rd.code = LayuiData.SUCCESS;
 				rd.count = count;
 				rd.data = clalist;
 				out.write(JSON.toJSONString(rd));
@@ -220,8 +218,8 @@ public class getScoreAction extends BaseAction {
 					startPage, limit);
 			int count = scoredao.allScoreCount(strsearch);
 			try {
-				ReturnData rd = new ReturnData();
-				rd.code = ReturnData.SUCCESS;
+				LayuiData rd = new LayuiData();
+				rd.code = LayuiData.SUCCESS;
 				rd.count = count;
 				rd.data = stulist;
 				out.write(JSON.toJSONString(rd));
@@ -236,29 +234,15 @@ public class getScoreAction extends BaseAction {
 				String usertype = request.getParameter("usertype");
 				if (userid != null && !userid.equals("") && usertype != null
 						&& !usertype.equals("")) {
-					if (usertype.equals("1")) {
-						VStudent student = userdao.getStudent(userid);
-						List<VScore> scorelist = scorestudentdao
-								.getScoreStudent(userid);
-						double totalScore = scorestudentdao.allScore(userid);
-						double avgScore = scorestudentdao.avgScore(userid);
-						request.setAttribute("scorelist", scorelist);
-						request.setAttribute("totalScore", totalScore);
-						request.setAttribute("avgScore", avgScore);
-						request.setAttribute("title", student.getUsername());
-						request.setAttribute("type", "single");
-					} else {
-						VTeacher teacher = userdao.getTeacher(userid);
-						List<VScore> scorelist = scorestudentdao
-								.getScoreStudent(userid);
-						double totalScore = scorestudentdao.allScore(userid);
-						double avgScore = scorestudentdao.avgScore(userid);
-						request.setAttribute("scorelist", scorelist);
-						request.setAttribute("totalScore", totalScore);
-						request.setAttribute("avgScore", avgScore);
-						request.setAttribute("title", teacher.getUsername());
-						request.setAttribute("type", "single");
-					}
+					TUser user = userdao.getStudent(userid);
+					List<VScore> scorelist = scoredao.getByUser(userid);
+					double totalScore = scorestudentdao.allScore(userid);
+					double avgScore = scorestudentdao.avgScore(userid);
+					request.setAttribute("scorelist", scorelist);
+					request.setAttribute("totalScore", totalScore);
+					request.setAttribute("avgScore", avgScore);
+					request.setAttribute("title", user.getUsername());
+					request.setAttribute("type", "single");
 					return SUCCESS;
 				} else {
 					out.write("«ÎÀ¢–¬∫Û÷ÿ ‘£°");

@@ -17,14 +17,7 @@ public interface ScoreStudentDAO {
 	 *            学生账号
 	 * @return 学生成绩信息
 	 */
-	public VStudentScore getByUserid(String string);
-
-	/**
-	 * 查询某个学生/教师成绩
-	 * 
-	 * @return List<ScoreStudent>数据集
-	 */
-	public List<VScore> getScoreStudent(String userid);
+	public VScore getByUserid(String string);
 
 	/**
 	 * 分页查询所有学生成绩

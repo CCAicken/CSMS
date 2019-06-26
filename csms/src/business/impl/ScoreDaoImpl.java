@@ -80,7 +80,7 @@ public class ScoreDaoImpl implements ScoreDAO {
 
 	@Override
 	public List<VScore> getScoreByPage(String strwhere, int startPage, int limit) {
-		String hql = "from VScore where (protype=1 or protype=2) and sportid="+config.getSportid() + strwhere;
+		String hql = "from VScore where sportid="+config.getSportid() + strwhere;
 		List<VScore> list = bdao.selectByPage(hql, startPage, limit);
 		if (list != null && list.size() > 0) {
 			return list;
@@ -127,6 +127,29 @@ public class ScoreDaoImpl implements ScoreDAO {
 			return list;
 		} else {
 			return null;
+		}
+	}
+	@Override
+	public double allScore(String userid) {
+		String hql = "select round(sum(scorenumber),2) as scorenumber from VScore where userid=? and sportid=?";
+		Object[] param = { userid, config.getSportid() };
+		List list = bdao.select(hql, param);
+		if (list != null && list.size() > 0) {
+			return (Double) list.get(0);
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public double avgScore(String userid) {
+		String hql = "select round(avg(scorenumber),2) as scorenumber from VScore where userid=? and sportid=?";
+		Object[] param = { userid, config.getSportid() };
+		List list = bdao.select(hql, param);
+		if (list != null && list.size() > 0) {
+			return (Double) list.get(0);
+		} else {
+			return 0;
 		}
 	}
 }

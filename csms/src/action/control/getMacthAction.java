@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
-import model.ReturnData;
 import model.TMajor;
 import model.TMatch;
 import model.VMatch;
@@ -12,6 +11,7 @@ import model.VMatch;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import util.LayuiData;
 import business.dao.MajorDAO;
 import business.dao.MatchDAO;
 
@@ -53,8 +53,8 @@ public class getMacthAction extends BaseAction {
 		try {
 			List<VMatch> list = matchdao.selectByPage(page, limit);
 			int count = matchdao.getPageCount();
-			ReturnData rd = new ReturnData();
-			rd.code = ReturnData.SUCCESS;
+			LayuiData rd = new LayuiData();
+			rd.code = LayuiData.SUCCESS;
 			rd.msg = "³É¹¦";
 			rd.count = count;
 			rd.data = list;
@@ -65,6 +65,6 @@ public class getMacthAction extends BaseAction {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return SUCCESS;
+		return null;
 	}
 }

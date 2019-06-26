@@ -38,7 +38,7 @@ public class getNewAction extends BaseAction {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return SUCCESS;
+			return null;
 		} else {
 			news = newsdao.getNewsById(Integer.parseInt(newsId));
 			request.setAttribute("news", news);

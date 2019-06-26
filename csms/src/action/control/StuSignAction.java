@@ -39,6 +39,6 @@ public class StuSignAction extends BaseAction {
 				}
 			}
 		}
-		return SUCCESS;
+		return null;
 	}
 }

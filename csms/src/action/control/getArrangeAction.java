@@ -5,16 +5,12 @@ import java.io.Writer;
 import java.util.List;
 
 import util.LayuiData;
-import model.ReturnData;
-import model.TArrange;
 import model.TClass;
 import model.TCollege;
 import model.VArrange;
 import model.VClass;
-import model.VScene;
 
 import com.alibaba.fastjson.JSON;
-import com.opensymphony.xwork2.ActionSupport;
 
 public class getArrangeAction extends BaseAction {
 
@@ -36,8 +32,7 @@ public class getArrangeAction extends BaseAction {
 				String collegeid = request.getParameter("collegeid");
 				// 获取学院信息和班级信息
 				if (collegeid != null && !collegeid.equals("")) {
-					List<VClass> classlist = bdao
-							.select("from VClass where collegeid=" + collegeid);
+					List<VClass> classlist = bdao.select("from VClass where collegeid=" + collegeid);
 					try {
 						out = response.getWriter();
 						out.write(JSON.toJSONString(classlist));
@@ -59,7 +54,7 @@ public class getArrangeAction extends BaseAction {
 						e.printStackTrace();
 					}
 				}
-				return SUCCESS;
+				return null;
 
 			} else {
 
@@ -109,7 +104,7 @@ public class getArrangeAction extends BaseAction {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				return SUCCESS;
+				return null;
 			}
 
 		}else if(op.equals("getarr")){
@@ -130,8 +125,8 @@ public class getArrangeAction extends BaseAction {
 					}
 				}
 				List<VArrange> list = arrangedao.selectByPage(strWhere, limit, startPage);
-				ReturnData data = new ReturnData();
-				data.code = ReturnData.SUCCESS;
+				LayuiData data = new LayuiData();
+				data.code = LayuiData.SUCCESS;
 				data.data = list;
 				data.count = arrangedao.getCount(strWhere);
 				out.write(JSON.toJSONString(data));
@@ -142,7 +137,7 @@ public class getArrangeAction extends BaseAction {
 				e.printStackTrace();
 			}
 		}
-		return SUCCESS;
+		return null;
 
 	}
 }

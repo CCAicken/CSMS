@@ -83,4 +83,16 @@ public interface ScoreDAO {
 	 * @return 成绩列表
 	 */
 	public int allScoreCount(String strwhere);
+	
+	/**
+	 * 获取某个用户的总分
+	 * @return
+	 */
+	public double allScore(String userid);
+
+	/**
+	 * 获取某个用户的平均分
+	 * @return
+	 */
+	public double avgScore(String userid);
 }

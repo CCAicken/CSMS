@@ -45,7 +45,7 @@ public class getApplication extends BaseAction {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return SUCCESS;
+			return null;
 		}
 		
 	}
