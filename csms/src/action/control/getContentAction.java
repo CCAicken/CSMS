@@ -18,7 +18,7 @@ public class getContentAction extends BaseAction {
 	 */
 	public String execute() {
 		String op = request.getParameter("op");
-		//返回layui表格
+		// 返回layui表格
 		if (op.equals("table")) {
 			String startPage = request.getParameter("page");// 起始页面
 			int limit = Integer.parseInt(request.getParameter("limit"));// 每页限制条数
@@ -38,21 +38,21 @@ public class getContentAction extends BaseAction {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return SUCCESS;
+			// return SUCCESS;
 		} else if (op.equals("byforumid")) {
-			//返回所有学院信息列表
-			int forumid  = Integer.parseInt(request.getParameter("titleid"));
+			// 返回所有学院信息列表
+			int forumid = Integer.parseInt(request.getParameter("titleid"));
 			TForumTitle forum = forumdao.getTForumById(forumid);
 			List<VForum> listcontent = contentdao.getContentByForumid(forumid);
 			request.setAttribute("listcontent", listcontent);
 			request.setAttribute("forum", forum);
-			return SUCCESS;
+			// return SUCCESS;
 		} else if (op.equals("byid")) {
-			//根据学院id返回该学院信息列表
-			int contentid  = (Integer) request.getAttribute("contentid");
+			// 根据学院id返回该学院信息列表
+			int contentid = (Integer) request.getAttribute("contentid");
 			TForumContent content = contentdao.getTContnentById(contentid);
 			request.setAttribute("content", content);
-			return SUCCESS;
+			// return SUCCESS;
 		}
 		return SUCCESS;
 	}
