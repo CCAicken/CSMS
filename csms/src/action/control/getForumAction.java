@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
-import model.ReturnData;
 import model.TForumTitle;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import util.LayuiData;
 import business.dao.ForumDAO;
 import business.impl.ForumDAOImpl;
 
@@ -55,8 +55,8 @@ public class getForumAction extends BaseAction {
 		try {
 			List<TForumTitle> list = forumdao.getForumTitleByPages(page, limit);
 			int count = forumdao.getPageCount();
-			ReturnData rd = new ReturnData();
-			rd.code = ReturnData.SUCCESS;
+			LayuiData rd = new LayuiData();
+			rd.code = LayuiData.SUCCESS;
 			rd.msg = "³É¹¦";
 			rd.count = count;
 			rd.data = list;
@@ -67,6 +67,6 @@ public class getForumAction extends BaseAction {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return SUCCESS;
+		return null;
 	}
 }

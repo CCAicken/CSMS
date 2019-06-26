@@ -3,12 +3,8 @@ package action.control;
 import java.io.IOException;
 import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-
-import model.ReturnData;
+import util.LayuiData;
 import model.TProject;
-import model.VProject;
-import model.VClassScore;
 import model.VScore;
 import model.VSportProject;
 
@@ -54,8 +50,8 @@ public class getProjectScoreAction extends BaseAction {
 				//strsearch += " order by protype";
 				List<VSportProject> clalist = projectdao.selectList(strsearch,Integer.parseInt(page),Integer.parseInt(limit));
 				request.setAttribute("type", "project");
-				ReturnData rd = new ReturnData();
-				rd.code = ReturnData.SUCCESS;
+				LayuiData rd = new LayuiData();
+				rd.code = LayuiData.SUCCESS;
 				rd.data = clalist;
 				rd.count= projectdao.getProCount(strsearch);
 				out.write(JSON.toJSONString(rd));
@@ -81,8 +77,8 @@ public class getProjectScoreAction extends BaseAction {
 				}
 				List<VScore> clalist = scoredao.getScore(strsearch);
 				request.setAttribute("type", "project");
-				ReturnData rd = new ReturnData();
-				rd.code = ReturnData.SUCCESS;
+				LayuiData rd = new LayuiData();
+				rd.code = LayuiData.SUCCESS;
 				rd.data = clalist;
 				out.write(JSON.toJSONString(rd));
 				out.flush();

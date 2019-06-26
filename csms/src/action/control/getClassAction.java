@@ -1,19 +1,12 @@
 package action.control;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.util.List;
 
-import model.ReturnData;
-import model.TClass;
-import model.TForumTitle;
-import model.TMajor;
 import model.VClass;
 import util.LayuiData;
 
 import com.alibaba.fastjson.JSON;
-import com.opensymphony.xwork2.ActionSupport;
 
 public class getClassAction extends BaseAction {
 
@@ -25,8 +18,8 @@ public class getClassAction extends BaseAction {
 			String majorid = request.getParameter("majorid");
 			if(majorid!=null && !majorid.equals("")){
 				List<VClass> listclass = classesdao.selectByMajorVclass(Integer.parseInt(majorid));
-				ReturnData rd = new ReturnData();
-				rd.code = ReturnData.SUCCESS;
+				LayuiData rd = new LayuiData();
+				rd.code = LayuiData.SUCCESS;
 				rd.msg = "成功";
 				rd.data = listclass;
 				out.write(JSON.toJSONString(rd));
@@ -41,7 +34,7 @@ public class getClassAction extends BaseAction {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return SUCCESS;
+		return null;
 //		String op = request.getParameter("op");
 //		//返回layui表格
 //		if (op.equals("table")) {

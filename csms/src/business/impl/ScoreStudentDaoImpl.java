@@ -24,7 +24,7 @@ public class ScoreStudentDaoImpl implements ScoreStudentDAO {
 
 	@Override
 	public VScore getByUserid(String userid) {
-		String hql = "from VStudentScore where userid=? and sportid=?";
+		String hql = "from VScore where userid=? and sportid=?";
 		Object[] param = { userid, config.getSportid() };
 		List<VScore> list = bdao.select(hql, param);
 		if (list != null && list.size() > 0) {
@@ -33,18 +33,6 @@ public class ScoreStudentDaoImpl implements ScoreStudentDAO {
 				return newScore;
 			}
 			return null;
-		} else {
-			return null;
-		}
-	}
-
-	@Override
-	public List<VScore> getScoreStudent(String userid) {
-		String hql = "from VScore where userid=? and sportid=?";
-		Object[] param = { userid, config.getSportid() };
-		List<VScore> list = bdao.select(hql, param);
-		if (list != null && list.size() > 0) {
-			return list;
 		} else {
 			return null;
 		}

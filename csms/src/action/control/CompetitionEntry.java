@@ -117,6 +117,6 @@ public class CompetitionEntry extends BaseAction {
 			out.flush();
 			out.close();
 		}
-		return SUCCESS;
+		return null;
 	}
 }

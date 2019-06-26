@@ -37,7 +37,7 @@ public class ChangePwdAction extends BaseAction {
 						out.write("修改成功");
 						out.flush();
 						out.close();
-						return SUCCESS;
+						return null;
 					} else {
 						out.write("修改失败");
 						out.flush();
@@ -62,7 +62,7 @@ public class ChangePwdAction extends BaseAction {
 						out.write("修改成功");
 						out.flush();
 						out.close();
-						return SUCCESS;
+						return null;
 					} else {
 						// out.print("修改失败");
 						out.write("修改失败");
@@ -75,6 +75,6 @@ public class ChangePwdAction extends BaseAction {
 			e.printStackTrace();
 		}
 
-		return SUCCESS;
+		return null;
 	}
 }
