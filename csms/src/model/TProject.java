@@ -16,9 +16,9 @@ public class TProject implements java.io.Serializable {
 	private Integer protype;
 	private Integer currentnum;
 	private String record;
-	private String holderStu;
+	private String holderid;
 	private Integer classid;
-	private String holderTea;
+	private String holdername;
 	private Integer collegeid;
 	private Integer sportid;
 
@@ -42,7 +42,7 @@ public class TProject implements java.io.Serializable {
 	/** full constructor */
 	public TProject(String proname, Integer scenelimit, Integer collegelimit,
 			Integer totallimit, Integer protype, Integer currentnum,
-			String record, String holderStu, Integer classid, String holderTea,
+			String record, String holderid, Integer classid, String holdername,
 			Integer collegeid, Integer sportid) {
 		this.proname = proname;
 		this.scenelimit = scenelimit;
@@ -51,9 +51,9 @@ public class TProject implements java.io.Serializable {
 		this.protype = protype;
 		this.currentnum = currentnum;
 		this.record = record;
-		this.holderStu = holderStu;
+		this.holderid = holderid;
 		this.classid = classid;
-		this.holderTea = holderTea;
+		this.holdername = holdername;
 		this.collegeid = collegeid;
 		this.sportid = sportid;
 	}
@@ -124,12 +124,12 @@ public class TProject implements java.io.Serializable {
 		this.record = record;
 	}
 
-	public String getHolderStu() {
-		return this.holderStu;
+	public String getHolderid() {
+		return this.holderid;
 	}
 
-	public void setHolderStu(String holderStu) {
-		this.holderStu = holderStu;
+	public void setHolderid(String holderid) {
+		this.holderid = holderid;
 	}
 
 	public Integer getClassid() {
@@ -140,12 +140,12 @@ public class TProject implements java.io.Serializable {
 		this.classid = classid;
 	}
 
-	public String getHolderTea() {
-		return this.holderTea;
+	public String getHoldername() {
+		return this.holdername;
 	}
 
-	public void setHolderTea(String holderTea) {
-		this.holderTea = holderTea;
+	public void setHoldername(String holdername) {
+		this.holdername = holdername;
 	}
 
 	public Integer getCollegeid() {

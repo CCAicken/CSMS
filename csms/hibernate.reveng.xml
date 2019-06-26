@@ -207,10 +207,27 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="V_MajorScore" schema="dbo" catalog="CSMS"
-	class="model.VMajorScore">
+	<table name="V_MajorScore" schema="dbo" catalog="CSMS"
+		class="model.VMajorScore">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_RoleSystemModel" schema="dbo" catalog="CSMS"
+		class="model.TRoleSystemModel">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_SystemLog" schema="dbo" catalog="CSMS"
+		class="model.TSystemLog">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="T_User" schema="dbo" catalog="CSMS" class="model.TUser">
 	<primary-key>
-		<generator class="identity"></generator>
+		<generator class="assigned"></generator>
 	</primary-key>
 </table>
 </hibernate-reverse-engineering>

@@ -1,341 +1,351 @@
 package model;
 
-
-
 /**
  * VProject entity. @author MyEclipse Persistence Tools
  */
 
-public class VProject  implements java.io.Serializable {
-	 private Integer proid;
-     private String proname;
-     private Integer scenelimit;
-     private Integer collegelimit;
-     private Integer totallimit;
-     private Integer protype;
-     private Integer currentnum;
-     private String record;
-     private String holderStu;
-     private String holderTea;
-     private String username;
-     private String agend;
-     private Integer roleid;
-     private String teausername;
-     private String teaagend;
-     private Integer tearoleid;
-     private Integer collegeid;
-     private String collegename;
-     private Integer classid;
-     private String classname;
-     private Integer majorid;
-     private String majorname;
-     private Integer sportid;
-     private String sportname;
+public class VProject implements java.io.Serializable {
 
+	private Integer proid;
+	private String proname;
+	private Integer scenelimit;
+	private Integer collegelimit;
+	private Integer totallimit;
+	private Integer protype;
+	private Integer currentnum;
+	private String record;
+	private Integer collegeid;
+	private String collegename;
+	private Integer classid;
+	private String classname;
+	private Integer majorid;
+	private String majorname;
+	private Integer sportid;
+	private String sportname;
+	private String holderid;
+	private String holdername;
 
-    // Constructors
+	// Constructors
 
-    /** default constructor */
-    public VProject() {
-    }
+	/** default constructor */
+	public VProject() {
+	}
 
 	/** minimal constructor */
-    public VProject(Integer proid, String proname, Integer scenelimit, Integer collegelimit, Integer totallimit, Integer protype, Integer currentnum, String sportname) {
-        this.proid = proid;
-        this.proname = proname;
-        this.scenelimit = scenelimit;
-        this.collegelimit = collegelimit;
-        this.totallimit = totallimit;
-        this.protype = protype;
-        this.currentnum = currentnum;
-        this.sportname = sportname;
-    }
-    
-    /** full constructor */
-    public VProject(Integer proid, String proname, Integer scenelimit, Integer collegelimit, Integer totallimit, Integer protype, Integer currentnum, String record, String holderStu, String holderTea, String username, String agend, Integer roleid, String teausername, String teaagend, Integer tearoleid, Integer collegeid, String collegename, Integer classid, String classname, Integer majorid, String majorname, Integer sportid, String sportname) {
-        this.proid = proid;
-        this.proname = proname;
-        this.scenelimit = scenelimit;
-        this.collegelimit = collegelimit;
-        this.totallimit = totallimit;
-        this.protype = protype;
-        this.currentnum = currentnum;
-        this.record = record;
-        this.holderStu = holderStu;
-        this.holderTea = holderTea;
-        this.username = username;
-        this.agend = agend;
-        this.roleid = roleid;
-        this.teausername = teausername;
-        this.teaagend = teaagend;
-        this.tearoleid = tearoleid;
-        this.collegeid = collegeid;
-        this.collegename = collegename;
-        this.classid = classid;
-        this.classname = classname;
-        this.majorid = majorid;
-        this.majorname = majorname;
-        this.sportid = sportid;
-        this.sportname = sportname;
-    }
+	public VProject(Integer proid, String proname, Integer scenelimit,
+			Integer collegelimit, Integer totallimit, Integer protype,
+			Integer currentnum, String sportname) {
+		this.proid = proid;
+		this.proname = proname;
+		this.scenelimit = scenelimit;
+		this.collegelimit = collegelimit;
+		this.totallimit = totallimit;
+		this.protype = protype;
+		this.currentnum = currentnum;
+		this.sportname = sportname;
+	}
 
-   
-    // Property accessors
+	/** full constructor */
+	public VProject(Integer proid, String proname, Integer scenelimit,
+			Integer collegelimit, Integer totallimit, Integer protype,
+			Integer currentnum, String record, Integer collegeid,
+			String collegename, Integer classid, String classname,
+			Integer majorid, String majorname, Integer sportid,
+			String sportname, String holderid, String holdername) {
+		this.proid = proid;
+		this.proname = proname;
+		this.scenelimit = scenelimit;
+		this.collegelimit = collegelimit;
+		this.totallimit = totallimit;
+		this.protype = protype;
+		this.currentnum = currentnum;
+		this.record = record;
+		this.collegeid = collegeid;
+		this.collegename = collegename;
+		this.classid = classid;
+		this.classname = classname;
+		this.majorid = majorid;
+		this.majorname = majorname;
+		this.sportid = sportid;
+		this.sportname = sportname;
+		this.holderid = holderid;
+		this.holdername = holdername;
+	}
 
-    public Integer getProid() {
-        return this.proid;
-    }
-    
-    public void setProid(Integer proid) {
-        this.proid = proid;
-    }
+	// Property accessors
 
-    public String getProname() {
-        return this.proname;
-    }
-    
-    public void setProname(String proname) {
-        this.proname = proname;
-    }
+	public Integer getProid() {
+		return this.proid;
+	}
 
-    public Integer getScenelimit() {
-        return this.scenelimit;
-    }
-    
-    public void setScenelimit(Integer scenelimit) {
-        this.scenelimit = scenelimit;
-    }
+	public void setProid(Integer proid) {
+		this.proid = proid;
+	}
 
-    public Integer getCollegelimit() {
-        return this.collegelimit;
-    }
-    
-    public void setCollegelimit(Integer collegelimit) {
-        this.collegelimit = collegelimit;
-    }
+	public String getProname() {
+		return this.proname;
+	}
 
-    public Integer getTotallimit() {
-        return this.totallimit;
-    }
-    
-    public void setTotallimit(Integer totallimit) {
-        this.totallimit = totallimit;
-    }
+	public void setProname(String proname) {
+		this.proname = proname;
+	}
 
-    public Integer getProtype() {
-        return this.protype;
-    }
-    
-    public void setProtype(Integer protype) {
-        this.protype = protype;
-    }
+	public Integer getScenelimit() {
+		return this.scenelimit;
+	}
 
-    public Integer getCurrentnum() {
-        return this.currentnum;
-    }
-    
-    public void setCurrentnum(Integer currentnum) {
-        this.currentnum = currentnum;
-    }
+	public void setScenelimit(Integer scenelimit) {
+		this.scenelimit = scenelimit;
+	}
 
-    public String getRecord() {
-        return this.record;
-    }
-    
-    public void setRecord(String record) {
-        this.record = record;
-    }
+	public Integer getCollegelimit() {
+		return this.collegelimit;
+	}
 
-    public String getHolderStu() {
-        return this.holderStu;
-    }
-    
-    public void setHolderStu(String holderStu) {
-        this.holderStu = holderStu;
-    }
+	public void setCollegelimit(Integer collegelimit) {
+		this.collegelimit = collegelimit;
+	}
 
-    public String getHolderTea() {
-        return this.holderTea;
-    }
-    
-    public void setHolderTea(String holderTea) {
-        this.holderTea = holderTea;
-    }
+	public Integer getTotallimit() {
+		return this.totallimit;
+	}
 
-    public String getUsername() {
-        return this.username;
-    }
-    
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setTotallimit(Integer totallimit) {
+		this.totallimit = totallimit;
+	}
 
-    public String getAgend() {
-        return this.agend;
-    }
-    
-    public void setAgend(String agend) {
-        this.agend = agend;
-    }
+	public Integer getProtype() {
+		return this.protype;
+	}
 
-    public Integer getRoleid() {
-        return this.roleid;
-    }
-    
-    public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
-    }
+	public void setProtype(Integer protype) {
+		this.protype = protype;
+	}
 
-    public String getTeausername() {
-        return this.teausername;
-    }
-    
-    public void setTeausername(String teausername) {
-        this.teausername = teausername;
-    }
+	public Integer getCurrentnum() {
+		return this.currentnum;
+	}
 
-    public String getTeaagend() {
-        return this.teaagend;
-    }
-    
-    public void setTeaagend(String teaagend) {
-        this.teaagend = teaagend;
-    }
+	public void setCurrentnum(Integer currentnum) {
+		this.currentnum = currentnum;
+	}
 
-    public Integer getTearoleid() {
-        return this.tearoleid;
-    }
-    
-    public void setTearoleid(Integer tearoleid) {
-        this.tearoleid = tearoleid;
-    }
+	public String getRecord() {
+		return this.record;
+	}
 
-    public Integer getCollegeid() {
-        return this.collegeid;
-    }
-    
-    public void setCollegeid(Integer collegeid) {
-        this.collegeid = collegeid;
-    }
+	public void setRecord(String record) {
+		this.record = record;
+	}
 
-    public String getCollegename() {
-        return this.collegename;
-    }
-    
-    public void setCollegename(String collegename) {
-        this.collegename = collegename;
-    }
+	public Integer getCollegeid() {
+		return this.collegeid;
+	}
 
-    public Integer getClassid() {
-        return this.classid;
-    }
-    
-    public void setClassid(Integer classid) {
-        this.classid = classid;
-    }
+	public void setCollegeid(Integer collegeid) {
+		this.collegeid = collegeid;
+	}
 
-    public String getClassname() {
-        return this.classname;
-    }
-    
-    public void setClassname(String classname) {
-        this.classname = classname;
-    }
+	public String getCollegename() {
+		return this.collegename;
+	}
 
-    public Integer getMajorid() {
-        return this.majorid;
-    }
-    
-    public void setMajorid(Integer majorid) {
-        this.majorid = majorid;
-    }
+	public void setCollegename(String collegename) {
+		this.collegename = collegename;
+	}
 
-    public String getMajorname() {
-        return this.majorname;
-    }
-    
-    public void setMajorname(String majorname) {
-        this.majorname = majorname;
-    }
+	public Integer getClassid() {
+		return this.classid;
+	}
 
-    public Integer getSportid() {
-        return this.sportid;
-    }
-    
-    public void setSportid(Integer sportid) {
-        this.sportid = sportid;
-    }
+	public void setClassid(Integer classid) {
+		this.classid = classid;
+	}
 
-    public String getSportname() {
-        return this.sportname;
-    }
-    
-    public void setSportname(String sportname) {
-        this.sportname = sportname;
-    }
-   
+	public String getClassname() {
+		return this.classname;
+	}
 
+	public void setClassname(String classname) {
+		this.classname = classname;
+	}
 
+	public Integer getMajorid() {
+		return this.majorid;
+	}
 
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof VProject) ) return false;
-		 VProject castOther = ( VProject ) other; 
-         
-		 return ( (this.getProid()==castOther.getProid()) || ( this.getProid()!=null && castOther.getProid()!=null && this.getProid().equals(castOther.getProid()) ) )
- && ( (this.getProname()==castOther.getProname()) || ( this.getProname()!=null && castOther.getProname()!=null && this.getProname().equals(castOther.getProname()) ) )
- && ( (this.getScenelimit()==castOther.getScenelimit()) || ( this.getScenelimit()!=null && castOther.getScenelimit()!=null && this.getScenelimit().equals(castOther.getScenelimit()) ) )
- && ( (this.getCollegelimit()==castOther.getCollegelimit()) || ( this.getCollegelimit()!=null && castOther.getCollegelimit()!=null && this.getCollegelimit().equals(castOther.getCollegelimit()) ) )
- && ( (this.getTotallimit()==castOther.getTotallimit()) || ( this.getTotallimit()!=null && castOther.getTotallimit()!=null && this.getTotallimit().equals(castOther.getTotallimit()) ) )
- && ( (this.getProtype()==castOther.getProtype()) || ( this.getProtype()!=null && castOther.getProtype()!=null && this.getProtype().equals(castOther.getProtype()) ) )
- && ( (this.getCurrentnum()==castOther.getCurrentnum()) || ( this.getCurrentnum()!=null && castOther.getCurrentnum()!=null && this.getCurrentnum().equals(castOther.getCurrentnum()) ) )
- && ( (this.getRecord()==castOther.getRecord()) || ( this.getRecord()!=null && castOther.getRecord()!=null && this.getRecord().equals(castOther.getRecord()) ) )
- && ( (this.getHolderStu()==castOther.getHolderStu()) || ( this.getHolderStu()!=null && castOther.getHolderStu()!=null && this.getHolderStu().equals(castOther.getHolderStu()) ) )
- && ( (this.getHolderTea()==castOther.getHolderTea()) || ( this.getHolderTea()!=null && castOther.getHolderTea()!=null && this.getHolderTea().equals(castOther.getHolderTea()) ) )
- && ( (this.getUsername()==castOther.getUsername()) || ( this.getUsername()!=null && castOther.getUsername()!=null && this.getUsername().equals(castOther.getUsername()) ) )
- && ( (this.getAgend()==castOther.getAgend()) || ( this.getAgend()!=null && castOther.getAgend()!=null && this.getAgend().equals(castOther.getAgend()) ) )
- && ( (this.getRoleid()==castOther.getRoleid()) || ( this.getRoleid()!=null && castOther.getRoleid()!=null && this.getRoleid().equals(castOther.getRoleid()) ) )
- && ( (this.getTeausername()==castOther.getTeausername()) || ( this.getTeausername()!=null && castOther.getTeausername()!=null && this.getTeausername().equals(castOther.getTeausername()) ) )
- && ( (this.getTeaagend()==castOther.getTeaagend()) || ( this.getTeaagend()!=null && castOther.getTeaagend()!=null && this.getTeaagend().equals(castOther.getTeaagend()) ) )
- && ( (this.getTearoleid()==castOther.getTearoleid()) || ( this.getTearoleid()!=null && castOther.getTearoleid()!=null && this.getTearoleid().equals(castOther.getTearoleid()) ) )
- && ( (this.getCollegeid()==castOther.getCollegeid()) || ( this.getCollegeid()!=null && castOther.getCollegeid()!=null && this.getCollegeid().equals(castOther.getCollegeid()) ) )
- && ( (this.getCollegename()==castOther.getCollegename()) || ( this.getCollegename()!=null && castOther.getCollegename()!=null && this.getCollegename().equals(castOther.getCollegename()) ) )
- && ( (this.getClassid()==castOther.getClassid()) || ( this.getClassid()!=null && castOther.getClassid()!=null && this.getClassid().equals(castOther.getClassid()) ) )
- && ( (this.getClassname()==castOther.getClassname()) || ( this.getClassname()!=null && castOther.getClassname()!=null && this.getClassname().equals(castOther.getClassname()) ) )
- && ( (this.getMajorid()==castOther.getMajorid()) || ( this.getMajorid()!=null && castOther.getMajorid()!=null && this.getMajorid().equals(castOther.getMajorid()) ) )
- && ( (this.getMajorname()==castOther.getMajorname()) || ( this.getMajorname()!=null && castOther.getMajorname()!=null && this.getMajorname().equals(castOther.getMajorname()) ) )
- && ( (this.getSportid()==castOther.getSportid()) || ( this.getSportid()!=null && castOther.getSportid()!=null && this.getSportid().equals(castOther.getSportid()) ) )
- && ( (this.getSportname()==castOther.getSportname()) || ( this.getSportname()!=null && castOther.getSportname()!=null && this.getSportname().equals(castOther.getSportname()) ) );
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + ( getProid() == null ? 0 : this.getProid().hashCode() );
-         result = 37 * result + ( getProname() == null ? 0 : this.getProname().hashCode() );
-         result = 37 * result + ( getScenelimit() == null ? 0 : this.getScenelimit().hashCode() );
-         result = 37 * result + ( getCollegelimit() == null ? 0 : this.getCollegelimit().hashCode() );
-         result = 37 * result + ( getTotallimit() == null ? 0 : this.getTotallimit().hashCode() );
-         result = 37 * result + ( getProtype() == null ? 0 : this.getProtype().hashCode() );
-         result = 37 * result + ( getCurrentnum() == null ? 0 : this.getCurrentnum().hashCode() );
-         result = 37 * result + ( getRecord() == null ? 0 : this.getRecord().hashCode() );
-         result = 37 * result + ( getHolderStu() == null ? 0 : this.getHolderStu().hashCode() );
-         result = 37 * result + ( getHolderTea() == null ? 0 : this.getHolderTea().hashCode() );
-         result = 37 * result + ( getUsername() == null ? 0 : this.getUsername().hashCode() );
-         result = 37 * result + ( getAgend() == null ? 0 : this.getAgend().hashCode() );
-         result = 37 * result + ( getRoleid() == null ? 0 : this.getRoleid().hashCode() );
-         result = 37 * result + ( getTeausername() == null ? 0 : this.getTeausername().hashCode() );
-         result = 37 * result + ( getTeaagend() == null ? 0 : this.getTeaagend().hashCode() );
-         result = 37 * result + ( getTearoleid() == null ? 0 : this.getTearoleid().hashCode() );
-         result = 37 * result + ( getCollegeid() == null ? 0 : this.getCollegeid().hashCode() );
-         result = 37 * result + ( getCollegename() == null ? 0 : this.getCollegename().hashCode() );
-         result = 37 * result + ( getClassid() == null ? 0 : this.getClassid().hashCode() );
-         result = 37 * result + ( getClassname() == null ? 0 : this.getClassname().hashCode() );
-         result = 37 * result + ( getMajorid() == null ? 0 : this.getMajorid().hashCode() );
-         result = 37 * result + ( getMajorname() == null ? 0 : this.getMajorname().hashCode() );
-         result = 37 * result + ( getSportid() == null ? 0 : this.getSportid().hashCode() );
-         result = 37 * result + ( getSportname() == null ? 0 : this.getSportname().hashCode() );
-         return result;
-   }  
+	public void setMajorid(Integer majorid) {
+		this.majorid = majorid;
+	}
+
+	public String getMajorname() {
+		return this.majorname;
+	}
+
+	public void setMajorname(String majorname) {
+		this.majorname = majorname;
+	}
+
+	public Integer getSportid() {
+		return this.sportid;
+	}
+
+	public void setSportid(Integer sportid) {
+		this.sportid = sportid;
+	}
+
+	public String getSportname() {
+		return this.sportname;
+	}
+
+	public void setSportname(String sportname) {
+		this.sportname = sportname;
+	}
+
+	public String getHolderid() {
+		return this.holderid;
+	}
+
+	public void setHolderid(String holderid) {
+		this.holderid = holderid;
+	}
+
+	public String getHoldername() {
+		return this.holdername;
+	}
+
+	public void setHoldername(String holdername) {
+		this.holdername = holdername;
+	}
+
+	public boolean equals(Object other) {
+		if ((this == other))
+			return true;
+		if ((other == null))
+			return false;
+		if (!(other instanceof VProject))
+			return false;
+		VProject castOther = (VProject) other;
+
+		return ((this.getProid() == castOther.getProid()) || (this.getProid() != null
+				&& castOther.getProid() != null && this.getProid().equals(
+				castOther.getProid())))
+				&& ((this.getProname() == castOther.getProname()) || (this
+						.getProname() != null && castOther.getProname() != null && this
+						.getProname().equals(castOther.getProname())))
+				&& ((this.getScenelimit() == castOther.getScenelimit()) || (this
+						.getScenelimit() != null
+						&& castOther.getScenelimit() != null && this
+						.getScenelimit().equals(castOther.getScenelimit())))
+				&& ((this.getCollegelimit() == castOther.getCollegelimit()) || (this
+						.getCollegelimit() != null
+						&& castOther.getCollegelimit() != null && this
+						.getCollegelimit().equals(castOther.getCollegelimit())))
+				&& ((this.getTotallimit() == castOther.getTotallimit()) || (this
+						.getTotallimit() != null
+						&& castOther.getTotallimit() != null && this
+						.getTotallimit().equals(castOther.getTotallimit())))
+				&& ((this.getProtype() == castOther.getProtype()) || (this
+						.getProtype() != null && castOther.getProtype() != null && this
+						.getProtype().equals(castOther.getProtype())))
+				&& ((this.getCurrentnum() == castOther.getCurrentnum()) || (this
+						.getCurrentnum() != null
+						&& castOther.getCurrentnum() != null && this
+						.getCurrentnum().equals(castOther.getCurrentnum())))
+				&& ((this.getRecord() == castOther.getRecord()) || (this
+						.getRecord() != null && castOther.getRecord() != null && this
+						.getRecord().equals(castOther.getRecord())))
+				&& ((this.getCollegeid() == castOther.getCollegeid()) || (this
+						.getCollegeid() != null
+						&& castOther.getCollegeid() != null && this
+						.getCollegeid().equals(castOther.getCollegeid())))
+				&& ((this.getCollegename() == castOther.getCollegename()) || (this
+						.getCollegename() != null
+						&& castOther.getCollegename() != null && this
+						.getCollegename().equals(castOther.getCollegename())))
+				&& ((this.getClassid() == castOther.getClassid()) || (this
+						.getClassid() != null && castOther.getClassid() != null && this
+						.getClassid().equals(castOther.getClassid())))
+				&& ((this.getClassname() == castOther.getClassname()) || (this
+						.getClassname() != null
+						&& castOther.getClassname() != null && this
+						.getClassname().equals(castOther.getClassname())))
+				&& ((this.getMajorid() == castOther.getMajorid()) || (this
+						.getMajorid() != null && castOther.getMajorid() != null && this
+						.getMajorid().equals(castOther.getMajorid())))
+				&& ((this.getMajorname() == castOther.getMajorname()) || (this
+						.getMajorname() != null
+						&& castOther.getMajorname() != null && this
+						.getMajorname().equals(castOther.getMajorname())))
+				&& ((this.getSportid() == castOther.getSportid()) || (this
+						.getSportid() != null && castOther.getSportid() != null && this
+						.getSportid().equals(castOther.getSportid())))
+				&& ((this.getSportname() == castOther.getSportname()) || (this
+						.getSportname() != null
+						&& castOther.getSportname() != null && this
+						.getSportname().equals(castOther.getSportname())))
+				&& ((this.getHolderid() == castOther.getHolderid()) || (this
+						.getHolderid() != null
+						&& castOther.getHolderid() != null && this
+						.getHolderid().equals(castOther.getHolderid())))
+				&& ((this.getHoldername() == castOther.getHoldername()) || (this
+						.getHoldername() != null
+						&& castOther.getHoldername() != null && this
+						.getHoldername().equals(castOther.getHoldername())));
+	}
+
+	public int hashCode() {
+		int result = 17;
+
+		result = 37 * result
+				+ (getProid() == null ? 0 : this.getProid().hashCode());
+		result = 37 * result
+				+ (getProname() == null ? 0 : this.getProname().hashCode());
+		result = 37
+				* result
+				+ (getScenelimit() == null ? 0 : this.getScenelimit()
+						.hashCode());
+		result = 37
+				* result
+				+ (getCollegelimit() == null ? 0 : this.getCollegelimit()
+						.hashCode());
+		result = 37
+				* result
+				+ (getTotallimit() == null ? 0 : this.getTotallimit()
+						.hashCode());
+		result = 37 * result
+				+ (getProtype() == null ? 0 : this.getProtype().hashCode());
+		result = 37
+				* result
+				+ (getCurrentnum() == null ? 0 : this.getCurrentnum()
+						.hashCode());
+		result = 37 * result
+				+ (getRecord() == null ? 0 : this.getRecord().hashCode());
+		result = 37 * result
+				+ (getCollegeid() == null ? 0 : this.getCollegeid().hashCode());
+		result = 37
+				* result
+				+ (getCollegename() == null ? 0 : this.getCollegename()
+						.hashCode());
+		result = 37 * result
+				+ (getClassid() == null ? 0 : this.getClassid().hashCode());
+		result = 37 * result
+				+ (getClassname() == null ? 0 : this.getClassname().hashCode());
+		result = 37 * result
+				+ (getMajorid() == null ? 0 : this.getMajorid().hashCode());
+		result = 37 * result
+				+ (getMajorname() == null ? 0 : this.getMajorname().hashCode());
+		result = 37 * result
+				+ (getSportid() == null ? 0 : this.getSportid().hashCode());
+		result = 37 * result
+				+ (getSportname() == null ? 0 : this.getSportname().hashCode());
+		result = 37 * result
+				+ (getHolderid() == null ? 0 : this.getHolderid().hashCode());
+		result = 37
+				* result
+				+ (getHoldername() == null ? 0 : this.getHoldername()
+						.hashCode());
+		return result;
+	}
+
 }

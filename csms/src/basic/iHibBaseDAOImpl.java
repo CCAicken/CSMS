@@ -12,19 +12,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Basic;
-
-import model.TStudent;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class iHibBaseDAOImpl implements iHibBaseDAO {
 	public static final int INSERT = 1;// 代表添加操作
@@ -736,7 +729,7 @@ public class iHibBaseDAOImpl implements iHibBaseDAO {
 			ptmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = ptmt.executeQuery();
-			//转list
+			// 转list
 			List list = new ArrayList();
 			ResultSetMetaData md = rs.getMetaData();
 			int columnCount = md.getColumnCount(); // Map rowData;

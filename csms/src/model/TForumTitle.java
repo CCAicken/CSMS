@@ -21,8 +21,16 @@ public class TForumTitle implements java.io.Serializable {
 	public TForumTitle() {
 	}
 
+	/** minimal constructor */
+	public TForumTitle(String title, String author, String createtime) {
+		this.title = title;
+		this.author = author;
+		this.createtime = createtime;
+	}
+
 	/** full constructor */
-	public TForumTitle(String title, String author, String createtime,Integer sportid) {
+	public TForumTitle(String title, String author, String createtime,
+			Integer sportid) {
 		this.title = title;
 		this.author = author;
 		this.createtime = createtime;
@@ -62,7 +70,7 @@ public class TForumTitle implements java.io.Serializable {
 	public void setCreatetime(String createtime) {
 		this.createtime = createtime;
 	}
-	
+
 	public Integer getSportid() {
 		return this.sportid;
 	}
@@ -70,4 +78,5 @@ public class TForumTitle implements java.io.Serializable {
 	public void setSportid(Integer sportid) {
 		this.sportid = sportid;
 	}
+
 }

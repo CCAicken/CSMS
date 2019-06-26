@@ -12,7 +12,6 @@ public class VClass implements java.io.Serializable {
 	private String majorname;
 	private Integer collegeid;
 	private String collegename;
-	private Double scorenumber;
 
 	// Constructors
 
@@ -22,14 +21,13 @@ public class VClass implements java.io.Serializable {
 
 	/** full constructor */
 	public VClass(Integer classid, String classname, Integer majorid,
-			String majorname, Integer collegeid, String collegename,Double scorenumber) {
+			String majorname, Integer collegeid, String collegename) {
 		this.classid = classid;
 		this.classname = classname;
 		this.majorid = majorid;
 		this.majorname = majorname;
 		this.collegeid = collegeid;
 		this.collegename = collegename;
-		this.scorenumber = scorenumber;
 	}
 
 	// Property accessors
@@ -82,14 +80,6 @@ public class VClass implements java.io.Serializable {
 		this.collegename = collegename;
 	}
 
-	public Double getScorenumber() {
-		return scorenumber;
-	}
-
-	public void setScorenumber(Double scorenumber) {
-		this.scorenumber = scorenumber;
-	}
-
 	public boolean equals(Object other) {
 		if ((this == other))
 			return true;
@@ -120,11 +110,7 @@ public class VClass implements java.io.Serializable {
 				&& ((this.getCollegename() == castOther.getCollegename()) || (this
 						.getCollegename() != null
 						&& castOther.getCollegename() != null && this
-						.getCollegename().equals(castOther.getCollegename())))
-				&& ((this.getScorenumber() == castOther.getScorenumber()) || (this
-						.getScorenumber() != null
-						&& castOther.getScorenumber() != null && this
-						.getScorenumber().equals(castOther.getScorenumber())));
+						.getCollegename().equals(castOther.getCollegename())));
 	}
 
 	public int hashCode() {
@@ -140,10 +126,10 @@ public class VClass implements java.io.Serializable {
 				+ (getMajorname() == null ? 0 : this.getMajorname().hashCode());
 		result = 37 * result
 				+ (getCollegeid() == null ? 0 : this.getCollegeid().hashCode());
-		result = 37 * result
-				+ (getCollegename() == null ? 0 : this.getCollegename().hashCode());
-		result = 37 * result
-				+ (getScorenumber() == null ? 0 : this.getScorenumber().hashCode());
+		result = 37
+				* result
+				+ (getCollegename() == null ? 0 : this.getCollegename()
+						.hashCode());
 		return result;
 	}
 

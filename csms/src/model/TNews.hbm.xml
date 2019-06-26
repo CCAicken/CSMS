@@ -16,8 +16,11 @@
         <property name="newscontent" type="java.lang.String">
             <column name="newscontent" not-null="true" />
         </property>
-        <property name="teacerid" type="java.lang.Integer">
-            <column name="teacerid" not-null="true" />
+        <property name="adminuserid" type="java.lang.String">
+            <column name="adminuserid" length="50" not-null="true" />
+        </property>
+        <property name="datetime" type="java.lang.String">
+            <column name="datetime" length="23" not-null="true" />
         </property>
         <property name="sportid" type="java.lang.Integer">
             <column name="sportid" />

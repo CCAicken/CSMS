@@ -1,5 +1,6 @@
 package model;
 
+
 /**
  * VArrange entity. @author MyEclipse Persistence Tools
  */
@@ -28,8 +29,8 @@ public class VArrange implements java.io.Serializable {
 
 	/** full constructor */
 	public VArrange(Integer arrid, String arrname, Integer proid,
-			String proname, String starttime, String endtime,
-			String addr, Integer leveltype, Integer state, Integer scenelimit,
+			String proname, String starttime, String endtime, String addr,
+			Integer leveltype, Integer state, Integer scenelimit,
 			Integer collegelimit, Integer totallimit, Integer protype) {
 		this.arrid = arrid;
 		this.arrname = arrname;
@@ -244,4 +245,5 @@ public class VArrange implements java.io.Serializable {
 				+ (getProtype() == null ? 0 : this.getProtype().hashCode());
 		return result;
 	}
+
 }
