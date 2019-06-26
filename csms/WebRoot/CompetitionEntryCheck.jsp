@@ -38,7 +38,7 @@ body::-webkit-scrollbar {
 		</div>
 		<div class="layui-card-header text-center">
 			<div class="layui-row text-center">
-				<h1>比赛时间安排查询</h1>
+				<h1 align="center">比赛时间安排查询</h1>
 			</div>
 		</div>
 		<div class="layui-card-body">
