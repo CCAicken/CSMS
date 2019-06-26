@@ -3,13 +3,7 @@ package business.dao;
 import java.util.List;
 
 import model.TProject;
-
-import model.VProject;
 import model.VSportProject;
-
-import model.VProject;
-import model.VStudent;
-
 
 /**
  * 比赛项目业务接口类
@@ -62,13 +56,15 @@ public interface ProjectDAO {
 
 	/**
 	 * 获取所有项目对象列表
+	 * 
 	 * @param strwhere查询条件
 	 * @param startPage
 	 * @param pagesize
 	 * @return 项目对象列表
 	 */
-	public List<VSportProject> selectList(String strwhere,int startPage, int pageSize);
-	
+	public List<VSportProject> selectList(String strwhere, int startPage,
+			int pageSize);
+
 	/**
 	 * 通过项目类型获取项目对象列表
 	 * 
@@ -91,7 +87,8 @@ public interface ProjectDAO {
 	/**
 	 * 获取比赛项目数
 	 * 
-	 * @param roletype 角色类型
+	 * @param roletype
+	 *            角色类型
 	 * @return 返回比赛项目数
 	 */
 	public int getProCountByRole(String strwhere, int roletype);
@@ -99,25 +96,10 @@ public interface ProjectDAO {
 	/**
 	 * 获取比赛项目数
 	 * 
-	 * @param roletype 角色类型
+	 * @param roletype
+	 *            角色类型
 	 * @return 返回比赛项目数
 	 */
 	public int getProCount(String strwhere);
-
-	/**
-	 * 获取报名班级学生
-	 * 
-	 * @param strwhere
-	 *            查询条件
-	 * @param classid
-	 *            班级id
-	 * @param page
-	 * @param limit
-	 * @return
-	 */
-	public List<VStudent> selectPageClass(String strwhere, int classid,
-			int page, int limit);
-
-	public int stuAmount(String strwhere, int classid);
 
 }
