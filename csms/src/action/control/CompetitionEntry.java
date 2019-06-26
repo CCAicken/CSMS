@@ -40,7 +40,6 @@ public class CompetitionEntry extends BaseAction {
 		String strwhere = null;
 		String hql = null;
 		String hql2 = null;
-		System.out.println(proid);
 		if (roletype == RoleType.Student || roletype == RoleType.Committee) {
 			VStudent student = (VStudent) session.getAttribute("loginuser");
 			int classid = student.getClassid();
@@ -74,7 +73,7 @@ public class CompetitionEntry extends BaseAction {
 			int count = bdao.selectValue(hql2);
 			LayuiData data = new LayuiData();
 			data.code = LayuiData.SUCCESS;
-			data.count = 10;
+			data.count = count;
 			data.data = list;
 			out.write(JSON.toJSONString(data));
 			out.flush();
@@ -98,7 +97,7 @@ public class CompetitionEntry extends BaseAction {
 			List<VTeacher> list = bdao.selectByPage(hql, page, limit);
 			// hql2 = "select count(*) from VTeacher where collegeid=" +
 			// collegeid;
-			hql = "select count(*) from VTeacher where userid not in (select userid from VMatch where userid in (select userid from VTeacher where collegeid="
+			hql2 = "select count(*) from VTeacher where userid not in (select userid from VMatch where userid in (select userid from VTeacher where collegeid="
 					+ collegeid
 					+ ") and proid="
 					+ proid
@@ -112,7 +111,7 @@ public class CompetitionEntry extends BaseAction {
 			int count = bdao.selectValue(hql2);
 			LayuiData data = new LayuiData();
 			data.code = LayuiData.SUCCESS;
-			data.count = 10;
+			data.count = count;
 			data.data = list;
 			out.write(JSON.toJSONString(data));
 			out.flush();
