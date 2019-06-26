@@ -29,7 +29,7 @@
 		</div>
 		<div class="layui-card-header text-center">
 			<div class="layui-row text-center">
-				<h1>场次信息</h1>
+				<h1 align="center">场次信息</h1>
 			</div>
 		</div>
 		<div class="layui-card-body">
@@ -40,9 +40,9 @@
 							<select name="project" id="project" lay-filter="project"
 								lay-verify="required" lay-search="">
 								<option value="0">请选择或输入项目名称</option>
-								<c:forEach items="${projectlist}" var="obj">
+								<%-- <c:forEach items="${projectlist}" var="obj">
 									<option value="${obj.proid }">${obj.proname }</option>
-								</c:forEach>
+								</c:forEach> --%>
 							</select>
 						</div>
 					</div>
@@ -75,6 +75,47 @@
 <script>
 	layui.use([ 'form', 'table' ], function() {
 		var form = layui.form, table = layui.table;
+		loadProject();
+		//加载项目下拉框
+		function loadProject() {
+			$.ajax({
+				type : "post",
+				url : "getproject.action",
+				data : {},
+				dataType : "json",
+				success : function(succ) {
+					if (succ == "失败") {
+						layer.msg("请刷新后重试");
+					} else {
+						var tmp = '<option value="0">请选择或输入项目名称</option>';
+						for ( var i in succ.data) {
+							if(succ.data[i].protype == 1){
+								tmp += '<option value="' + succ.data[i].proid +  '">'
+								+ succ.data[i].proname
+								+ '(学生个人赛)</option>';
+							}else if(succ.data[i].protype == 2){
+								tmp += '<option value="' + succ.data[i].proid +  '">'
+								+ succ.data[i].proname
+								+ '(学生团体赛)</option>';
+							}else if(succ.data[i].protype == 3){
+								tmp += '<option value="' + succ.data[i].proid +  '">'
+								+ succ.data[i].proname
+								+ '(教师个人赛)</option>';
+							}else if(succ.data[i].protype == 4){
+								tmp += '<option value="' + succ.data[i].proid +  '">'
+								+ succ.data[i].proname
+								+ '(教师团体赛)</option>';
+							}
+						}
+						$("#project").html(tmp);
+						form.render();
+					}
+				},
+				error : function() {
+					layer.msg('请求失败，稍后再试',{icon : 5});
+				}
+			});
+		};
 		//监听提交
 		form.on('submit(search)', function(data) {
 			table.reload('tableOne', {
@@ -97,45 +138,38 @@
 			height : 'full+100',
 			id : 'tableOne',
 			page : true,
-			limit : 10,
-			limits : [10, 15,20 ],
+			limit : 5,
+			limits : [5,10, 15 ],
 			cols : [ [ // 表头
 			{
 				align : 'center',
 				field : '',
 				title : '序号',
-				width : 60,
 				type : 'numbers'
 			}, {
 				align : 'center',
 				field : 'arrname',
-				title : '场次名称',
-				width : 130
+				title : '场次名称'
 			}, {
 				align : 'center',
 				field : 'proname',
-				title : '项目名称',
-				width : 150
+				title : '项目名称'
 			}, {
 				align : 'center',
 				field : 'starttime',
-				title : '开始时间',
-				width : 120
+				title : '开始时间'
 			}, {
 				align : 'center',
 				field : 'endtime',
-				title : '结束时间',
-				width : 120
+				title : '结束时间'
 			}, {
 				align : 'center',
 				field : 'addr',
-				title : '比赛地点',
-				width : 150
+				title : '比赛地点'
 			}, {
 				align : 'center',
 				field : '',
 				title : '比赛级别',
-				width : 90,
 				templet : function(d) {
 					if (d.leveltype == 1) {
 						return "预赛";
@@ -147,7 +181,6 @@
 				align : 'center',
 				field : '',
 				title : '比赛状态',
-				width : 90,
 				templet : function(d) {
 					if (d.state == 0) {
 						return "未开始";
@@ -163,7 +196,6 @@
 				align : 'center',
 				field : '',
 				title : '操作',
-				width : 230,
 				toolbar : '#barDemo'
 			}, {
 				field : 'arrid',
