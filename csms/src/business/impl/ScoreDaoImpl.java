@@ -1,16 +1,20 @@
 package business.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import model.MedalRank;
+import model.TCollege;
 import model.TConfig;
 import model.TScore;
 import model.VScore;
 import basic.iHibBaseDAO;
 import business.dao.ScoreDAO;
+import business.factory.DAOFactory;
 
 public class ScoreDaoImpl implements ScoreDAO {
 	private iHibBaseDAO bdao;
@@ -152,4 +156,45 @@ public class ScoreDaoImpl implements ScoreDAO {
 			return 0;
 		}
 	}
+
+	@Override
+	public List<MedalRank> getMedalRank(int rank) {
+		String hql = "select a.collegeid,a.collegename,count(*) as count from (SELECT * FROM (select t.collegeid,t.collegename,t.proid,t.scorenumber,rank() over(partition by t.proid order by t.scorenumber desc) ranks from V_Score t) as b where b.ranks=?) as a group by a.collegeid,a.collegename;";
+		Object[] param = {rank};
+		List<MedalRank> list = bdao.select(hql,param);
+		if (list != null && list.size() > 0) {
+			return list;
+		} else {
+			return null;
+		}
+	}
+	
+	@Override
+	public List getRank() {
+		List list = new ArrayList();
+		List<TCollege> colllist = DAOFactory.getCollegeDAO().select();
+		List<MedalRank> goldlist = DAOFactory.getScoreDAO().getMedalRank(1);
+		List<MedalRank> silverlist = DAOFactory.getScoreDAO().getMedalRank(2);
+		List<MedalRank> bronzelist = DAOFactory.getScoreDAO().getMedalRank(3);
+		String[] medallist = {};
+		for(int i=0;i<colllist.size();i++){
+			String collegestr = colllist.get(i).toString();
+			medallist[i] = collegestr;
+		}
+		for(int j=0;j<medallist.length;j++){
+			for(int k=0;k<goldlist.size();k++){
+				if(goldlist.get(k).getCollegeid() == Integer.parseInt(medallist[j])){
+					String gold = "'gold':'"+goldlist.get(k).getGold()+"'";
+				}
+			}
+		}
+		return list;
+	}
+	
+	public static void main(String[] args){
+		ScoreDAO sdao = new ScoreDaoImpl();
+		List list = sdao.getMedalRank(1);
+		System.out.println(list.size());
+	}
+
 }

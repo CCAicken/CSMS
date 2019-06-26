@@ -253,6 +253,6 @@ public class getScoreAction extends BaseAction {
 				e.printStackTrace();
 			}
 		}
-		return SUCCESS;
+		return null;
 	}
 }

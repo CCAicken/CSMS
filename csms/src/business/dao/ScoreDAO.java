@@ -95,4 +95,14 @@ public interface ScoreDAO {
 	 * @return
 	 */
 	public double avgScore(String userid);
+	/**
+	 * 查询奖牌排行列表
+	 * @return 成绩列表
+	 */
+	public List getMedalRank(int rank);
+	/**
+	 * 获取各学院一、二、三排名数量
+	 * @return
+	 */
+	public List getRank();
 }
