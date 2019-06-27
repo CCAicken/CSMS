@@ -24,7 +24,6 @@
 		<property name="myeclipse.connection.profile">CSMS</property>
 		<mapping resource="model/TArrange.hbm.xml" />
 		<mapping resource="model/TClass.hbm.xml" />
-		<mapping resource="model/TCollege.hbm.xml" />
 		<mapping resource="model/TConfig.hbm.xml" />
 		<mapping resource="model/TForumContent.hbm.xml" />
 		<mapping resource="model/TForumTitle.hbm.xml" />
@@ -51,6 +50,7 @@
 		<mapping resource="model/VScene.hbm.xml" />
 		<mapping resource="model/VScore.hbm.xml" />
 		<mapping resource="model/VSportProject.hbm.xml" />
+		<mapping resource="model/TCollege.hbm.xml" />
 
 
 	</session-factory>

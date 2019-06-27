@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.MedalRank;
+import model.TCollege;
 import model.TScore;
 import model.VScore;
 /**
@@ -102,6 +103,11 @@ public interface ScoreDAO {
 	 * @return 成绩列表
 	 */
 	public List<HashMap<String, Integer>> getMedalRank(int rank);
+	/**
+	 * 获取所有学院信息
+	 * @return
+	 */
+	public List<TCollege> getCollege();
 	/**
 	 * 获取各学院一、二、三排名数量
 	 * @return

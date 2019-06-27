@@ -1,43 +1,58 @@
 package model;
 
+
+
 /**
  * TCollege entity. @author MyEclipse Persistence Tools
  */
 
-public class TCollege implements java.io.Serializable {
+public class TCollege  implements java.io.Serializable {
 
-	// Fields
 
-	private Integer collegeid;
-	private String collegename;
+    // Fields    
 
-	// Constructors
+     private Integer collegeid;
+     private String collegename;
 
-	/** default constructor */
-	public TCollege() {
-	}
 
-	/** full constructor */
-	public TCollege(String collegename) {
-		this.collegename = collegename;
-	}
+    // Constructors
 
-	// Property accessors
+    /** default constructor */
+    public TCollege() {
+    }
 
-	public Integer getCollegeid() {
-		return this.collegeid;
-	}
+    
+    /** full constructor */
+    public TCollege(Integer collegeid, String collegename) {
+        this.collegeid = collegeid;
+        this.collegename = collegename;
+    }
 
-	public void setCollegeid(Integer collegeid) {
-		this.collegeid = collegeid;
-	}
+   
+    // Property accessors
 
-	public String getCollegename() {
-		return this.collegename;
-	}
+    public Integer getCollegeid() {
+        return this.collegeid;
+    }
+    
+    public void setCollegeid(Integer collegeid) {
+        this.collegeid = collegeid;
+    }
 
-	public void setCollegename(String collegename) {
-		this.collegename = collegename;
-	}
+    public String getCollegename() {
+        return this.collegename;
+    }
+    
+    public void setCollegename(String collegename) {
+        this.collegename = collegename;
+    }
+   
+
+
+
+
+
+
+
 
 }

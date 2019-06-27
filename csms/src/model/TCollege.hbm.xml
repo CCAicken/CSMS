@@ -8,7 +8,7 @@
     <class name="model.TCollege" table="T_College" schema="dbo" catalog="CSMS">
         <id name="collegeid" type="java.lang.Integer">
             <column name="collegeid" />
-            <generator class="identity"></generator>
+            <generator class="assigned"></generator>
         </id>
         <property name="collegename" type="java.lang.String">
             <column name="collegename" length="20" not-null="true" unique="true" />

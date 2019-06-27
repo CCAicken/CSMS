@@ -176,8 +176,15 @@ public class ScoreDaoImpl implements ScoreDAO {
 	}
 	
 	@Override
+	public List<TCollege> getCollege(){
+		String hql = "select * from T_College";
+		List<TCollege> list = bdao.selectBysql(hql);
+		return list;
+	}
+	
+	@Override
 	public List<MedalRank> getRank() {
-		List<TCollege> colllist = DAOFactory.getCollegeDAO().select();
+		List<TCollege> colllist = DAOFactory.getScoreDAO().getCollege();
 		List<HashMap<String, Integer>> goldlist = DAOFactory.getScoreDAO().getMedalRank(1);
 		List<HashMap<String, Integer>> silverlist = DAOFactory.getScoreDAO().getMedalRank(2);
 		List<HashMap<String, Integer>> bronzelist = DAOFactory.getScoreDAO().getMedalRank(3);
