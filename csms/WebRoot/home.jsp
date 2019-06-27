@@ -76,7 +76,8 @@ body::-webkit-scrollbar {
 									<b><span style="font-size:14px;">学院成绩排名</span></b>
 								</div>
 								<div class="layui-card-body">
-									<table class="layui-table" id="table-score" lay-skin="nob"></table>
+									<table class="layui-table" id="table-score" lay-skin="nob">
+									</table>
 								</div>
 							</div>
 							<div class="layui-card layui-col-md12 layui-col-lg12">
@@ -95,7 +96,6 @@ body::-webkit-scrollbar {
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 				<!--运动会热讯end-->

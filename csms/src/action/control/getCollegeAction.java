@@ -28,7 +28,18 @@ public class getCollegeAction extends BaseAction {
 		//返回所有学院信息列表
 		List<TCollege> listcollege = collegedao.select();
 		request.setAttribute("listcollege", listcollege);
-		if(op.equals("college")){
+		if(op.equals("histogram")){
+			try {
+				LayuiData data = new LayuiData();
+				data.code = LayuiData.SUCCESS;
+				data.data = listcollege;
+				out.write(JSON.toJSONString(data));
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else if(op.equals("college")){
 			requesturl = "collegeScore.jsp";
 		}else if(op.equals("major")){
 			requesturl = "majorScore.jsp";

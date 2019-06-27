@@ -52,10 +52,7 @@ layui.use(['element', 'carousel', 'table'], function() {
 					}
 				}]],
 				done : function(res, curr, count) {
-
-					$('#table-title').next().find('.layui-table-header').css({
-								"display" : "none"
-							});
+					$('#table-title').next().find('.layui-table-header').css({"display" : "none"});
 					// $('th').hide();// 表头隐藏的样式
 					// $('.layui-table .layui-table-cell >
 					// span').css({'font-weight' : 'bold'});// 表头字体样式
@@ -147,16 +144,19 @@ layui.use(['element', 'carousel', 'table'], function() {
 							title : '<i class="layui-icon layui-icon-diamond" style="color:#B87333"></i>铜牌'
 						}]],
 				done : function(res, curr, count) {
-
-					// $('th').hide();// 表头隐藏的样式
-					// $('.layui-table .layui-table-cell >
-					// span').css({'font-weight' : 'bold'});// 表头字体样式
-					/*
-					 * $('th').css({'background-color': '#5792c6', 'color':
-					 * '#fff','font-weight':'bold'}) 表头的样式
-					 * $('.layui-table-page').css('margin-top', '40px');//
-					 * 页码部分的高度调整
-					 */
+					res.data[0]
+					var aaa = res;
+					var index=1;
+					$("[data-field='collegename']").prev().each(function () {
+                        index++;
+                        if ($(this).text() == '1') {
+                            $('tr').eq(index).css("background-color","#F08080");
+                        } else if ($(this).text() == '2') {
+                            $('tr').eq(index).css("background-color","#FFA500");
+                        } else if ($(this).text() == '3') {
+                            $('tr').eq(index).css("background-color","#90EE90");
+                        }
+                    });
 				}
 
 			})

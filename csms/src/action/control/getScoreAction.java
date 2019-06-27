@@ -32,6 +32,7 @@ public class getScoreAction extends BaseAction {
 		String op = request.getParameter("op");
 		if (op.equals("getrank")){
 			List<MedalRank> ranklist = DAOFactory.getScoreDAO().getRank();
+			//≈≈–Ú
 			Collections.sort(ranklist, new Comparator<MedalRank>(){
 				@Override
 				public int compare(MedalRank rank1, MedalRank rank2){
@@ -44,6 +45,18 @@ public class getScoreAction extends BaseAction {
 				LayuiData rd = new LayuiData();
 				rd.code = LayuiData.SUCCESS;
 				rd.data = ranklist;
+				out.write(JSON.toJSONString(rd));
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else if (op.equals("allcollege")) {
+			List<VCollegeScore> clalist = scorecollegedao.getAllCollegeScore();
+			try {
+				LayuiData rd = new LayuiData();
+				rd.code = LayuiData.SUCCESS;
+				rd.data = clalist;
 				out.write(JSON.toJSONString(rd));
 				out.flush();
 				out.close();
