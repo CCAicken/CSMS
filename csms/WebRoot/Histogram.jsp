@@ -5,9 +5,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<style>
+body {
+    background-color: rgb(209, 207, 207);
+    overflow: hidden;
+      overflow-y: scroll;
+    
+}
+body::-webkit-scrollbar {
+        display: none;
+    }
+</style>
 </head>
 <body>
-	<div id="main" style="width:600px;height:400px;"></div>
+	<div class="layui-container">
+		<div id="main" style="width:750px;height:450px;margin:0 auto"></div>
+	</div>
 </body>
 <script src="js/echarts.common.min.js"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
@@ -137,11 +150,11 @@ layui.use(['element','layer', 'carousel', 'table','jquery'], function(){
 						var xid = option.xAxis[0].id;
 						var avgScore = optionjson.series[0].data;
 						var sumScore = optionjson.series[1].data;
-						for(var i=0;i<succ2.data.length;i++){
+						for(var i=0;i<xid.length;i++){
 							for(var j=0;j<succ2.data.length;j++){
 								if(xid[i] == succ2.data[j].collegeid){
-									avgScore.push(succ2.data[j].scorenumber);
-									sumScore.push(succ2.data[j].allscore);
+									avgScore[i] = succ2.data[j].scorenumber;
+									sumScore[i] = succ2.data[j].allscore;
 								}
 							}
 						}

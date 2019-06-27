@@ -54,8 +54,14 @@ body::-webkit-scrollbar {
 						</div>
 					</div>
 					<div class="layui-input-inline" style="margin-left: -10px;">
-						<button type="button" class="layui-btn layui-btn" lay-submit
+						<button type="button" class="layui-btn" lay-submit
 							lay-filter="search">查询</button>
+					</div>
+					<div class="layui-input-inline" style="float:right">
+						<a href="Histogram.jsp">
+						<button type="button" class="layui-btn">
+						<i class="layui-icon layui-icon-chart layui-col-md"></i>查看表格</button>
+						</a>
 					</div>
 					<div class="layui-row">
 						<table class="layui-table" id="scoretable" lay-filter="demo"></table>
