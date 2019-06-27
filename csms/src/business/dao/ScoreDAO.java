@@ -1,5 +1,6 @@
 package business.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import model.MedalRank;
@@ -100,7 +101,7 @@ public interface ScoreDAO {
 	 * 查询奖牌排行列表
 	 * @return 成绩列表
 	 */
-	public List<MedalRank> getMedalRank(int rank);
+	public List<HashMap<String, Integer>> getMedalRank(int rank);
 	/**
 	 * 获取各学院一、二、三排名数量
 	 * @return

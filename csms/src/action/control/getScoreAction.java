@@ -1,6 +1,8 @@
 package action.control;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import util.LayuiData;
@@ -8,7 +10,6 @@ import model.MedalRank;
 import model.TClass;
 import model.TCollege;
 import model.TMajor;
-import model.TUser;
 import model.VClassScore;
 import model.VCollegeScore;
 import model.VMajorScore;
@@ -28,6 +29,14 @@ public class getScoreAction extends BaseAction {
 		String op = request.getParameter("op");
 		if (op.equals("getrank")){
 			List<MedalRank> ranklist = DAOFactory.getScoreDAO().getRank();
+			Collections.sort(ranklist, new Comparator<MedalRank>(){
+				@Override
+				public int compare(MedalRank rank1, MedalRank rank2){
+					Integer gold1 = rank1.getGold();
+					Integer gold2 = rank2.getGold();
+					return gold2.compareTo(gold1);
+				}
+			});
 			try {
 				LayuiData rd = new LayuiData();
 				rd.code = LayuiData.SUCCESS;
