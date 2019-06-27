@@ -134,20 +134,20 @@ body::-webkit-scrollbar {
 					},
 					dataType : "json",
 					success : function(func) {
-						if(func=="报名成功"){
+						if(func.msg=="报名成功"){
 							layer.msg(
-								func,
+								func.msg,
 								{
 								time : 0 //不自动关闭
 								,btn : [ '确定' ],
 								yes : function(index) {
 									layer.close(index);
-									window.location.reload();						
+									window.location.href="projectSignUp.jsp"						
 								}
 							});
 						}
 						else{
-							layer.msg(func);
+							layer.msg(func.msg);
 						}
 					},
 					error : function(succ) {
