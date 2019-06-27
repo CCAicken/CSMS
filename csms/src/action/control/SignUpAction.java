@@ -72,8 +72,11 @@ public class SignUpAction extends BaseAction {
 					match.setUsername(username);
 					boolean result = matchdao.insert(match);
 					if (result == false) {
-						out.write("对" + userid + "用户报名时失败,请对" + userid
-								+ "用户及其后面的用户进行重新报名");
+						ResponseJSON data = new ResponseJSON();
+						data.flag = ResponseJSON.FLAG_SUCC;
+						data.msg = "对" + userid + "用户报名时失败,请对" + userid
+								+ "用户及其后面的用户进行重新报名";
+						out.write(JSON.toJSONString(data));
 						out.flush();
 						out.close();
 						break;
