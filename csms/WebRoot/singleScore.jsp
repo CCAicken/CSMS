@@ -239,20 +239,20 @@ body::-webkit-scrollbar {
 		$(document).on('click',".query",function() {
 			var userid = $(this).parent()
 					.parent().prev().prev()
-					.prev().prev().prev()
+					.prev().prev().prev().prev()
 					.prev().children().text()
 					.trim();
 			var username = $(this).parent()
-					.parent().prev()
+					.parent().prev().prev()
 					.prev().prev().prev()
 					.prev().children().text()
 					.trim();
 			var avgscore = $(this).parent()
-					.parent().prev()
+					.parent().prev().prev()
 					.prev().prev().children()
 					.text().trim();
 			var sumscore = $(this).parent()
-					.parent().prev().prev()
+					.parent().prev().prev().prev()
 					.prev().prev().children()
 					.text().trim();
 			window.location.href = "getscore.action?op=singledetail&userid="
