@@ -23,16 +23,27 @@ public class MatchDaoImpl implements MatchDAO {
 	public boolean insert(TMatch match) {
 		String proName = "up_AddMatch(?,?,?,?,?,?)";
 		Object[] para = { match.getProid(), match.getUserid(),
-				match.getUsername(), match.getProid(), match.getClassid(),
+				match.getUsername(), match.getSportid(), match.getClassid(),
 				match.getCollegeid() };
-		int result = (Integer) bdao.executeProduce("up_AddMatch(?,?,?,?,?,?)",
-				para);
+		int result = (Integer) bdao.executeProduce(proName, para);
 		if (result > 0) {
 			return true;
 		} else {
 			return false;
 		}
 	}
+
+	// public static void main(String[] args) {
+	// MatchDAO mdao = new MatchDaoImpl();
+	// TMatch match = new TMatch();
+	// match.setClassid(1);
+	// match.setCollegeid(3);
+	// match.setProid(11);
+	// match.setSportid(2);
+	// match.setUserid("90001");
+	// match.setUsername("jishi");
+	// System.out.print(mdao.insert(match));
+	// }
 
 	@Override
 	public boolean isSignUp(String userid, int proid) {
@@ -45,18 +56,6 @@ public class MatchDaoImpl implements MatchDAO {
 			return false;
 		}
 	}
-
-	// public static void main(String[] args) {
-	// MatchDAO mdao = new MatchDaoImpl();
-	// TMatch match = new TMatch();
-	// match.setClassid(1);
-	// match.setCollegeid(3);
-	// match.setProid(2);
-	// match.setSportid(2);
-	// match.setUserid("9000");
-	// match.setUsername("²»ÖªµÀ");
-	// System.out.print(mdao.insert(match));
-	// }
 
 	@Override
 	public List<VMatch> selectByUser(String userid) {

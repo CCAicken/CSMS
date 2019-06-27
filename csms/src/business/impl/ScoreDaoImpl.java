@@ -6,28 +6,30 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.struts2.ServletActionContext;
-
 import model.MedalRank;
 import model.TCollege;
 import model.TConfig;
 import model.TScore;
 import model.VScore;
+
+import org.apache.struts2.ServletActionContext;
+
 import basic.iHibBaseDAO;
-import basic.iHibBaseDAOImpl;
 import business.dao.ScoreDAO;
 import business.factory.DAOFactory;
 
 public class ScoreDaoImpl implements ScoreDAO {
 	private iHibBaseDAO bdao;
 	HttpSession session = ServletActionContext.getRequest().getSession();
-	TConfig config = (TConfig)session.getAttribute("config");
+	TConfig config = (TConfig) session.getAttribute("config");
+
 	public void setBdao(iHibBaseDAO bdao) {
 		this.bdao = bdao;
 	}
-//	public ScoreDaoImpl(){
-//		bdao = new iHibBaseDAOImpl();
-//	}
+
+	// public ScoreDaoImpl(){
+	// bdao = new iHibBaseDAOImpl();
+	// }
 	@Override
 	public boolean insert(TScore score) {
 		int row = (Integer) bdao.insert(score);
@@ -46,7 +48,7 @@ public class ScoreDaoImpl implements ScoreDAO {
 	@Override
 	public List<VScore> getByUser(String userid) {
 		String hql = "from VScore where userid=? and sportid=?";
-		Object[] param = { userid,config.getSportid() };
+		Object[] param = { userid, config.getSportid() };
 		List<VScore> list = bdao.select(hql, param);
 		if (list != null && list.size() > 0) {
 			return list;
@@ -58,7 +60,7 @@ public class ScoreDaoImpl implements ScoreDAO {
 	@Override
 	public List<VScore> getByCollege(int collegeid) {
 		String hql = "from VScore where collegeid=? and sportid=?";
-		Object[] param = { collegeid,config.getSportid() };
+		Object[] param = { collegeid, config.getSportid() };
 		List<VScore> list = bdao.select(hql, param);
 		if (list != null && list.size() > 0) {
 			return list;
@@ -70,7 +72,7 @@ public class ScoreDaoImpl implements ScoreDAO {
 	@Override
 	public List<VScore> getByClass(int classid) {
 		String hql = "from VScore where classid=? and sportid=?";
-		Object[] param = { classid,config.getSportid() };
+		Object[] param = { classid, config.getSportid() };
 		List<VScore> list = bdao.select(hql, param);
 		if (list != null && list.size() > 0) {
 			return list;
@@ -81,14 +83,17 @@ public class ScoreDaoImpl implements ScoreDAO {
 
 	@Override
 	public List<VScore> getCollegeScoreOrder() {
-		String sql = "select top 10 a.collegename,Round(AVG(a.score),2) as scorenumber from (select top 100 collegename,Round(AVG(scorenumber),2) as score from V_Score where collegename!='' and sportid="+config.getSportid()+" group by collegename order by score desc union  select top 100 teacollegename,Round(AVG(scorenumber),2) as score from V_Score where teacollegename !=''  group by teacollegename order by score desc) as a group by a.collegename order by scorenumber desc";
+		String sql = "select top 10 a.collegename,Round(AVG(a.score),2) as scorenumber from (select top 100 collegename,Round(AVG(scorenumber),2) as score from V_Score where collegename!='' and sportid="
+				+ config.getSportid()
+				+ " group by collegename order by score desc union  select top 100 teacollegename,Round(AVG(scorenumber),2) as score from V_Score where teacollegename !=''  group by teacollegename order by score desc) as a group by a.collegename order by scorenumber desc";
 		List<VScore> scorelist = bdao.selectBysql(sql);
 		return scorelist;
 	}
 
 	@Override
 	public List<VScore> getScoreByPage(String strwhere, int startPage, int limit) {
-		String hql = "from VScore where sportid="+config.getSportid() + strwhere;
+		String hql = "from VScore where sportid=" + config.getSportid()
+				+ strwhere;
 		List<VScore> list = bdao.selectByPage(hql, startPage, limit);
 		if (list != null && list.size() > 0) {
 			return list;
@@ -96,10 +101,13 @@ public class ScoreDaoImpl implements ScoreDAO {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public List<VScore> getScore(String strwhere) {
-		String hql = "from VScore s1 where sportid="+config.getSportid()+" and scorenumber = (select max(s2.scorenumber) from VScore s2 group by s2.proid having s1.proid=s2.proid)" + strwhere;
+		String hql = "from VScore s1 where sportid="
+				+ config.getSportid()
+				+ " and scorenumber = (select max(s2.scorenumber) from VScore s2 group by s2.proid having s1.proid=s2.proid)"
+				+ strwhere;
 		List<VScore> list = bdao.select(hql);
 		if (list != null && list.size() > 0) {
 			return list;
@@ -110,7 +118,8 @@ public class ScoreDaoImpl implements ScoreDAO {
 
 	@Override
 	public int allScoreCount(String strwhere) {
-		String hql = "select count(*) from VScore where sportid="+config.getSportid() + strwhere;
+		String hql = "select count(*) from VScore where sportid="
+				+ config.getSportid() + strwhere;
 		int count = bdao.selectValue(hql);
 		return count;
 	}
@@ -118,25 +127,27 @@ public class ScoreDaoImpl implements ScoreDAO {
 	@Override
 	public List<VScore> getScoreByProSingle(int proid) {
 		String hql = "from VScore where proid=? and sportid=? and (protype=1 or protype=3) order by scorenumber desc";
-		Object[] param = {proid,config.getSportid()};
-		List<VScore> list = bdao.select(hql,param);
+		Object[] param = { proid, config.getSportid() };
+		List<VScore> list = bdao.select(hql, param);
 		if (list != null && list.size() > 0) {
 			return list;
 		} else {
 			return null;
 		}
 	}
+
 	@Override
 	public List<VScore> getScoreByProTeam(int proid) {
 		String hql = "from VScore where proid=? and sportid=? and (protype=2 or protype=3) group by sceneid,teacollegeid,collegeid,classid order by scorenumber desc";
-		Object[] param = {proid,config.getSportid()};
-		List<VScore> list = bdao.select(hql,param);
+		Object[] param = { proid, config.getSportid() };
+		List<VScore> list = bdao.select(hql, param);
 		if (list != null && list.size() > 0) {
 			return list;
 		} else {
 			return null;
 		}
 	}
+
 	@Override
 	public double allScore(String userid) {
 		String hql = "select round(sum(scorenumber),2) as scorenumber from VScore where userid=? and sportid=?";
@@ -164,9 +175,10 @@ public class ScoreDaoImpl implements ScoreDAO {
 	@Override
 	public List<HashMap<String, Integer>> getMedalRank(int rank) {
 		String sql = "select collegeid,count(*) as count from "
-	+"(SELECT * FROM (select t.collegeid,t.proid,t.scorenumber,rank()"
-				+" over(partition by t.proid order by t.scorenumber desc) ranks"
-	+" from V_Score t) as b where b.ranks="+rank+") as a group by collegeid;";
+				+ "(SELECT * FROM (select t.collegeid,t.proid,t.scorenumber,rank()"
+				+ " over(partition by t.proid order by t.scorenumber desc) ranks"
+				+ " from V_Score t) as b where b.ranks=" + rank
+				+ ") as a group by collegeid;";
 		List<HashMap<String, Integer>> list = bdao.selectBysql(sql);
 		if (list != null && list.size() > 0) {
 			return list;
@@ -174,42 +186,48 @@ public class ScoreDaoImpl implements ScoreDAO {
 			return null;
 		}
 	}
-	
+
 	@Override
-	public List<TCollege> getCollege(){
-		String hql = "select * from T_College";
-		List<TCollege> list = bdao.selectBysql(hql);
+	public List<TCollege> getCollege() {
+		String hql = "from TCollege";
+		List<TCollege> list = bdao.select(hql);
 		return list;
 	}
-	
+
 	@Override
 	public List<MedalRank> getRank() {
 		List<TCollege> colllist = DAOFactory.getScoreDAO().getCollege();
-		List<HashMap<String, Integer>> goldlist = DAOFactory.getScoreDAO().getMedalRank(1);
-		List<HashMap<String, Integer>> silverlist = DAOFactory.getScoreDAO().getMedalRank(2);
-		List<HashMap<String, Integer>> bronzelist = DAOFactory.getScoreDAO().getMedalRank(3);
+		List<HashMap<String, Integer>> goldlist = DAOFactory.getScoreDAO()
+				.getMedalRank(1);
+		List<HashMap<String, Integer>> silverlist = DAOFactory.getScoreDAO()
+				.getMedalRank(2);
+		List<HashMap<String, Integer>> bronzelist = DAOFactory.getScoreDAO()
+				.getMedalRank(3);
 		List<MedalRank> newlist = new ArrayList();
-		for(TCollege college:colllist){
+		for (TCollege college : colllist) {
 			MedalRank newrank = new MedalRank();
 			newrank.setCollegeid(college.getCollegeid());
 			newrank.setCollegename(college.getCollegename());
 			newlist.add(newrank);
 		}
-		for(int i=0;i<newlist.size();i++){
-			for(int j=0;j<goldlist.size();j++){
-				if(newlist.get(i).getCollegeid() == goldlist.get(j).get("collegeid")){
+		for (int i = 0; i < newlist.size(); i++) {
+			for (int j = 0; j < goldlist.size(); j++) {
+				if (newlist.get(i).getCollegeid() == goldlist.get(j).get(
+						"collegeid")) {
 					newlist.get(i).setGold(goldlist.get(j).get("count"));
 					break;
 				}
 			}
-			for(int j=0;j<silverlist.size();j++){
-				if(newlist.get(i).getCollegeid() == silverlist.get(j).get("collegeid")){
+			for (int j = 0; j < silverlist.size(); j++) {
+				if (newlist.get(i).getCollegeid() == silverlist.get(j).get(
+						"collegeid")) {
 					newlist.get(i).setSilver(silverlist.get(j).get("count"));
 					break;
 				}
 			}
-			for(int j=0;j<bronzelist.size();j++){
-				if(newlist.get(i).getCollegeid() == bronzelist.get(j).get("collegeid")){
+			for (int j = 0; j < bronzelist.size(); j++) {
+				if (newlist.get(i).getCollegeid() == bronzelist.get(j).get(
+						"collegeid")) {
 					newlist.get(i).setBronze(bronzelist.get(j).get("count"));
 					break;
 				}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Struts2Diagram version="2.0">
-  <package name="default" location="50,50" size="216,1055">
+  <package name="default" location="50,50" size="216,1151">
     <action name="getcollege" location="53,86" size="150,41">
       <result name="success" />
     </action>
@@ -77,6 +77,7 @@
     <action name="test" location="65,560" size="150,40">
       <result name="success" />
     </action>
+    <action name="signup" location="48,1072" size="150,40" />
   </package>
   <webResource name="forumContent.jsp" path="/forumContent.jsp" location="350,50" size="150,55" />
   <webResource name="scoreDetail.jsp" path="/scoreDetail.jsp" location="350,200" size="150,55" />
@@ -84,7 +85,7 @@
   <webResource name="CompetitionEntryCheck.jsp" path="/CompetitionEntryCheck.jsp" location="350,650" size="150,55" />
   <webResource name="myProject.jsp" path="/myProject.jsp" location="350,800" size="150,55" />
   <webResource name="login.jsp" path="/login.jsp" location="350,950" size="150,55" />
-  <webResource name="index.jsp" path="/index.jsp" location="50,1100" size="150,55" />
+  <webResource name="index.jsp" path="/index.jsp" location="702,1028" size="150,55" />
   <webResource name="new.jsp" path="/new.jsp" location="350,500" size="150,55" />
   <webResource name="CompetitionTimesCheck.jsp" path="/CompetitionTimesCheck.jsp" location="350,1100" size="150,55" />
   <webResource name="CompetitionDetailCheck.jsp" path="/CompetitionDetailCheck.jsp" location="50,1250" size="150,55" />

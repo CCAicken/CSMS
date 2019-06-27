@@ -74,5 +74,6 @@
 			/CompetitionDetailCheck.jsp
 		</result></action>
 		<action name="test" class="action.control.testAction">
-			<result name="success"></result></action></package>
+			<result name="success"></result></action>
+		<action name="signup" class="action.control.SignUpAction"></action></package>
 </struts>    

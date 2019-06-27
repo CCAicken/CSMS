@@ -126,17 +126,17 @@ body::-webkit-scrollbar {
 				//layer.msg(JSON.stringify(json));
 				$.ajax({
 					type : "post",
-					url : "stuAction.action",
+					url : "signup.action",
 					data : {
 						userinfo:JSON.stringify(json),
 						proid:proid,
 						op:'add'
 					},
 					dataType : "json",
-					success : function(succ) {
-						if(succ=="报名成功"){
+					success : function(func) {
+						if(func=="报名成功"){
 							layer.msg(
-								data,
+								func,
 								{
 								time : 0 //不自动关闭
 								,btn : [ '确定' ],
@@ -147,11 +147,12 @@ body::-webkit-scrollbar {
 							});
 						}
 						else{
-							layer.msg(succ);
+							layer.msg(func);
 						}
 					},
-					error : function() {
-						layer.msg('请求失败，稍后再试',{icon : 5});
+					error : function(succ) {
+						//layer.msg('请求失败，稍后再试',{icon : 5});
+						alert(succ);
 					}
 	
 				});
