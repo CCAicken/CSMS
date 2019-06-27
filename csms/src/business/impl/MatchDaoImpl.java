@@ -21,9 +21,12 @@ public class MatchDaoImpl implements MatchDAO {
 
 	@Override
 	public boolean insert(TMatch match) {
-		String proName = "up_AddMatch(?,?)";
-		Object[] para = { match.getProid(), match.getUserid() };
-		int result = (Integer) bdao.executeProduce("up_AddMatch(?,?)", para);
+		String proName = "up_AddMatch(?,?,?,?,?,?)";
+		Object[] para = { match.getProid(), match.getUserid(),
+				match.getUsername(), match.getProid(), match.getClassid(),
+				match.getCollegeid() };
+		int result = (Integer) bdao.executeProduce("up_AddMatch(?,?,?,?,?,?)",
+				para);
 		if (result > 0) {
 			return true;
 		} else {

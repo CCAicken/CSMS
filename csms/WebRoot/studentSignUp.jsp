@@ -90,7 +90,7 @@ body::-webkit-scrollbar {
 			var n1 = loc.length;//地址的总长度
 			var n2 = loc.indexOf("=");//取得=号的位置
 			var proid = decodeURI(loc.substr(n2 + 1, n1 - n2));//从=号后面的内容
-			alert(proid);
+			//alert(proid);
 	    	//添加运动员按钮
 	        $("#btn1").click(function () {
 		        var userid = $("#userid").val();
@@ -134,9 +134,19 @@ body::-webkit-scrollbar {
 					},
 					dataType : "json",
 					success : function(succ) {
-						if (succ == "失败") {
-							layer.msg("请刷新后重试");
-						} else {
+						if(succ=="报名成功"){
+							layer.msg(
+								data,
+								{
+								time : 0 //不自动关闭
+								,btn : [ '确定' ],
+								yes : function(index) {
+									layer.close(index);
+									window.location.reload();						
+								}
+							});
+						}
+						else{
 							layer.msg(succ);
 						}
 					},

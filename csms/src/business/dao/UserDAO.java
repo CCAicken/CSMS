@@ -41,4 +41,5 @@ public interface UserDAO {
 	 * @return
 	 */
 	public boolean insertUser(TUser user);
+
 }
