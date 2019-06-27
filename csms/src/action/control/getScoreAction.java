@@ -1,8 +1,10 @@
 package action.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 import util.LayuiData;
@@ -14,6 +16,7 @@ import model.VClassScore;
 import model.VCollegeScore;
 import model.VMajorScore;
 import model.VScore;
+import model.VUserScore;
 import business.factory.DAOFactory;
 
 import com.alibaba.fastjson.JSON;
@@ -237,9 +240,8 @@ public class getScoreAction extends BaseAction {
 			if (classid != null && !classid.equals("") && !classid.equals("0")) {
 				strsearch = " and classid='" + classid + "'";
 			}
-			List<VScore> stulist = scorestudentdao.getAllScoreByPage(strsearch,
-					startPage, limit);
-			int count = scoredao.allScoreCount(strsearch);
+			List<VUserScore> stulist = scoredao.getAllScoreByPage(strsearch,startPage, limit);
+			int count = scoredao.allUserScoreCount(strsearch);
 			try {
 				LayuiData rd = new LayuiData();
 				rd.code = LayuiData.SUCCESS;
@@ -254,17 +256,15 @@ public class getScoreAction extends BaseAction {
 		} else if (op.equals("singledetail")) {
 			try {
 				String userid = request.getParameter("userid");
-				String usertype = request.getParameter("usertype");
-				if (userid != null && !userid.equals("") && usertype != null
-						&& !usertype.equals("")) {
-					//TUser user = userdao.getStudent(userid);
+				String username = request.getParameter("username");
+				String avgscore = request.getParameter("avgscore");
+				String sumscore = request.getParameter("sumscore");
+				if (userid != null && !userid.equals("")) {
 					List<VScore> scorelist = scoredao.getByUser(userid);
-					double totalScore = scorestudentdao.allScore(userid);
-					double avgScore = scorestudentdao.avgScore(userid);
 					request.setAttribute("scorelist", scorelist);
-					request.setAttribute("totalScore", totalScore);
-					request.setAttribute("avgScore", avgScore);
-					//request.setAttribute("title", user.getUsername());
+					request.setAttribute("totalScore", sumscore);
+					request.setAttribute("avgScore", avgscore);
+					request.setAttribute("title", username);
 					request.setAttribute("type", "single");
 					return SUCCESS;
 				} else {

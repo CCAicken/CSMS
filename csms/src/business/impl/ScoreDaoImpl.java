@@ -11,10 +11,14 @@ import model.TCollege;
 import model.TConfig;
 import model.TScore;
 import model.VScore;
+import model.VUserScore;
 
 import org.apache.struts2.ServletActionContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import basic.iHibBaseDAO;
+import business.dao.CollegeDAO;
 import business.dao.ScoreDAO;
 import business.factory.DAOFactory;
 
@@ -174,11 +178,7 @@ public class ScoreDaoImpl implements ScoreDAO {
 
 	@Override
 	public List<HashMap<String, Integer>> getMedalRank(int rank) {
-		String sql = "select collegeid,count(*) as count from "
-				+ "(SELECT * FROM (select t.collegeid,t.proid,t.scorenumber,rank()"
-				+ " over(partition by t.proid order by t.scorenumber desc) ranks"
-				+ " from V_Score t) as b where b.ranks=" + rank
-				+ ") as a group by collegeid;";
+		String sql = "select collegeid,count(*) as count from (SELECT * FROM (select t.collegeid,t.proid,t.scorenumber,rank() over(partition by t.proid order by t.scorenumber desc) ranks from V_Score t) as b where b.ranks=" + rank +") as a group by collegeid;";
 		List<HashMap<String, Integer>> list = bdao.selectBysql(sql);
 		if (list != null && list.size() > 0) {
 			return list;
@@ -188,21 +188,15 @@ public class ScoreDaoImpl implements ScoreDAO {
 	}
 
 	@Override
-	public List<TCollege> getCollege() {
-		String hql = "from TCollege";
-		List<TCollege> list = bdao.select(hql);
-		return list;
-	}
-
-	@Override
 	public List<MedalRank> getRank() {
-		List<TCollege> colllist = DAOFactory.getScoreDAO().getCollege();
-		List<HashMap<String, Integer>> goldlist = DAOFactory.getScoreDAO()
-				.getMedalRank(1);
-		List<HashMap<String, Integer>> silverlist = DAOFactory.getScoreDAO()
-				.getMedalRank(2);
-		List<HashMap<String, Integer>> bronzelist = DAOFactory.getScoreDAO()
-				.getMedalRank(3);
+		ApplicationContext ctx = new ClassPathXmlApplicationContext(
+				"factoryBean.xml");
+		ScoreDAO scoredao = ctx.getBean("getScoreDAO", ScoreDAO.class);
+		CollegeDAO collegedao = ctx.getBean("getCollegeDAO", CollegeDAO.class);
+		List<TCollege> colllist = collegedao.select();
+		List<HashMap<String, Integer>> goldlist = scoredao.getMedalRank(1);
+		List<HashMap<String, Integer>> silverlist = scoredao.getMedalRank(2);
+		List<HashMap<String, Integer>> bronzelist = scoredao.getMedalRank(3);
 		List<MedalRank> newlist = new ArrayList();
 		for (TCollege college : colllist) {
 			MedalRank newrank = new MedalRank();
@@ -234,5 +228,26 @@ public class ScoreDaoImpl implements ScoreDAO {
 			}
 		}
 		return newlist;
+	}
+	
+	@Override
+	public List<VUserScore> getAllScoreByPage(String strwhere, int startPage,
+			int pageSize) {
+		String hql = "from VUserScore where sportid=" + config.getSportid()
+				+ strwhere;
+		List<VUserScore> list = bdao.selectByPage(hql, startPage, pageSize);
+		if (list != null && list.size() > 0) {
+			return list;
+		} else {
+			return null;
+		}
+	}
+	
+	@Override
+	public int allUserScoreCount(String strwhere) {
+		String hql = "select count(*) from VUserScore where sportid="
+				+ config.getSportid() + strwhere;
+		int count = bdao.selectValue(hql);
+		return count;
 	}
 }

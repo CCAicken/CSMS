@@ -55,13 +55,6 @@ public class DAOFactory {
 		return new ScoreClassesDaoImpl();
 	}
 	/**
-	 * 返回一个用于查看学生分数业务操作的ScoreCollegeDAO对象
-	 * @return
-	 */
-	public static ScoreStudentDAO getScoreStudentDAO(){
-		return new ScoreStudentDaoImpl();
-	}
-	/**
 	 * 返回一个用于查看比赛业务操作的MatchDAO对象
 	 * @return
 	 */

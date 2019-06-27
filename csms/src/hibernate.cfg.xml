@@ -51,6 +51,7 @@
 		<mapping resource="model/VScore.hbm.xml" />
 		<mapping resource="model/VSportProject.hbm.xml" />
 		<mapping resource="model/TCollege.hbm.xml" />
+		<mapping resource="model/VUserScore.hbm.xml" />
 
 
 	</session-factory>

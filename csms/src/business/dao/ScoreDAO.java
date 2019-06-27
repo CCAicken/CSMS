@@ -7,6 +7,7 @@ import model.MedalRank;
 import model.TCollege;
 import model.TScore;
 import model.VScore;
+import model.VUserScore;
 /**
  * 比赛成绩业务接口类
  * @author Administrator
@@ -88,6 +89,28 @@ public interface ScoreDAO {
 	public int allScoreCount(String strwhere);
 	
 	/**
+	 * 分页查询所有学生成绩
+	 * 
+	 * @return List<ScoreStudent>数据集
+	 * @param strwhere
+	 *            查询条件（为空填写为""）
+	 * @param startPage
+	 *            需要的页数的数据
+	 * @param pageSize
+	 *            每页的记录数
+	 * @return
+	 */
+	public List<VUserScore> getAllScoreByPage(String strwhere, int startPage,
+			int pageSize);
+	
+	/**
+	 * 查询成绩总记录数
+	 * @param strwhere 查询条件（为空时填写为""）
+	 * @return 成绩列表
+	 */
+	public int allUserScoreCount(String strwhere);
+	
+	/**
 	 * 获取某个用户的总分
 	 * @return
 	 */
@@ -103,11 +126,7 @@ public interface ScoreDAO {
 	 * @return 成绩列表
 	 */
 	public List<HashMap<String, Integer>> getMedalRank(int rank);
-	/**
-	 * 获取所有学院信息
-	 * @return
-	 */
-	public List<TCollege> getCollege();
+
 	/**
 	 * 获取各学院一、二、三排名数量
 	 * @return

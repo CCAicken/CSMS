@@ -118,77 +118,38 @@ body::-webkit-scrollbar {
 				{
 					align : 'center',
 					field : 'username',
-					title : '姓名',
-					templet : function(data) {
-						if (data.protype == 1
-								|| data.protype == 2) {
-							return data.username;
-						} else {
-							return data.teausername;
-						}
-					}
+					title : '姓名'
 				},
 				{
 					align : 'center',
-					field : 'scorenumber',
+					field : 'sumscore',
+					title : '总成绩'
+				},
+				{
+					align : 'center',
+					field : 'avgscore',
 					title : '平均成绩'
 				},
 				{
 					align : 'center',
 					field : 'collegename',
-					title : '学院名称',
-					templet : function(data) {
-						if (data.protype == 1
-								|| data.protype == 2) {
-							return data.collegename;
-						} else {
-							return data.teacollegename;
-						}
-					}
+					title : '学院名称'
 				},
 				{
 					align : 'center',
 					field : 'majorname',
-					title : '专业名称',
-					templet : function(data) {
-						if (data.protype == 1
-								|| data.protype == 2) {
-							return data.majorname;
-						} else {
-							return "教职工";
-						}
-					}
+					title : '专业名称'
 				},
 				{
 					align : 'center',
 					field : 'classname',
-					title : '班级名称',
-					templet : function(data) {
-						if (data.protype == 1
-								|| data.protype == 2) {
-							return data.classname;
-						} else {
-							return "";
-						}
-					}
+					title : '班级名称'
 				},
 				{
 					align : 'center',
 					field : '',
 					title : '操作',
 					toolbar : '#barDemo'
-				},
-				{
-					field : '',
-					hide : true,
-					templet : function(data) {
-						if (data.protype == 1
-								|| data.protype == 2) {
-							return 1;
-						} else {
-							return 2;
-						}
-					}
 				} ] ]
 		});
 		/* 下拉框三级联动 */
@@ -281,13 +242,21 @@ body::-webkit-scrollbar {
 					.prev().prev().prev()
 					.prev().children().text()
 					.trim();
-			var usertype = $(this).parent()
-					.parent().next().children()
+			var username = $(this).parent()
+					.parent().prev()
+					.prev().prev().prev()
+					.prev().children().text()
+					.trim();
+			var avgscore = $(this).parent()
+					.parent().prev()
+					.prev().prev().children()
+					.text().trim();
+			var sumscore = $(this).parent()
+					.parent().prev().prev()
+					.prev().prev().children()
 					.text().trim();
 			window.location.href = "getscore.action?op=singledetail&userid="
-					+ userid
-					+ "&usertype="
-					+ usertype;
+					+ userid+"&username"+username+"&avgscore="+avgscore+"&sumscore"+sumscore;
 		});
 	})
 </script>

@@ -44,7 +44,6 @@ public class BaseAction extends ActionSupport {
 	protected ScoreClassesDAO scoreclassesdao;
 	protected ScoreCollegeDAO scorecollegedao;
 	protected ScoreDAO scoredao;
-	protected ScoreStudentDAO scorestudentdao;
 	protected SportsDAO sportsdao;
 	protected UserDAO userdao;
 	protected iHibBaseDAO bdao;
@@ -80,8 +79,6 @@ public class BaseAction extends ActionSupport {
 			scorecollegedao = ctx.getBean("getScoreCollegeDAO",
 					ScoreCollegeDAO.class);
 			scoredao = ctx.getBean("getScoreDAO", ScoreDAO.class);
-			scorestudentdao = ctx.getBean("getScoreStudentDAO",
-					ScoreStudentDAO.class);
 			sportsdao = ctx.getBean("getSportsDAO", SportsDAO.class);
 			userdao = ctx.getBean("getUserDAO", UserDAO.class);
 			bdao = ctx.getBean("bdao", iHibBaseDAO.class);

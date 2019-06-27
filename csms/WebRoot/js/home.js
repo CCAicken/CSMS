@@ -72,7 +72,7 @@ layui.use(['element', 'carousel', 'table'], function() {
 	// 热点文章表格
 	table.render({
 				elem : '#table-forum',
-				height :480,
+				height :300,
 				url : "getforum.action" // 数据接口
 				,skin: 'line',
 				page : false // 开启分页
@@ -121,7 +121,7 @@ layui.use(['element', 'carousel', 'table'], function() {
 	// 报名排行
 	table.render({
 				elem : '#table-score',
-				height : 480,
+				height : 300,
 				url : "getscore.action?op=getrank",
 				page:false,
 				cols : [[{

@@ -46,12 +46,6 @@
 		<property name="bdao" ref="bdao"></property>
 	</bean>
 	
-	<bean id="getScoreStudentDAO" name="getScoreStudentDAO" factory-method="getScoreStudentDAO"
-		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
-		autowire="default">
-		<property name="bdao" ref="bdao"></property>
-	</bean>
-	
 	<bean id="getMatchDAO" name="getMatchDAO" factory-method="getMatchDAO"
 		class="business.factory.DAOFactory" abstract="false" lazy-init="default"
 		autowire="default">
