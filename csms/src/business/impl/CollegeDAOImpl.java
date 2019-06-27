@@ -11,12 +11,12 @@ import business.dao.CollegeDAO;
 
 public class CollegeDAOImpl implements CollegeDAO {
 	private iHibBaseDAO bdao;
-	public void setBdao(iHibBaseDAO bdao) {
-		this.bdao = bdao;
-	}
-//	public CollegeDAOImpl(){
-//		bdao = new iHibBaseDAOImpl();
+//	public void setBdao(iHibBaseDAO bdao) {
+//		this.bdao = bdao;
 //	}
+	public CollegeDAOImpl(){
+		bdao = new iHibBaseDAOImpl();
+	}
 	@Override
 	public boolean insert(TCollege college) {
 		int row = (Integer) bdao.insert(college);
