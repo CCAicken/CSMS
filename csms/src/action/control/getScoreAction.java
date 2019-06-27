@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import util.LayuiData;
+import model.MedalRank;
 import model.TClass;
 import model.TCollege;
 import model.TMajor;
@@ -12,6 +13,7 @@ import model.VClassScore;
 import model.VCollegeScore;
 import model.VMajorScore;
 import model.VScore;
+import business.factory.DAOFactory;
 
 import com.alibaba.fastjson.JSON;
 
@@ -24,7 +26,19 @@ public class getScoreAction extends BaseAction {
 	 */
 	public String execute() {
 		String op = request.getParameter("op");
-		if (op.equals("college")) {
+		if (op.equals("getrank")){
+			List<MedalRank> ranklist = DAOFactory.getScoreDAO().getRank();
+			try {
+				LayuiData rd = new LayuiData();
+				rd.code = LayuiData.SUCCESS;
+				rd.data = ranklist;
+				out.write(JSON.toJSONString(rd));
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else if (op.equals("college")) {
 			startPage = Integer.parseInt(request.getParameter("page"));// 当前
 			limit = Integer.parseInt(request.getParameter("limit"));// 条数
 			collegeid = request.getParameter("collegeid");
@@ -234,14 +248,14 @@ public class getScoreAction extends BaseAction {
 				String usertype = request.getParameter("usertype");
 				if (userid != null && !userid.equals("") && usertype != null
 						&& !usertype.equals("")) {
-					TUser user = userdao.getStudent(userid);
+					//TUser user = userdao.getStudent(userid);
 					List<VScore> scorelist = scoredao.getByUser(userid);
 					double totalScore = scorestudentdao.allScore(userid);
 					double avgScore = scorestudentdao.avgScore(userid);
 					request.setAttribute("scorelist", scorelist);
 					request.setAttribute("totalScore", totalScore);
 					request.setAttribute("avgScore", avgScore);
-					request.setAttribute("title", user.getUsername());
+					//request.setAttribute("title", user.getUsername());
 					request.setAttribute("type", "single");
 					return SUCCESS;
 				} else {

@@ -13,6 +13,7 @@ import model.TConfig;
 import model.TScore;
 import model.VScore;
 import basic.iHibBaseDAO;
+import basic.iHibBaseDAOImpl;
 import business.dao.ScoreDAO;
 import business.factory.DAOFactory;
 
@@ -20,10 +21,12 @@ public class ScoreDaoImpl implements ScoreDAO {
 	private iHibBaseDAO bdao;
 	HttpSession session = ServletActionContext.getRequest().getSession();
 	TConfig config = (TConfig)session.getAttribute("config");
-	public void setBdao(iHibBaseDAO bdao) {
+	/*public void setBdao(iHibBaseDAO bdao) {
 		this.bdao = bdao;
+	}*/
+	public ScoreDaoImpl(){
+		bdao = new iHibBaseDAOImpl();
 	}
-
 	@Override
 	public boolean insert(TScore score) {
 		int row = (Integer) bdao.insert(score);
@@ -170,25 +173,42 @@ public class ScoreDaoImpl implements ScoreDAO {
 	}
 	
 	@Override
-	public List getRank() {
-		List list = new ArrayList();
+	public List<MedalRank> getRank() {
 		List<TCollege> colllist = DAOFactory.getCollegeDAO().select();
 		List<MedalRank> goldlist = DAOFactory.getScoreDAO().getMedalRank(1);
 		List<MedalRank> silverlist = DAOFactory.getScoreDAO().getMedalRank(2);
 		List<MedalRank> bronzelist = DAOFactory.getScoreDAO().getMedalRank(3);
-		String[] medallist = {};
-		for(int i=0;i<colllist.size();i++){
-			String collegestr = colllist.get(i).toString();
-			medallist[i] = collegestr;
+		List<MedalRank> newlist = new ArrayList();
+		for(TCollege college:colllist){
+			MedalRank newrank = new MedalRank();
+			newrank.setCollegeid(college.getCollegeid());
+			newrank.setCollegename(college.getCollegename());
+			newlist.add(newrank);
 		}
-		for(int j=0;j<medallist.length;j++){
-			for(int k=0;k<goldlist.size();k++){
-				if(goldlist.get(k).getCollegeid() == Integer.parseInt(medallist[j])){
-					String gold = "'gold':'"+goldlist.get(k).getGold()+"'";
+		for(int i=0;i<newlist.size();i++){
+			for(int j=0;j<goldlist.size();j++){
+				if(newlist.get(i).getCollegeid() == goldlist.get(j).getCollegeid()){
+					newlist.get(i).setGold(goldlist.get(j).getGold());
+				}else{
+					newlist.get(i).setGold(0);
+				}
+			}
+			for(int j=0;j<silverlist.size();j++){
+				if(newlist.get(i).getCollegeid() == silverlist.get(j).getCollegeid()){
+					newlist.get(i).setSilver(silverlist.get(j).getSilver());
+				}else{
+					newlist.get(i).setSilver(0);
+				}
+			}
+			for(int j=0;j<bronzelist.size();j++){
+				if(newlist.get(i).getCollegeid() == bronzelist.get(j).getCollegeid()){
+					newlist.get(i).setBronze(bronzelist.get(j).getBronze());
+				}else{
+					newlist.get(i).setBronze(0);
 				}
 			}
 		}
-		return list;
+		return newlist;
 	}
 	
 	public static void main(String[] args){

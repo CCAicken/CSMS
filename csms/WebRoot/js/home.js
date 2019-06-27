@@ -122,23 +122,29 @@ layui.use(['element', 'carousel', 'table'], function() {
 	table.render({
 				elem : '#table-score',
 				height : 480,
-				url : "getapplication.action?op=score" // 数据接口
-				,
-				limit:10,
-				page : false // 开启分页
-				,
-				cols : [[ // 表头
-				{
+				url : "getscore.action?op=getrank",
+				page:false,
+				cols : [[{
+				    	   align:'center',
 							field : '',
 							title : '排名',
 							type:'numbers'
-						},
-				{
+						},{
+							align:'center',
 							field : 'collegename',
 							title : '学院名称'
 						}, {
-							field : 'scorenumber',
-							title : '学院分数'
+							align:'center',
+							field : 'gold',
+							title : '<i class="layui-icon layui-icon-diamond" style="color:gold"></i>金牌'
+						}, {
+							align:'center',
+							field : 'silver',
+							title : '<i class="layui-icon layui-icon-diamond" style="color:#A8A8A8"></i>银牌'
+						}, {
+							align:'center',
+							field : 'bronze',
+							title : '<i class="layui-icon layui-icon-diamond" style="color:#B87333"></i>铜牌'
 						}]],
 				done : function(res, curr, count) {
 
