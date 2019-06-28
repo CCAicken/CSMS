@@ -81,4 +81,22 @@ public interface MatchDAO {
 	 * @return
 	 */
 	public int countUser(int proid, String userid);
+
+	/**
+	 * 根据班级id或学院id获取报名项目
+	 * 
+	 * @param id
+	 * @param strwhere
+	 *            查询条件
+	 * @return
+	 */
+	public List<VMatch> getByid(String strwhere, int page, int limit);
+
+	/**
+	 * 获取数量
+	 * 
+	 * @param strwhere
+	 * @return
+	 */
+	public int getByidCount(String strwhere);
 }

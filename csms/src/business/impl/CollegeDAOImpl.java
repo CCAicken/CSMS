@@ -13,9 +13,10 @@ public class CollegeDAOImpl implements CollegeDAO {
 		this.bdao = bdao;
 	}
 
-	// public CollegeDAOImpl(){
+	// public CollegeDAOImpl() {
 	// bdao = new iHibBaseDAOImpl();
 	// }
+
 	@Override
 	public boolean insert(TCollege college) {
 		int row = (Integer) bdao.insert(college);
@@ -51,4 +52,10 @@ public class CollegeDAOImpl implements CollegeDAO {
 				startPage, pageSize);
 		return list;
 	}
+
+	// public static void main(String[] args) {
+	// CollegeDAO cdao = new CollegeDAOImpl();
+	// List<TCollege> list = cdao.select();
+	// System.out.println(list.size());
+	// }
 }

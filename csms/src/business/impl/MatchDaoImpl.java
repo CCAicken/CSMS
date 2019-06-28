@@ -3,8 +3,14 @@ package business.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import model.TConfig;
 import model.TMatch;
 import model.VMatch;
+
+import org.apache.struts2.ServletActionContext;
+
 import basic.iHibBaseDAO;
 import business.dao.MatchDAO;
 
@@ -18,6 +24,9 @@ public class MatchDaoImpl implements MatchDAO {
 	// public MatchDaoImpl() {
 	// bdao = new iHibBaseDAOImpl();
 	// }
+
+	HttpSession session = ServletActionContext.getRequest().getSession();
+	TConfig config = (TConfig) session.getAttribute("config");
 
 	@Override
 	public boolean insert(TMatch match) {
@@ -63,14 +72,6 @@ public class MatchDaoImpl implements MatchDAO {
 		Object[] para = { userid };
 		return bdao.select(hql, para);
 	}
-
-	// public static void main(String[] args) {
-	// MatchDaoImpl impl = new MatchDaoImpl();
-	// List<VMatch> list = impl.selectByUser("94005");
-	// for (VMatch match : list) {
-	// System.out.println(match.getProname());
-	// }
-	// }
 
 	@Override
 	public List<VMatch> select() {
@@ -121,4 +122,36 @@ public class MatchDaoImpl implements MatchDAO {
 		int count = bdao.selectValue(hql, para);
 		return count;
 	}
+
+	@Override
+	public List<VMatch> getByid(String strwhere, int page, int limit) {
+		// TODO Auto-generated method stub
+		String hql = "from VMatch";
+		if (strwhere != null && !strwhere.equals("")) {
+			hql += strwhere + " and sportid=" + config.getSportid();
+		} else {
+			hql += " where sportid=" + config.getSportid();
+		}
+		List<VMatch> list = bdao.selectByPage(hql, page, limit);
+		return list;
+	}
+
+	@Override
+	public int getByidCount(String strwhere) {
+		// TODO Auto-generated method stub
+		String hql = "select count(*) from VMatch";
+		if (strwhere != null && !strwhere.equals("")) {
+			hql += strwhere + " and sportid=" + config.getSportid();
+		} else {
+			hql += " where sportid=" + config.getSportid();
+		}
+		int count = bdao.selectValue(hql);
+		return count;
+	}
+
+	// public static void main(String[] args) {
+	// MatchDAO mdao = new MatchDaoImpl();
+	// // List<VMatch> list = mdao.getByid(null, 1, 10);
+	// System.out.print(mdao.getByidCount(null));
+	// }
 }
