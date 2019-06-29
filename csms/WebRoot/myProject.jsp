@@ -28,12 +28,12 @@ body::-webkit-scrollbar {
 	<div class="layui-card">
 		<div class="layui-card-header">
 			<div class="layui-row">
-				<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a><cite>我的比赛项目</cite></a></span>
+				<span class="layui-breadcrumb"> <a href="home.jsp">首页</a> <a><cite>报名详情查看</cite></a></span>
 			</div>
 		</div>
 		<div class="layui-card-header text-center">
 			<div class="layui-row text-center">
-				<h1 align="center">查询比赛项目</h1>
+				<h1 align="center">报名详情查看</h1>
 			</div>
 		</div>
 		<div class="layui-card-body">

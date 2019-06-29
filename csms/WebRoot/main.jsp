@@ -49,10 +49,10 @@ body::-webkit-scrollbar {
                         <a href="javascript:;">比赛报名</a>
                         <dl class="layui-nav-child">
                             <!-- 二级菜单 -->
-                            <dd><a class="a-nav" href="projectSignUp.jsp">比赛项目查看</a></dd>
+                            <dd><a class="a-nav" href="projectSignUp.jsp">比赛报名</a></dd>
                             <dd><a class="a-nav" href="arrangeview.action?op=list">比赛时间安排</a></dd>
                             <dd><a class="a-nav" href="CompetitionTimesCheck.jsp">比赛场次查看</a></dd>
-                            <dd><a class="a-nav" href="myProject.jsp">查看班级报名情况</a></dd>
+                            <dd><a class="a-nav" href="myProject.jsp">报名详情查看</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item"><span style="font-size:26px;margin-left:20px;">${config.sportname }</span></li>

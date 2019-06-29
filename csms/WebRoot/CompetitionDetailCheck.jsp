@@ -44,13 +44,12 @@
 						<th>工号</th>
 						</c:if>
 						<th>姓名</th>
-						<th>性别</th>
+						<!-- <th>性别</th> -->
 						<th>学院</th>
 						<c:if test="${protype==1||protype==2 }">
 						<th>专业</th>
 						<th>班级</th>
 						</c:if>
-						<th>联系电话</th>
 					</thead>
 					<tbody>
 					<c:forEach items="${arrlist }" var="arrange" varStatus="status">
@@ -59,17 +58,15 @@
 							<td>${arrange.userid }</td>
 							<c:if test="${protype==1||protype==2 }">
 							<td>${arrange.username }</td>
-							<td>${arrange.agend }</td>
 							<td>${arrange.collegename }</td>
 							<td>${arrange.majorname }</td>
 							<td>${arrange.classname }</td>
-							<td>${arrange.mobile }</td>
+							
 							</c:if>
 							<c:if test="${protype==3||protype==4 }">
 							<td>${arrange.teausername }</td>
-							<td>${arrange.teaagend }</td>
 							<td>${arrange.teacollegename }</td>
-							<td>${arrange.teamobile }</td>
+							
 							</c:if>
 						</tr>
 					</c:forEach>
