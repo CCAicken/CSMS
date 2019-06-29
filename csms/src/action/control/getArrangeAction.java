@@ -95,7 +95,7 @@ public class getArrangeAction extends BaseAction {
 					out = response.getWriter();
 					LayuiData data = new LayuiData(0, "³É¹¦", allcount,
 							bdao.selectByPage("from VScene" + strsearch,
-									Integer.parseInt(startPage), limit));
+									Integer.parseInt(startPage), limit),null);
 
 					out.write(JSON.toJSONString(data));
 					out.flush();

@@ -33,13 +33,15 @@ public class LayuiData {
 	public String  msg;
 	public int count;
 	public Object data;
+	public Object data1;
 	
-	public LayuiData(int code, String msg, int count, Object data) {
+	public LayuiData(int code, String msg, int count, Object data, Object data1) {
 		super();
 		this.code = code;
 		this.msg = msg;
 		this.count = count;
 		this.data = data;
+		this.data1 = data1;
 	}
 
 	public LayuiData() {

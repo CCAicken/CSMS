@@ -71,7 +71,7 @@ public class myPeojectAction extends BaseAction {
 		List<VMatch> list = matchdao.getByid(strwhere,
 				Integer.parseInt(startPage), Integer.parseInt(pageSize));
 		int count = matchdao.getByidCount(strwhere);
-		LayuiData data = new LayuiData(0, "成功", count, list);
+		LayuiData data = new LayuiData(0, "成功", count, list,null);
 		try {
 			out.write(JSON.toJSONString(data));
 			out.flush();

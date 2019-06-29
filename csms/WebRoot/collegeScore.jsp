@@ -60,7 +60,13 @@ body::-webkit-scrollbar {
 					<div class="layui-input-inline" style="float:right">
 						<a href="Histogram.jsp">
 						<button type="button" class="layui-btn">
-						<i class="layui-icon layui-icon-chart layui-col-md"></i>查看表格</button>
+						<i class="layui-icon layui-icon-chart layui-col-md"></i>本届积分</button>
+						</a>
+					</div>
+					<div class="layui-input-inline" style="float:right">
+						<a href="HistogramHistory.jsp">
+						<button type="button" class="layui-btn">
+						<i class="layui-icon layui-icon-chart layui-col-md"></i>往届总积分</button>
 						</a>
 					</div>
 					<div class="layui-row">

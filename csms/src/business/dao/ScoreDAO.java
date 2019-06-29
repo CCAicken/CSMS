@@ -128,8 +128,13 @@ public interface ScoreDAO {
 	public List<HashMap<String, Integer>> getMedalRank(int rank);
 
 	/**
-	 * 获取各学院一、二、三排名数量
+	 * 获取最新一届各学院一、二、三排名数量
 	 * @return
 	 */
 	public List<MedalRank> getRank();
+	/**
+	 * 获取各届各学院一、二、三排名数量
+	 * @return
+	 */
+	public List<VScore> getAllCollScore();
 }
