@@ -33,8 +33,16 @@ public class getScoreAction extends BaseAction {
 		String op = request.getParameter("op");
 		if (op.equals("getrank")){
 			List<MedalRank> ranklist = scoredao.getRank();
+			List<MedalRank> newlist = new ArrayList<MedalRank>();
+			if(ranklist.size()>6){
+				for(int i=0;i<6;i++){
+					newlist.add(ranklist.get(i));
+				}
+			}else{
+				newlist = ranklist;
+			}
 			//ÅÅÐò
-			Collections.sort(ranklist, new Comparator<MedalRank>(){
+			Collections.sort(newlist, new Comparator<MedalRank>(){
 				@Override
 				public int compare(MedalRank rank1, MedalRank rank2){
 					Integer gold1 = rank1.getGold();
@@ -45,7 +53,7 @@ public class getScoreAction extends BaseAction {
 			try {
 				LayuiData rd = new LayuiData();
 				rd.code = LayuiData.SUCCESS;
-				rd.data = ranklist;
+				rd.data = newlist;
 				out.write(JSON.toJSONString(rd));
 				out.flush();
 				out.close();
