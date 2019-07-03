@@ -2,8 +2,11 @@ package action.control;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import model.TConfig;
 import model.TNews;
 import model.VNews;
 import util.LayuiData;
@@ -21,6 +24,24 @@ public class getNewAction extends BaseAction {
 	 * @return
 	 */
 	public String execute() {
+
+		TConfig config = sportsdao.getConfig();
+		if (config != null) {
+			session.setAttribute("config", config);
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
+			String newDate = df.format(new Date());
+			int res = config.getStarttime().compareTo(newDate);// if(res>0)
+			// config.getStarttime>newDate
+			int res2 = config.getEndtime().compareTo(newDate);
+			if (res <= 0 && res2 >= 0) {
+				session.setAttribute("sporttype", "yes");
+			} else {
+				session.setAttribute("sporttype", "no");
+			}
+		} else {
+			session.setAttribute("sporttype", "no");
+		}
+
 		List<TNews> newslist = null;
 		VNews news = null;
 		if (newsId.equals("")) {
@@ -29,7 +50,7 @@ public class getNewAction extends BaseAction {
 			try {
 				out = response.getWriter();
 				LayuiData data = new LayuiData(0, "成功", allcount,
-						newsdao.getAllNews(),null);
+						newsdao.getAllNews(), null);
 
 				out.write(JSON.toJSONString(data));
 				out.flush();

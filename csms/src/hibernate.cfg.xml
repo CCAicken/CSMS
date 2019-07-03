@@ -37,14 +37,12 @@
 		<mapping resource="model/TScore.hbm.xml" />
 		<mapping resource="model/TSportProject.hbm.xml" />
 		<mapping resource="model/TUser.hbm.xml" />
-		<mapping resource="model/VArrange.hbm.xml" />
 		<mapping resource="model/VClass.hbm.xml" />
 		<mapping resource="model/VClassScore.hbm.xml" />
 		<mapping resource="model/VCollegeScore.hbm.xml" />
 		<mapping resource="model/VForum.hbm.xml" />
 		<mapping resource="model/VMajor.hbm.xml" />
 		<mapping resource="model/VMajorScore.hbm.xml" />
-		<mapping resource="model/VMatch.hbm.xml" />
 		<mapping resource="model/VNews.hbm.xml" />
 		<mapping resource="model/VProject.hbm.xml" />
 		<mapping resource="model/VScene.hbm.xml" />
@@ -52,6 +50,8 @@
 		<mapping resource="model/VSportProject.hbm.xml" />
 		<mapping resource="model/TCollege.hbm.xml" />
 		<mapping resource="model/VUserScore.hbm.xml" />
+		<mapping resource="model/VMatch.hbm.xml" />
+		<mapping resource="model/VArrange.hbm.xml" />
 
 
 	</session-factory>
