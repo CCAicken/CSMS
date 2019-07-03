@@ -62,6 +62,9 @@ body::-webkit-scrollbar {
             <div class="layui-col-md2">
                 <ul class="layui-nav" lay-filter="">
                     <li class="layui-nav-item">
+                    	<c:if test="${loginuser==null }">
+                    	<span  style="cursor: pointer" class="gologin">请登录！</span>
+                    	</c:if>
                     	<c:if test="${loginuser!=null }">
                         <a href="javascript:;">你好：${loginuser.username }</a>
                         <dl class="layui-nav-child">
@@ -101,6 +104,9 @@ body::-webkit-scrollbar {
                 //,anim: 'updown' //切换动画方式
         });
     });
+    $(".gologin").click(function(){
+    	window.location.href="login.jsp";
+    })
 </script>
 
 </html>

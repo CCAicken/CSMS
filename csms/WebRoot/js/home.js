@@ -121,6 +121,7 @@ layui.use(['element', 'carousel', 'table'], function() {
 				height : 300,
 				url : "getscore.action?op=getrank",
 				page:false,
+				limit:6,
 				cols : [[{
 				    	   align:'center',
 							field : '',
