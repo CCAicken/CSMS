@@ -47,7 +47,7 @@ body::-webkit-scrollbar {
 							<span style="font-size:18px;"><b>${news.newstitle }</b></span>
 						</div>
 						<div class="layui-col-md6 layui-col-md6">
-							<span style="font-size:16px; float: right; margin-right: 20px;">发布人：${news.username}
+							<span style="font-size:16px; float: right; margin-right: 20px;">发布人：${news.realname}
 								&nbsp;&nbsp;&nbsp;&nbsp; 发布时间：${news.datetime }</span>
 						</div>
 					</div>

@@ -1,21 +1,11 @@
-<<<<<<< HEAD
+/model/
+/.struts.mex
 /action/
+/applicationContext.xml
 /basic/
 /business/
 /common/
-/model/
+/factoryBean.xml
+/hibernate.cfg.xml
 /servlet/
 /util/
-=======
-/action/
-/basic/
-/business/
-/common/
-/model/
-/servlet/
-/struts.xml
-/util/
->>>>>>> refs/remotes/origin/master
-/VMajorScore.class
-/VMajorScore.hbm.xml
-/VMajorScoreId.class

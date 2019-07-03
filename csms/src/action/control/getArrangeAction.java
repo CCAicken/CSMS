@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
-import util.LayuiData;
 import model.TClass;
 import model.TCollege;
 import model.VArrange;
 import model.VClass;
+import util.LayuiData;
 
 import com.alibaba.fastjson.JSON;
 
@@ -31,8 +31,10 @@ public class getArrangeAction extends BaseAction {
 			if (type != null) {
 				String collegeid = request.getParameter("collegeid");
 				// 获取学院信息和班级信息
-				if (collegeid != null && !collegeid.equals("")) {
-					List<VClass> classlist = bdao.select("from VClass where collegeid=" + collegeid);
+				if (collegeid != null && !collegeid.equals("")
+						&& !collegeid.equals("0")) {
+					List<VClass> classlist = bdao
+							.select("from VClass where collegeid=" + collegeid);
 					try {
 						out = response.getWriter();
 						out.write(JSON.toJSONString(classlist));
@@ -68,19 +70,21 @@ public class getArrangeAction extends BaseAction {
 				if (strwhere != null && !strwhere.equals("")) {
 					strsearch += " where (addr like '%" + strwhere
 							+ "%' or proname like '%" + strwhere
-							+ "%' or teacollegename like '%" + strwhere
-							+ "%' or teausername like '%" + strwhere
 							+ "%' or username like '%" + strwhere + "%')  ";
 				}
-				if (collegeid != null && !collegeid.equals("")) {
+				if (collegeid != null && !collegeid.equals("")
+						&& !collegeid.equals("0")) {
 					if (strwhere != null && !strwhere.equals("")) {
 						strsearch += " and collegeid=" + collegeid;
 					} else {
-						strsearch += " where (collegeid=" + collegeid
-								+ " or teacollegeid=" + collegeid + ")";
+						// strsearch += " where (collegeid=" + collegeid
+						// + " or teacollegeid=" + collegeid + ")";
+
+						strsearch += " where collegeid=" + collegeid;
 					}
 				}
-				if (classid != null && !classid.equals("")) {
+				if (classid != null && !classid.equals("")
+						&& !classid.equals("0")) {
 					if (classid != null && !classid.equals("")) {
 						strsearch += " and classid='" + classid + "'";
 					} else {
@@ -107,24 +111,28 @@ public class getArrangeAction extends BaseAction {
 				return null;
 			}
 
-		}else if(op.equals("getarr")){
+		} else if (op.equals("getarr")) {
 			try {
 				int startPage = Integer.parseInt(request.getParameter("page"));// 当前
 				int limit = Integer.parseInt(request.getParameter("limit"));// 条数
 				String where = request.getParameter("strwhere");
 				String project = request.getParameter("project");
 				String strWhere = "";
-				if(where!= null && !where.equals("")){
-					strWhere = " where (arrname like'%"+where+"%' or proname like'%"+where+"%' or addr like'%"+where+"%')";
+				if (where != null && !where.equals("")) {
+					strWhere = " where (arrname like'%" + where
+							+ "%' or proname like'%" + where
+							+ "%' or addr like'%" + where + "%')";
 				}
-				if(project!= null && !project.equals("")){
-					if(strWhere!= null && !strWhere.equals("")){
-						strWhere = " and proid="+project;
-					}else{
-						strWhere = " where proid="+project;
+				if (project != null && !project.equals("")
+						&& !project.equals("0")) {
+					if (strWhere != null && !strWhere.equals("")) {
+						strWhere = " and proid=" + project;
+					} else {
+						strWhere = " where proid=" + project;
 					}
 				}
-				List<VArrange> list = arrangedao.selectByPage(strWhere, limit, startPage);
+				List<VArrange> list = arrangedao.selectByPage(strWhere, limit,
+						startPage);
 				LayuiData data = new LayuiData();
 				data.code = LayuiData.SUCCESS;
 				data.data = list;
