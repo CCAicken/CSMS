@@ -223,28 +223,34 @@ public class ScoreDaoImpl implements ScoreDAO {
 			MedalRank newrank = new MedalRank();
 			newrank.setCollegeid(college.getCollegeid());
 			newrank.setCollegename(college.getCollegename());
+			newrank.setGold(0);
+			newrank.setSilver(0);
+			newrank.setBronze(0);
 			newlist.add(newrank);
 		}
 		for (int i = 0; i < newlist.size(); i++) {
-			for (int j = 0; j < goldlist.size(); j++) {
-				if (newlist.get(i).getCollegeid() == goldlist.get(j).get(
-						"collegeid")) {
-					newlist.get(i).setGold(goldlist.get(j).get("count"));
-					break;
+			if(goldlist!= null && goldlist.size()>0){
+				for (HashMap<String, Integer> hashMap:goldlist) {
+					if (newlist.get(i).getCollegeid() == hashMap.get("collegeid")) {
+						newlist.get(i).setGold(hashMap.get("count"));
+						break;
+					}
 				}
 			}
-			for (int j = 0; j < silverlist.size(); j++) {
-				if (newlist.get(i).getCollegeid() == silverlist.get(j).get(
-						"collegeid")) {
-					newlist.get(i).setSilver(silverlist.get(j).get("count"));
-					break;
+			if(silverlist!= null && silverlist.size()>0){
+				for (HashMap<String, Integer> hashMap:silverlist) {
+					if (newlist.get(i).getCollegeid() == hashMap.get("collegeid")) {
+						newlist.get(i).setSilver(hashMap.get("count"));
+						break;
+					}
 				}
 			}
-			for (int j = 0; j < bronzelist.size(); j++) {
-				if (newlist.get(i).getCollegeid() == bronzelist.get(j).get(
-						"collegeid")) {
-					newlist.get(i).setBronze(bronzelist.get(j).get("count"));
-					break;
+			if(bronzelist!= null && bronzelist.size()>0){
+				for (HashMap<String, Integer> hashMap:bronzelist) {
+					if (newlist.get(i).getCollegeid() == hashMap.get("collegeid")) {
+						newlist.get(i).setBronze(hashMap.get("count"));
+						break;
+					}
 				}
 			}
 		}

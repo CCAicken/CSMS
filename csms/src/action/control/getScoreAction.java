@@ -32,7 +32,7 @@ public class getScoreAction extends BaseAction {
 	public String execute() {
 		String op = request.getParameter("op");
 		if (op.equals("getrank")){
-			List<MedalRank> ranklist = DAOFactory.getScoreDAO().getRank();
+			List<MedalRank> ranklist = scoredao.getRank();
 			//≈≈–Ú
 			Collections.sort(ranklist, new Comparator<MedalRank>(){
 				@Override
