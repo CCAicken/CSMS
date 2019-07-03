@@ -80,7 +80,7 @@
 		function loadProject() {
 			$.ajax({
 				type : "post",
-				url : "getproject.action",
+				url : "getproject.action?op=getproject",
 				data : {},
 				dataType : "json",
 				success : function(succ) {

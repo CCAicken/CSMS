@@ -47,20 +47,6 @@ body::-webkit-scrollbar {
 						<select name="project" id="project" lay-filter="project"
 							lay-verify="required" lay-search="">
 							<option value="0">请选择或输入项目名称</option>
-							<%-- <c:forEach items="${projectlist}" var="obj">
-								<c:if test="${obj.protype==1 }">
-								<option value="${obj.proid }">${obj.proname }(学生个人赛)</option>
-								</c:if>
-								<c:if test="${obj.protype==2 }">
-								<option value="${obj.proid }">${obj.proname }(学生团体赛)</option>
-								</c:if>
-								<c:if test="${obj.protype==3 }">
-								<option value="${obj.proid }">${obj.proname }(教师个人赛)</option>
-								</c:if>
-								<c:if test="${obj.protype==4 }">
-								<option value="${obj.proid }">${obj.proname }(教师团体赛)</option>
-								</c:if>
-							</c:forEach> --%>
 						</select>
 					</div>
 					<div class="layui-input-inline">
@@ -106,11 +92,11 @@ body::-webkit-scrollbar {
 		function loadProject() {
 			$.ajax({
 				type : "post",
-				url : "getproject.action",
+				url : "getproject.action?op=getproject",
 				data : {},
 				dataType : "json",
 				success : function(succ) {
-					if (succ == "失败") {
+					if (succ.code == 1) {
 						layer.msg("请刷新后重试");
 					} else {
 						var tmp = '<option value="0">请选择或输入项目名称</option>';
@@ -148,12 +134,10 @@ body::-webkit-scrollbar {
 			elem : '#scoretable',
 			toolbar : '#toolbarDemo',
 			height : 'full-200', //高度最大化减去差值,
-			url : 'getprojectscore.action?op=record&user='
-					+ $("#userselect").val(),
+			url : 'getprojectscore.action?op=record&user='+ $("#userselect").val(),
 			even : true,
 			skin : "nob",
 			cellMinWidth : 35, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-			//,toolbar: '#toolbarDemo'
 			title : '用户数据表',
 			page:true,
 			limit:5,

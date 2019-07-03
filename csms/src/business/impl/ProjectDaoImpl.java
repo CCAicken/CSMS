@@ -100,16 +100,11 @@ public class ProjectDaoImpl implements ProjectDAO {
 	@Override
 	public int getProCountByRole(String strwhere, int roletype) {
 		String hql = null;
-		if (strwhere != null) {
-			strwhere = " and " + strwhere;
-		} else if (strwhere == null) {
-			strwhere = "";
-		}
 		if (roletype == 0) {
-			hql = "select count(*) from VSportProject where (protype=1 or protype=2) and sportid="
+			hql = "select count(*) from VSportProject where sportid="
 					+ config.getSportid() + strwhere;
 		} else if (roletype == 1) {
-			hql = "select count(*) from VSportProject where (protype=3 or protype=4) and sportid="
+			hql = "select count(*) from VSportProject where sportid="
 					+ config.getSportid() + strwhere;
 		}
 		int count = bdao.selectValue(hql);
@@ -119,11 +114,6 @@ public class ProjectDaoImpl implements ProjectDAO {
 	@Override
 	public int getProCount(String strwhere) {
 		String hql = null;
-		if (strwhere != null) {
-			strwhere = " and " + strwhere;
-		} else if (strwhere == null) {
-			strwhere = "";
-		}
 		hql = "select count(*) from VSportProject where sportid="
 				+ config.getSportid() + strwhere;
 		int count = bdao.selectValue(hql);

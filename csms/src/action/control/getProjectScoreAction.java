@@ -29,7 +29,7 @@ public class getProjectScoreAction extends BaseAction {
 				}
 			}else if(op.equals("record")){
 				String project = request.getParameter("project");
-				String user = request.getParameter("usertype");
+				String user = request.getParameter("user");
 				String page = request.getParameter("page");
 				String limit = request.getParameter("limit");
 				String strsearch = "";
@@ -49,11 +49,12 @@ public class getProjectScoreAction extends BaseAction {
 				}
 				//strsearch += " order by protype";
 				List<VSportProject> clalist = projectdao.selectList(strsearch,Integer.parseInt(page),Integer.parseInt(limit));
+				int count = projectdao.getProCount(strsearch);
 				request.setAttribute("type", "project");
 				LayuiData rd = new LayuiData();
 				rd.code = LayuiData.SUCCESS;
 				rd.data = clalist;
-				rd.count= projectdao.getProCount(strsearch);
+				rd.count= count;
 				out.write(JSON.toJSONString(rd));
 				out.flush();
 				out.close();
