@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Struts2Diagram version="2.0">
-  <package name="default" location="50,50" size="216,1151">
+  <package name="default" location="50,50" size="216,1190">
     <action name="getcollege" location="53,86" size="150,41">
       <result name="success" />
     </action>
@@ -78,6 +78,7 @@
       <result name="success" />
     </action>
     <action name="signup" location="48,1072" size="150,40" />
+    <action name="prolist" location="23,1118" size="150,40" />
   </package>
   <webResource name="forumContent.jsp" path="/forumContent.jsp" location="350,50" size="150,55" />
   <webResource name="scoreDetail.jsp" path="/scoreDetail.jsp" location="350,200" size="150,55" />

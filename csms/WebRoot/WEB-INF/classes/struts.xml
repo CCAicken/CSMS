@@ -75,5 +75,6 @@
 		</result></action>
 		<action name="test" class="action.control.testAction">
 			<result name="success"></result></action>
-		<action name="signup" class="action.control.SignUpAction"></action></package>
+		<action name="signup" class="action.control.SignUpAction"></action>
+		<action name="prolist" class="action.control.ProListAction"></action></package>
 </struts>    

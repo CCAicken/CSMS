@@ -25,19 +25,6 @@ public class getProjectAction extends BaseAction {
 	 * @throws IOException
 	 */
 	public String execute() throws IOException {
-		 String op = request.getParameter("op");
-		 if (op.equals("getproject")) {
-			 List<VSportProject> projectlist = projectdao.select();
-		 	LayuiData data = new LayuiData();
-		 	data.code = LayuiData.SUCCESS;
-		 	data.data = projectlist;
-		 	data.msg = "成功";
-			out.write(JSON.toJSONString(data));
-			out.flush();
-			out.close();
-			return null;
-		 }
-
 		TUser user = (TUser) session.getAttribute("loginuser");
 		String startPage = request.getParameter("page");
 		String pageSize = request.getParameter("limit");
@@ -60,7 +47,7 @@ public class getProjectAction extends BaseAction {
 								Integer.parseInt(pageSize));
 			}
 			out = response.getWriter();
-			LayuiData data = new LayuiData(0, "成功", count, list,null);
+			LayuiData data = new LayuiData(0, "成功", count, list, null);
 			out.write(JSON.toJSONString(data));
 			out.flush();
 			out.close();
@@ -72,7 +59,7 @@ public class getProjectAction extends BaseAction {
 			List<VSportProject> list = projectdao.getAllProject(strwhere,
 					Integer.parseInt(startPage), Integer.parseInt(pageSize));
 			out = response.getWriter();
-			LayuiData data = new LayuiData(0, "成功", count, list,null);
+			LayuiData data = new LayuiData(0, "成功", count, list, null);
 			out.write(JSON.toJSONString(data));
 			out.flush();
 			out.close();
