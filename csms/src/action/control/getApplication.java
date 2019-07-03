@@ -22,7 +22,7 @@ public class getApplication extends BaseAction {
 			List<VScore> scorelist=scoredao.getCollegeScoreOrder();
 			try {
 				out = response.getWriter();
-				LayuiData data = new LayuiData(0, "成功", 2, scorelist);
+				LayuiData data = new LayuiData(0, "成功", 2, scorelist,null);
 
 				out.write(JSON.toJSONString(data));
 				out.flush();
@@ -36,7 +36,7 @@ public class getApplication extends BaseAction {
 			List<VMatch> list = matchdao.selectAll();
 			try {
 				out = response.getWriter();
-				LayuiData data = new LayuiData(0, "成功", 2, list);
+				LayuiData data = new LayuiData(0, "成功", 2, list,null);
 
 				out.write(JSON.toJSONString(data));
 				out.flush();

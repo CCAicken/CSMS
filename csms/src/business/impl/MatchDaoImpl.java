@@ -125,7 +125,6 @@ public class MatchDaoImpl implements MatchDAO {
 
 	@Override
 	public List<VMatch> getByid(String strwhere, int page, int limit) {
-		// TODO Auto-generated method stub
 		String hql = "from VMatch";
 		if (strwhere != null && !strwhere.equals("")) {
 			hql += strwhere + " and sportid=" + config.getSportid();
@@ -138,7 +137,6 @@ public class MatchDaoImpl implements MatchDAO {
 
 	@Override
 	public int getByidCount(String strwhere) {
-		// TODO Auto-generated method stub
 		String hql = "select count(*) from VMatch";
 		if (strwhere != null && !strwhere.equals("")) {
 			hql += strwhere + " and sportid=" + config.getSportid();

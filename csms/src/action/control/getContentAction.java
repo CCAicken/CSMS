@@ -29,7 +29,7 @@ public class getContentAction extends BaseAction {
 				out = response.getWriter();
 				LayuiData data = new LayuiData(0, "³É¹¦", allcount,
 						bdao.selectByPage("from TCollege",
-								Integer.parseInt(startPage), limit));
+								Integer.parseInt(startPage), limit),null);
 
 				out.write(JSON.toJSONString(data));
 				out.flush();

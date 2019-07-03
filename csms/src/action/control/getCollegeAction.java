@@ -2,9 +2,12 @@ package action.control;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import model.TCollege;
+import model.TConfig;
 import model.VClass;
 import util.LayuiData;
 
@@ -29,10 +32,22 @@ public class getCollegeAction extends BaseAction {
 		List<TCollege> listcollege = collegedao.select();
 		request.setAttribute("listcollege", listcollege);
 		if(op.equals("histogram")){
+			List<TConfig> sportlist = sportsdao.select();
+			//ÅÅÐò
+			Collections.sort(sportlist, new Comparator<TConfig>(){
+				@Override
+				public int compare(TConfig config1, TConfig config2){
+					Integer id1 = config1.getSportid();
+					Integer id2 = config2.getSportid();
+					return id1.compareTo(id2);//ÕýÐò
+					//id2.compareTo(id1)//µ¹Ðò1
+				}
+			});
 			try {
 				LayuiData data = new LayuiData();
 				data.code = LayuiData.SUCCESS;
 				data.data = listcollege;
+				data.data1 = sportlist;
 				out.write(JSON.toJSONString(data));
 				out.flush();
 				out.close();

@@ -28,6 +28,7 @@ public class VScore implements java.io.Serializable {
 	private Integer collegelimit;
 	private Integer totallimit;
 	private Integer protype;
+	private Object objscore;
 
 	// Constructors
 
@@ -37,12 +38,13 @@ public class VScore implements java.io.Serializable {
 
 	/** minimal constructor */
 	public VScore(Integer scoreid, Integer matchid, Double scorenumber,
-			String userid, Integer proid) {
+			String userid, Integer proid,Object objscore) {
 		this.scoreid = scoreid;
 		this.matchid = matchid;
 		this.scorenumber = scorenumber;
 		this.userid = userid;
 		this.proid = proid;
+		this.objscore = objscore;
 	}
 
 	/** full constructor */
@@ -52,7 +54,7 @@ public class VScore implements java.io.Serializable {
 			Integer majorid, String majorname, Integer stucollegeid,
 			String stucollegename, Integer sportid, String sportname,
 			Integer proid, String proname, Integer scenelimit,
-			Integer collegelimit, Integer totallimit, Integer protype) {
+			Integer collegelimit, Integer totallimit, Integer protype,Object objscore) {
 		this.scoreid = scoreid;
 		this.matchid = matchid;
 		this.scorenumber = scorenumber;
@@ -75,6 +77,7 @@ public class VScore implements java.io.Serializable {
 		this.collegelimit = collegelimit;
 		this.totallimit = totallimit;
 		this.protype = protype;
+		this.objscore = objscore;
 	}
 
 	// Property accessors
@@ -255,6 +258,14 @@ public class VScore implements java.io.Serializable {
 		this.protype = protype;
 	}
 
+	public Object getObjscore() {
+		return this.objscore;
+	}
+
+	public void setObjscore(Object objscore) {
+		this.objscore = objscore;
+	}
+	
 	public boolean equals(Object other) {
 		if ((this == other))
 			return true;

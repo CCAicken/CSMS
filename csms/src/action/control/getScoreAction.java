@@ -11,6 +11,7 @@ import util.LayuiData;
 import model.MedalRank;
 import model.TClass;
 import model.TCollege;
+import model.TConfig;
 import model.TMajor;
 import model.VClassScore;
 import model.VCollegeScore;
@@ -45,6 +46,18 @@ public class getScoreAction extends BaseAction {
 				LayuiData rd = new LayuiData();
 				rd.code = LayuiData.SUCCESS;
 				rd.data = ranklist;
+				out.write(JSON.toJSONString(rd));
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else if (op.equals("getallscore")){
+			List<VScore> scorelist = scoredao.getAllCollScore();
+			try {
+				LayuiData rd = new LayuiData();
+				rd.code = LayuiData.SUCCESS;
+				rd.data = scorelist;
 				out.write(JSON.toJSONString(rd));
 				out.flush();
 				out.close();

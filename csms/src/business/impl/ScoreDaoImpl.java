@@ -175,10 +175,31 @@ public class ScoreDaoImpl implements ScoreDAO {
 			return 0;
 		}
 	}
+	
+	@Override
+	public List<VUserScore> getAllScoreByPage(String strwhere, int startPage,
+			int pageSize) {
+		String hql = "from VUserScore where sportid=" + config.getSportid()
+				+ strwhere;
+		List<VUserScore> list = bdao.selectByPage(hql, startPage, pageSize);
+		if (list != null && list.size() > 0) {
+			return list;
+		} else {
+			return null;
+		}
+	}
+	
+	@Override
+	public int allUserScoreCount(String strwhere) {
+		String hql = "select count(*) from VUserScore where sportid="
+				+ config.getSportid() + strwhere;
+		int count = bdao.selectValue(hql);
+		return count;
+	}
 
 	@Override
 	public List<HashMap<String, Integer>> getMedalRank(int rank) {
-		String sql = "select collegeid,count(*) as count from (SELECT * FROM (select t.collegeid,t.proid,t.scorenumber,rank() over(partition by t.proid order by t.scorenumber desc) ranks from V_Score t) as b where b.ranks=" + rank +") as a group by collegeid;";
+		String sql = "select collegeid,count(*) as count from (SELECT * FROM (select t.collegeid,t.proid,t.scorenumber,rank() over(partition by t.proid order by t.scorenumber desc) ranks from V_Score t where t.sportid="+config.getSportid()+") as b where b.ranks=" + rank +") as a group by collegeid";
 		List<HashMap<String, Integer>> list = bdao.selectBysql(sql);
 		if (list != null && list.size() > 0) {
 			return list;
@@ -186,7 +207,7 @@ public class ScoreDaoImpl implements ScoreDAO {
 			return null;
 		}
 	}
-
+	
 	@Override
 	public List<MedalRank> getRank() {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(
@@ -229,25 +250,34 @@ public class ScoreDaoImpl implements ScoreDAO {
 		}
 		return newlist;
 	}
-	
+
 	@Override
-	public List<VUserScore> getAllScoreByPage(String strwhere, int startPage,
-			int pageSize) {
-		String hql = "from VUserScore where sportid=" + config.getSportid()
-				+ strwhere;
-		List<VUserScore> list = bdao.selectByPage(hql, startPage, pageSize);
-		if (list != null && list.size() > 0) {
-			return list;
-		} else {
-			return null;
+	public List<VScore> getAllCollScore() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext(
+				"factoryBean.xml");
+		CollegeDAO collegedao = ctx.getBean("getCollegeDAO", CollegeDAO.class);
+		List<TCollege> colllist = collegedao.select();
+		String sql = "select collegeid,collegename,CONVERT(float,MAX(scorenumber)) as scorenumber,sportid,sportname from V_Score group by collegeid,collegename,sportid,sportname";
+		List<HashMap<String, Object>> allsorelist = bdao.selectBysql(sql);
+		List<VScore> newlist = new ArrayList();
+		for (TCollege college : colllist) {
+			VScore newscore = new VScore();
+			newscore.setCollegeid(college.getCollegeid());
+			newscore.setCollegename(college.getCollegename());
+			newlist.add(newscore);
 		}
-	}
-	
-	@Override
-	public int allUserScoreCount(String strwhere) {
-		String hql = "select count(*) from VUserScore where sportid="
-				+ config.getSportid() + strwhere;
-		int count = bdao.selectValue(hql);
-		return count;
+		for (int i = 0; i < newlist.size(); i++) {
+			for (int j = 0; j < allsorelist.size(); j++) {
+				if (newlist.get(i).getCollegeid().equals(allsorelist.get(j).get("collegeid"))) {
+					Object sportid = allsorelist.get(j).get("sportid");
+					Object sportname = allsorelist.get(j).get("sportname");
+					Object scorenumber = allsorelist.get(j).get("scorenumber");
+					newlist.get(i).setSportid((Integer)(sportid));
+					newlist.get(i).setSportname((String)(sportname));
+					newlist.get(i).setScorenumber((Double)scorenumber);
+				}
+			}
+		}
+		return newlist;
 	}
 }

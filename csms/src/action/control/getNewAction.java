@@ -29,7 +29,7 @@ public class getNewAction extends BaseAction {
 			try {
 				out = response.getWriter();
 				LayuiData data = new LayuiData(0, "³É¹¦", allcount,
-						newsdao.getAllNews());
+						newsdao.getAllNews(),null);
 
 				out.write(JSON.toJSONString(data));
 				out.flush();

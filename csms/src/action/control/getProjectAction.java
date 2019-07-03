@@ -60,7 +60,7 @@ public class getProjectAction extends BaseAction {
 								Integer.parseInt(pageSize));
 			}
 			out = response.getWriter();
-			LayuiData data = new LayuiData(0, "成功", count, list);
+			LayuiData data = new LayuiData(0, "成功", count, list,null);
 			out.write(JSON.toJSONString(data));
 			out.flush();
 			out.close();
@@ -72,7 +72,7 @@ public class getProjectAction extends BaseAction {
 			List<VSportProject> list = projectdao.getAllProject(strwhere,
 					Integer.parseInt(startPage), Integer.parseInt(pageSize));
 			out = response.getWriter();
-			LayuiData data = new LayuiData(0, "成功", count, list);
+			LayuiData data = new LayuiData(0, "成功", count, list,null);
 			out.write(JSON.toJSONString(data));
 			out.flush();
 			out.close();

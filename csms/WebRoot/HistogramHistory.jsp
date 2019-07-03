@@ -36,7 +36,7 @@ layui.use(['element','layer', 'carousel', 'table','jquery'], function(){
 	var myChart = echarts.init(document.getElementById('main'));
 	option = {
 	    title: {
-	        text: '分院平均积分/总积分图'
+	        text: '各届分院总积分图'
 	    },
 	    tooltip : {
 	        trigger: 'axis',
@@ -48,7 +48,7 @@ layui.use(['element','layer', 'carousel', 'table','jquery'], function(){
 	        }
 	    },
 	    legend: {/* 分组类型 */
-	        data:['平均成绩','总成绩']
+	        data:[]
 	    },
 	    toolbox: {
 	        feature: {
@@ -77,19 +77,25 @@ layui.use(['element','layer', 'carousel', 'table','jquery'], function(){
 	    ],
 	    series : [
 	        {
-	            name:'平均成绩',
-	            type:'line',
-	            stack: '总量',
-	            areaStyle: {normal: {}},
-	            data:[]
-	        },
-	        {
-	            name:'总成绩',
+	            name:'',
 	            type:'line',
 	            stack: '总量',
 	            areaStyle: {normal: {}},
 	            data:[]
 	        }
+	        /* {
+	            name:'总成绩',
+	            type:'line',
+	            stack: '总量',
+	            label: {
+	                normal: {
+	                    show: true,
+	                    position: 'top'
+	                }
+	            },
+	            areaStyle: {normal: {}},
+	            data:[]
+	        } */
 	    ]
 	};
 	myChart.setOption(option);
@@ -105,44 +111,63 @@ layui.use(['element','layer', 'carousel', 'table','jquery'], function(){
 					if (succ.code == 1) {
 						layer.msg('请求失败，稍后再试',{icon : 5});
 					} else {
+						/* 横坐标 */
 						var xCollege = new Array();
 						var xid = new Array();
+						/* 接收数据 */
+						var newseries = new Array();
+						/* 数据初始化为空*/
 						var newScore = new Array();
 						for(var i=0;i<succ.data.length;i++){
 							xCollege.push(succ.data[i].collegename);
 							xid.push(succ.data[i].collegeid);
 							newScore.push(0);
 						}
+						/* 折线类型 */
+						var legends = new Array();
+						for(var i=0;i<succ.data1.length;i++){
+							/* 添加数据数量对应折线类型数量 */
+							legends.push(succ.data1[i].sportname);
+							/* 获取数据类型模板 */
+							var serie = {
+					            name:succ.data1[i].sportname,
+					            type:'line',
+					            stack: '总量',
+					            areaStyle: {normal: {}},
+					            data:newScore
+					        };
+							newseries.push(serie);
+						}
 						var optionjson = option;
 						optionjson.xAxis[0].data = xCollege;
 						optionjson.xAxis[0].id = xid;
-						optionjson.series[0].data = newScore;
-						optionjson.series[1].data = newScore;
-						myChart.setOption(optionjson);
+						optionjson.legend.data = legends;
+						optionjson.series = newseries;
+						//myChart.setOption(optionjson);
 						//获取数据
 						$.ajax({
 							type : "post",
-							url : "getscore.action?op=allcollege",
+							url : "getscore.action?op=getallscore",
 							data : {},
 							dataType : "json",
 							success : function(succ2) {
 								if (succ2.code == 1) {
 									layer.msg('请求失败，稍后再试',{icon : 5});
 								} else {
-									var optionjson = option;
+									//var optionjson = option;
 									var xid = option.xAxis[0].id;
-									var avgScore = optionjson.series[0].data;
-									var sumScore = optionjson.series[1].data;
 									for(var i=0;i<xid.length;i++){
 										for(var j=0;j<succ2.data.length;j++){
 											if(xid[i] == succ2.data[j].collegeid){
-												avgScore[i] = succ2.data[j].scorenumber;
-												sumScore[i] = succ2.data[j].allscore;
+												for(var k=0;k<optionjson.series.length;k++){
+													if(succ2.data[j].sportname == optionjson.series[k].name){
+														var optionjsonseries = optionjson.series[k];
+														optionjson.series[k].data[i] = succ2.data[j].scorenumber;
+													}
+												}
 											}
 										}
 									}
-									optionjson.series[0].data = avgScore;
-									optionjson.series[1].data = sumScore;
 									myChart.setOption(optionjson);
 								}
 							},
