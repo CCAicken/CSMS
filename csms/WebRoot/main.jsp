@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 
 <head>
@@ -61,12 +62,14 @@ body::-webkit-scrollbar {
             <div class="layui-col-md2">
                 <ul class="layui-nav" lay-filter="">
                     <li class="layui-nav-item">
+                    	<c:if test="${loginuser!=null }">
                         <a href="javascript:;">你好：${loginuser.username }</a>
                         <dl class="layui-nav-child">
                             <!-- 二级菜单 -->
                             <dd><a class="a-nav" href="changePwd.jsp">修改密码</a></dd>
                             <dd><a href="logout.action">退出登陆</a></dd>
                         </dl>
+                        </c:if>
                     </li>
                 </ul>
             </div>
