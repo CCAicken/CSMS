@@ -92,7 +92,7 @@ body::-webkit-scrollbar {
 		function loadProject() {
 			$.ajax({
 				type : "post",
-				url : "getproject.action?op=getproject",
+				url : "prolist.action?op=getproject",
 				data : {},
 				dataType : "json",
 				success : function(succ) {

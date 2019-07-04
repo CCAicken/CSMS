@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 
 import util.LayuiData;
@@ -18,7 +17,6 @@ import model.VCollegeScore;
 import model.VMajorScore;
 import model.VScore;
 import model.VUserScore;
-import business.factory.DAOFactory;
 
 import com.alibaba.fastjson.JSON;
 
@@ -61,11 +59,34 @@ public class getScoreAction extends BaseAction {
 				e.printStackTrace();
 			}
 		}else if (op.equals("getallscore")){
+			List<TConfig> sportlist = sportsdao.select();
+			//ÅÅÐò
+			Collections.sort(sportlist, new Comparator<TConfig>(){
+				@Override
+				public int compare(TConfig config1, TConfig config2){
+					Integer id1 = config1.getSportid();
+					Integer id2 = config2.getSportid();
+					return id1.compareTo(id2);//ÕýÐò
+					//id2.compareTo(id1)//µ¹Ðò
+				}
+			});
 			List<VScore> scorelist = scoredao.getAllCollScore();
+			List<double[]> returnlist = new ArrayList<double[]>();
+			for(int i=0;i<sportlist.size();i++){
+				double[] doubles = new double[scorelist.size()];
+				for(int j=0;j<scorelist.size();j++){
+					if(sportlist.get(i).getSportid().equals(scorelist.get(j).getSportid())){
+						doubles[j] = scorelist.get(j).getScorenumber();
+					}else{
+						doubles[j] = 0;
+					}
+				}
+				returnlist.add(doubles);
+			}
 			try {
 				LayuiData rd = new LayuiData();
 				rd.code = LayuiData.SUCCESS;
-				rd.data = scorelist;
+				rd.data = returnlist;
 				out.write(JSON.toJSONString(rd));
 				out.flush();
 				out.close();
