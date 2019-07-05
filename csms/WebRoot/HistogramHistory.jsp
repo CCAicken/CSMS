@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 body {
-    background-color: rgb(209, 207, 207);
+    background-color: #fff;
     overflow: hidden;
       overflow-y: scroll;
     
@@ -121,7 +121,6 @@ layui.use(['element','layer', 'carousel', 'table','jquery'], function(){
 						for(var i=0;i<succ.data.length;i++){
 							xCollege.push(succ.data[i].collegename);
 							xid.push(succ.data[i].collegeid);
-							newScore.push(0);
 						}
 						/* 折线类型 */
 						var legends = new Array();
@@ -134,7 +133,7 @@ layui.use(['element','layer', 'carousel', 'table','jquery'], function(){
 					            type:'line',
 					            stack: '总量',
 					            areaStyle: {normal: {}},
-					            data:newScore
+					            data:[]
 					        };
 							newseries.push(serie);
 						}
@@ -156,17 +155,8 @@ layui.use(['element','layer', 'carousel', 'table','jquery'], function(){
 								} else {
 									//var optionjson = option;
 									var xid = option.xAxis[0].id;
-									for(var i=0;i<xid.length;i++){
-										for(var j=0;j<succ2.data.length;j++){
-											if(xid[i] == succ2.data[j].collegeid){
-												for(var k=0;k<optionjson.series.length;k++){
-													if(succ2.data[j].sportname == optionjson.series[k].name){
-														var optionjsonseries = optionjson.series[k];
-														optionjson.series[k].data[i] = succ2.data[j].scorenumber;
-													}
-												}
-											}
-										}
+									for(var i=0;i<optionjson.series.length;i++){
+										optionjson.series[i].data = succ2.data[i];
 									}
 									myChart.setOption(optionjson);
 								}

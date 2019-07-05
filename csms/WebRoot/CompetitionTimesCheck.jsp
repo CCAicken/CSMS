@@ -40,9 +40,6 @@
 							<select name="project" id="project" lay-filter="project"
 								lay-verify="required" lay-search="">
 								<option value="0">请选择或输入项目名称</option>
-								<%-- <c:forEach items="${projectlist}" var="obj">
-									<option value="${obj.proid }">${obj.proname }</option>
-								</c:forEach> --%>
 							</select>
 						</div>
 					</div>

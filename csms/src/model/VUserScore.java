@@ -6,7 +6,6 @@ package model;
 
 public class VUserScore implements java.io.Serializable {
 
-	private String id;
 	private String userid;
 	private String username;
 	private Integer collegeid;
@@ -32,11 +31,10 @@ public class VUserScore implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public VUserScore(String id, String userid, String username,
+	public VUserScore( String userid, String username,
 			Integer collegeid, String collegename, Integer majorid,
 			String majorname, Integer classid, String classname,
 			Integer sportid, String sportname, Double avgscore, Double sumscore) {
-		this.id = id;
 		this.userid = userid;
 		this.username = username;
 		this.collegeid = collegeid;
@@ -49,16 +47,6 @@ public class VUserScore implements java.io.Serializable {
 		this.sportname = sportname;
 		this.avgscore = avgscore;
 		this.sumscore = sumscore;
-	}
-
-	// Property accessors
-
-	public String getId() {
-		return this.id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getUserid() {
