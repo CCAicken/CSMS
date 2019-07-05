@@ -24,7 +24,6 @@ public class NewsDAOImpl implements NewsDAO {
 	public boolean addNews(TNews news) {
 		String res = (String) bdao.insert(news);
 		if (res != null) {
-
 			return true;
 		}
 		return false;
